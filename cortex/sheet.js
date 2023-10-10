@@ -12,6 +12,7 @@ function text_to_html(html) {
 	html = html.replace(/\bd10\b/g, '<c>0</c>')
 	html = html.replace(/\bd12\b/g, '<c>2</c>')
 	html = html.replace(/\bPP\b/g, '<pp></pp>')
+	html = html.replace(/\bMOTE\b/ig, '<mote></mote>')
 	html = html.replace(/\n/g, '<br>')
 	html = html.replace(/\<\/li\>\<br\>/g, '</li>')
 	html = html.replace(/\<\/li\>\<br\>/g, '</li>')
@@ -28,6 +29,7 @@ function html_to_text(text) {
 	text = text.replace(/<c>0<\/c>/g, 'd10')
 	text = text.replace(/<c>2<\/c>/g, 'd12')
 	text = text.replace(/<pp><\/pp>/g, 'PP')
+	text = text.replace(/<mote><\/mote>/g, 'mote')
 	text = text.replace(/<br>/g, '\n')
 	text = text.replace(/<ul>/g, '')
 	text = text.replace(/<\/ul>/g, '')
@@ -313,6 +315,12 @@ function on_drop(e) {
 		load_character(data)
 	});
 	reader.readAsText(blob)
+}
+
+function load_character_path(path) {
+	fetch(path)
+		.then((response) => response.json())
+		.then((json) => load_character(json));
 }
 
 function add_group(e, class_name) {

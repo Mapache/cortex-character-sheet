@@ -68,6 +68,10 @@
 	margin: 1cm 0 auto 164px;
 }
 
+div.left {
+	width: 35mm;
+}
+
 .page {
 	position: absolute;
 	left: 0;
@@ -85,7 +89,7 @@
 .content {
 	padding: 1.9cm;
 	position: relative;
-	columns: 2;
+	column-count: 2;
 	column-gap: 12pt;
 }
 
@@ -144,7 +148,7 @@ c {
 	color: #C50852;
 }
 
-pp {
+pp, mote {
 	all: initial;
 	font-family: 'Open Sans', sans-serif;
 	//	padding-left: initial;
@@ -153,8 +157,6 @@ pp {
 	display: inline-block;
 	width: 1.6em;
 	height: 1.6em;
-	background: #D7ECDD;
-	border-color: #D7ECDD;
 	border-radius: 50%;
 	font-style: normal;
 	font-weight: 700;
@@ -163,8 +165,22 @@ pp {
 	line-height: 1.6em;
 }
 
+pp {
+	background: #D7ECDD;
+	border-color: #D7ECDD;
+}
+
 pp:before {
 	content: "PP";
+}
+
+mote {
+	background: #fafcc3;
+	border-color: #fafcc3;
+}
+
+mote:before {
+	content: "☀️";
 }
 
 ref {
