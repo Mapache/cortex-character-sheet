@@ -104,7 +104,6 @@ div.left {
 	width: 210mm;
 	height: 297.1mm;
 	font-family: 'Open Sans', sans-serif;
-	//	font-weight: 500;
 	font-size: 7.99pt;
 	font-style: italic;
 	line-height: 11pt;
@@ -177,9 +176,7 @@ pp,
 mote {
 	all: initial;
 	font-family: 'Open Sans', sans-serif;
-	//	padding-left: initial;
-	//	text-indent: initial;
-	//	margin-top: initial;
+
 	display: inline-block;
 	width: 1.6em;
 	height: 1.6em;
@@ -288,7 +285,6 @@ ref {
 	text-transform: none;
 	font-weight: 500;
 	font-size: 12pt;
-	//	margin-bottom: 5pt;
 	margin-left: 0pt;
 	margin-top: 2mm;
 	display: inline-block;
@@ -299,11 +295,9 @@ ref {
 }
 
 #distinctions ul {
-	//	padding-left: 10pt;
 	list-style: none;
 	margin-left: 0;
 	padding-left: 0;
-	//	margin-top: 1em;
 	margin-bottom: 0;
 }
 
@@ -379,7 +373,6 @@ ref {
 }
 
 .add-item {
-	//	width: 100%;
 	width: 0%;
 	margin: 0;
 	left: 50%;
@@ -400,7 +393,6 @@ ref {
 	font-size: 32px;
 	color: var(--highlight);
 	content: "\f0fe";
-	//	position: absolute;
 	left: 50%;
 	top: 50%;
 	transform: translate(-50%, -50%);
@@ -411,7 +403,6 @@ ref {
 }
 
 .add-item:hover:before {
-	//	color: #eff;
 	opacity: 1;
 	text-shadow: 0 0 5px rgba(0, 0, 0, 0);
 }
@@ -447,7 +438,6 @@ ref {
 }
 
 #remove-item:hover:before {
-	//	color: #eff;
 	opacity: 1;
 	text-shadow: 0 0 5px rgba(0, 0, 0, 0);
 	position: relative;
@@ -460,8 +450,7 @@ ref {
 }
 
 .trait #remove-item:before {
-	left: 66mm;
-	//	top: 10px;
+	left: 71mm;
 }
 
 #context-menu-button {
@@ -492,7 +481,6 @@ ref {
 }
 
 #context-menu-button:hover:before {
-	//	color: #eff;
 	opacity: 1;
 	text-shadow: 0 0 5px rgba(0, 0, 0, 0);
 	position: relative;
@@ -545,27 +533,22 @@ ref {
 /* Roles */
 .trait-group.roles {
 	flex-wrap: wrap;
-	//    display: block;
 }
 
 .trait-group.roles>div {
 	flex: 64px;
 	width: 64px;
-	//    border: 1px solid red;
 	position: relative;
 	padding-top: 4mm;
 }
 
 .trait-group.roles .header {
-	//flex: 0 0 100%;
-	//flex-basis: 100%;
-	//flex-grow: 4;
-	//flex-wrap: wrap;
+
+
 	flex: 100%;
 	writing-mode: unset;
 	margin: 0 22mm 0 22mm;
 	padding: 1mm;
-	//display: block;
 	color: var(--highlight);
 	background-color: black;
 	color: white;
@@ -576,7 +559,6 @@ ref {
 	text-transform: uppercase;
 	font-style: normal;
 	font-size: 8.6pt;
-	//    width: 210mm;
 	left: unset;
 }
 
@@ -589,8 +571,6 @@ ref {
 	border-radius: 4mm;
 	text-transform: unset;
 	padding: 1mm 1mm 1mm 4mm;
-	//    float: right;
-	//    display: block;
 }
 
 .roles .trait h2+h2 {
@@ -605,8 +585,7 @@ ref {
 	position: absolute;
 	left: -6mm;
 	transform: translate(0, -1mm);
-	//    float: left;
-	//    display: block;
+
 }
 
 .roles .trait div {
@@ -656,19 +635,15 @@ ref {
 	margin-left: 0pt;
 	margin-top: 2mm;
 	display: inline-block;
-	//	transform: translate(-50%, -50%);
 	text-align: center;
 }
 
 #attributes .attribute {
-	//	transform: translate(-50%, -50%);
 	transform: translate(-50%, 0%);
 }
 
 #attributes div c {
-	//    position: relative;
-	//    left: 50%;
-	//    top: -6mm;
+
 	font-size: 20pt;
 	display: block;
 }
@@ -684,7 +659,6 @@ ref {
 	top: 2.6mm;
 	z-index: -1;
 	transform: translate(-50%, -50%);
-	//    border: 1px solid red;
 }
 
 //#attributes div:nth-child(1)
@@ -740,8 +714,7 @@ ref {
 	position: absolute;
 	width: 16mm;
 	height: 32mm;
-	//    left: 200mm;
-	//    top: 114mm;
+
 	left: 190mm;
 	top: 100mm;
 }
@@ -751,11 +724,9 @@ ref {
 }
 
 .attribute #remove-item {
-	//	width: 100%;	
 	left: 50%;
 	right: 0;
-	//	margin-left: auto;
-	//	margin-right: auto;
+
 	width: 0;
 	height: 0;
 }
@@ -784,27 +755,20 @@ ref {
 /* Values */
 .trait-group.values {
 	flex-wrap: wrap;
-	//    display: block;
 }
 
 .trait-group.values>div {
 	flex: 64px;
 	width: 64px;
-	//    border: 1px solid red;
 	position: relative;
 	padding-top: 4mm;
 }
 
 .trait-group.values .header {
-	//flex: 0 0 100%;
-	//flex-basis: 100%;
-	//flex-grow: 4;
-	//flex-wrap: wrap;
 	flex: 100%;
 	writing-mode: unset;
 	margin: 0 22mm 0 22mm;
 	padding: 1mm;
-	//display: block;
 	color: var(--highlight);
 	background-color: black;
 	color: white;
@@ -815,7 +779,6 @@ ref {
 	text-transform: uppercase;
 	font-style: normal;
 	font-size: 8.6pt;
-	//    width: 210mm;
 	left: unset;
 }
 
@@ -828,8 +791,6 @@ ref {
 	border-radius: 4mm;
 	text-transform: unset;
 	padding: 1mm 1mm 1mm 4.5mm;
-	//    float: right;
-	//    display: block;
 }
 
 .values .trait h2+h2 {
@@ -844,8 +805,7 @@ ref {
 	position: absolute;
 	left: -6mm;
 	transform: translate(0, -1mm);
-	//    float: left;
-	//    display: block;
+
 }
 
 .values .trait div {
@@ -924,7 +884,6 @@ ref {
 	text-transform: none;
 	font-weight: 500;
 	font-size: 12pt;
-	//	margin-bottom: 5pt;
 	margin-left: 0pt;
 	margin-top: 2mm;
 	display: inline-block;
@@ -935,11 +894,9 @@ ref {
 }
 
 .detailed-values ul {
-	//	padding-left: 10pt;
 	list-style: none;
 	margin-left: 0;
 	padding-left: 0;
-	//	margin-top: 1em;
 	margin-bottom: 0;
 }
 
@@ -986,7 +943,6 @@ ref {
 }
 
 .detailed-values>div:nth-child(3) {
-	//    left: 20mm;
 	display: inline;
 	width: 50%;
 }
@@ -1016,11 +972,9 @@ ref {
 /* Milestones */
 /*.trait*/
 ul {
-	//	padding-left: 10pt;
 	list-style: none;
 	margin-left: 0;
 	padding-left: 0;
-	//	margin-top: 1em;
 	margin-bottom: 0;
 }
 
@@ -1145,16 +1099,13 @@ li:before {
 	left: 50%;
 	top: 50%;
 	width: 500pt;
-	//	height: 500pt;
 	padding: 16pt 24pt 0 24pt;
 	font-family: 'Open Sans', sans-serif;
 	font-size: 8pt;
 }
 
 #help-modal #bottom {
-	//	position: absolute;
-	//	left: 0;
-	//	bottom: 0;
+
 	margin: 16pt 0 4pt 0;
 }
 
@@ -1214,7 +1165,6 @@ li:before {
 
 #help-modal #top table tr {
 	padding: 0;
-	//	border-bottom: 1pt solid black;
 }
 
 #help-modal #top table td {
@@ -1326,12 +1276,10 @@ li:before {
 	left: 0;
 	bottom: 0;
 	width: calc(50% - 105mm);
-	//	width: 100%;
 }
 
 #disclaimer #logo {
 	float: left;
-	//	flex-shrink: 20000;
 }
 
 #disclaimer #legal {
@@ -1562,7 +1510,6 @@ li:before {
 }
 
 .stress h2:nth-child(2) {
-	//	width: 25%;
 	text-align: center;
 	background: white;
 	padding: 0 2mm 0 2mm;
@@ -1571,9 +1518,7 @@ li:before {
 }
 
 .stress h2:nth-child(3) {
-	//	font-size: 14pt;
 	float: right;
-	//	width: 50%;
 	margin-right: 12mm;
 }
 
@@ -1588,21 +1533,17 @@ li:before {
 	color: white;
 	margin-left: 38.5mm;
 	margin-top: -0.5mm;
-	//	top: -2mm;
-	//	background: yellow;
-	text-shadow: -0.1mm -0.1mm 0.3mm #000, 0.1mm -0.1mm 0.3mm #000, -0.1mm 0.1mm 0.3mm #000, 0.1mm 0.1mm 0.3mm #000;
 
+	text-shadow: -0.1mm -0.1mm 0.3mm #000, 0.1mm -0.1mm 0.3mm #000, -0.1mm 0.1mm 0.3mm #000, 0.1mm 0.1mm 0.3mm #000;
 	display: inline;
 	font-family: 'cortex-icons';
 	font-style: normal;
 	font-size: 14pt;
-
 	content: "4 6 8 0 2";
 }
 
 .stress hr {
 	position: absolute;
-	//	display: none;
 	margin-top: -1.8mm;
 	margin-left: 12mm;
 	width: 57mm;
@@ -1615,23 +1556,16 @@ li:before {
 	font-family: 'Alegreya Sans SC', sans-serif;
 	text-transform: unset;
 	font-size: 10pt;
-	//	font-weight: 500;
 	color: black;
 }
 
 .stress .trait {
 	margin-bottom: 6mm;
-	//	text-align: center;
 }
 
 .stress .trait div {
 	display: none;
 }
-
-.trait #remove-item:before {
-	left: 71mm;
-}
-
 
 //.stress.trait-group .trait
 //{
