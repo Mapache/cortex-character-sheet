@@ -58,6 +58,12 @@
         "page1/0/2/5/2/4/2/0": "6",
         "page1/0/2/5/2/5/1": "Medicine",
         "page1/0/2/5/2/5/2/0": "6",
+        "page1/0/2/6/1": "STRESS",
+        "page1/0/2/6/2/1/1": "Physical",
+        "page1/0/2/6/2/2/1": "Social",
+        "page1/0/2/6/2/3/1": "Mental",
+        "page1/0/2/6/2/4/1": "Limit",
+        "page1/0/2/6/2/5/1": "Anima",
         "page1/0/3/1/1": "ESSENCE",
         "page1/0/3/1/2/1/1": "Essence",
         "page1/0/3/1/2/1/2/0": "0",
@@ -74,6 +80,9 @@
         "page1/0/3/3/2/1/1": "New trait",
         "page1/0/3/3/2/1/2/0": "6",
         "page1/0/3/4/1": "PANOPLY",
+        "page1/0/3/4/2/1/1": "Dancing Moonsilver dream &amp;\nWhirling soulsteel nightmare",
+        "page1/0/3/4/2/1/2/0": "8",
+        "page1/0/3/4/2/1/4": "Trait description.",
         "page1/0/3/5/1": "INTIMACIES"
     },
     "styles": {
@@ -81,7 +90,9 @@
         "page1/0/2/2": "resources",
         "page1/0/2/3": "resources",
         "page1/0/2/4": "resources",
-        "page1/0/2/5": "resources"
+        "page1/0/2/5": "resources",
+        "page1/0/2/6": "stress",
+        "page1/0/3/6": "stress"
     },
     "classList": {
         "page1/0/2/1": "highlight-orange",

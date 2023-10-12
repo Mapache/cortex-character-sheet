@@ -1365,6 +1365,10 @@ li:before {
 	flex-wrap: wrap;
 }
 
+.resources.trait-group {
+	margin-top: 0;
+}
+
 .resources .header {
 	flex: 100%;
 	column-span: all;
