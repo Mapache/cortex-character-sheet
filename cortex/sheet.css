@@ -221,7 +221,6 @@ ref {
 /* Character name */
 #character-name {
 	text-transform: uppercase;
-	contenteditable
 }
 
 .ruler {
@@ -661,34 +660,6 @@ ref {
 	transform: translate(-50%, -50%);
 }
 
-//#attributes div:nth-child(1)
-//{
-//    position: absolute;
-//    left: 115mm;
-//}
-//#attributes div:nth-child(2)
-//{
-//    position: absolute;
-//    left: 129.5mm;
-//    top: 120mm;
-//}
-//#attributes div:nth-child(3)
-//{
-//    position: absolute;
-//    left: 145mm;
-//    top: 123mm;
-//}
-//#attributes div:nth-child(4)
-//{
-//    position: absolute;
-//    left: 161.5mm;
-//    top: 120mm;
-//}
-//#attributes div:nth-child(5)
-//{
-//    position: absolute;
-//    left: 176mm;
-//}
 #attribute-curve {
 	display: none;
 	position: absolute;
@@ -865,19 +836,6 @@ ref {
 }
 
 /* Detailed values */
-//.trait-group.detailed-values
-//{
-//    flex-wrap: wrap;
-////    display: block;
-//}
-//.trait-group.detailed-values > div
-//{
-//    flex: 64px;
-//    width: 64px;
-////    border: 1px solid red;
-//    position: relative;
-//    padding-top: 4mm;
-//}
 .detailed-values h2 {
 	font-family: 'Alegreya Sans SC', sans-serif;
 	color: black;
@@ -947,18 +905,6 @@ ref {
 	width: 50%;
 }
 
-//.detailed-values > div:nth-child(3) .add-item
-//{
-//	margin-left: 1mm;
-//	width: 0;
-//	left: 0;
-//}
-//.detailed-values > div:nth-child(4) .add-item
-//{
-//	margin-left: 14mm;
-//	width: 0;
-//	left: 0;
-//}
 .detailed-values>div:nth-child(3) #remove-item:before {
 	left: 27mm;
 	top: 2mm;
@@ -1344,12 +1290,6 @@ li:before {
 	margin-top: 2mm;
 }
 
-//.signature-asset .trait > div:before
-//{
-//	display: inline;
-//	content: ':';
-//	margin: 0 1mm 0 -1mm;
-//}
 .signature-asset .trait #remove-item:before {
 	left: -9mm;
 	top: -2mm;
@@ -1570,36 +1510,3 @@ li:before {
 .stress .trait div {
 	display: none;
 }
-
-//.stress.trait-group .trait
-//{
-//	text-align: justify;
-//	width: calc(100% - 10pt);
-//	margin-top: 2mm;
-//	margin-bottom: 2mm;
-//}
-//.stress .trait > div
-//{
-//	display: inline;
-//	margin-top: 2mm;
-//	margin-bottom: 2mm;
-//}
-//.stress .trait div + div
-//{
-//	margin-top: 2mm;
-//}
-////.stress .trait > div:before
-////{
-////	display: inline;
-////	content: ':';
-////	margin: 0 1mm 0 -1mm;
-////}
-//.stress .trait #remove-item:before
-//{
-//	left: -9mm;
-//	top: -2mm;
-//}
-//.stress hr + div
-//{
-//	font-style: normal;
-//}
