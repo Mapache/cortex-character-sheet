@@ -244,7 +244,7 @@ function load_character(file) {
 			element = document.getElementById(i)
 		}
 		else {
-			var element = get_element_from_path(i, version);
+			element = get_element_from_path(i, version);
 		}
 
 		if (element == null) continue;
@@ -264,10 +264,10 @@ function load_character(file) {
 		}
 		if (typeof (data[i]) == 'object') {
 			if (data[i].style != null) {
-				element.setAttribute("data-style", data[i].style);
+				element.setAttribute("data-style", data[i].style)
 				console.log(data[i].style)
 				console.log(element)
-				element.classList.add(data[i].style);
+				element.classList.add(data[i].style)
 			}
 			if (data[i].x != null) {
 				element.setAttribute("data-x", data[i].x)
@@ -283,11 +283,19 @@ function load_character(file) {
 
 	if (version >= 2 && file.styles != null) {
 		for (var i in file.styles) {
-			var elem = get_element_from_path(i, version);
-			var style = file.styles[i];
-			reset_trait_group(elem);
-			elem.setAttribute("data-style", style);
-			elem.classList.add(style);
+			var elem = get_element_from_path(i, version)
+			var style = file.styles[i]
+			reset_trait_group(elem)
+			elem.setAttribute("data-style", style)
+			elem.classList.add(style)
+		}
+	}
+
+	if (file.classList != null) {
+		for (var i in file.classList) {
+			var elem = get_element_from_path(i, version)
+			var classList = file.classList[i]
+			elem.classList.add(classList)
 		}
 	}
 }

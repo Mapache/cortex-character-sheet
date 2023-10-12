@@ -54,9 +54,28 @@
 
 /* Colors */
 :root {
-  --highlight: #C50852;
+	--highlight: #C50852;
 }
 
+.highlight-orange {
+	--highlight: orange;
+}
+
+.highlight-red {
+	--highlight: red;
+}
+
+.highlight-blue {
+	--highlight: blue;
+}
+
+.highlight-purple {
+	--highlight: purple;
+}
+
+.highlight-green {
+	--highlight: green;
+}
 
 .page-container {
 	position: relative;
@@ -154,7 +173,8 @@ c {
 	color: var(--highlight);
 }
 
-pp, mote {
+pp,
+mote {
 	all: initial;
 	font-family: 'Open Sans', sans-serif;
 	//	padding-left: initial;

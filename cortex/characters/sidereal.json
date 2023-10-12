@@ -82,5 +82,12 @@
         "page1/0/2/3": "resources",
         "page1/0/2/4": "resources",
         "page1/0/2/5": "resources"
+    },
+    "classList": {
+        "page1/0/2/1": "highlight-orange",
+        "page1/0/2/2": "highlight-blue",
+        "page1/0/2/3": "highlight-red",
+        "page1/0/2/4": "highlight-green",
+        "page1/0/2/5": "highlight-purple"
     }
 }
