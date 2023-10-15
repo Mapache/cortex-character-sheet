@@ -77,11 +77,21 @@
 	--highlight: green;
 }
 
+/* Pages */
+
+.pages {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+}
+
 .page-container {
 	position: relative;
 	width: 210mm;
 	height: 297.1mm;
-	margin: 1cm calc(50% - 105mm) auto calc(50% - 105mm);
+	margin: 1cm 1cm auto 1cm;
 	border: 1px #D3D3D3 solid;
 	border-radius: 5px;
 	box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
@@ -241,10 +251,10 @@ ref {
 
 /* Description */
 #description {
-    column-span: all;
-    flex-grow: 1;
-    margin-bottom: 10pt;
-    margin-right: 4.6pt;
+	column-span: all;
+	flex-grow: 1;
+	margin-bottom: 10pt;
+	margin-right: 4.6pt;
 }
 
 /* Trait groups */
