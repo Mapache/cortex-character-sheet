@@ -91,9 +91,6 @@
 
 .page-container.left {
 	margin: 1cm 0 auto 164px;
-}
-
-div.left {
 	width: 35mm;
 }
 
@@ -244,9 +241,10 @@ ref {
 
 /* Description */
 #description {
-	flex-grow: 1;
-	margin-bottom: 39pt;
-	margin-right: 4.6pt;
+    column-span: all;
+    flex-grow: 1;
+    margin-bottom: 10pt;
+    margin-right: 4.6pt;
 }
 
 /* Trait groups */
@@ -542,8 +540,6 @@ ref {
 }
 
 .trait-group.roles .header {
-
-
 	flex: 100%;
 	writing-mode: unset;
 	margin: 0 22mm 0 22mm;
