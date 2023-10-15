@@ -81,7 +81,7 @@ function get_parent_with_class(element, c) {
 function save_character(e) {
 	var file = {}
 	var data = {}
-	file.version = 2;
+	file.version = 3;
 	inputs = document.querySelectorAll('input, textarea, img, div[contenteditable], h2[contenteditable], c[contenteditable], span[contenteditable]')
 	for (var i = 0; i < inputs.length; i++) {
 		var input = inputs[i]
@@ -281,7 +281,7 @@ function load_character(file) {
 		}
 	}
 
-	if (version >= 2 && file.styles != null) {
+	if (file.styles != null) {
 		for (var i in file.styles) {
 			var elem = get_element_from_path(i, version)
 			var style = file.styles[i]
