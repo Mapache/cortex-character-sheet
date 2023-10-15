@@ -105,14 +105,7 @@ function save_character(e) {
 			id = input.parentElement.parentElement.id + "/" + Array.prototype.indexOf.call(input.parentElement.parentElement.children, input.parentElement) + "/" + input.id
 		}
 		if (input.id === '') {
-			var elem = input
-			var path = ''
-			while (id === '' && elem.parentElement != null) {
-				id = elem.parentElement.id
-				path = Array.prototype.indexOf.call(elem.parentElement.children, elem) + "/" + path
-				elem = elem.parentElement
-			}
-			id = id + "/" + path.slice(0, -1)
+			id = get_path_key(input)
 		}
 
 		if (input.getAttribute("type") == "checkbox") {
@@ -142,21 +135,20 @@ function save_character(e) {
 
 	var styles = {};
 	styled_divs = document.querySelectorAll('div[data-style]')
-	for (var i = 0; i < styled_divs.length; i++) {
-		var elem = styled_divs[i];
-		var style = elem.getAttribute("data-style");
-		var id = elem.id;
-		var path = ''
-		while (id === '' && elem.parentElement != null) {
-			id = elem.parentElement.id
-			path = Array.prototype.indexOf.call(elem.parentElement.children, elem) + "/" + path
-			elem = elem.parentElement
-		}
-		id = id + "/" + path.slice(0, -1)
-		styles[id] = style;
+	for (let elem of styled_divs) {
+		styles[get_path_key(elem)] = elem.getAttribute("data-style")
 	}
 	if (Object.keys(styles).length) {
 		file.styles = styles;
+	}
+
+	let classList = {}
+	highlighted_divs = document.querySelectorAll("div[highlight-color]")
+	for (let elem of highlighted_divs) {
+		classList[get_path_key(elem)] = elem.getAttribute("highlight-color")
+	}
+	if (Object.keys(classList).length) {
+		file.classList = classList;
 	}
 
 	var uri = encodeURI("data:application/json;charset=utf-8," + JSON.stringify(file));
@@ -169,6 +161,17 @@ function save_character(e) {
 	document.body.appendChild(link); // Required for FF
 	link.click();
 	link.remove();
+}
+
+function get_path_key(elem) {
+	let id = elem.id
+	let path = ""
+	while (id === "" && elem.parentElement != null) {
+		id = elem.parentElement.id
+		path = Array.prototype.indexOf.call(elem.parentElement.children, elem) + "/" + path
+		elem = elem.parentElement
+	}
+	return id + "/" + path.slice(0, -1)
 }
 
 function get_children(elem, i, version) {
@@ -295,6 +298,7 @@ function load_character(file) {
 		for (var i in file.classList) {
 			var elem = get_element_from_path(i, version)
 			var classList = file.classList[i]
+			elem.setAttribute("highlight-color", classList)
 			elem.classList.add(classList)
 		}
 	}
