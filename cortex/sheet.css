@@ -406,6 +406,10 @@ ref {
 	text-shadow: 0 0 5px rgba(0, 0, 0, 0);
 }
 
+#page-placeholder.add-item {
+	left: 0%;
+}
+
 #trait-placeholder.add-item:before {
 	left: 0%;
 }

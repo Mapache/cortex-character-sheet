@@ -298,6 +298,8 @@ function load_character(file) {
 			elem.classList.add(classList)
 		}
 	}
+
+	update_titles(data["character-name"], null)
 }
 
 function on_drag_enter(e) {
@@ -339,6 +341,11 @@ function add_group(e, class_name) {
 	init_event_handlers(new_group)
 }
 
+function add_page(e) {
+	add_group(e, "page")
+	install_title_listeners()
+}
+
 function add_trait_group(e) {
 	add_group(e, "trait-group")
 }
@@ -346,9 +353,35 @@ function add_trait_group(e) {
 function add_trait(e) {
 	add_group(e, "trait")
 }
+
+function install_title_listeners() {
+	console.log('install_title_listeners')
+	let titles = document.getElementsByClassName("title")
+	console.log(titles)
+	for (let title of titles) {
+		title.addEventListener('input', function () {
+			let character_name = title.innerText
+			console.log(character_name)
+			update_titles(character_name, title)
+		})
+	}
+}
+
+function update_titles(character_name, excluding_title) {
+	let titles = document.getElementsByClassName("title")
+	for (let title of titles) {
+		if (title != excluding_title) {
+			title.innerText = character_name
+		}
+	}
+	if (character_name == "NAME" || character_name.length == 0) {
+		character_name = "Cortex Prime"
+	}
+	document.title = character_name + " Character Sheet"
+}
+
 function update_attribute_positions() {
 	var attributes = document.querySelectorAll(".attribute:not(.template)")
-
 
 	document.getElementById("attribute-curve").style.display = (attributes.length <= 1) ? "none" : "block";
 

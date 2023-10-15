@@ -8,8 +8,9 @@
 	<!--script type="module" src="characters.js"></script-->
 </head>
 
-<body ondragenter="on_drag_enter(event);" ondragover="on_drag_enter(event);" ondrop="on_drop(event);"
-	ondragleave="on_drag_leave(event);"> <!-- onLoad="load_character_path('characters/sidereal.json')" -->
+<body ondragenter="on_drag_enter(event)" ondragover="on_drag_enter(event)" ondrop="on_drop(event)"
+	ondragleave="on_drag_leave(event)" onload="install_title_listeners()">
+	<!-- onLoad="load_character_path('characters/sidereal.json')" -->
 
 	<!-- URL Modal -->
 	<div id="modal-bg" onclick="close_modal(event)"></div>
@@ -237,6 +238,28 @@
 				</div>
 			</div>
 		</div>
+		<div class='page template'>
+			<div class='content'>
+				<div class='row' id='name'>
+					<div contenteditable class='title' id='character-name'>NAME</div>
+					<div class='ruler'>
+						<svg height="4" width="100%">
+							<line x1="0" y1="0" x2="10000" y2="0" style="stroke:#C50852;stroke-width:4pt" />
+						</svg>
+					</div>
+				</div>
+				<div class='left'>
+					<div id="trait-group-placeholder" class='add-item no-print' onclick="add_trait_group(event)"
+						data-onload="add_trait_group">
+					</div>
+				</div>
+				<div class='right'>
+					<div id="trait-group-placeholder" class='add-item no-print' onclick="add_trait_group(event)"
+						data-onload="add_trait_group">
+					</div>
+				</div>
+			</div>
+		</div>
 		<!--
 		<div id='distinctions' class='trait-group'>
 			<div class='header'>DISTINCTIONS</div>
@@ -309,7 +332,7 @@
 		<div class='page'>
 			<div class='content'>
 				<div class='row' id='name'>
-					<div contenteditable class='title' id='character-name' onchange='update_title()'>NAME</div>
+					<div contenteditable class='title' id='character-name'>NAME</div>
 					<div class='ruler'>
 						<svg height="4" width="100%">
 							<line x1="0" y1="0" x2="10000" y2="0" style="stroke:#C50852;stroke-width:4pt" />
@@ -329,28 +352,7 @@
 				</div>
 			</div>
 		</div>
-		<div class='page'>
-			<div class='content'>
-				<div class='row' id='name'>
-					<div contenteditable class='title' id='character-name' onchange='update_title()'>NAME</div>
-					<div class='ruler'>
-						<svg height="4" width="100%">
-							<line x1="0" y1="0" x2="10000" y2="0" style="stroke:#C50852;stroke-width:4pt" />
-						</svg>
-					</div>
-				</div>
-				<div contenteditable id='description'>Description.</div>
-				<div class='left'>
-					<div id="trait-group-placeholder" class='add-item no-print' onclick="add_trait_group(event)"
-						data-onload="add_trait_group">
-					</div>
-				</div>
-				<div class='right'>
-					<div id="trait-group-placeholder" class='add-item no-print' onclick="add_trait_group(event)"
-						data-onload="add_trait_group">
-					</div>
-				</div>
-			</div>
+		<div id="page-placeholder" class='add-item no-print' onclick="add_page(event)" data-onload="add_page">
 		</div>
 	</div>
 

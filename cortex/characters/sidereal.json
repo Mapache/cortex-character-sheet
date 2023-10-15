@@ -1,7 +1,7 @@
 {
     "version": 3,
     "data": {
-        "character-name": "NAME",
+        "character-name": "Resplendent Example Character",
         "description": "Description",
         "pages/0/0/2/0/1": "JOURNEYS",
         "pages/0/0/2/0/2/1/1": "Endurance",
@@ -92,7 +92,8 @@
         "pages/0/0/3/3/2/1/2/0": "8",
         "pages/0/0/3/3/2/1/4": "Trait description.",
         "pages/0/0/3/4/1": "INTIMACIES",
-        "pages/0/0/3/5/1": "NEW TRAIT GROUP"
+        "pages/0/0/3/5/1": "NEW TRAIT GROUP",
+        "pages/1/0/1/0/1": "SOMETHING"
     },
     "styles": {
         "pages/0/0/2/0": "resources",
