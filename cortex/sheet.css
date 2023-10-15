@@ -87,7 +87,7 @@
 	align-items: center;
 }
 
-.page-container {
+.page {
 	position: relative;
 	width: 210mm;
 	height: 297.1mm;
@@ -97,24 +97,16 @@
 	box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 	overflow: hidden;
 	transition: margin 0.5s ease;
-}
-
-.page-container.left {
-	margin: 1cm 0 auto 164px;
-	width: 35mm;
-}
-
-.page {
-	position: absolute;
-	left: 0;
-	top: 0;
-	width: 210mm;
-	height: 297.1mm;
 	font-family: 'Open Sans', sans-serif;
 	font-size: 7.99pt;
 	font-style: italic;
 	line-height: 11pt;
 	font-weight: 400;
+}
+
+.page.left {
+	margin: 1cm 0 auto 164px;
+	width: 35mm;
 }
 
 .content {
