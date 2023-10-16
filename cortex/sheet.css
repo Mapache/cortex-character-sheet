@@ -235,7 +235,7 @@ ref {
 .ruler:before {
 	font-family: 'Josefin Sans', sans-serif;
 	content: "\25cf";
-	font-size: 11pt;
+	font-size: 13pt;
 	position: absolute;
 	margin-top: -0.7pt;
 	margin-left: -3px;

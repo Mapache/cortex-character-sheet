@@ -147,6 +147,7 @@
         "pages/1/0/1/0": "default"
     },
     "classList": {
+        "pages": "highlight-purple",
         "pages/0/0/2/0": "highlight-orange",
         "pages/0/0/2/1": "highlight-blue",
         "pages/0/0/2/2": "highlight-red",
