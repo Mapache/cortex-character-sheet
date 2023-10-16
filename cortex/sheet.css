@@ -468,6 +468,10 @@ ref {
 	left: 71mm;
 }
 
+.trait-group.default>div>.trait #remove-item:before {
+	left: 66mm;
+}
+
 #context-menu-button {
 	display: block;
 	height: 32px;
