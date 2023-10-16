@@ -191,7 +191,7 @@
 		<ul>
 			<li>Set style<i class="fa-angle-right"></i>
 				<div class='context-menu' id="styles">
-					<input type="radio" name="style" id="style-default" onchange="set_style(event);" /><label
+					<input type="radio" name="style" data-style="default" id="style-default" onchange="set_style(event);" /><label
 						for="style-default">Default</label>
 					<input type="radio" name="style" data-style="values" id="style-compact-two-columns"
 						onchange="set_style(event);" /><label for="style-compact-two-columns">Compact
@@ -220,7 +220,7 @@
 
 	<!-- Templates -->
 	<div class='template'>
-		<div class='trait-group template'>
+		<div class='trait-group default template'>
 			<div id="context-menu-button" class='no-print' onclick="show_context_menu(event)"></div>
 			<div class='header' onblur="set_trait_group_name(event)" contenteditable>NEW TRAIT GROUP</div>
 			<div>

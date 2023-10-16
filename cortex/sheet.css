@@ -98,9 +98,9 @@
 	overflow: hidden;
 	transition: margin 0.5s ease;
 	font-family: 'Open Sans', sans-serif;
-	font-size: 7.99pt;
-	font-style: italic;
-	line-height: 11pt;
+	font-size: 10pt;
+	/*font-style: italic;*/
+	line-height: normal;
 	font-weight: 400;
 }
 
@@ -123,7 +123,7 @@
 /* Headings */
 .title {
 	font-family: 'Josefin Sans', sans-serif;
-	font-size: 20.9pt;
+	font-size: 20pt;
 	font-weight: 700;
 	color: var(--highlight);
 	float: left;
@@ -144,10 +144,10 @@ h2 {
 	font-weight: 500;
 	text-transform: uppercase;
 	color: var(--highlight);
-	font-size: 10.5px;
+	font-size: 14px;
 	margin: 0;
 	font-style: normal;
-	line-height: 13px;
+	line-height: 16px;
 	display: inline-block;
 	margin-top: 6.5pt;
 	display: block;
@@ -166,6 +166,7 @@ c {
 	display: inline;
 	font-family: 'cortex-icons';
 	font-size: 140%;
+	line-height: 71%;
 	font-style: normal;
 	position: relative;
 	color: var(--highlight);
@@ -245,7 +246,6 @@ ref {
 #description {
 	column-span: all;
 	flex-grow: 1;
-	margin-bottom: 10pt;
 	margin-right: 4.6pt;
 }
 
@@ -253,6 +253,7 @@ ref {
 .trait-group {
 	margin-top: 20pt;
 	display: flex;
+	position: relative;
 }
 
 .trait-group div:not(.header) {
@@ -274,7 +275,7 @@ ref {
 	text-align: center;
 	text-transform: uppercase;
 	font-style: normal;
-	font-size: 8.6pt;
+	font-size: 10pt;
 }
 
 /* Distinctions */
@@ -375,7 +376,6 @@ ref {
 	width: 0%;
 	margin: 0;
 	left: 50%;
-	height: 32px;
 	position: relative;
 	page-break-inside: avoid;
 	break-inside: avoid;
@@ -410,8 +410,20 @@ ref {
 	left: 0%;
 }
 
+#trait-placeholder.add-item {
+	position: absolute;
+	bottom: -16px;
+	left: 50%;
+}
+
 #trait-placeholder.add-item:before {
 	left: 0%;
+	font-size: 16px;
+}
+
+#trait-group-placeholder.add-item {
+	left: calc(50% - 7px);
+	bottom: -32px;
 }
 
 #remove-item {
@@ -504,15 +516,11 @@ ref {
 	color: var(--highlight);
 	text-transform: uppercase;
 	font-weight: 700;
-	font-size: 9pt;
+	font-size: 10pt;
 	margin-top: 0pt;
 	margin-bottom: 0pt;
 	margin-left: 0pt;
 	display: inline-block;
-}
-
-.trait h2 c {
-	font-size: 11pt;
 }
 
 .trait hr+div {
@@ -522,6 +530,10 @@ ref {
 
 .trait h2+h2 {
 	font-weight: normal;
+}
+
+.trait-group.default>div>.trait:not(.template)+.trait {
+	margin-top: 8pt !important;
 }
 
 .trait-group>div:nth-child(4) {
@@ -1308,7 +1320,7 @@ li:before {
 }
 
 .resources.trait-group {
-	margin-top: 0;
+	/* margin-top: 5mm; */
 }
 
 .resources .header {
@@ -1328,6 +1340,7 @@ li:before {
 .resources h2 {
 	font-family: 'Open Sans', sans-serif;
 	text-transform: unset;
+	font-size: 12pt;
 	font-weight: normal;
 	color: black;
 }

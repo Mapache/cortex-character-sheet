@@ -270,6 +270,7 @@ function load_character(file) {
 				element.setAttribute("data-style", data[i].style)
 				console.log(data[i].style)
 				console.log(element)
+				element.classList.remove("default")
 				element.classList.add(data[i].style)
 			}
 			if (data[i].x != null) {
@@ -433,6 +434,8 @@ function remove_attribute(e) {
 }
 
 function reset_trait_group(elem) {
+	elem.classList.remove("default");
+	elem.classList.remove("resources");
 	elem.classList.remove("roles");
 	elem.classList.remove("signature-asset");
 	elem.classList.remove("abilities");
