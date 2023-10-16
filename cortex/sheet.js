@@ -435,15 +435,18 @@ function remove_attribute(e) {
 
 function reset_trait_group(elem) {
 	elem.classList.remove("default")
+
+	elem.classList.remove("abilities")
+	elem.classList.remove("compact")
+	elem.classList.remove("detailed-values")
+	elem.classList.remove("milestones")
 	elem.classList.remove("resources")
 	elem.classList.remove("roles")
 	elem.classList.remove("signature-asset")
-	elem.classList.remove("abilities")
-	elem.classList.remove("milestones")
-	elem.classList.remove("values")
-	elem.classList.remove("detailed-values")
 	elem.classList.remove("stress")
 	elem.classList.remove("stress-descriptions")
+	elem.classList.remove("values")
+
 	elem.removeAttribute("data-style")
 }
 
