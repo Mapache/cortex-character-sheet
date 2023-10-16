@@ -189,8 +189,8 @@ mote {
 }
 
 pp {
-	background: #ddd;
-	border-color: #ddd;
+	background: #eee;
+	border-color: #eee;
 }
 
 pp:before {
@@ -1266,7 +1266,7 @@ li:before {
 /* Signature asset */
 .signature-asset {
 	border: 1pt solid var(--highlight);
-	background-color: #ddd;
+	background-color: #eee;
 	flex-wrap: wrap;
 }
 
