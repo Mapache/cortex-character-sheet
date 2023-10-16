@@ -1461,9 +1461,9 @@ li:before {
 
 /* Stress */
 .stress {
-	flex-wrap: wrap;
+	/*flex-wrap: wrap;*/
 }
-
+/*
 .stress .header {
 	flex: 100%;
 	column-span: all;
@@ -1471,13 +1471,17 @@ li:before {
 	transform: unset;
 	margin-bottom: 2mm;
 }
+*/
+.trait-group.stress>div>.trait #remove-item:before {
+	left: 66mm;
+}
 
 .stress h2:nth-child(2) {
 	text-align: center;
 	background: white;
 	padding: 0 2mm 0 2mm;
 	transform: translate(-50%, 0);
-	margin-left: 15mm;
+	margin-left: 5mm;
 }
 
 .stress h2:nth-child(3) {
@@ -1494,7 +1498,7 @@ li:before {
 	width: 40mm;
 	height: 20mm;
 	color: white;
-	margin-left: 38.5mm;
+	margin-left: 33.5mm;
 	margin-top: -0.5mm;
 	text-shadow: -0.1mm -0.1mm 0.3mm #000, 0.1mm -0.1mm 0.3mm #000, -0.1mm 0.1mm 0.3mm #000, 0.1mm 0.1mm 0.3mm #000;
 	display: inline;
@@ -1507,7 +1511,7 @@ li:before {
 .stress hr {
 	position: absolute;
 	margin-top: -1.8mm;
-	margin-left: 12mm;
+	margin-left: 7mm;
 	width: 57mm;
 	z-index: -3;
 	color: black;
