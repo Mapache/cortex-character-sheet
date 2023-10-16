@@ -631,6 +631,26 @@ function context_menu_remove_item(e) {
 	close_modal(null);
 }
 
+function move_to_top(e) {
+	let trait_group = g_context_target.parentElement
+	let column = trait_group.parentElement
+	column.prepend(trait_group)
+
+	g_context_target = null
+	close_modal(null)
+}
+
+function move_to_bottom(e) {
+	let trait_group = g_context_target.parentElement
+	let column = trait_group.parentElement
+	let trait_groups = column.children
+	let trait_group_placeholder = trait_groups[trait_groups.length-1]
+	trait_group_placeholder.before(trait_group)
+
+	g_context_target = null
+	close_modal(null)
+}
+
 window.onload = function () {
 	document.addEventListener("keydown", function (e) {
 		if ((window.navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey) && e.keyCode == 83) {
