@@ -269,7 +269,7 @@ ref {
 	writing-mode: vertical-lr;
 	display: inline;
 	color: var(--highlight);
-	background-color: #D7ECDD;
+	background-color: #eee;
 	transform: rotate(180deg);
 	font-weight: 800;
 	text-align: center;
