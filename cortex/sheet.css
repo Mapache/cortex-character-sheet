@@ -1456,18 +1456,6 @@ li:before {
 }
 
 /* Stress */
-.stress {
-	/*flex-wrap: wrap;*/
-}
-/*
-.stress .header {
-	flex: 100%;
-	column-span: all;
-	writing-mode: unset;
-	transform: unset;
-	margin-bottom: 2mm;
-}
-*/
 
 .stress h2:nth-child(2) {
 	text-align: center;
