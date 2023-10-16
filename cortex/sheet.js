@@ -105,7 +105,7 @@ function save_character(e) {
 			id = input.parentElement.parentElement.id + "/" + Array.prototype.indexOf.call(input.parentElement.parentElement.children, input.parentElement) + "/" + input.id
 		}
 		if (input.id === '') {
-			id = get_path_key(input)
+			id = get_path_from_element(input)
 		}
 
 		if (input.getAttribute("type") == "checkbox") {
@@ -136,7 +136,7 @@ function save_character(e) {
 	var styles = {};
 	styled_divs = document.querySelectorAll('div[data-style]')
 	for (let elem of styled_divs) {
-		styles[get_path_key(elem)] = elem.getAttribute("data-style")
+		styles[get_path_from_element(elem)] = elem.getAttribute("data-style")
 	}
 	if (Object.keys(styles).length) {
 		file.styles = styles;
@@ -145,7 +145,7 @@ function save_character(e) {
 	let classList = {}
 	highlighted_divs = document.querySelectorAll("div[highlight-color]")
 	for (let elem of highlighted_divs) {
-		classList[get_path_key(elem)] = elem.getAttribute("highlight-color")
+		classList[get_path_from_element(elem)] = elem.getAttribute("highlight-color")
 	}
 	if (Object.keys(classList).length) {
 		file.classList = classList;
@@ -163,15 +163,15 @@ function save_character(e) {
 	link.remove();
 }
 
-function get_path_key(elem) {
+function get_path_from_element(elem) {
 	let id = elem.id
 	let path = ""
 	while (id === "" && elem.parentElement != null) {
 		id = elem.parentElement.id
-		path = Array.prototype.indexOf.call(elem.parentElement.children, elem) + "/" + path
+		path = "/" + Array.prototype.indexOf.call(elem.parentElement.children, elem) + path
 		elem = elem.parentElement
 	}
-	return id + "/" + path.slice(0, -1)
+	return id + path
 }
 
 function get_children(elem, i, version) {
