@@ -937,6 +937,7 @@ ref {
 /*.trait*/
 ul {
 	list-style: none;
+	margin-top: 0;
 	margin-left: 0;
 	padding-left: 0;
 	margin-bottom: 0;
@@ -949,7 +950,6 @@ li {
 	margin-top: -1.5pt;
 	font-style: normal;
 	margin-right: 0;
-	font-size: 7.75pt;
 }
 
 /*.trait*/
