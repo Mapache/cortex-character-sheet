@@ -426,24 +426,25 @@ function update_attribute_positions() {
 }
 function add_attribute(e) {
 	add_group(e, "attribute")
-	update_attribute_positions();
+	update_attribute_positions()
 }
 function remove_attribute(e) {
 	remove_item(e)
-	update_attribute_positions();
+	update_attribute_positions()
 }
 
 function reset_trait_group(elem) {
-	elem.classList.remove("default");
-	elem.classList.remove("resources");
-	elem.classList.remove("roles");
-	elem.classList.remove("signature-asset");
-	elem.classList.remove("abilities");
-	elem.classList.remove("milestones");
-	elem.classList.remove("values");
-	elem.classList.remove("detailed-values");
-	elem.classList.remove("stress");
-	elem.removeAttribute("data-style");
+	elem.classList.remove("default")
+	elem.classList.remove("resources")
+	elem.classList.remove("roles")
+	elem.classList.remove("signature-asset")
+	elem.classList.remove("abilities")
+	elem.classList.remove("milestones")
+	elem.classList.remove("values")
+	elem.classList.remove("detailed-values")
+	elem.classList.remove("stress")
+	elem.classList.remove("stress-descriptions")
+	elem.removeAttribute("data-style")
 }
 
 function set_trait_group_name(e) {
