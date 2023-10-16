@@ -190,8 +190,8 @@ function get_children(elem, i, version) {
 	return elem.children[index];
 }
 
-function get_element_from_path(i, version) {
-	var parts = i.split("/")
+function get_element_from_path(path, version) {
+	var parts = path.split("/")
 	//			console.log(parts)
 	//				var current = document.querySelector("div#" + parts[0]).children[parts[1]]
 	//				for (var p=2; p<parts.length; p++)
@@ -219,7 +219,9 @@ function get_element_from_path(i, version) {
 			//					current = current.children[parts[p]]
 			//					console.log(parts[p] + ": " + current)
 		}
-		//		console.log(current)
+		if (current == null) {
+			console.log("Failed to find: " + path)
+		}
 		if (current.getAttribute("data-onload") !== null) {
 			//			console.log("Creating new element")
 			window[current.getAttribute("data-onload")]({ target: current })

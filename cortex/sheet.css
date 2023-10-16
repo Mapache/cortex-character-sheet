@@ -89,35 +89,35 @@
 
 .page {
 	position: relative;
+	box-sizing: border-box;
 	width: 210mm;
 	height: 297.1mm;
 	margin: 1cm 1cm auto 1cm;
 	border: 1px #D3D3D3 solid;
 	border-radius: 5px;
 	box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-	overflow: hidden;
+	overflow-y: hidden;
 	transition: margin 0.5s ease;
 	font-family: 'Open Sans', sans-serif;
 	font-size: 10pt;
-	/*font-style: italic;*/
 	line-height: normal;
 	font-weight: 400;
-}
-
-.page.left {
-	margin: 1cm 0 auto 164px;
-	width: 35mm;
-}
-
-.content {
 	padding: 1.9cm;
-	position: relative;
 	column-count: 2;
 	column-gap: 12pt;
 }
 
-.content .left {
+.page .left {
 	break-after: column;
+}
+
+.left, .right {
+	/*
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	overflow-y: hidden;
+	*/
 }
 
 /* Headings */
@@ -423,7 +423,11 @@ ref {
 
 #trait-group-placeholder.add-item {
 	left: calc(50% - 7px);
-	bottom: -32px;
+	height: 64px;
+}
+
+#trait-group-placeholder.add-item:before {
+	position: relative;
 }
 
 #remove-item {
