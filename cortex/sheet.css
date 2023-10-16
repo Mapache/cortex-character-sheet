@@ -1496,7 +1496,6 @@ li:before {
 	color: white;
 	margin-left: 38.5mm;
 	margin-top: -0.5mm;
-
 	text-shadow: -0.1mm -0.1mm 0.3mm #000, 0.1mm -0.1mm 0.3mm #000, -0.1mm 0.1mm 0.3mm #000, 0.1mm 0.1mm 0.3mm #000;
 	display: inline;
 	font-family: 'cortex-icons';
@@ -1528,4 +1527,8 @@ li:before {
 
 .stress .trait div {
 	display: none;
+}
+
+.stress.stress-descriptions .trait div {
+	display: block;
 }

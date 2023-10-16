@@ -191,8 +191,8 @@
 		<ul>
 			<li>Set style<i class="fa-angle-right"></i>
 				<div class='context-menu' id="styles">
-					<input type="radio" name="style" data-style="default" id="style-default" onchange="set_style(event);" /><label
-						for="style-default">Default</label>
+					<input type="radio" name="style" data-style="default" id="style-default"
+						onchange="set_style(event);" /><label for="style-default">Default</label>
 					<input type="radio" name="style" data-style="values" id="style-compact-two-columns"
 						onchange="set_style(event);" /><label for="style-compact-two-columns">Compact
 						two-columns</label>
@@ -205,6 +205,9 @@
 						onchange="set_style(event);" /><label for="style-resource">Resource</label>
 					<input type="radio" name="style" data-style="stress" id="style-stress"
 						onchange="set_style(event);" /><label for="style-stress">Stress</label>
+					<input type="radio" name="style" data-style="stress stress-descriptions"
+						id="style-stress-descriptions" onchange="set_style(event);" /><label
+						for="style-stress-descriptions">Stress with Descriptions</label>
 				</div>
 			</li>
 			<li onclick="context_menu_remove_item(event);">Delete</li>

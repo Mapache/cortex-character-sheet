@@ -607,14 +607,16 @@ function show_context_menu(e) {
 }
 
 function set_style(e) {
-	reset_trait_group(g_context_target.parentElement);
-	var style = e.target.getAttribute("data-style");
+	reset_trait_group(g_context_target.parentElement)
+	let style = e.target.getAttribute("data-style")
 	if (style != null) {
-		g_context_target.parentElement.classList.add(style);
-		g_context_target.parentElement.setAttribute("data-style", style);
+		g_context_target.parentElement.setAttribute("data-style", style)
+		for (let sub_style of style.split(" ")) {
+			g_context_target.parentElement.classList.add(sub_style)
+		}
 	}
-	g_context_target = null;
-	close_modal(null);
+	g_context_target = null
+	close_modal(null)
 }
 
 function context_menu_remove_item(e) {
