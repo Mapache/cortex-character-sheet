@@ -269,11 +269,7 @@ function load_character(file) {
 		}
 		if (typeof (data[i]) == 'object') {
 			if (data[i].style != null) {
-				element.setAttribute("data-style", data[i].style)
-				console.log(data[i].style)
-				console.log(element)
-				element.classList.remove("default")
-				element.classList.add(data[i].style)
+				apply_data_style(element, data[i].style)
 			}
 			if (data[i].x != null) {
 				element.setAttribute("data-x", data[i].x)
@@ -288,25 +284,33 @@ function load_character(file) {
 	}
 
 	if (file.styles != null) {
-		for (var i in file.styles) {
-			var elem = get_element_from_path(i, version)
-			var style = file.styles[i]
-			reset_trait_group(elem)
-			elem.setAttribute("data-style", style)
-			elem.classList.add(style)
+		for (let path in file.styles) {
+			let elem = get_element_from_path(path, version)
+			let style = file.styles[path]
+			apply_data_style(elem, style)
 		}
 	}
 
 	if (file.classList != null) {
-		for (var i in file.classList) {
-			var elem = get_element_from_path(i, version)
-			var classList = file.classList[i]
+		for (let path in file.classList) {
+			let elem = get_element_from_path(path, version)
+			let classList = file.classList[path]
 			elem.setAttribute("highlight-color", classList)
 			elem.classList.add(classList)
 		}
 	}
 
 	update_titles(data["character-name"], null)
+}
+
+function apply_data_style(elem, style) {
+	reset_trait_group(elem)
+	if (style != null) {
+		elem.setAttribute("data-style", style)
+		for (let sub_style of style.split(" ")) {
+			elem.classList.add(sub_style)
+		}
+	}
 }
 
 function on_drag_enter(e) {
@@ -613,14 +617,9 @@ function show_context_menu(e) {
 }
 
 function set_style(e) {
-	reset_trait_group(g_context_target.parentElement)
+	let elem = g_context_target.parentElement
 	let style = e.target.getAttribute("data-style")
-	if (style != null) {
-		g_context_target.parentElement.setAttribute("data-style", style)
-		for (let sub_style of style.split(" ")) {
-			g_context_target.parentElement.classList.add(sub_style)
-		}
-	}
+	apply_data_style(elem, style)
 	g_context_target = null
 	close_modal(null)
 }

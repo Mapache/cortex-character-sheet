@@ -1510,8 +1510,8 @@ li:before {
 	color: black;
 }
 
-.stress .trait {
-	margin-bottom: 6mm;
+.trait-group.stress>div>.trait:not(.template)+.trait {
+	margin-top: 6mm;
 }
 
 .stress .trait div {
