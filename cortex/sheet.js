@@ -136,34 +136,44 @@ function save_character(e) {
 	}
 	file.data = data;
 
-	var styles = {};
-	styled_divs = document.querySelectorAll('div[data-style]')
-	for (let elem of styled_divs) {
+	let styles = {}
+	let styledDivs = document.querySelectorAll("div[data-style]")
+	for (let elem of styledDivs) {
 		styles[get_path_from_element(elem)] = elem.getAttribute("data-style")
 	}
 	if (Object.keys(styles).length) {
-		file.styles = styles;
+		file.styles = styles
 	}
 
 	let classList = {}
-	highlighted_divs = document.querySelectorAll("div[highlight-color]")
-	for (let elem of highlighted_divs) {
-		classList[get_path_from_element(elem)] = elem.getAttribute("highlight-color")
+	let customizedDivs = document.querySelectorAll("div[custom-classes]")
+	for (let elem of customizedDivs) {
+		classList[get_path_from_element(elem)] = elem.getAttribute("custom-classes")
 	}
 	if (Object.keys(classList).length) {
-		file.classList = classList;
+		file.classList = classList
 	}
 
-	var uri = encodeURI("data:application/json;charset=utf-8," + JSON.stringify(file));
-	uri = uri.replace(/#/g, '%23')
-	var link = document.createElement("a");
-	link.setAttribute("href", uri);
-	var character_name = document.getElementById("character-name").innerText
-	if (character_name == '') character_name = "unnamed"
-	link.setAttribute("download", character_name + ".json");
-	document.body.appendChild(link); // Required for FF
-	link.click();
-	link.remove();
+	let highlightColors = {}
+	highlightColors[":root"] = document.querySelector(":root").style.getPropertyValue("--highlight")
+	let highlightedDivs = document.querySelectorAll("div[highlight-color]")
+	for (let elem of highlightedDivs) {
+		highlightColors[get_path_from_element(elem)] = elem.style.getPropertyValue("--highlight")
+	}
+	if (Object.keys(highlightColors).length) {
+		file.highlightColors = highlightColors
+	}
+
+	let uri = encodeURI("data:application/json;charset=utf-8," + JSON.stringify(file))
+	uri = uri.replace(/#/g, "%23")
+	let link = document.createElement("a")
+	link.setAttribute("href", uri)
+	let characterName = document.getElementById("character-name").innerText
+	if (characterName == "") characterName = "unnamed"
+	link.setAttribute("download", characterName + ".json")
+	document.body.appendChild(link) // Required for FF
+	link.click()
+	link.remove()
 }
 
 function get_path_from_element(elem) {
@@ -174,65 +184,32 @@ function get_path_from_element(elem) {
 		path = "/" + Array.prototype.indexOf.call(elem.parentElement.children, elem) + path
 		elem = elem.parentElement
 	}
+	if (elem.parentElement == null) {
+		id = ":root"
+	}
 	return id + path
 }
 
-function get_children(elem, i, version) {
-	// Hack to remain backwards compatible
-	var index = 0;
-	for (var ip = 0; ip <= i && index < elem.children.length; index++) {
-		//if (elem.children[index].classList.contains('no-print')) continue;
-		if (version === undefined && (elem.children[index].id == "remove-item" || elem.children[index].id == "context-menu-button")) continue;
-		if (ip == i) break;
-
-		ip++;
-	}
-
-	if (index == elem.children.length) return null
-
-	return elem.children[index];
-}
-
-function get_element_from_path(path, version) {
-	var parts = path.split("/")
-	//			console.log(parts)
-	//				var current = document.querySelector("div#" + parts[0]).children[parts[1]]
-	//				for (var p=2; p<parts.length; p++)
-	//			console.log("div#" + parts[0])
-	var current = document.querySelector("div#" + parts[0])
-	//			console.log("Starting with ");
-	//			console.log(current)
+function get_element_from_path(path) {
+	let parts = path.split("/")
+	let current = (parts[0] == ":root") ? document.querySelector(":root") : document.querySelector("div#" + parts[0])
 	for (var p = 1; p < parts.length; p++) {
-		//		console.log(current)
-		//		console.log("-> " + parts[p])
 		try {
 			current = current.querySelector("#" + parts[p])
-		}
-		catch
-		{
-			//					console.log(current.children)
-			//					console.log(current.children[0])
-
-			// Hack to remain backwards compatible
-			current = get_children(current, parts[p], version);
-
-			//					if (index == current.children.length) break;
-			//					console.log("Getting " + index)
-			//					console.log(current);
-			//					current = current.children[parts[p]]
-			//					console.log(parts[p] + ": " + current)
+		} catch {
+			current = current.children[parts[p]]
 		}
 		if (current == null) {
 			console.log("Failed to find: " + path)
 		}
 		if (current.getAttribute("data-onload") !== null) {
-			//			console.log("Creating new element")
+			// console.log("Creating new element")
 			window[current.getAttribute("data-onload")]({ target: current })
-			p = p - 1;
-			current = current.parentElement;
+			p = p - 1
+			current = current.parentElement
 		}
 	}
-	//            console.log(current)
+	// console.log(current)
 	return current
 }
 
@@ -252,7 +229,7 @@ function load_character(file) {
 			element = document.getElementById(i)
 		}
 		else {
-			element = get_element_from_path(i, version);
+			element = get_element_from_path(i)
 		}
 
 		if (element == null) continue;
@@ -288,7 +265,7 @@ function load_character(file) {
 
 	if (file.styles != null) {
 		for (let path in file.styles) {
-			let elem = get_element_from_path(path, version)
+			let elem = get_element_from_path(path)
 			let style = file.styles[path]
 			apply_data_style(elem, style)
 		}
@@ -296,10 +273,23 @@ function load_character(file) {
 
 	if (file.classList != null) {
 		for (let path in file.classList) {
-			let elem = get_element_from_path(path, version)
+			let elem = get_element_from_path(path)
 			let classList = file.classList[path]
-			elem.setAttribute("highlight-color", classList)
+			elem.setAttribute("custom-classes", classList)
 			elem.classList.add(classList)
+		}
+	}
+
+	if (file.highlightColors != null) {
+		for (let path in file.highlightColors) {
+			let elem = get_element_from_path(path)
+			let highlightColor = file.highlightColors[path]
+			apply_highlight_color(elem, highlightColor)
+
+			if (path == ":root") {
+				let colorPicker = document.getElementById("global-highlight-picker")
+				colorPicker.value = highlightColor
+			}
 		}
 	}
 
@@ -314,6 +304,11 @@ function apply_data_style(elem, style) {
 			elem.classList.add(sub_style)
 		}
 	}
+}
+
+function apply_highlight_color(elem, color) {
+	elem.setAttribute("highlight-color", color)
+	elem.style.setProperty("--highlight", color)
 }
 
 function on_drag_enter(e) {
@@ -585,8 +580,8 @@ function change_image_url(e) {
 
 function set_global_highlight_color(e) {
 	let colorPicker = document.getElementById("global-highlight-picker")
-	let root = document.querySelector(":root");
-	root.style.setProperty("--highlight", colorPicker.value)
+	let root = document.querySelector(":root")
+	apply_highlight_color(root, colorPicker.value)
 }
 
 let shouldShowLayoutControls = true

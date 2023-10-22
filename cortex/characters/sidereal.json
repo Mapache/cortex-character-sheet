@@ -116,7 +116,9 @@
         "pages/0/2/0": "default",
         "pages/0/2/1": "default",
         "pages/0/2/2": "default",
-        "pages/0/2/3": "stress stress-descriptions"
+        "pages/0/2/3": "stress stress-descriptions",
+        "pages/1/1/0": "default",
+        "pages/1/2/0": "default"
     },
     "classList": {
         "pages": "highlight-purple",
