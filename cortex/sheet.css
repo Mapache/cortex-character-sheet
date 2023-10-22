@@ -412,13 +412,15 @@ ref {
 
 #trait-placeholder.add-item {
 	position: absolute;
-	bottom: -16px;
 	left: 50%;
+	height: 0;
+	bottom: 0;
 }
 
 #trait-placeholder.add-item:before {
-	left: 0%;
+	position: relative;
 	font-size: 16px;
+	top: 4px;
 }
 
 #trait-group-placeholder.add-item {
@@ -428,6 +430,7 @@ ref {
 
 #trait-group-placeholder.add-item:before {
 	position: relative;
+	font-size: 32px;
 	top: 32px;
 }
 
