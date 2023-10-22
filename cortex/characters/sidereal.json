@@ -120,12 +120,12 @@
         "pages/1/1/0": "default",
         "pages/1/2/0": "default"
     },
-    "classList": {
-        "pages": "highlight-purple",
-        "pages/0/1/2": "highlight-orange",
-        "pages/0/1/3": "highlight-blue",
-        "pages/0/1/4": "highlight-red",
-        "pages/0/1/5": "highlight-green",
-        "pages/0/1/6": "highlight-purple"
+    "highlightColors": {
+        ":root": "purple",
+        "pages/0/1/2": "orange",
+        "pages/0/1/3": "blue",
+        "pages/0/1/4": "red",
+        "pages/0/1/5": "green",
+        "pages/0/1/6": "purple"
     }
 }
