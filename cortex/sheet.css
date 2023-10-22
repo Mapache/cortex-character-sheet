@@ -1230,6 +1230,10 @@ li:before {
 	content: "\f019";
 }
 
+#menu #toggle-layout-controls:before {
+	content: "\f06e";
+}
+
 #menu #help:before {
 	content: "\f128";
 }

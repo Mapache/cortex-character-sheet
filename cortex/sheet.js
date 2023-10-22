@@ -582,9 +582,28 @@ function change_image_url(e) {
 		img.style.transform = 'translate(0, 0) scale(1)'
 	})
 }
+
+let layout_controls = true
+let hide_controls_stylesheet = function() {
+	let styleSheet = document.createElement("style")
+	styleSheet.innerText = `
+		.pages .no-print {
+			display: none !important;
+		}
+	`
+	return styleSheet
+}()
+function toggle_layout_controls(e) {
+	layout_controls = !layout_controls
+	if (layout_controls) {
+		document.head.removeChild(hide_controls_stylesheet)
+	} else {
+		document.head.appendChild(hide_controls_stylesheet)
+	}
+}
+
 function show_help(e) {
-	show_modal("help-modal", e.pageX, e.pageY, function () {
-	});
+	show_modal("help-modal", e.pageX, e.pageY, function () {})
 }
 
 function remove_item(elem) {
