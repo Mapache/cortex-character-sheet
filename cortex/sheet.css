@@ -1225,6 +1225,7 @@ li:before {
 	font-weight: 900;
 	font-size: 32px;
 	cursor: pointer;
+	text-align: center;
 }
 
 #menu #reset:before {
@@ -1233,6 +1234,15 @@ li:before {
 
 #menu #save:before {
 	content: "\f019";
+}
+
+#menu #show-global-highlight-menu:before {
+	content: "\f043";
+}
+
+#menu #global-highlight-picker {
+	height: 32px;
+	width: 32px;
 }
 
 #menu #toggle-layout-controls:before {

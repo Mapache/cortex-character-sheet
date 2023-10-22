@@ -583,8 +583,14 @@ function change_image_url(e) {
 	})
 }
 
-let layout_controls = true
-let hide_controls_stylesheet = function() {
+function set_global_highlight_color(e) {
+	let colorPicker = document.getElementById("global-highlight-picker")
+	let root = document.querySelector(":root");
+	root.style.setProperty("--highlight", colorPicker.value)
+}
+
+let shouldShowLayoutControls = true
+let hideControlsStyleSheet = function () {
 	let styleSheet = document.createElement("style")
 	styleSheet.innerText = `
 		.pages .no-print {
@@ -594,16 +600,16 @@ let hide_controls_stylesheet = function() {
 	return styleSheet
 }()
 function toggle_layout_controls(e) {
-	layout_controls = !layout_controls
-	if (layout_controls) {
-		document.head.removeChild(hide_controls_stylesheet)
+	shouldShowLayoutControls = !shouldShowLayoutControls
+	if (shouldShowLayoutControls) {
+		document.head.removeChild(hideControlsStyleSheet)
 	} else {
-		document.head.appendChild(hide_controls_stylesheet)
+		document.head.appendChild(hideControlsStyleSheet)
 	}
 }
 
 function show_help(e) {
-	show_modal("help-modal", e.pageX, e.pageY, function () {})
+	show_modal("help-modal", e.pageX, e.pageY, function () { })
 }
 
 function remove_item(elem) {
