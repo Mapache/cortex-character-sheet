@@ -111,7 +111,8 @@
 	break-after: column;
 }
 
-.left, .right {
+.left,
+.right {
 	/*
 	display: flex;
 	flex-direction: column;
@@ -1167,6 +1168,7 @@ li:before {
 
 #help-modal .add-item {
 	width: 0;
+	left: -14px;
 }
 
 #help-modal .add-item:before {
