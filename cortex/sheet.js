@@ -115,7 +115,10 @@ function save_character(e) {
 			data[id] = input.src
 		}
 		else if (input.tagName == "DIV" || input.tagName == "H2" || input.tagName == "C" || input.tagName == "SPAN") {
-			data[id] = html_to_text(input.innerHTML)
+			let contents = input.innerHTML
+			if (contents != "Trait description.") { // Don't save default trait descriptions.
+				data[id] = html_to_text(contents)
+			}
 		}
 		else {
 			data[id] = input.value
@@ -643,7 +646,7 @@ function move_to_bottom(e) {
 	let trait_group = g_context_target.parentElement
 	let column = trait_group.parentElement
 	let trait_groups = column.children
-	let trait_group_placeholder = trait_groups[trait_groups.length-1]
+	let trait_group_placeholder = trait_groups[trait_groups.length - 1]
 	trait_group_placeholder.before(trait_group)
 
 	g_context_target = null
