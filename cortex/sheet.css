@@ -423,11 +423,12 @@ ref {
 
 #trait-group-placeholder.add-item {
 	left: calc(50% - 7px);
-	height: 64px;
+	height: 0;
 }
 
 #trait-group-placeholder.add-item:before {
 	position: relative;
+	top: 32px;
 }
 
 #remove-item {
