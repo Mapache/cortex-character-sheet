@@ -121,11 +121,11 @@
         "pages/1/2/0": "default"
     },
     "highlightColors": {
-        ":root": "purple",
-        "pages/0/1/2": "orange",
-        "pages/0/1/3": "blue",
-        "pages/0/1/4": "red",
-        "pages/0/1/5": "green",
-        "pages/0/1/6": "purple"
+        ":root": "#8700b8",
+        "pages/0/1/2": "#ffa200",
+        "pages/0/1/3": "#006eff",
+        "pages/0/1/4": "#d50707",
+        "pages/0/1/5": "#039900",
+        "pages/0/1/6": "#8700b8"
     }
 }

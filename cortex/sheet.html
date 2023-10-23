@@ -190,10 +190,11 @@
 	<div id="context-menu" class='context-menu non-serialized'>
 		<ul>
 			<li>
-				<div id="colour-selection" class='show-tooltip'>
+				<div id="color-selection">
 					<input id="trait-collection-highlight-picker" type="color" value="#C50852"
 						onchange='set_trait_collection_highlight_color(event)'
 						oninput='set_trait_collection_highlight_color(event)'></input>
+					<span id="color-removal" onclick="remove_trait_collection_highlight_color(event)"></span>
 				</div>
 			</li>
 			<li>Style<i class="fa-angle-right"></i>
@@ -224,12 +225,12 @@
 			<li>Move<i class="fa-angle-right"></i>
 				<div class='context-menu' id="movement">
 					<ul>
-						<li onclick="move_to_top(event);">To Top</li>
-						<li onclick="move_to_bottom(event);">To Bottom</li>
+						<li onclick="move_to_top(event)">To Top</li>
+						<li onclick="move_to_bottom(event)">To Bottom</li>
 					</ul>
 				</div>
 			</li>
-			<li onclick="context_menu_remove_item(event);">Delete</li>
+			<li onclick="context_menu_remove_item(event)">Delete</li>
 		</ul>
 	</div>
 

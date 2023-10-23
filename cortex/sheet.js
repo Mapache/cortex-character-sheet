@@ -280,6 +280,7 @@ function load_character(file) {
 		}
 	}
 
+	let globalHighlightColor = defaultHighlightColor
 	if (file.highlightColors != null) {
 		for (let path in file.highlightColors) {
 			let elem = get_element_from_path(path)
@@ -287,11 +288,12 @@ function load_character(file) {
 			apply_highlight_color(elem, highlightColor)
 
 			if (path == ":root") {
-				let colorPicker = document.getElementById("global-highlight-picker")
-				colorPicker.value = highlightColor
+				globalHighlightColor = highlightColor
 			}
 		}
 	}
+	let colorPicker = document.getElementById("global-highlight-picker")
+	colorPicker.value = globalHighlightColor
 
 	update_titles(data["character-name"], null)
 }
@@ -615,6 +617,8 @@ function remove_item(elem) {
 	item.parentElement.removeChild(item)
 }
 
+const defaultHighlightColor = "#C50852"
+
 let g_context_target = null
 function show_context_menu(e) {
 	g_context_target = e.target
@@ -627,7 +631,7 @@ function show_context_menu(e) {
 	let traitGroupColor = traitGroup.getAttribute("highlight-color")
 	let rootColor = document.querySelector(":root").getAttribute("highlight-color")
 	let colorPicker = document.getElementById("trait-collection-highlight-picker")
-	colorPicker.value = traitGroupColor ?? rootColor ?? "#C50852"
+	colorPicker.value = traitGroupColor ?? rootColor ?? defaultHighlightColor
 
 	// Check matching data-style
 	let traitGroupStyle = traitGroup.getAttribute("data-style")
@@ -661,6 +665,14 @@ function set_trait_collection_highlight_color(e) {
 	apply_highlight_color(traitGroup, colorPicker.value)
 	
 	// Do NOT close_context_menu()
+}
+
+function remove_trait_collection_highlight_color(e) {
+	let traitGroup = g_context_target.parentElement
+	traitGroup.removeAttribute("highlight-color")
+	traitGroup.style.removeProperty("--highlight")
+	
+	close_context_menu()
 }
 
 function set_style(e) {
