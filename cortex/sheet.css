@@ -1573,3 +1573,9 @@ li:before {
 .compact .trait div {
 	display: none;
 }
+
+/* Compact Two-Columns */
+
+.trait-group.compact.detailed-two-column>div>.trait:not(.template)+.trait {
+    margin-top: 0 !important;
+}
