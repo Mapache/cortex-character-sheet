@@ -874,19 +874,9 @@ ref {
 }
 
 /* Detailed values */
-.detailed-values h2 {
-	font-family: 'Alegreya Sans SC', sans-serif;
-	color: black;
-	text-transform: none;
-	font-weight: 500;
-	font-size: 12pt;
-	margin-left: 0pt;
-	margin-top: 2mm;
-	display: inline-block;
-}
 
-.detailed-values h2 c {
-	font-size: 11pt;
+.trait-group.detailed-values>div>.trait:not(.template)+.trait {
+	margin-top: 8pt !important;
 }
 
 .detailed-values ul {
