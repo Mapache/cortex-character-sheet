@@ -596,10 +596,13 @@ let hideControlsStyleSheet = function () {
 }()
 function toggle_layout_controls(e) {
 	shouldShowLayoutControls = !shouldShowLayoutControls
+	let layoutControls = document.querySelector("#toggle-layout-controls")
 	if (shouldShowLayoutControls) {
 		document.head.removeChild(hideControlsStyleSheet)
+		layoutControls.classList.remove("controls-hidden")
 	} else {
 		document.head.appendChild(hideControlsStyleSheet)
+		layoutControls.classList.add("controls-hidden")
 	}
 }
 

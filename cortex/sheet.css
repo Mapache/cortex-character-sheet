@@ -1226,6 +1226,7 @@ li:before {
 	font-size: 32px;
 	cursor: pointer;
 	text-align: center;
+	width: 40px;
 }
 
 #menu #reset:before {
@@ -1245,8 +1246,12 @@ li:before {
 	width: 32px;
 }
 
-#menu #toggle-layout-controls:before {
+#menu #toggle-layout-controls:not(.controls-hidden):before {
 	content: "\f06e";
+}
+
+#menu #toggle-layout-controls.controls-hidden:before {
+	content: "\f070";
 }
 
 #menu #help:before {
