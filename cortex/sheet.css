@@ -902,7 +902,7 @@ ref {
 	margin-top: -1.5pt;
 	font-style: normal;
 	margin-right: 0;
-	font-size: 7.75pt;
+	font-size: 10pt;
 }
 
 .detailed-values li+li {
@@ -951,6 +951,14 @@ ref {
 .detailed-values>div:nth-child(4) #remove-item:before {
 	left: 27mm;
 	top: 2mm;
+}
+
+.detailed-values>div:nth-child(3) #trait-placeholder.add-item {
+	left: 25%;
+}
+
+.detailed-values>div:nth-child(4) #trait-placeholder.add-item {
+	left: 75%;
 }
 
 /* Milestones */
