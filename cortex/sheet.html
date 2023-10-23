@@ -189,7 +189,14 @@
 	<!-- Context menu -->
 	<div id="context-menu" class='context-menu non-serialized'>
 		<ul>
-			<li>Set style<i class="fa-angle-right"></i>
+			<li>
+				<div id="colour-selection" class='show-tooltip'>
+					<input id="trait-collection-highlight-picker" type="color" value="#C50852"
+						onchange='set_trait_collection_highlight_color(event)'
+						oninput='set_trait_collection_highlight_color(event)'></input>
+				</div>
+			</li>
+			<li>Style<i class="fa-angle-right"></i>
 				<div class='context-menu' id="styles">
 					<input type="radio" name="style" data-style="default" id="style-default"
 						onchange="set_style(event);" /><label for="style-default">Default</label>
@@ -230,8 +237,8 @@
 	<div id="menu" class="no-print">
 		<div id="save" onclick="save_character(event)"></div>
 		<div>
-			<input id="global-highlight-picker" type="color" value="#C50852" onchange="set_global_highlight_color(event)"
-				oninput="set_global_highlight_color(event)"></input>
+			<input id="global-highlight-picker" type="color" value="#C50852"
+				onchange="set_global_highlight_color(event)" oninput="set_global_highlight_color(event)"></input>
 		</div>
 		<div id="toggle-layout-controls" onclick="toggle_layout_controls(event)"></div>
 		<div id="help" onclick="show_help(event)"></div>

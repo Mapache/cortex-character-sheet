@@ -155,10 +155,10 @@ function save_character(e) {
 	}
 
 	let highlightColors = {}
-	highlightColors[":root"] = document.querySelector(":root").style.getPropertyValue("--highlight")
+	highlightColors[":root"] = document.querySelector(":root").getAttribute("highlight-color")
 	let highlightedDivs = document.querySelectorAll("div[highlight-color]")
 	for (let elem of highlightedDivs) {
-		highlightColors[get_path_from_element(elem)] = elem.style.getPropertyValue("--highlight")
+		highlightColors[get_path_from_element(elem)] = elem.getAttribute("highlight-color")
 	}
 	if (Object.keys(highlightColors).length) {
 		file.highlightColors = highlightColors
@@ -615,65 +615,84 @@ function remove_item(elem) {
 	item.parentElement.removeChild(item)
 }
 
-var g_context_target = null;
+let g_context_target = null
 function show_context_menu(e) {
-	g_context_target = e.target;
+	g_context_target = e.target
+	let traitGroup = g_context_target.parentElement
 
-	var rect = e.target.getBoundingClientRect();
-	var x = rect.left + "px";
-	var y = rect.top + "px";
+	let rect = e.target.getBoundingClientRect()
+	let x = rect.left + "px"
+	let y = rect.top + "px"
 
-	var menu = document.getElementById("context-menu");
-	var styles = document.querySelectorAll("#context-menu #styles input");
-	var found = false;
-	for (var i = 0; i < styles.length; i++) {
-		var style = styles[i].getAttribute("data-style");
-		var checked = e.target.parentElement.classList.contains(style);
-		styles[i].checked = checked
+	let traitGroupColor = traitGroup.getAttribute("highlight-color")
+	let rootColor = document.querySelector(":root").getAttribute("highlight-color")
+	let colorPicker = document.getElementById("trait-collection-highlight-picker")
+	colorPicker.value = traitGroupColor ?? rootColor ?? "#C50852"
+
+	// Check matching data-style
+	let traitGroupStyle = traitGroup.getAttribute("data-style")
+	let menu = document.getElementById("context-menu")
+	let menuEntries = document.querySelectorAll("#context-menu #styles input")
+	let found = false
+	for (let menuEntry of menuEntries) {
+		let menuStyle = menuEntry.getAttribute("data-style")
+		let checked = menuStyle == traitGroupStyle
+		menuEntry.checked = checked
 		found = found || checked
 	}
 	if (!found) {
-		document.getElementById("style-default").checked = true;
+		document.getElementById("style-default").checked = true
 	}
 
 	show_modal("context-menu", x, y, function () {
-		var menu = document.getElementById("context-menu");
-		menu.style.display = 'none'
-	});
+		let menu = document.getElementById("context-menu")
+		menu.style.display = "none"
+	})
+}
+
+function close_context_menu() {
+	g_context_target = null
+	close_modal(null)
+}
+
+function set_trait_collection_highlight_color(e) {
+	let colorPicker = document.getElementById("trait-collection-highlight-picker")
+	let traitGroup = g_context_target.parentElement
+	apply_highlight_color(traitGroup, colorPicker.value)
+	
+	// Do NOT close_context_menu()
 }
 
 function set_style(e) {
 	let elem = g_context_target.parentElement
 	let style = e.target.getAttribute("data-style")
 	apply_data_style(elem, style)
-	g_context_target = null
-	close_modal(null)
+	
+	close_context_menu()
 }
 
 function context_menu_remove_item(e) {
-	remove_item({ target: g_context_target });
-	g_context_target = null;
-	close_modal(null);
+	remove_item({ target: g_context_target })
+	
+	close_context_menu()
 }
 
 function move_to_top(e) {
-	let trait_group = g_context_target.parentElement
-	let column = trait_group.parentElement
-	column.prepend(trait_group)
+	let traitGroup = g_context_target.parentElement
+	let column = traitGroup.parentElement
+	column.prepend(traitGroup)
 
-	g_context_target = null
-	close_modal(null)
+	close_context_menu()
 }
 
 function move_to_bottom(e) {
-	let trait_group = g_context_target.parentElement
-	let column = trait_group.parentElement
-	let trait_groups = column.children
-	let trait_group_placeholder = trait_groups[trait_groups.length - 1]
-	trait_group_placeholder.before(trait_group)
+	let traitGroup = g_context_target.parentElement
+	let column = traitGroup.parentElement
+	let traitGroups = column.children
+	let traitGroupPlaceholder = traitGroups[traitGroups.length - 1]
+	traitGroupPlaceholder.before(traitGroup)
 
-	g_context_target = null
-	close_modal(null)
+	close_context_menu()
 }
 
 window.onload = function () {
