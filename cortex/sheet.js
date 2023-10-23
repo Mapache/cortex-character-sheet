@@ -440,11 +440,11 @@ function remove_attribute(e) {
 }
 
 function reset_trait_group(elem) {
-	elem.classList.remove("default")
+	elem.classList.remove("detailed")
 
 	elem.classList.remove("abilities")
 	elem.classList.remove("compact")
-	elem.classList.remove("detailed-values")
+	elem.classList.remove("detailed-two-column")
 	elem.classList.remove("milestones")
 	elem.classList.remove("resources")
 	elem.classList.remove("roles")
@@ -645,7 +645,7 @@ function show_context_menu(e) {
 		found = found || checked
 	}
 	if (!found) {
-		document.getElementById("style-default").checked = true
+		document.getElementById("style-detailed").checked = true
 	}
 
 	show_modal("context-menu", x, y, function () {

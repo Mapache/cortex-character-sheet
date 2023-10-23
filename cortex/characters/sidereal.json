@@ -113,12 +113,12 @@
         "pages/0/1/5": "compact",
         "pages/0/1/6": "compact",
         "pages/0/1/7": "stress",
-        "pages/0/2/0": "default",
-        "pages/0/2/1": "default",
-        "pages/0/2/2": "default",
+        "pages/0/2/0": "detailed",
+        "pages/0/2/1": "detailed",
+        "pages/0/2/2": "detailed",
         "pages/0/2/3": "stress stress-descriptions",
-        "pages/1/1/0": "default",
-        "pages/1/2/0": "default"
+        "pages/1/1/0": "detailed",
+        "pages/1/2/0": "detailed"
     },
     "highlightColors": {
         ":root": "#8700b8",

@@ -556,7 +556,7 @@ ref {
 	font-weight: normal;
 }
 
-.trait-group.default>div>.trait:not(.template)+.trait {
+.trait-group.detailed>div>.trait:not(.template)+.trait {
 	margin-top: 8pt !important;
 }
 
@@ -875,18 +875,18 @@ ref {
 
 /* Detailed values */
 
-.trait-group.detailed-values>div>.trait:not(.template)+.trait {
+.trait-group.detailed-two-column>div>.trait:not(.template)+.trait {
 	margin-top: 8pt !important;
 }
 
-.detailed-values ul {
+.detailed-two-column ul {
 	list-style: none;
 	margin-left: 0;
 	padding-left: 0;
 	margin-bottom: 0;
 }
 
-.detailed-values li {
+.detailed-two-column li {
 	padding-left: 1.6em;
 	text-indent: -1.6em;
 	margin-top: -1.5pt;
@@ -895,19 +895,19 @@ ref {
 	font-size: 10pt;
 }
 
-.detailed-values li+li {
+.detailed-two-column li+li {
 	padding-top: 1pt;
 }
 
-.detailed-values ul+h2 {
+.detailed-two-column ul+h2 {
 	padding-top: 1pt;
 }
 
-.detailed-values #text+ul {
+.detailed-two-column #text+ul {
 	margin-top: 0;
 }
 
-.detailed-values li:before {
+.detailed-two-column li:before {
 	font-family: 'Josefin Sans', sans-serif;
 	content: "\25cf";
 	font-size: 14pt;
@@ -918,36 +918,36 @@ ref {
 	left: -1pt;
 }
 
-.detailed-values hr+div {
+.detailed-two-column hr+div {
 	margin-left: 0;
 	margin-top: 4pt;
 }
 
-.detailed-values>div:nth-child(4) {
+.detailed-two-column>div:nth-child(4) {
 	display: block;
 	width: 50%;
 }
 
-.detailed-values>div:nth-child(3) {
+.detailed-two-column>div:nth-child(3) {
 	display: inline;
 	width: 50%;
 }
 
-.detailed-values>div:nth-child(3) #remove-item:before {
+.detailed-two-column>div:nth-child(3) #remove-item:before {
 	left: 27mm;
 	top: 2mm;
 }
 
-.detailed-values>div:nth-child(4) #remove-item:before {
+.detailed-two-column>div:nth-child(4) #remove-item:before {
 	left: 27mm;
 	top: 2mm;
 }
 
-.detailed-values>div:nth-child(3) #trait-placeholder.add-item {
+.detailed-two-column>div:nth-child(3) #trait-placeholder.add-item {
 	left: 25%;
 }
 
-.detailed-values>div:nth-child(4) #trait-placeholder.add-item {
+.detailed-two-column>div:nth-child(4) #trait-placeholder.add-item {
 	left: 75%;
 }
 
