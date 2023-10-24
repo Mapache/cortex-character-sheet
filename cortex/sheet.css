@@ -1578,6 +1578,10 @@ li:before {
 
 /* Compact Two-Columns */
 
+.trait-group.compact.detailed-two-column>div>.trait>h2 {
+    font-size: 12px;
+}
+
 .trait-group.compact.detailed-two-column>div>.trait:not(.template)+.trait {
     margin-top: 0 !important;
 }
