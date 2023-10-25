@@ -556,11 +556,11 @@ ref {
 .trait .trait-description {
 	margin-left: 0;
 	margin-top: 4pt;
-	/* margin-bottom: 8pt; */
+	margin-bottom: 8pt;
 }
 
-.trait-group.detailed>div>.trait:not(.template)+.trait {
-	margin-top: 8pt;
+.trait:nth-last-child(2) .trait-description {
+	margin-bottom: 0;
 }
 
 .trait-group>div.secondary-column {
@@ -864,10 +864,6 @@ ref {
 }
 
 /* Detailed values */
-
-.trait-group.detailed-two-column>div>.trait:not(.template)+.trait {
-	margin-top: 8pt;
-}
 
 .detailed-two-column ul {
 	list-style: none;
@@ -1545,14 +1541,7 @@ li:before {
 }
 
 /* Compact Two-Columns */
-
-.trait-group.compact.detailed-two-column>div>.trait>h2 {
-	/* font-size: 12pt; */
-}
-
-.trait-group.compact.detailed-two-column>div>.trait:not(.template)+.trait {
-	margin-top: 0 !important;
-}
+/* No special handling needed */
 
 /* Automatically compact empty trait descriptions */
 
@@ -1561,10 +1550,6 @@ li:before {
 }
 
 /* WIP */
-
-.trait hr {
-	display: none;
-}
 
 .trait .trait-description {
 	border-top: 2pt solid var(--highlight);
