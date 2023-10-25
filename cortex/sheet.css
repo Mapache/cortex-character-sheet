@@ -254,7 +254,7 @@ ref {
 	position: relative;
 }
 
-.trait-group div:not(.header) {
+.trait-group div {
 	display: block;
 	margin-top: 0pt;
 	margin-left: 12pt;
@@ -263,6 +263,7 @@ ref {
 }
 
 .header {
+	margin: 0;
 	flex-grow: 1;
 	writing-mode: vertical-lr;
 	display: inline;
@@ -380,7 +381,7 @@ ref {
 	font-style: normal;
 }
 
-.trait-group div:not(.header) .add-item {
+.trait-group div .add-item {
 	width: 0%;
 	margin: 0;
 }
@@ -652,7 +653,7 @@ ref {
 	display: block;
 }
 
-.roles>div.header {
+.roles .header {
 	left: 20mm;
 }
 

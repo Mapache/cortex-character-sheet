@@ -82,7 +82,7 @@ function save_character(e) {
 	var file = {}
 	var data = {}
 	file.version = 3;
-	inputs = document.querySelectorAll('input, textarea, img, div[contenteditable], h2[contenteditable], c[contenteditable], span[contenteditable]')
+	inputs = document.querySelectorAll('input, textarea, img, div[contenteditable], h1[contenteditable], h2[contenteditable], c[contenteditable], span[contenteditable]')
 	for (var i = 0; i < inputs.length; i++) {
 		var input = inputs[i]
 		if (input.classList.contains('non-serialized') || input.classList.contains('no-print') || input.classList.contains('template')) {
@@ -114,7 +114,7 @@ function save_character(e) {
 		else if (input.tagName == "IMG") {
 			data[id] = input.src
 		}
-		else if (input.tagName == "DIV" || input.tagName == "H2" || input.tagName == "C" || input.tagName == "SPAN") {
+		else if (input.tagName == "DIV" || input.tagName == "H1" || input.tagName == "H2" || input.tagName == "C" || input.tagName == "SPAN") {
 			let contents = input.innerHTML
 			if (contents != "Trait description.") { // Don't save default trait descriptions.
 				data[id] = html_to_text(contents)
@@ -241,7 +241,7 @@ function load_character(file) {
 		else if (element.tagName == "IMG") {
 			element.src = value
 		}
-		else if (element.tagName == "DIV" || element.tagName == "H2" || element.tagName == "C" || element.tagName == "SPAN") {
+		else if (element.tagName == "DIV" || element.tagName == "H1" || element.tagName == "H2" || element.tagName == "C" || element.tagName == "SPAN") {
 			element.innerHTML = text_to_html(value)
 		}
 		else {
