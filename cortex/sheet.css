@@ -555,6 +555,7 @@ ref {
 .trait .trait-description {
 	margin-left: 0 !important;
 	margin-top: 4pt !important;
+	/* margin-bottom: 8pt !important; */
 }
 
 .trait-group.detailed>div>.trait:not(.template)+.trait {
@@ -565,7 +566,7 @@ ref {
 	display: none;
 }
 
-.trait-group h2+h2 {
+.trait-group .trait-value {
 	display: inline-block;
 	margin-left: 4pt !important;
 }
@@ -611,7 +612,7 @@ ref {
 	padding: 1mm 1mm 1mm 4mm;
 }
 
-.roles .trait h2+h2 {
+.roles .trait .trait-value {
 	font-family: 'Alegreya Sans SC', sans-serif;
 	color: black;
 	font-size: 8pt;
@@ -799,7 +800,7 @@ ref {
 	padding: 1mm 1mm 1mm 4.5mm;
 }
 
-.values .trait h2+h2 {
+.values .trait .trait-value {
 	font-family: 'Alegreya Sans SC', sans-serif;
 	color: black;
 	font-size: 8pt;
