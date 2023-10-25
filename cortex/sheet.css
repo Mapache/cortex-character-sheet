@@ -557,6 +557,8 @@ ref {
 	margin-left: 0;
 	margin-top: 4pt;
 	margin-bottom: 8pt;
+	border-top: 2pt solid var(--highlight);
+	padding-top: 5px;
 }
 
 .trait:nth-last-child(2) .trait-description {
@@ -1322,6 +1324,11 @@ li:before {
 	margin-bottom: 2mm;
 }
 
+.signature-asset .trait div {
+	border-top: none;
+	padding-top: unset;
+}
+
 .signature-asset .trait div+div {
 	margin-top: 2mm;
 }
@@ -1483,85 +1490,13 @@ li:before {
 /* Stress */
 
 .stress h2.trait-name {
-	background: white;
-	padding-right: 1mm;
-}
-
-.stress h2.trait-value {
-	float: right;
-	margin-right: 12mm;
-}
-
-.stress .trait h2 c {
-	display: none;
-}
-
-/*
-.stress div.trait:before {
-	position: absolute;
-	width: 40mm;
-	height: 20mm;
-	color: white;
-	margin-left: 33.5mm;
-	margin-top: -0.5mm;
-	text-shadow: -0.1mm -0.1mm 0.3mm #000, 0.1mm -0.1mm 0.3mm #000, -0.1mm 0.1mm 0.3mm #000, 0.1mm 0.1mm 0.3mm #000;
-	display: inline;
-	font-family: 'cortex-icons';
-	font-style: normal;
-	font-size: 14pt;
-	content: "4 6 8 0 2";
-}
-*/
-
-.stress h2 {
 	font-family: 'Alegreya Sans SC', sans-serif;
 	text-transform: unset;
 	font-size: 10pt;
 	color: black;
-}
+	background: white;
+	padding-right: 1mm;
 
-.trait-group.stress>div>.trait:not(.template)+.trait {
-	margin-top: 6mm;
-}
-
-.trait-group.stress .trait-description {
-	display: none;
-}
-
-.trait-group.stress.stress-descriptions .trait-description {
-	display: block;
-	border-top: unset;
-	padding-top: 0;
-}
-
-/* Compact */
-
-.compact .trait div {
-	display: none;
-}
-
-/* Compact Two-Columns */
-/* No special handling needed */
-
-/* Automatically compact empty trait descriptions */
-
-.trait div:empty {
-	display: none;
-}
-
-/* WIP */
-
-.trait .trait-description {
-	border-top: 2pt solid var(--highlight);
-	padding-top: 5px;
-}
-
-.signature-asset .trait div {
-	border-top: none;
-	padding-top: unset;
-}
-
-.stress .trait .trait-name {
 	&:before {
 		position: absolute;
 		width: 40mm;
@@ -1587,4 +1522,47 @@ li:before {
 		display: block;
 		z-index: -10;
 	}
+}
+
+.stress h2.trait-value {
+	float: right;
+	margin-right: 12mm;
+}
+
+.stress .trait h2 c {
+	display: none;
+}
+
+/* TODO: Move .stress to .compact add-on system. */
+.trait-group.stress>div>.trait:not(.template)+.trait {
+	margin-top: 2mm;
+}
+
+.trait-group.stress.stress-descriptions>div>.trait:not(.template)+.trait {
+	margin-top: 0;
+}
+
+.trait-group.stress .trait-description {
+	display: none;
+}
+
+.trait-group.stress.stress-descriptions .trait-description {
+	display: block;
+	border-top: unset;
+	padding-top: 0;
+}
+
+/* Compact */
+
+.compact .trait div {
+	display: none;
+}
+
+/* Compact Two-Columns */
+/* No special handling needed */
+
+/* Automatically compact empty trait descriptions */
+
+.trait div:empty {
+	display: none;
 }
