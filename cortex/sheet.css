@@ -550,25 +550,21 @@ ref {
 
 .trait .trait-value {
 	font-weight: normal;
+	margin-left: 4pt;
 }
 
 .trait .trait-description {
-	margin-left: 0 !important;
-	margin-top: 4pt !important;
-	/* margin-bottom: 8pt !important; */
+	margin-left: 0;
+	margin-top: 4pt;
+	/* margin-bottom: 8pt; */
 }
 
 .trait-group.detailed>div>.trait:not(.template)+.trait {
-	margin-top: 8pt !important;
+	margin-top: 8pt;
 }
 
 .trait-group>div.secondary-column {
 	display: none;
-}
-
-.trait-group .trait-value {
-	display: inline-block;
-	margin-left: 4pt !important;
 }
 
 /* Roles */
@@ -870,7 +866,7 @@ ref {
 /* Detailed values */
 
 .trait-group.detailed-two-column>div>.trait:not(.template)+.trait {
-	margin-top: 8pt !important;
+	margin-top: 8pt;
 }
 
 .detailed-two-column ul {
