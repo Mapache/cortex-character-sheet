@@ -161,11 +161,6 @@ h2 b {
 	font-weight: 800;
 }
 
-hr {
-	background-color: var(--highlight);
-	border: 1.0pt solid var(--highlight);
-}
-
 c {
 	display: inline;
 	font-family: 'cortex-icons';
@@ -262,7 +257,7 @@ ref {
 .trait-group div:not(.header) {
 	display: block;
 	margin-top: 0pt;
-	margin-left: 13pt;
+	margin-left: 12pt;
 	flex-grow: 1;
 	width: 100%;
 }
@@ -336,7 +331,7 @@ ref {
 	left: -1pt;
 }
 
-#distinctions hr+div {
+#distinctions .trait-description {
 	margin-left: 0;
 	margin-top: 4pt;
 }
@@ -541,7 +536,6 @@ ref {
 	font-family: 'Josefin Sans', sans-serif;
 	color: var(--highlight);
 	text-transform: uppercase;
-	font-weight: 700;
 	font-size: 10pt;
 	margin-top: 0pt;
 	margin-bottom: 0pt;
@@ -549,20 +543,24 @@ ref {
 	display: inline-block;
 }
 
-.trait hr+div {
-	margin-left: 0 !important;
-	margin-top: 4pt !important;
+.trait .trait-name {
+	font-weight: 700;
 }
 
-.trait h2+h2 {
+.trait .trait-value {
 	font-weight: normal;
+}
+
+.trait .trait-description {
+	margin-left: 0 !important;
+	margin-top: 4pt !important;
 }
 
 .trait-group.detailed>div>.trait:not(.template)+.trait {
 	margin-top: 8pt !important;
 }
 
-.trait-group>div:nth-child(4) {
+.trait-group>div.secondary-column {
 	display: none;
 }
 
@@ -631,10 +629,6 @@ ref {
 	display: none;
 }
 
-.roles .trait hr {
-	display: none;
-}
-
 .roles .trait c {
 	font-size: 24pt;
 	z-index: 4;
@@ -654,11 +648,11 @@ ref {
 	z-index: -1;
 }
 
-.roles>div:nth-child(3) {
+.roles>div.primary-column {
 	display: block;
 }
 
-.roles>div:nth-child(2) {
+.roles>div.header {
 	left: 20mm;
 }
 
@@ -823,10 +817,6 @@ ref {
 	display: none;
 }
 
-.values .trait hr {
-	display: none;
-}
-
 .values .trait c {
 	font-size: 24pt;
 	z-index: 4;
@@ -846,32 +836,32 @@ ref {
 	z-index: -1;
 }
 
-.values>div:nth-child(4) {
+.values>div.secondary-column {
 	display: block;
 }
 
-.values>div:nth-child(3) {
+.values>div.primary-column {
 	left: 20mm;
 	display: inline;
 }
 
-.values>div:nth-child(3) .add-item {
+.values>div.primary-column .add-item {
 	margin-left: 1mm;
 	width: 0;
 	left: 0;
 }
 
-.values>div:nth-child(4) .add-item {
+.values>div.secondary-column .add-item {
 	margin-left: 14mm;
 	width: 0;
 	left: 0;
 }
 
-.values>div:nth-child(3) #remove-item:before {
+.values>div.primary-column #remove-item:before {
 	left: -14mm;
 }
 
-.values>div:nth-child(4) #remove-item:before {
+.values>div.secondary-column #remove-item:before {
 	left: 16mm;
 }
 
@@ -920,36 +910,34 @@ ref {
 	left: -1pt;
 }
 
-.detailed-two-column hr+div {
+.detailed-two-column .trait-description {
 	margin-left: 0;
 	margin-top: 4pt;
 }
 
-.detailed-two-column>div:nth-child(4) {
+.detailed-two-column>div.secondary-column {
 	display: block;
 	width: 50%;
 }
 
-.detailed-two-column>div:nth-child(3) {
+.detailed-two-column>div.primary-column {
 	display: inline;
 	width: 50%;
 }
 
-.detailed-two-column>div:nth-child(3) #remove-item:before {
+.detailed-two-column>div.primary-column #remove-item:before {
 	left: 27mm;
-	top: 2mm;
 }
 
-.detailed-two-column>div:nth-child(4) #remove-item:before {
+.detailed-two-column>div.secondary-column #remove-item:before {
 	left: 27mm;
-	top: 2mm;
 }
 
-.detailed-two-column>div:nth-child(3) #trait-placeholder.add-item {
+.detailed-two-column>div.primary-column #trait-placeholder.add-item {
 	left: 25%;
 }
 
-.detailed-two-column>div:nth-child(4) #trait-placeholder.add-item {
+.detailed-two-column>div.secondary-column #trait-placeholder.add-item {
 	left: 75%;
 }
 
@@ -1319,10 +1307,6 @@ li:before {
 	color: white;
 }
 
-.signature-asset hr {
-	display: none;
-}
-
 .signature-asset h2 {
 	font-family: 'Alegreya Sans SC', sans-serif;
 	text-transform: unset;
@@ -1353,7 +1337,7 @@ li:before {
 	top: -2mm;
 }
 
-.signature-asset hr+div {
+.signature-asset .trait-description {
 	font-style: normal;
 }
 
@@ -1389,8 +1373,7 @@ li:before {
 	line-height: 5mm;
 }
 
-.resources hr,
-.resources.trait-group hr+div {
+.resources.trait-group .trait-description {
 	display: none;
 }
 
@@ -1505,15 +1488,12 @@ li:before {
 
 /* Stress */
 
-.stress h2:nth-child(2) {
-	text-align: center;
+.stress h2.trait-name {
 	background: white;
-	padding: 0 2mm 0 2mm;
-	transform: translate(-50%, 0);
-	margin-left: 5mm;
+	padding-right: 1mm;
 }
 
-.stress h2:nth-child(3) {
+.stress h2.trait-value {
 	float: right;
 	margin-right: 12mm;
 }
@@ -1522,6 +1502,7 @@ li:before {
 	display: none;
 }
 
+/*
 .stress div.trait:before {
 	position: absolute;
 	width: 40mm;
@@ -1536,16 +1517,7 @@ li:before {
 	font-size: 14pt;
 	content: "4 6 8 0 2";
 }
-
-.stress hr {
-	position: absolute;
-	margin-top: -1.8mm;
-	margin-left: 7mm;
-	width: 57mm;
-	z-index: -3;
-	color: black;
-	border: 0.5pt solid black;
-}
+*/
 
 .stress h2 {
 	font-family: 'Alegreya Sans SC', sans-serif;
@@ -1558,19 +1530,17 @@ li:before {
 	margin-top: 6mm;
 }
 
-.stress .trait div {
+.trait-group.stress .trait-description {
 	display: none;
 }
 
-.stress.stress-descriptions .trait div {
+.trait-group.stress.stress-descriptions .trait-description {
 	display: block;
+	border-top: unset;
+	padding-top: 0;
 }
 
 /* Compact */
-
-.compact .trait hr {
-	display: none;
-}
 
 .compact .trait div {
 	display: none;
@@ -1579,9 +1549,59 @@ li:before {
 /* Compact Two-Columns */
 
 .trait-group.compact.detailed-two-column>div>.trait>h2 {
-    font-size: 12px;
+	/* font-size: 12pt; */
 }
 
 .trait-group.compact.detailed-two-column>div>.trait:not(.template)+.trait {
-    margin-top: 0 !important;
+	margin-top: 0 !important;
+}
+
+/* Automatically compact empty trait descriptions */
+
+.trait div:empty {
+	display: none;
+}
+
+/* WIP */
+
+.trait hr {
+	display: none;
+}
+
+.trait .trait-description {
+	border-top: 2pt solid var(--highlight);
+	padding-top: 5px;
+}
+
+.signature-asset .trait div {
+	border-top: none;
+	padding-top: unset;
+}
+
+.stress .trait .trait-name {
+	&:before {
+		position: absolute;
+		width: 40mm;
+		height: 20mm;
+		color: white;
+		margin-left: 33.5mm;
+		margin-top: -0.5mm;
+		text-shadow: -0.1mm -0.1mm 0.3mm #000, 0.1mm -0.1mm 0.3mm #000, -0.1mm 0.1mm 0.3mm #000, 0.1mm 0.1mm 0.3mm #000;
+		display: inline;
+		font-family: 'cortex-icons';
+		font-style: normal;
+		font-size: 14pt;
+		content: "4 6 8 0 2";
+	}
+
+	&:after {
+		border-top: 2px solid var(--highlight);
+		content: '';
+		position: relative;
+		top: -0.6em;
+		width: calc(74.5mm - 100%);
+		left: 100%;
+		display: block;
+		z-index: -10;
+	}
 }

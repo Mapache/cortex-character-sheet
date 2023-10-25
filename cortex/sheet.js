@@ -155,7 +155,7 @@ function save_character(e) {
 	}
 
 	let highlightColors = {}
-	highlightColors[":root"] = document.querySelector(":root").getAttribute("highlight-color")
+	highlightColors[":root"] = document.querySelector(":root").getAttribute("highlight-color") ?? defaultHighlightColor
 	let highlightedDivs = document.querySelectorAll("div[highlight-color]")
 	for (let elem of highlightedDivs) {
 		highlightColors[get_path_from_element(elem)] = elem.getAttribute("highlight-color")
