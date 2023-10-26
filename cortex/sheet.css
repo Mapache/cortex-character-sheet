@@ -865,16 +865,16 @@ ref {
 	left: 16mm;
 }
 
-/* Detailed values */
+/* Two-Column */
 
-.detailed-two-column ul {
+.two-column ul {
 	list-style: none;
 	margin-left: 0;
 	padding-left: 0;
 	margin-bottom: 0;
 }
 
-.detailed-two-column li {
+.two-column li {
 	padding-left: 1.6em;
 	text-indent: -1.6em;
 	margin-top: -1.5pt;
@@ -883,19 +883,19 @@ ref {
 	font-size: 10pt;
 }
 
-.detailed-two-column li+li {
+.two-column li+li {
 	padding-top: 1pt;
 }
 
-.detailed-two-column ul+h2 {
+.two-column ul+h2 {
 	padding-top: 1pt;
 }
 
-.detailed-two-column #text+ul {
+.two-column #text+ul {
 	margin-top: 0;
 }
 
-.detailed-two-column li:before {
+.two-column li:before {
 	font-family: 'Josefin Sans', sans-serif;
 	content: "\25cf";
 	font-size: 14pt;
@@ -906,34 +906,34 @@ ref {
 	left: -1pt;
 }
 
-.detailed-two-column .trait-description {
+.two-column .trait-description {
 	margin-left: 0;
 	margin-top: 4pt;
 }
 
-.detailed-two-column>div.secondary-column {
+.two-column>div.secondary-column {
 	display: block;
 	width: 50%;
 }
 
-.detailed-two-column>div.primary-column {
+.two-column>div.primary-column {
 	display: inline;
 	width: 50%;
 }
 
-.detailed-two-column>div.primary-column #remove-item:before {
+.two-column>div.primary-column #remove-item:before {
 	left: 27mm;
 }
 
-.detailed-two-column>div.secondary-column #remove-item:before {
+.two-column>div.secondary-column #remove-item:before {
 	left: 27mm;
 }
 
-.detailed-two-column>div.primary-column #trait-placeholder.add-item {
+.two-column>div.primary-column #trait-placeholder.add-item {
 	left: 25%;
 }
 
-.detailed-two-column>div.secondary-column #trait-placeholder.add-item {
+.two-column>div.secondary-column #trait-placeholder.add-item {
 	left: 75%;
 }
 
@@ -1533,29 +1533,20 @@ li:before {
 	display: none;
 }
 
-/* TODO: Move .stress to .compact add-on system. */
-.trait-group.stress>div>.trait:not(.template)+.trait {
-	margin-top: 2mm;
-}
-
-.trait-group.stress.stress-descriptions>div>.trait:not(.template)+.trait {
-	margin-top: 0;
-}
-
 .trait-group.stress .trait-description {
-	display: none;
-}
-
-.trait-group.stress.stress-descriptions .trait-description {
 	display: block;
 	border-top: unset;
 	padding-top: 0;
 }
 
+.trait-group.stress.compact>div>.trait:not(.template)+.trait {
+	margin-top: 2mm;
+}
+
 /* Compact */
 
-.compact .trait div {
-	display: none;
+.compact .trait-description {
+	display: none !important;
 }
 
 /* Compact Two-Columns */
@@ -1563,6 +1554,6 @@ li:before {
 
 /* Automatically compact empty trait descriptions */
 
-.trait div:empty {
-	display: none;
+.trait-description:empty {
+	display: none !important;
 }

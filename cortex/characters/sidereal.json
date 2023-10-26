@@ -155,18 +155,18 @@
         "pages/1/2/0/2/1/2/0": "8"
     },
     "styles": {
-        "pages/0/1/0": "stress stress-descriptions",
+        "pages/0/1/0": "stress",
         "pages/0/1/1": "signature-asset",
         "pages/0/1/2": "compact",
         "pages/0/1/3": "compact",
         "pages/0/1/4": "compact",
         "pages/0/1/5": "compact",
         "pages/0/1/6": "compact",
-        "pages/0/1/7": "stress",
+        "pages/0/1/7": "stress compact",
         "pages/0/2/0": "detailed",
         "pages/0/2/1": "detailed",
         "pages/0/2/2": "detailed",
-        "pages/0/2/3": "stress stress-descriptions",
+        "pages/0/2/3": "stress",
         "pages/1/1/0": "detailed",
         "pages/1/2/0": "detailed"
     },
