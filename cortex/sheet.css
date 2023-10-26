@@ -1330,8 +1330,8 @@ li:before {
 }
 
 .signature-asset .trait #remove-item:before {
-	left: -9mm;
-	top: -2mm;
+	left: -8.5mm;
+	top: -1mm;
 }
 
 .signature-asset .trait-description {
