@@ -845,16 +845,12 @@ ref {
 	display: inline;
 }
 
-.values>div.primary-column .add-item {
-	margin-left: 1mm;
-	width: 0;
-	left: 0;
+.values>div.primary-column #trait-placeholder.add-item {
+	left: 25%;
 }
 
-.values>div.secondary-column .add-item {
-	margin-left: 14mm;
-	width: 0;
-	left: 0;
+.values>div.secondary-column #trait-placeholder.add-item {
+	left: 75%;
 }
 
 .values>div.primary-column #remove-item:before {
