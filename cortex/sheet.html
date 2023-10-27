@@ -15,12 +15,12 @@
 
 	<!-- URL Modal -->
 	<div id="modal-bg" onclick="close_modal(event)"></div>
-	<div id='url-modal' class='modal non-serialized'>
+	<div id="url-modal" class="modal non-serialized">
 		<p>Enter URL</p>
-		<input id='url' value="http://" onchange="close_modal(event)"
+		<input id="url" value="http://" onchange="close_modal(event)"
 			onkeyup="if (event.key == 'Enter') { close_modal(event) }" />
 	</div>
-	<div id='help-modal' class='modal'>
+	<div id="help-modal" class="modal">
 		<div id="top">
 			<table>
 				<tr>
@@ -42,13 +42,13 @@
 				</tr>
 				<tr>
 					<td>
-						<div class='add-item'></div>
+						<div class="add-item"></div>
 					</td>
 					<td>Add a trait group, trait or attribute.</td>
 				</tr>
 				<tr>
 					<td>
-						<div class='remove-item'></div>
+						<div class="remove-item"></div>
 					</td>
 					<td>Remove a trait group, trait or attribute.</td>
 				</tr>
@@ -188,7 +188,7 @@
 	</div>
 
 	<!-- Context menu -->
-	<div id="context-menu" class='context-menu non-serialized'>
+	<div id="context-menu" class="context-menu non-serialized">
 		<ul>
 			<li>
 				<div id="color-selection">
@@ -199,7 +199,7 @@
 				</div>
 			</li>
 			<li>Style<i class="fa-angle-right"></i>
-				<div class='context-menu' id="styles">
+				<div class="context-menu" id="styles">
 					<input type="radio" name="style" data-style="detailed" id="style-detailed"
 						onchange="set_style(event)" /><label for="style-detailed">Detailed</label>
 					<input type="radio" name="style" data-style="compact" id="style-compact"
@@ -225,7 +225,7 @@
 				</div>
 			</li>
 			<li>Move<i class="fa-angle-right"></i>
-				<div class='context-menu' id="movement">
+				<div class="context-menu" id="movement">
 					<ul>
 						<li onclick="move_to_top(event)">To Top</li>
 						<li onclick="move_to_bottom(event)">To Bottom</li>
@@ -279,29 +279,29 @@
 				</div>
 			</div>
 		</div>
-		<div class='page template'>
-			<div class='row' id='name'>
-				<div contenteditable class='title' id='character-name'>NAME</div>
-				<div class='ruler'>
+		<div class="page template">
+			<div class="row" id="name">
+				<div contenteditable class="title" id="character-name">NAME</div>
+				<div class="ruler">
 					<svg height="4" width="100%">
 						<line x1="0" y1="0" x2="10000" y2="0" style="stroke:var(--highlight);stroke-width:4pt" />
 					</svg>
 				</div>
 			</div>
-			<div class='left'>
-				<div id="trait-group-placeholder" class='add-item no-print' onclick="add_trait_group(event)"
+			<div class="column left">
+				<div id="trait-group-placeholder" class="add-item no-print" onclick="add_trait_group(event)"
 					data-onload="add_trait_group">
 				</div>
 			</div>
-			<div class='right'>
-				<div id="trait-group-placeholder" class='add-item no-print' onclick="add_trait_group(event)"
+			<div class="column right">
+				<div id="trait-group-placeholder" class="add-item no-print" onclick="add_trait_group(event)"
 					data-onload="add_trait_group">
 				</div>
 			</div>
 		</div>
 		<!--
-		<div id='distinctions' class='trait-group'>
-			<div class='header'>DISTINCTIONS</div>
+		<div id="distinctions" class="trait-group">
+			<div class="header">DISTINCTIONS</div>
 			<div>
 				<h2 contenteditable class="inline">Distinction 1</h2>
 				<h2>
@@ -343,7 +343,7 @@
 		<div id="portrait">
 			<div id="circle" width=100% height=100%>
 				<div id="edit-image" class="no-print" onclick="change_image_url(event)"></div>
-				<img src="" width="110%" draggable='false' id='image' onpointerdown="start_drag(event)"
+				<img src="" width="110%" draggable="false" id="image" onpointerdown="start_drag(event)"
 					onpointerup="end_drag(event)" onpointermove="drag_move(event)" data-x="0" data-y="0"
 					data-zoom="1"></img>
 			</div>
@@ -355,43 +355,43 @@
 			</svg>
 		</div>
 		<div id="attributes">
-			<div class='attribute template'>
+			<div class="attribute template">
 				<c contenteditable>8</c>
 				<div contenteditable>Attribute</div>
 				<div id="remove-item" class="no-print" onclick="remove_attribute(event)"></div>
 			</div>
-			<div id="attribute-placeholder" class='add-item no-print' onclick="add_attribute(event)"
+			<div id="attribute-placeholder" class="add-item no-print" onclick="add_attribute(event)"
 				data-onload="add_attribute"></div>
 		</div>
 		-->
 	</div>
 
 	<!-- PAGE -->
-	<div id='pages' class="pages">
-		<div class='page'>
+	<div id="pages" class="pages">
+		<div class="page">
 			<div>
-				<div class='row' id='name'>
-					<div contenteditable class='title' id='character-name'>NAME</div>
-					<div class='ruler'>
+				<div class="row" id="name">
+					<div contenteditable class="title" id="character-name">NAME</div>
+					<div class="ruler">
 						<svg height="4" width="100%">
 							<line x1="0" y1="0" x2="10000" y2="0" style="stroke:var(--highlight);stroke-width:4pt" />
 						</svg>
 					</div>
 				</div>
-				<div contenteditable id='description'>Description.</div>
+				<div contenteditable id="description">Description.</div>
 			</div>
-			<div class='left'>
-				<div id="trait-group-placeholder" class='add-item no-print' onclick="add_trait_group(event)"
+			<div class="column left">
+				<div id="trait-group-placeholder" class="add-item no-print" onclick="add_trait_group(event)"
 					data-onload="add_trait_group">
 				</div>
 			</div>
-			<div class='right'>
-				<div id="trait-group-placeholder" class='add-item no-print' onclick="add_trait_group(event)"
+			<div class="column right">
+				<div id="trait-group-placeholder" class="add-item no-print" onclick="add_trait_group(event)"
 					data-onload="add_trait_group">
 				</div>
 			</div>
 		</div>
-		<div id="page-placeholder" class='add-item no-print' onclick="add_page(event)" data-onload="add_page">
+		<div id="page-placeholder" class="add-item no-print" onclick="add_page(event)" data-onload="add_page">
 		</div>
 	</div>
 
