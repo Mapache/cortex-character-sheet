@@ -79,21 +79,25 @@ function get_parent_with_class(element, c) {
 }
 
 function save_character(e) {
-	var file = {}
-	var data = {}
+	let file = save_characterV3()
+	download(file)
+}
+
+function save_characterV3() {
+	let file = {}
+	let data = {}
 	file.version = 3;
-	inputs = document.querySelectorAll('input, textarea, img, div[contenteditable], h1[contenteditable], h2[contenteditable], c[contenteditable], span[contenteditable]')
-	for (var i = 0; i < inputs.length; i++) {
-		var input = inputs[i]
-		if (input.classList.contains('non-serialized') || input.classList.contains('no-print') || input.classList.contains('template')) {
-			continue;
+	inputs = document.querySelectorAll("input, textarea, img, div[contenteditable], h1[contenteditable], h2[contenteditable], c[contenteditable], span[contenteditable]")
+	for (let input of inputs) {
+		if (input.classList.contains("non-serialized") || input.classList.contains("no-print") || input.classList.contains("template")) {
+			continue
 		}
 		var non_serialized_parent = get_parent_with_class(input.parentElement, "non-serialized") || get_parent_with_class(input.parentElement, "no-print") || get_parent_with_class(input.parentElement, "template")
 		if (non_serialized_parent) {
-			continue;
+			continue
 		}
 
-		id = input.id
+		let id = input.id
 		var spell_parent = get_parent_with_class(input.parentElement, "spell")
 		if (spell_parent && spell_parent.classList.contains("template")) {
 			continue
@@ -104,7 +108,7 @@ function save_character(e) {
 		else if (input.parentElement.id == "talent" || input.parentElement.id == "weapon" || input.parentElement.id == "ability" || input.parentElement.id == "critical-injury") {
 			id = input.parentElement.parentElement.id + "/" + Array.prototype.indexOf.call(input.parentElement.parentElement.children, input.parentElement) + "/" + input.id
 		}
-		if (input.id === '') {
+		if (input.id === "") {
 			id = get_path_from_element(input)
 		}
 
@@ -134,7 +138,7 @@ function save_character(e) {
 			data[id].style = input.getAttribute("data-style")
 		}
 	}
-	file.data = data;
+	file.data = data
 
 	let styles = {}
 	let styledDivs = document.querySelectorAll("div[data-style]")
@@ -164,12 +168,12 @@ function save_character(e) {
 		file.highlightColors = highlightColors
 	}
 
-	download(file)
+	return file
 }
 
-function save_character2(e) {
+function save_characterV4() {
 	let file = {}
-	file.version = 4;
+	file.version = 4
 	file.characterName = html_to_text(document.querySelector("#character-name").innerHTML)
 	file.description = html_to_text(document.querySelector("#description").innerHTML)
 
@@ -183,7 +187,7 @@ function save_character2(e) {
 				let traitGroupData = []
 				let title = html_to_text(traitGroup.querySelector(".header").innerHTML)
 				let style = traitGroup.getAttribute("data-style")
-				let color = traitGroup.getAttribute("highlight-color")
+				let color = traitGroup.getAttribute("highlight-color") // TODO: Don't save null highlight colors.
 				traitGroupData.push([title, style, color])
 				for (let traitGroupColumn of traitGroup.querySelectorAll(".trait-column")) {
 					let traitGroupColumnData = []
@@ -193,7 +197,7 @@ function save_character2(e) {
 						let description = html_to_text(trait.querySelector(".trait-description").innerHTML) // TODO: if (contents != "Trait description.") { // Don't save default trait descriptions.
 						traitGroupColumnData.push([name, value, description])
 					}
-					traitGroupData.push(traitGroupColumnData)
+					traitGroupData.push(traitGroupColumnData) // TODO: Don't save empty traitGroupColumnData.
 				}
 				columnData.push(traitGroupData)
 			}
@@ -207,7 +211,7 @@ function save_character2(e) {
 	highlightColors[":root"] = document.querySelector(":root").getAttribute("highlight-color") ?? defaultHighlightColor
 	file.highlightColors = highlightColors
 
-	download(file)
+	return file
 }
 
 function download(file) {
@@ -261,17 +265,17 @@ function get_element_from_path(path) {
 }
 
 function load_character(file) {
-	var version = file.version
+	let version = file.version
 	//console.log(version)
 
-	var data = file
+	let data = file
 	if (version >= 2) {
 		data = file.data
 	}
 
-	for (var i in data) {
-		var element = null
-		var value = (typeof (data[i]) == 'object') ? data[i].value : data[i]
+	for (let i in data) {
+		let element = null
+		let value = (typeof (data[i]) == 'object') ? data[i].value : data[i]
 		if (!i.includes('/')) {
 			element = document.getElementById(i)
 		}
