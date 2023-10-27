@@ -164,6 +164,53 @@ function save_character(e) {
 		file.highlightColors = highlightColors
 	}
 
+	download(file)
+}
+
+function save_character2(e) {
+	let file = {}
+	file.version = 4;
+	file.characterName = html_to_text(document.querySelector("#character-name").innerHTML)
+	file.description = html_to_text(document.querySelector("#description").innerHTML)
+
+	let traitsData = []
+	let pages = document.querySelector("#pages")
+	for (let page of pages.querySelectorAll(".page")) {
+		let pageData = []
+		for (let column of page.querySelectorAll(".page-column")) {
+			let columnData = []
+			for (let traitGroup of column.querySelectorAll(".trait-group")) {
+				let traitGroupData = []
+				let title = html_to_text(traitGroup.querySelector(".header").innerHTML)
+				let style = traitGroup.getAttribute("data-style")
+				let color = traitGroup.getAttribute("highlight-color")
+				traitGroupData.push([title, style, color])
+				for (let traitGroupColumn of traitGroup.querySelectorAll(".trait-column")) {
+					let traitGroupColumnData = []
+					for (let trait of traitGroupColumn.querySelectorAll(".trait:not(.template)")) { // TODO: Remove template from each trait-group.
+						let name = html_to_text(trait.querySelector(".trait-name").innerHTML)
+						let value = html_to_text(trait.querySelector(".trait-value c").innerHTML)
+						let description = html_to_text(trait.querySelector(".trait-description").innerHTML) // TODO: if (contents != "Trait description.") { // Don't save default trait descriptions.
+						traitGroupColumnData.push([name, value, description])
+					}
+					traitGroupData.push(traitGroupColumnData)
+				}
+				columnData.push(traitGroupData)
+			}
+			pageData.push(columnData)
+		}
+		traitsData.push(pageData)
+	}
+	file.traits = traitsData
+
+	let highlightColors = {}
+	highlightColors[":root"] = document.querySelector(":root").getAttribute("highlight-color") ?? defaultHighlightColor
+	file.highlightColors = highlightColors
+
+	download(file)
+}
+
+function download(file) {
 	let uri = encodeURI("data:application/json;charset=utf-8," + JSON.stringify(file))
 	uri = uri.replace(/#/g, "%23")
 	let link = document.createElement("a")
@@ -663,7 +710,7 @@ function set_trait_collection_highlight_color(e) {
 	let colorPicker = document.getElementById("trait-collection-highlight-picker")
 	let traitGroup = g_context_target.parentElement
 	apply_highlight_color(traitGroup, colorPicker.value)
-	
+
 	// Do NOT close_context_menu()
 }
 
@@ -671,7 +718,7 @@ function remove_trait_collection_highlight_color(e) {
 	let traitGroup = g_context_target.parentElement
 	traitGroup.removeAttribute("highlight-color")
 	traitGroup.style.removeProperty("--highlight")
-	
+
 	close_context_menu()
 }
 
@@ -679,13 +726,13 @@ function set_style(e) {
 	let elem = g_context_target.parentElement
 	let style = e.target.getAttribute("data-style")
 	apply_data_style(elem, style)
-	
+
 	close_context_menu()
 }
 
 function context_menu_remove_item(e) {
 	remove_item({ target: g_context_target })
-	
+
 	close_context_menu()
 }
 
