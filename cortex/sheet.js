@@ -1,42 +1,42 @@
 function text_to_html(html) {
 	if (html.search(/^-/m) != -1) {
-		html = html.replace(/^-(.*)$/m, '<ul><li>$1</li>')
-		html = html.replace(/^-(.*)$/gm, '<li>$1</li>')
+		html = html.replace(/^-(.*)$/m, "<ul><li>$1</li>")
+		html = html.replace(/^-(.*)$/gm, "<li>$1</li>")
 		index = html.lastIndexOf("</li>") + 5
 		html = html.substring(0, index) + "</ul>" + html.substring(index)
 	}
 
-	html = html.replace(/\bd4\b/g, '<c>4</c>')
-	html = html.replace(/\bd6\b/g, '<c>6</c>')
-	html = html.replace(/\bd8\b/g, '<c>8</c>')
-	html = html.replace(/\bd10\b/g, '<c>0</c>')
-	html = html.replace(/\bd12\b/g, '<c>2</c>')
-	html = html.replace(/\bPP\b/g, '<pp></pp>')
-	html = html.replace(/\bMOTE\b/ig, '<mote></mote>')
-	html = html.replace(/\n/g, '<br>')
-	html = html.replace(/\<\/li\>\<br\>/g, '</li>')
-	html = html.replace(/\<\/li\>\<br\>/g, '</li>')
-	html = html.replace(/\<\/ul\>\<br\>/g, '</ul>')
-	html = html.replace(/&nbsp;/g, ' ')
-	html = html.replace(/\[([^\[\]]*)]/g, '<ref>$1</ref>')
+	html = html.replace(/\bd4\b/g, "<c>4</c>")
+	html = html.replace(/\bd6\b/g, "<c>6</c>")
+	html = html.replace(/\bd8\b/g, "<c>8</c>")
+	html = html.replace(/\bd10\b/g, "<c>0</c>")
+	html = html.replace(/\bd12\b/g, "<c>2</c>")
+	html = html.replace(/\bPP\b/g, "<pp></pp>")
+	html = html.replace(/\bMOTE\b/ig, "<mote></mote>")
+	html = html.replace(/\n/g, "<br>")
+	html = html.replace(/\<\/li\>\<br\>/g, "</li>")
+	html = html.replace(/\<\/li\>\<br\>/g, "</li>")
+	html = html.replace(/\<\/ul\>\<br\>/g, "</ul>")
+	html = html.replace(/&nbsp;/g, " ")
+	html = html.replace(/\[([^\[\]]*)]/g, "<ref>$1</ref>")
 
 	return html
 }
 function html_to_text(text) {
-	text = text.replace(/<c>4<\/c>/g, 'd4')
-	text = text.replace(/<c>6<\/c>/g, 'd6')
-	text = text.replace(/<c>8<\/c>/g, 'd8')
-	text = text.replace(/<c>0<\/c>/g, 'd10')
-	text = text.replace(/<c>2<\/c>/g, 'd12')
-	text = text.replace(/<pp><\/pp>/g, 'PP')
-	text = text.replace(/<mote><\/mote>/g, 'mote')
-	text = text.replace(/<br>/g, '\n')
-	text = text.replace(/<ul>/g, '')
-	text = text.replace(/<\/ul>/g, '')
-	text = text.replace(/<li>/g, '- ')
-	text = text.replace(/<\/li>/g, '\n')
-	text = text.replace(/&nbsp;/g, ' ')
-	text = text.replace(/<ref>([^<]*)<\/ref>/g, '[$1]')
+	text = text.replace(/<c>4<\/c>/g, "d4")
+	text = text.replace(/<c>6<\/c>/g, "d6")
+	text = text.replace(/<c>8<\/c>/g, "d8")
+	text = text.replace(/<c>0<\/c>/g, "d10")
+	text = text.replace(/<c>2<\/c>/g, "d12")
+	text = text.replace(/<pp><\/pp>/g, "PP")
+	text = text.replace(/<mote><\/mote>/g, "mote")
+	text = text.replace(/<br>/g, "\n")
+	text = text.replace(/<ul>/g, "")
+	text = text.replace(/<\/ul>/g, "")
+	text = text.replace(/<li>/g, "- ")
+	text = text.replace(/<\/li>/g, "\n")
+	text = text.replace(/&nbsp;/g, " ")
+	text = text.replace(/<ref>([^<]*)<\/ref>/g, "[$1]")
 
 	return text
 }
@@ -51,7 +51,7 @@ function add_event_handlers(editable) {
 
 	if (editable.classList.contains("header")) {
 		editable.addEventListener("keydown", function (event) {
-			if (event.key != 'Enter') return;
+			if (event.key != "Enter") return;
 
 			event.preventDefault();
 			event.target.blur();
@@ -59,7 +59,7 @@ function add_event_handlers(editable) {
 	}
 }
 function init_event_handlers(parent) {
-	var editables = parent.querySelectorAll('div[contenteditable]')
+	var editables = parent.querySelectorAll("div[contenteditable]")
 	for (var e = 0; e < editables.length; e++) {
 		var editable = editables[e]
 		add_event_handlers(editable)
@@ -266,25 +266,40 @@ function get_element_from_path(path) {
 
 function load_character(file) {
 	let version = file.version
-	//console.log(version)
+	switch (version) {
+		case 3:
+			load_characterV3(file)
+			break
+		case 4:
+			load_characterV4(file)
+			break
+		default:
+			console.error("Unknown file version " + version)
 
-	let data = file
-	if (version >= 2) {
-		data = file.data
 	}
+}
 
-	for (let i in data) {
+function load_characterV3(file) {
+	let data = file.data
+	for (let path in data) {
+		let object = null
+		let value = null
+		if (typeof (data[path]) == "object") {
+			object = data[path]
+			value = object.value
+		} else {
+			value = data[path]
+		}
 		let element = null
-		let value = (typeof (data[i]) == 'object') ? data[i].value : data[i]
-		if (!i.includes('/')) {
-			element = document.getElementById(i)
+		if (!path.includes("/")) {
+			element = document.getElementById(path)
 		}
 		else {
-			element = get_element_from_path(i)
+			element = get_element_from_path(path)
 		}
 
-		if (element == null) continue;
-		//		console.log(element);
+		if (element == null) continue
+		//		console.log(element)
 
 		if (element.getAttribute("type") == "checkbox") {
 			element.checked = value
@@ -298,15 +313,15 @@ function load_character(file) {
 		else {
 			element.value = value
 		}
-		if (typeof (data[i]) == 'object') {
-			if (data[i].style != null) {
-				apply_data_style(element, data[i].style)
+		if (object != null) {
+			if (object.style != null) {
+				apply_data_style(element, object.style)
 			}
-			if (data[i].x != null) {
-				element.setAttribute("data-x", data[i].x)
-				element.setAttribute("data-y", data[i].y)
-				element.setAttribute("data-zoom", data[i].zoom)
-				element.style.transform = 'translate(' + data[i].x + 'cm, ' + data[i].y + 'cm) scale(' + data[i].zoom + ', ' + data[i].zoom + ')'
+			if (object.x != null) {
+				element.setAttribute("data-x", object.x)
+				element.setAttribute("data-y", object.y)
+				element.setAttribute("data-zoom", object.zoom)
+				element.style.transform = "translate(" + object.x + "cm, " + object.y + "cm) scale(" + object.zoom + ", " + object.zoom + ")"
 			}
 		}
 		if (element.onblur != null) {
@@ -417,11 +432,11 @@ function add_trait(e) {
 }
 
 function install_title_listeners() {
-	console.log('install_title_listeners')
+	console.log("install_title_listeners")
 	let titles = document.getElementsByClassName("title")
 	console.log(titles)
 	for (let title of titles) {
-		title.addEventListener('input', function () {
+		title.addEventListener("input", function () {
 			let character_name = title.innerText
 			console.log(character_name)
 			update_titles(character_name, title)
@@ -556,11 +571,11 @@ function start_drag(e) {
 	g_drag_x = e.pageX
 	g_drag_y = e.pageY
 	if (e.ctrlKey) {
-		g_drag_y -= (e.target.getAttribute('data-zoom') - 1.0) * -500.0
+		g_drag_y -= (e.target.getAttribute("data-zoom") - 1.0) * -500.0
 	}
 	else {
-		g_drag_x -= e.target.getAttribute('data-x') * 96.0 / 2.54
-		g_drag_y -= e.target.getAttribute('data-y') * 96.0 / 2.54
+		g_drag_x -= e.target.getAttribute("data-x") * 96.0 / 2.54
+		g_drag_y -= e.target.getAttribute("data-y") * 96.0 / 2.54
 	}
 }
 function end_drag(e) {
@@ -576,18 +591,18 @@ function drag_move(e) {
 	var y = (e.pageY - g_drag_y)
 	if (e.ctrlKey) {
 		var zoom = y / -500.0 + 1.0
-		x = parseFloat(e.target.getAttribute('data-x'))
-		y = parseFloat(e.target.getAttribute('data-y'))
-		e.target.setAttribute('data-zoom', zoom)
-		e.target.style.transform = 'translate(' + x + 'cm, ' + y + 'cm) scale(' + zoom + ', ' + zoom + ')'
+		x = parseFloat(e.target.getAttribute("data-x"))
+		y = parseFloat(e.target.getAttribute("data-y"))
+		e.target.setAttribute("data-zoom", zoom)
+		e.target.style.transform = "translate(" + x + "cm, " + y + "cm) scale(" + zoom + ", " + zoom + ")"
 	}
 	else {
 		x *= 2.54 / 96.0
 		y *= 2.54 / 96.0
-		var zoom = e.target.getAttribute('data-zoom')
-		e.target.setAttribute('data-x', x)
-		e.target.setAttribute('data-y', y)
-		e.target.style.transform = 'translate(' + x + 'cm, ' + y + 'cm) scale(' + zoom + ', ' + zoom + ')'
+		var zoom = e.target.getAttribute("data-zoom")
+		e.target.setAttribute("data-x", x)
+		e.target.setAttribute("data-y", y)
+		e.target.style.transform = "translate(" + x + "cm, " + y + "cm) scale(" + zoom + ", " + zoom + ")"
 	}
 }
 
@@ -595,10 +610,10 @@ g_modal_callback = null
 function close_modal(e) {
 	var modals = document.querySelectorAll(".modal")
 	for (var m = 0; m < modals.length; m++) {
-		modals[m].style.display = 'none'
+		modals[m].style.display = "none"
 	}
 	var bg = document.getElementById("modal-bg")
-	bg.style.display = 'none'
+	bg.style.display = "none"
 	if (g_modal_callback != null) {
 		g_modal_callback()
 		g_modal_callback = null
@@ -607,9 +622,9 @@ function close_modal(e) {
 function show_modal(id, left, top, callback) {
 	g_modal_callback = callback
 	var bg = document.getElementById("modal-bg")
-	bg.style.display = 'block'
+	bg.style.display = "block"
 	var modal = document.getElementById(id)
-	modal.style.display = 'block'
+	modal.style.display = "block"
 	modal.style.left = left
 	modal.style.top = top
 	var input = modal.querySelector("input");
@@ -627,7 +642,7 @@ function change_image_url(e) {
 		img.setAttribute("data-x", 0)
 		img.setAttribute("data-y", 0)
 		img.setAttribute("data-zoom", 1)
-		img.style.transform = 'translate(0, 0) scale(1)'
+		img.style.transform = "translate(0, 0) scale(1)"
 	})
 }
 
