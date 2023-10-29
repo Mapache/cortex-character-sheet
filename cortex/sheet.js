@@ -51,17 +51,17 @@ function add_event_handlers(editable) {
 
 	if (editable.classList.contains("header")) {
 		editable.addEventListener("keydown", function (event) {
-			if (event.key != "Enter") return;
-
-			event.preventDefault();
-			event.target.blur();
+			console.log(event.key)
+			if (event.key == "Enter") {
+				event.preventDefault()
+				event.target.blur()
+			}
 		})
 	}
 }
 function init_event_handlers(parent) {
-	var editables = parent.querySelectorAll("div[contenteditable]")
-	for (var e = 0; e < editables.length; e++) {
-		var editable = editables[e]
+	let editables = parent.querySelectorAll("div[contenteditable], h1[contenteditable], h2[contenteditable]")
+	for (let editable of editables) {
 		add_event_handlers(editable)
 	}
 }
@@ -362,6 +362,9 @@ function load_characterV3(file) {
 	colorPicker.value = globalHighlightColor
 
 	update_titles(data["character-name"], null)
+}
+
+function load_characterV4(file) {
 }
 
 function apply_data_style(elem, style) {
