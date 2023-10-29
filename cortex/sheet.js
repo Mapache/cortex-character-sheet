@@ -92,13 +92,13 @@ function save_characterV3() {
 		if (input.classList.contains("non-serialized") || input.classList.contains("no-print") || input.classList.contains("template")) {
 			continue
 		}
-		var non_serialized_parent = get_parent_with_class(input.parentElement, "non-serialized") || get_parent_with_class(input.parentElement, "no-print") || get_parent_with_class(input.parentElement, "template")
+		let non_serialized_parent = get_parent_with_class(input.parentElement, "non-serialized") || get_parent_with_class(input.parentElement, "no-print") || get_parent_with_class(input.parentElement, "template")
 		if (non_serialized_parent) {
 			continue
 		}
 
 		let id = input.id
-		var spell_parent = get_parent_with_class(input.parentElement, "spell")
+		let spell_parent = get_parent_with_class(input.parentElement, "spell")
 		if (spell_parent && spell_parent.classList.contains("template")) {
 			continue
 		}
@@ -244,7 +244,7 @@ function get_path_from_element(elem) {
 function get_element_from_path(path) {
 	let parts = path.split("/")
 	let current = (parts[0] == ":root") ? document.querySelector(":root") : document.querySelector("div#" + parts[0])
-	for (var p = 1; p < parts.length; p++) {
+	for (let p = 1; p < parts.length; p++) {
 		try {
 			current = current.querySelector("#" + parts[p])
 		} catch {
@@ -397,11 +397,11 @@ function on_drop(e) {
 	e.preventDefault()
 	e.stopPropagation()
 
-	var blob = e.dataTransfer.files[0];
-	var reader = new FileReader();
+	let blob = e.dataTransfer.files[0];
+	let reader = new FileReader();
 	reader.addEventListener("loadend", function () {
-		var text = reader.result;
-		var data = JSON.parse(text)
+		let text = reader.result;
+		let data = JSON.parse(text)
 		load_character(data)
 	});
 	reader.readAsText(blob)
@@ -414,7 +414,7 @@ function load_character_path(path) {
 }
 
 function add_group(e, class_name) {
-	var template = document.querySelector("." + class_name + ".template")
+	let template = document.querySelector("." + class_name + ".template")
 	new_group = template.cloneNode(true);
 	new_group.classList.remove("template")
 	e.target.parentElement.insertBefore(new_group, e.target)
@@ -461,12 +461,12 @@ function update_titles(character_name, excluding_title) {
 }
 
 function update_attribute_positions() {
-	var attributes = document.querySelectorAll(".attribute:not(.template)")
+	let attributes = document.querySelectorAll(".attribute:not(.template)")
 
 	document.getElementById("attribute-curve").style.display = (attributes.length <= 1) ? "none" : "block";
 
 	if (attributes.length == 1) {
-		var a = attributes[0]
+		let a = attributes[0]
 		a.style.left = ((115 + 176) * 0.5 + 3.5) + "mm"
 		a.style.top = "120mm"
 		a.classList.remove("vertical");
@@ -474,14 +474,14 @@ function update_attribute_positions() {
 		return
 	}
 
-	for (var i = 0; i < attributes.length; i++) {
-		var a = attributes[i]
-		var alpha = i / (attributes.length - 1)
+	for (let i = 0; i < attributes.length; i++) {
+		let a = attributes[i]
+		let alpha = i / (attributes.length - 1)
 
-		var left = 115;
-		var right = 176;
-		var height = 10;
-		var top = 107.5;
+		let left = 115;
+		let right = 176;
+		let height = 10;
+		let top = 107.5;
 
 		if (attributes.length > 5) {
 			a.classList.add("vertical");
@@ -492,10 +492,10 @@ function update_attribute_positions() {
 			a.parentElement.classList.remove("vertical");
 		}
 
-		var x = (right - left) * alpha + left + 3.5
+		let x = (right - left) * alpha + left + 3.5
 		a.style.left = x + "mm"
 
-		var y = Math.sin(alpha * 3.1415926535) * height + top - 3
+		let y = Math.sin(alpha * 3.1415926535) * height + top - 3
 		a.style.top = y + "mm"
 	}
 }
@@ -590,10 +590,10 @@ function end_drag(e) {
 function drag_move(e) {
 	if (!g_dragging) return;
 
-	var x = (e.pageX - g_drag_x)
-	var y = (e.pageY - g_drag_y)
+	let x = (e.pageX - g_drag_x)
+	let y = (e.pageY - g_drag_y)
 	if (e.ctrlKey) {
-		var zoom = y / -500.0 + 1.0
+		let zoom = y / -500.0 + 1.0
 		x = parseFloat(e.target.getAttribute("data-x"))
 		y = parseFloat(e.target.getAttribute("data-y"))
 		e.target.setAttribute("data-zoom", zoom)
@@ -602,7 +602,7 @@ function drag_move(e) {
 	else {
 		x *= 2.54 / 96.0
 		y *= 2.54 / 96.0
-		var zoom = e.target.getAttribute("data-zoom")
+		let zoom = e.target.getAttribute("data-zoom")
 		e.target.setAttribute("data-x", x)
 		e.target.setAttribute("data-y", y)
 		e.target.style.transform = "translate(" + x + "cm, " + y + "cm) scale(" + zoom + ", " + zoom + ")"
@@ -611,11 +611,11 @@ function drag_move(e) {
 
 g_modal_callback = null
 function close_modal(e) {
-	var modals = document.querySelectorAll(".modal")
-	for (var m = 0; m < modals.length; m++) {
-		modals[m].style.display = "none"
+	let modals = document.querySelectorAll(".modal")
+	for (let modal of modals) {
+		modal.style.display = "none"
 	}
-	var bg = document.getElementById("modal-bg")
+	let bg = document.getElementById("modal-bg")
 	bg.style.display = "none"
 	if (g_modal_callback != null) {
 		g_modal_callback()
@@ -624,21 +624,21 @@ function close_modal(e) {
 }
 function show_modal(id, left, top, callback) {
 	g_modal_callback = callback
-	var bg = document.getElementById("modal-bg")
+	let bg = document.getElementById("modal-bg")
 	bg.style.display = "block"
-	var modal = document.getElementById(id)
+	let modal = document.getElementById(id)
 	modal.style.display = "block"
 	modal.style.left = left
 	modal.style.top = top
-	var input = modal.querySelector("input");
+	let input = modal.querySelector("input");
 	if (input != null) {
 		modal.querySelector("input").select()
 	}
 }
 
 function change_image_url(e) {
-	var url = document.querySelector("#url-modal input")
-	var img = e.target.parentElement.querySelector("img")
+	let url = document.querySelector("#url-modal input")
+	let img = e.target.parentElement.querySelector("img")
 	url.value = img.src
 	show_modal("url-modal", e.pageX, e.pageY, function () {
 		img.src = url.value
@@ -682,7 +682,7 @@ function show_help(e) {
 }
 
 function remove_item(elem) {
-	var item = elem.target.parentElement
+	let item = elem.target.parentElement
 	item.parentElement.removeChild(item)
 }
 
