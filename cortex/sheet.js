@@ -79,7 +79,7 @@ function get_parent_with_class(element, c) {
 }
 
 function save_character(e) {
-	let file = save_characterV3()
+	let file = save_characterV4()
 	download(file)
 }
 
@@ -243,6 +243,10 @@ function get_path_from_element(elem) {
 
 function get_element_from_path(path) {
 	let parts = path.split("/")
+	return get_element_from_parts(parts)
+}
+
+function get_element_from_parts(parts) {
 	let current = (parts[0] == ":root") ? document.querySelector(":root") : document.querySelector("div#" + parts[0])
 	for (let p = 1; p < parts.length; p++) {
 		try {
@@ -346,11 +350,17 @@ function load_characterV3(file) {
 		}
 	}
 
+	load_highlight_colors(file.highlightColors)
+
+	update_titles(data["character-name"], null)
+}
+
+function load_highlight_colors(highlightColors) {
 	let globalHighlightColor = defaultHighlightColor
-	if (file.highlightColors != null) {
-		for (let path in file.highlightColors) {
+	if (highlightColors != null) {
+		for (let path in highlightColors) {
 			let elem = get_element_from_path(path)
-			let highlightColor = file.highlightColors[path]
+			let highlightColor = highlightColors[path]
 			apply_highlight_color(elem, highlightColor)
 
 			if (path == ":root") {
@@ -360,11 +370,42 @@ function load_characterV3(file) {
 	}
 	let colorPicker = document.getElementById("global-highlight-picker")
 	colorPicker.value = globalHighlightColor
-
-	update_titles(data["character-name"], null)
 }
 
 function load_characterV4(file) {
+	if (file.version != 4) {
+		return
+	}
+	let characterName = text_to_html(file.characterName)
+	document.querySelector("#character-name").innerHTML = text_to_html(characterName)
+	document.querySelector("#description").innerHTML = text_to_html(file.description)
+
+	for (let [pageIndex, pageData] of file.traits.entries()) {
+		for (let [columnIndex, columnData] of pageData.entries()) {
+			for (let [traitGroupIndex, traitGroupData] of columnData.entries()) {
+				let traitGroup = get_element_from_parts(["pages", pageIndex, columnIndex + 1, traitGroupIndex])
+				let [title, style, color] = traitGroupData[0]
+				traitGroup.querySelector(".header").innerHTML = text_to_html(title)
+				apply_data_style(traitGroup, style)
+				apply_highlight_color(traitGroup, color)
+				for (let [traitGroupColumnIndex, traitGroupColumnData] of traitGroupData.slice(1).entries()) {
+					for (let [traitIndex, traitData] of traitGroupColumnData.entries()) {
+						let trait = get_element_from_parts(["pages", pageIndex, columnIndex + 1, traitGroupIndex, traitGroupColumnIndex + 2, traitIndex + 1]) // TODO: Remove template from each trait-group.
+						let [name, value, description] = traitData
+						trait.querySelector(".trait-name").innerHTML = text_to_html(name)
+						trait.querySelector(".trait-value c").innerHTML = text_to_html(value)
+						if (description != null) {
+							trait.querySelector(".trait-description").innerHTML = text_to_html(description)
+						}
+					}
+				}
+			}
+		}
+	}
+
+	load_highlight_colors(file.highlightColors)
+
+	update_titles(characterName, null)
 }
 
 function apply_data_style(elem, style) {
@@ -378,8 +419,13 @@ function apply_data_style(elem, style) {
 }
 
 function apply_highlight_color(elem, color) {
-	elem.setAttribute("highlight-color", color)
-	elem.style.setProperty("--highlight", color)
+	if (color == null) {
+		elem.removeAttribute("highlight-color")
+		elem.style.removeProperty("--highlight")
+	} else {
+		elem.setAttribute("highlight-color", color)
+		elem.style.setProperty("--highlight", color)
+	}
 }
 
 function on_drag_enter(e) {
@@ -413,12 +459,20 @@ function load_character_path(path) {
 		.then((json) => load_character(json));
 }
 
-function add_group(e, class_name) {
-	let template = document.querySelector("." + class_name + ".template")
-	new_group = template.cloneNode(true);
-	new_group.classList.remove("template")
-	e.target.parentElement.insertBefore(new_group, e.target)
-	init_event_handlers(new_group)
+function add_child(parent, className) {
+	let template = document.querySelector("." + className + ".template")
+	let newGroup = template.cloneNode(true)
+	newGroup.classList.remove("template")
+
+	let children = parent.children
+	let placeholder = children[children.length - 1]
+	parent.insertBefore(newGroup, placeholder)
+	init_event_handlers(newGroup)
+	return newGroup
+}
+
+function add_group(event, className) {
+	add_child(event.target.parentElement, className)
 }
 
 function add_page(e) {
