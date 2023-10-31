@@ -187,17 +187,28 @@ function save_characterV4() {
 				let traitGroupData = []
 				let title = html_to_text(traitGroup.querySelector(".header").innerHTML)
 				let style = traitGroup.getAttribute("data-style")
-				let color = traitGroup.getAttribute("highlight-color") // TODO: Don't save null highlight colors.
-				traitGroupData.push([title, style, color])
+				let color = traitGroup.getAttribute("highlight-color")
+				if (color == null) {
+					traitGroupData.push([title, style])
+				} else {
+					traitGroupData.push([title, style, color])
+				}
 				for (let traitGroupColumn of traitGroup.querySelectorAll(".trait-column")) {
 					let traitGroupColumnData = []
 					for (let trait of traitGroupColumn.querySelectorAll(".trait:not(.template)")) { // TODO: Remove template from each trait-group.
 						let name = html_to_text(trait.querySelector(".trait-name").innerHTML)
 						let value = html_to_text(trait.querySelector(".trait-value c").innerHTML)
-						let description = html_to_text(trait.querySelector(".trait-description").innerHTML) // TODO: if (contents != "Trait description.") { // Don't save default trait descriptions.
-						traitGroupColumnData.push([name, value, description])
+						let description = html_to_text(trait.querySelector(".trait-description").innerHTML)
+						if (description == "Trait description.") {
+							// Don't save default trait descriptions.
+							traitGroupColumnData.push([name, value])
+						} else {
+							traitGroupColumnData.push([name, value, description])
+						}
 					}
-					traitGroupData.push(traitGroupColumnData) // TODO: Don't save empty traitGroupColumnData.
+					if (traitGroupColumnData.length > 0) {
+						traitGroupData.push(traitGroupColumnData)
+					}
 				}
 				columnData.push(traitGroupData)
 			}
@@ -567,13 +578,12 @@ function reset_trait_group(elem) {
 
 	elem.classList.remove("abilities")
 	elem.classList.remove("compact")
-	elem.classList.remove("detailed-two-column")
 	elem.classList.remove("milestones")
 	elem.classList.remove("resources")
 	elem.classList.remove("roles")
 	elem.classList.remove("signature-asset")
 	elem.classList.remove("stress")
-	elem.classList.remove("stress-descriptions")
+	elem.classList.remove("two-column")
 	elem.classList.remove("values")
 
 	elem.removeAttribute("data-style")
