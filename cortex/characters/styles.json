@@ -1,103 +1,243 @@
 {
-    "version": 3,
-    "data": {
-        "character-name": "NAME",
-        "description": "Description.",
-        "pages/0/1/0/1": "NEW TRAIT GROUP",
-        "pages/0/1/0/2/1/1": "New trait",
-        "pages/0/1/0/2/1/2/0": "6",
-        "pages/0/1/0/2/1/3": "",
-        "pages/0/1/0/2/2/1": "New trait",
-        "pages/0/1/0/2/2/2/0": "6",
-        "pages/0/1/0/2/3/1": "New trait",
-        "pages/0/1/0/2/3/2/0": "6",
-        "pages/0/1/1/1": "NEW TRAIT GROUP",
-        "pages/0/1/1/2/1/1": "New trait",
-        "pages/0/1/1/2/1/2/0": "6",
-        "pages/0/1/1/2/2/1": "New trait",
-        "pages/0/1/1/2/2/2/0": "6",
-        "pages/0/1/1/2/2/3": "",
-        "pages/0/1/1/2/3/1": "New trait",
-        "pages/0/1/1/2/3/2/0": "6",
-        "pages/0/1/1/3/1/1": "New trait",
-        "pages/0/1/1/3/1/2/0": "6",
-        "pages/0/1/1/3/2/1": "New trait",
-        "pages/0/1/1/3/2/2/0": "6",
-        "pages/0/1/2/1": "stress",
-        "pages/0/1/2/2/1/1": "New Trait",
-        "pages/0/1/2/2/1/2/0": "6",
-        "pages/0/1/2/2/2/1": "Long Trait Name",
-        "pages/0/1/2/2/2/2/0": "6",
-        "pages/0/1/2/2/3/1": "Trait",
-        "pages/0/1/2/2/3/2/0": "6",
-        "pages/0/1/3/1": "NEW TRAIT GROUP",
-        "pages/0/1/3/2/1/1": "New trait",
-        "pages/0/1/3/2/1/2/0": "6",
-        "pages/0/1/3/2/2/1": "New trait",
-        "pages/0/1/3/2/2/2/0": "6",
-        "pages/0/1/3/2/3/1": "New trait",
-        "pages/0/1/3/2/3/2/0": "6",
-        "pages/0/1/4/1": "NEW TRAIT GROUP",
-        "pages/0/1/4/2/1/1": "New trait",
-        "pages/0/1/4/2/1/2/0": "6",
-        "pages/0/1/4/2/2/1": "New trait",
-        "pages/0/1/4/2/2/2/0": "6",
-        "pages/0/1/4/2/3/1": "New trait",
-        "pages/0/1/4/2/3/2/0": "6",
-        "pages/0/2/0/1": "NEW TRAIT GROUP",
-        "pages/0/2/0/2/1/1": "New trait",
-        "pages/0/2/0/2/1/2/0": "6",
-        "pages/0/2/0/2/2/1": "New trait",
-        "pages/0/2/0/2/2/2/0": "6",
-        "pages/0/2/0/2/3/1": "New trait",
-        "pages/0/2/0/2/3/2/0": "6",
-        "pages/0/2/1/1": "NEW TRAIT GROUP",
-        "pages/0/2/1/2/1/1": "New trait",
-        "pages/0/2/1/2/1/2/0": "6",
-        "pages/0/2/1/2/2/1": "New trait",
-        "pages/0/2/1/2/2/2/0": "6",
-        "pages/0/2/1/3/1/1": "New trait",
-        "pages/0/2/1/3/1/2/0": "6",
-        "pages/0/2/1/3/2/1": "New trait",
-        "pages/0/2/1/3/2/2/0": "6",
-        "pages/0/2/2/1": "stress",
-        "pages/0/2/2/2/1/1": "New trait",
-        "pages/0/2/2/2/1/2/0": "6",
-        "pages/0/2/2/2/2/1": "New trait",
-        "pages/0/2/2/2/2/2/0": "6",
-        "pages/0/2/3/1": "NEW TRAIT GROUP",
-        "pages/0/2/3/2/1/1": "New trait",
-        "pages/0/2/3/2/1/2/0": "6",
-        "pages/0/2/3/2/2/1": "New trait",
-        "pages/0/2/3/2/2/2/0": "6",
-        "pages/0/2/3/2/3/1": "New trait",
-        "pages/0/2/3/2/3/2/0": "6",
-        "pages/0/2/4/1": "NEW TRAIT GROUP",
-        "pages/0/2/4/2/1/1": "New trait",
-        "pages/0/2/4/2/1/2/0": "6",
-        "pages/0/2/4/2/2/1": "New trait",
-        "pages/0/2/4/2/2/2/0": "6",
-        "pages/0/2/4/2/3/1": "New trait",
-        "pages/0/2/4/2/3/2/0": "6",
-        "pages/0/2/4/3/1/1": "New trait",
-        "pages/0/2/4/3/1/2/0": "6",
-        "pages/0/2/4/3/2/1": "New trait",
-        "pages/0/2/4/3/2/2/0": "6",
-        "pages/0/2/4/3/3/1": "New trait",
-        "pages/0/2/4/3/3/2/0": "6"
-    },
-    "styles": {
-        "pages/0/1/0": "detailed",
-        "pages/0/1/1": "detailed two-column",
-        "pages/0/1/2": "stress compact",
-        "pages/0/1/3": "signature-asset",
-        "pages/0/1/4": "roles",
-        "pages/0/2/0": "compact",
-        "pages/0/2/1": "compact two-column",
-        "pages/0/2/2": "stress",
-        "pages/0/2/3": "resources",
-        "pages/0/2/4": "values"
-    },
+    "version": 4,
+    "characterName": "NAME",
+    "description": "Description.",
+    "traits": [
+        [
+            [
+                [
+                    [
+                        "NEW TRAIT GROUP",
+                        "detailed"
+                    ],
+                    [
+                        [
+                            "New trait",
+                            "6",
+                            ""
+                        ],
+                        [
+                            "New trait",
+                            "6"
+                        ],
+                        [
+                            "New trait",
+                            "6"
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "NEW TRAIT GROUP",
+                        "detailed two-column"
+                    ],
+                    [
+                        [
+                            "New trait",
+                            "6"
+                        ],
+                        [
+                            "New trait",
+                            "6",
+                            ""
+                        ],
+                        [
+                            "New trait",
+                            "6"
+                        ]
+                    ],
+                    [
+                        [
+                            "New trait",
+                            "6"
+                        ],
+                        [
+                            "New trait",
+                            "6"
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "stress",
+                        "stress compact"
+                    ],
+                    [
+                        [
+                            "New Trait",
+                            "6"
+                        ],
+                        [
+                            "Long Trait Name",
+                            "6"
+                        ],
+                        [
+                            "Trait",
+                            "6"
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "NEW TRAIT GROUP",
+                        "signature-asset"
+                    ],
+                    [
+                        [
+                            "New trait",
+                            "6"
+                        ],
+                        [
+                            "New trait",
+                            "6"
+                        ],
+                        [
+                            "New trait",
+                            "6"
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "NEW TRAIT GROUP",
+                        "roles"
+                    ],
+                    [
+                        [
+                            "New trait",
+                            "6"
+                        ],
+                        [
+                            "New trait",
+                            "6"
+                        ],
+                        [
+                            "New trait",
+                            "6"
+                        ]
+                    ]
+                ]
+            ],
+            [
+                [
+                    [
+                        "NEW TRAIT GROUP",
+                        "compact"
+                    ],
+                    [
+                        [
+                            "New trait",
+                            "6"
+                        ],
+                        [
+                            "New trait",
+                            "6"
+                        ],
+                        [
+                            "New trait",
+                            "6"
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "NEW TRAIT GROUP",
+                        "compact two-column"
+                    ],
+                    [
+                        [
+                            "New trait",
+                            "6"
+                        ],
+                        [
+                            "New trait",
+                            "6"
+                        ]
+                    ],
+                    [
+                        [
+                            "New trait",
+                            "6"
+                        ],
+                        [
+                            "New trait",
+                            "6"
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "stress",
+                        "stress"
+                    ],
+                    [
+                        [
+                            "New trait",
+                            "6"
+                        ],
+                        [
+                            "New trait",
+                            "6"
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "NEW TRAIT GROUP",
+                        "resources"
+                    ],
+                    [
+                        [
+                            "New trait",
+                            "6"
+                        ],
+                        [
+                            "New trait",
+                            "6"
+                        ],
+                        [
+                            "New trait",
+                            "6"
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "NEW TRAIT GROUP",
+                        "values"
+                    ],
+                    [
+                        [
+                            "New trait",
+                            "6"
+                        ],
+                        [
+                            "New trait",
+                            "6"
+                        ],
+                        [
+                            "New trait",
+                            "6"
+                        ]
+                    ],
+                    [
+                        [
+                            "New trait",
+                            "6"
+                        ],
+                        [
+                            "New trait",
+                            "6"
+                        ],
+                        [
+                            "New trait",
+                            "6"
+                        ]
+                    ]
+                ]
+            ]
+        ]
+    ],
     "highlightColors": {
         ":root": "#C50852"
     }
