@@ -280,6 +280,7 @@ function get_element_from_parts(parts) {
 }
 
 function load_character(file) {
+	nuke_character()
 	let version = file.version
 	switch (version) {
 		case 3:
@@ -295,7 +296,14 @@ function load_character(file) {
 }
 
 function nuke_character() {
-	document.querySelectorAll(".trait-group:not(.template)")
+	// Nuke all but the first page.
+	for (let page of Array.from(document.querySelectorAll(".page:not(.template)")).slice(1)) {
+		page.remove()
+	}
+	// Nuke all trait groups.
+	for (let traitGroup of document.querySelectorAll(".trait-group:not(.template)")) {
+		traitGroup.remove()
+	}
 }
 
 function load_characterV3(file) {
