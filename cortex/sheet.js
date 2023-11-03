@@ -195,7 +195,7 @@ function save_characterV4() {
 				}
 				for (let traitGroupColumn of traitGroup.querySelectorAll(".trait-column")) {
 					let traitGroupColumnData = []
-					for (let trait of traitGroupColumn.querySelectorAll(".trait:not(.template)")) { // TODO: Remove template from each trait-group.
+					for (let trait of traitGroupColumn.querySelectorAll(".trait")) {
 						let name = html_to_text(trait.querySelector(".trait-name").innerHTML)
 						let value = html_to_text(trait.querySelector(".trait-value c").innerHTML)
 						let description = html_to_text(trait.querySelector(".trait-description").innerHTML)
@@ -292,6 +292,10 @@ function load_character(file) {
 			console.error("Unknown file version " + version)
 
 	}
+}
+
+function nuke_character() {
+	document.querySelectorAll(".trait-group:not(.template)")
 }
 
 function load_characterV3(file) {
