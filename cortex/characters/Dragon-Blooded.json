@@ -1,6 +1,6 @@
 {
     "version": 4,
-    "characterName": "Resplendent Sidereal Example",
+    "characterName": "Auspicious Dragon-Blooded Example",
     "description": "Description",
     "traits": [
         [
@@ -14,7 +14,7 @@
                         [
                             "Anima",
                             "6",
-                            "A mighty red-maned lion rears against\ngolden flames, roaring defiance\n-   Adds to most actions, complicates stealth.\n-   Step up whenever you spend a mote.\n-   [Flare] Once per scene, you may add d6 to the doom pool to gain a mote and step up your anima.\n"
+                            "A mighty red-maned lion rears against\ngolden flames, roaring defiance\n-    Adds to most actions, complicates stealth.\n-    Step up whenever you spend a mote.\n-    [Flare] Once per scene, you may add d6 to the doom pool to gain a mote and step up your anima.\n"
                         ]
                     ]
                 ],
@@ -33,170 +33,13 @@
                 ],
                 [
                     [
-                        "JOURNEYS",
+                        "AIR",
                         "compact",
-                        "#ffa200"
+                        "#57a0ff"
                     ],
                     [
-                        [
-                            "Endurance",
-                            "6"
-                        ],
-                        [
-                            "Ride",
-                            "6"
-                        ],
-                        [
-                            "Sail",
-                            "6"
-                        ],
-                        [
-                            "Survival",
-                            "6"
-                        ],
-                        [
-                            "Thrown",
-                            "6"
-                        ]
-                    ],
-                    [
-                        [
-                            "<i>The mast</i>",
-                            ""
-                        ],
-                        [
-                            "<i>The messenger</i>",
-                            ""
-                        ],
-                        [
-                            "<i>The captain</i>",
-                            ""
-                        ],
-                        [
-                            "<i>The ship's wheel</i>",
-                            ""
-                        ],
-                        [
-                            "<i>The gull</i>",
-                            ""
-                        ]
-                    ]
-                ],
-                [
-                    [
-                        "SERENITY",
-                        "compact",
-                        "#006eff"
-                    ],
-                    [
-                        [
-                            "Craft",
-                            "6"
-                        ],
-                        [
-                            "Dodge",
-                            "6"
-                        ],
                         [
                             "Linguistics",
-                            "6"
-                        ],
-                        [
-                            "PERFORMANCE",
-                            "6"
-                        ],
-                        [
-                            "SOCIALIZE",
-                            "6"
-                        ]
-                    ],
-                    [
-                        [
-                            "<i>The peacock</i>",
-                            ""
-                        ],
-                        [
-                            "<i>The ewer</i>",
-                            ""
-                        ],
-                        [
-                            "<i>The pillar</i>",
-                            ""
-                        ],
-                        [
-                            "<i>The musician</i>",
-                            ""
-                        ],
-                        [
-                            "<i>The lovers</i>",
-                            ""
-                        ]
-                    ]
-                ],
-                [
-                    [
-                        "BATTLES",
-                        "compact",
-                        "#d50707"
-                    ],
-                    [
-                        [
-                            "Archery",
-                            "6"
-                        ],
-                        [
-                            "Integrity",
-                            "6"
-                        ],
-                        [
-                            "Melee",
-                            "6"
-                        ],
-                        [
-                            "PRESENCE",
-                            "6"
-                        ],
-                        [
-                            "war",
-                            "6"
-                        ]
-                    ],
-                    [
-                        [
-                            "<i>The quiver</i>",
-                            ""
-                        ],
-                        [
-                            "<i>The shield</i>",
-                            ""
-                        ],
-                        [
-                            "<i>The spear</i>",
-                            ""
-                        ],
-                        [
-                            "<i>The banner</i>",
-                            ""
-                        ],
-                        [
-                            "<i>The sword</i>",
-                            ""
-                        ]
-                    ]
-                ],
-                [
-                    [
-                        "SECRETS",
-                        "compact",
-                        "#039900"
-                    ],
-                    [
-                        [
-                            "Investigation",
-                            "6"
-                        ],
-                        [
-                            "Larceny",
                             "6"
                         ],
                         [
@@ -210,36 +53,47 @@
                         [
                             "Stealth",
                             "6"
-                        ]
-                    ],
-                    [
-                        [
-                            "<i>The key</i>",
-                            ""
                         ],
                         [
-                            "<i>The guardians</i>",
-                            ""
-                        ],
-                        [
-                            "<i>The treasure trove</i>",
-                            ""
-                        ],
-                        [
-                            "<i>The sorcerer</i>",
-                            ""
-                        ],
-                        [
-                            "<i>The mask</i>",
-                            ""
+                            "Thrown",
+                            "6"
                         ]
                     ]
                 ],
                 [
                     [
-                        "ENDINGS",
+                        "EARTH",
                         "compact",
-                        "#8700b8"
+                        "#a8a8a8"
+                    ],
+                    [
+                        [
+                            "Awareness",
+                            "6"
+                        ],
+                        [
+                            "Craft",
+                            "6"
+                        ],
+                        [
+                            "Endurance",
+                            "6"
+                        ],
+                        [
+                            "Integrity",
+                            "6"
+                        ],
+                        [
+                            "War",
+                            "6"
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "FIRE",
+                        "compact",
+                        "#d50707"
                     ],
                     [
                         [
@@ -247,9 +101,30 @@
                             "6"
                         ],
                         [
-                            "Awareness",
+                            "Dodge",
                             "6"
                         ],
+                        [
+                            "Melee",
+                            "6"
+                        ],
+                        [
+                            "Presence",
+                            "6"
+                        ],
+                        [
+                            "Socialize",
+                            "6"
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "WATER",
+                        "compact",
+                        "#000000"
+                    ],
+                    [
                         [
                             "Brawl",
                             "6"
@@ -259,30 +134,45 @@
                             "6"
                         ],
                         [
-                            "Medicine",
+                            "Investigation",
+                            "6"
+                        ],
+                        [
+                            "Larceny",
+                            "6"
+                        ],
+                        [
+                            "Sail",
                             "6"
                         ]
+                    ]
+                ],
+                [
+                    [
+                        "WOOD",
+                        "compact",
+                        "#039900"
                     ],
                     [
                         [
-                            "<i>The rising smoke</i>",
-                            ""
+                            "Archery",
+                            "6"
                         ],
                         [
-                            "<i>The crow</i>",
-                            ""
+                            "Medicine",
+                            "6"
                         ],
                         [
-                            "<i>The gauntlet</i>",
-                            ""
+                            "Performance",
+                            "6"
                         ],
                         [
-                            "<i>The Haywain</i>",
-                            ""
+                            "Ride",
+                            "6"
                         ],
                         [
-                            "<i>The corpse</i>",
-                            ""
+                            "Survival",
+                            "6"
                         ]
                     ]
                 ],
@@ -317,7 +207,7 @@
                         [
                             "Essence",
                             "0",
-                            "-     [Special: Supernal Skill] When you include a specialty from your caste skills in a dice pool, the specialty is a d8 rather than a d6. Your caste skills are Fight, Labor, Shoot, Throw, War, and any skill used to inflict fear-based social stress or complications.\n-     [SFX: Dawn Caste] Spend a mote to double your caste skills for one roll. When you inflict fear-based social stress or complications while your anima banner is visible, your opponent cannot negate the effect with an SFX.\n"
+                            "-      [Special: Supernal Skill] When you include a specialty from your caste skills in a dice pool, the specialty is a d8 rather than a d6. Your caste skills are Fight, Labor, Shoot, Throw, War, and any skill used to inflict fear-based social stress or complications.\n-      [SFX: Dawn Caste] Spend a mote to double your caste skills for one roll. When you inflict fear-based social stress or complications while your anima banner is visible, your opponent cannot negate the effect with an SFX.\n"
                         ]
                     ]
                 ],
@@ -330,7 +220,7 @@
                         [
                             "Undefeated of the East",
                             "8 / 4+mote",
-                            "-     [SFX: Tactical Brilliance] When you create a tactical asset for another character by spending a mote, that asset enters play as a d8 rather than a d6, but it cannot be extended past the end of the scene.\n"
+                            "-      [SFX: Tactical Brilliance] When you create a tactical asset for another character by spending a mote, that asset enters play as a d8 rather than a d6, but it cannot be extended past the end of the scene.\n"
                         ],
                         [
                             "Barefoot General ",
@@ -388,7 +278,7 @@
                         [
                             "New trait",
                             "6",
-                            "-            One\n-            Two\n-            Three\n"
+                            "-             One\n-             Two\n-             Three\n"
                         ]
                     ]
                 ]
@@ -410,6 +300,6 @@
         ]
     ],
     "highlightColors": {
-        ":root": "#8700b8"
+        ":root": "#C50852"
     }
 }
