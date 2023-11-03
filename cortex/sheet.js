@@ -401,7 +401,7 @@ function load_characterV4(file) {
 				apply_highlight_color(traitGroup, color)
 				for (let [traitGroupColumnIndex, traitGroupColumnData] of traitGroupData.slice(1).entries()) {
 					for (let [traitIndex, traitData] of traitGroupColumnData.entries()) {
-						let trait = get_element_from_parts(["pages", pageIndex, columnIndex + 1, traitGroupIndex, traitGroupColumnIndex + 2, traitIndex + 1]) // TODO: Remove template from each trait-group.
+						let trait = get_element_from_parts(["pages", pageIndex, columnIndex + 1, traitGroupIndex, traitGroupColumnIndex + 2, traitIndex])
 						let [name, value, description] = traitData
 						trait.querySelector(".trait-name").innerHTML = text_to_html(name)
 						trait.querySelector(".trait-value c").innerHTML = text_to_html(value)
