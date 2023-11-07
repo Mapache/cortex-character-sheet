@@ -1545,6 +1545,22 @@ li:before {
 	display: none !important;
 }
 
+/* Inline */
+
+.inline .trait-description {
+	display: inline;
+	border: none;
+}
+
+.inline .trait-description {
+    display: inline;
+    float: right;
+    width: 45%;
+    border: none;
+    margin: unset;
+    padding: unset;
+}
+
 /* Compact Two-Columns */
 /* No special handling needed */
 

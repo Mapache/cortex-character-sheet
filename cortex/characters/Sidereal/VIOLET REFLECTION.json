@@ -1,1 +1,355 @@
-{"version":4,"characterName":"VIOLET REFLECTION","description":"Scholarly Doctor","traits":[[[[["ANIMA","stress"],[["Anima","6","<i>A soft spread of midnight purple spreading out, flecked with countless stars</i>\n-   Adds to most actions, complicates stealth.\n-   Step up whenever you spend a mote.\n-   [Flare] Once per scene, you may add d6 to the doom pool to gain a mote and step up your anima.\n"]]],[["ABILITIES","signature-asset"],[["<i>Pick 2 abilities when rolling.</i>","",""]]],[["JOURNEYS","compact","#ffa200"],[["Endurance","-"],["Ride","-"],["Sail","-"],["Survival","-"],["Thrown","-"]],[["<i>The mast</i>",""],["<i>The messenger</i>",""],["<i>The captain</i>",""],["<i>The ship's wheel</i>",""],["<i>The gull</i>",""]]],[["SERENITY","compact","#006eff"],[["Craft","6"],["Dodge","8"],["Linguistics","8"],["PERFORMANCE","6"],["SOCIALIZE","4"]],[["<i>The peacock</i>",""],["<i>The ewer</i>",""],["<i>The pillar</i>",""],["<i>The musician</i>",""],["<i>The lovers</i>",""]]],[["BATTLES","compact","#d50707"],[["Archery","4"],["Integrity","6"],["Melee","-"],["PRESENCE","-"],["war","-"]],[["<i>The quiver</i>",""],["<i>The shield</i>",""],["<i>The spear</i>",""],["<i>The banner</i>",""],["<i>The sword</i>",""]]],[["SECRETS","compact","#039900"],[["Investigation","-"],["Larceny","-"],["Lore","8"],["Occult","0"],["Stealth","8"]],[["<i>The key</i>",""],["<i>The guardians</i>",""],["<i>The treasure trove</i>",""],["<i>The sorcerer</i>",""],["<i>The mask</i>",""]]],[["ENDINGS","compact","#8700b8"],[["Athletics","6"],["Awareness","6"],["Brawl","2"],["Bureacracy","6"],["Medicine","0"]],[["<i>The rising smoke</i>",""],["<i>The crow</i>",""],["<i>The gauntlet</i>",""],["<i>The Haywain</i>",""],["<i>The corpse</i>",""]]],[["STRESS","stress compact"],[["Physical","6"],["Social","6"],["Mental","6"]]]],[[["ESSENCE","detailed"],[["Essence","0","-   [Resplendent Destiny] Spend a mote as a transition scene action to create a d8 Destiny asset. When you include a Charm trait in a roll while wearing a Destiny, degrade the Destiny. (If the trait used is lower than or equal to the Destiny, step down the asset; if it is higher than the Destiny, remove the asset and flare your Anima.) You can freely don and doff destinies during transition scenes.\n-   [Chosen of Endings] Spend a mote to reroll any spoilers showing on your own or an ally’s roll to remove a complication. While your anima banner is visible, the GM must spend doom dice equal to or greater than your Essence to make a complication persistent on any character in the scene or to introduce a new scene complication.\n"]]],[["DISTINCTIONS","detailed"],[["Scholarly Doctor","8 / 4+mote","-   [Tactical Brilliance] When you create a tactical asset for another character by spending a mote, that asset enters play as a d8 rather than a d6, but it cannot be extended past the end of the scene.\n"],["TROUBLE","8 / 4+mote"],["FIX WHAT IS BROKEN","8 / 4+mote"]]],[["INTIMACIES","detailed"],[["Defining","0"],["major","8"],["minor","6"]]],[["LIMIT","stress"],[["Limit","6","[Limit Break] Curse of snobbishness"]]]]],[[[["CHARMS","detailed"],[["New trait","88888","-              One\n-              Two\n-              Three\n"],["TERRESTRIAL CIRCLE SORCERY","8","-  [Utility Magic] A dice pool containing Sorcery cannot be used to inflict stress.\n-  [Exhausted] Shutdown any Charms power to gain a mote. Activate a spoiler to recover the power, or recover for free during the next transition scene.\n"]]]],[[["PANOPLY","detailed"],[["???","66"],["EBON SHADOW STYLE","2","<i>Style Weapons: Unarmed, Fighting Chains, Sai</i>\n-   ???\n"],["SALARY","8","You have access to substantial wealth, both in Yu-Shan and Creation."],["CELESTIAL MANSE","6","-   [Hearthstone of Wakefulness] You do not need to sleep.\n"],["CONNECTIONS","6","You have friends among the Celestial Monitors of the Seasons and the Weather."]]]]]],"highlightColors":{":root":"#8700b8"}}
+{
+    "version": 4,
+    "characterName": "VIOLET REFLECTION",
+    "description": "Scholarly Doctor",
+    "traits": [
+        [
+            [
+                [
+                    [
+                        "ANIMA",
+                        "stress"
+                    ],
+                    [
+                        [
+                            "Anima",
+                            "6",
+                            "<i>A soft spread of midnight purple spreading out, flecked with countless stars</i>\n-       Adds to most actions, complicates stealth.\n-       Step up whenever you spend a mote.\n-       [Flare] Once per scene, you may add d6 to the doom pool to gain a mote and step up your anima.\n"
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "ABILITIES",
+                        "signature-asset"
+                    ],
+                    [
+                        [
+                            "<i>Pick 2 abilities when rolling.</i>",
+                            "",
+                            ""
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "JOURNEYS",
+                        "inline",
+                        "#ffa200"
+                    ],
+                    [
+                        [
+                            "Endurance",
+                            "∅",
+                            "<i>The Mast</i>"
+                        ],
+                        [
+                            "Ride",
+                            "∅",
+                            "<i>The Messenger</i>"
+                        ],
+                        [
+                            "Sail",
+                            "∅",
+                            "<i>The Captain</i>"
+                        ],
+                        [
+                            "Survival",
+                            "∅",
+                            "<i>The Ship's Wheel</i>"
+                        ],
+                        [
+                            "Thrown",
+                            "∅",
+                            "<i>The Gull</i>"
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "SERENITY",
+                        "inline",
+                        "#006eff"
+                    ],
+                    [
+                        [
+                            "Craft",
+                            "6",
+                            "<i>The Peacock</i>"
+                        ],
+                        [
+                            "Dodge",
+                            "8",
+                            "<i>The Ewer</i>"
+                        ],
+                        [
+                            "Linguistics",
+                            "8",
+                            "<i>The Pillar</i>"
+                        ],
+                        [
+                            "PERFORMANCE",
+                            "6",
+                            "<i>The Musician</i>"
+                        ],
+                        [
+                            "SOCIALIZE",
+                            "4",
+                            "<i>The Lovers</i>"
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "BATTLES",
+                        "inline",
+                        "#d50707"
+                    ],
+                    [
+                        [
+                            "Archery",
+                            "4",
+                            "<i>The Quiver</i>"
+                        ],
+                        [
+                            "Integrity",
+                            "6",
+                            "<i>The Shield</i>"
+                        ],
+                        [
+                            "Melee",
+                            "∅",
+                            "<i>The Spear</i>"
+                        ],
+                        [
+                            "PRESENCE",
+                            "∅",
+                            "<i>The Banner</i>"
+                        ],
+                        [
+                            "War",
+                            "∅",
+                            "<i>The Sword</i>"
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "SECRETS",
+                        "inline",
+                        "#039900"
+                    ],
+                    [
+                        [
+                            "Investigation",
+                            "∅",
+                            "<i>The Key</i>"
+                        ],
+                        [
+                            "Larceny",
+                            "∅",
+                            "<i>The Guardians</i>"
+                        ],
+                        [
+                            "Lore",
+                            "8",
+                            "<i>The Treasure Trove</i>"
+                        ],
+                        [
+                            "Occult",
+                            "0",
+                            "<i>The Sorcerer</i>"
+                        ],
+                        [
+                            "Stealth",
+                            "8",
+                            "<i>The Mask</i>"
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "ENDINGS",
+                        "inline",
+                        "#8700b8"
+                    ],
+                    [
+                        [
+                            "Athletics",
+                            "6",
+                            "<i>The Rising Smoke</i>"
+                        ],
+                        [
+                            "Awareness",
+                            "6",
+                            "<i>The Crow</i>"
+                        ],
+                        [
+                            "Brawl",
+                            "2",
+                            "<i>The Gauntlet</i>"
+                        ],
+                        [
+                            "Bureacracy",
+                            "6",
+                            "<i>The Haywain</i>"
+                        ],
+                        [
+                            "Medicine",
+                            "0",
+                            "<i>The Corpse</i>"
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "STRESS",
+                        "stress compact"
+                    ],
+                    [
+                        [
+                            "Physical",
+                            "6"
+                        ],
+                        [
+                            "Social",
+                            "6"
+                        ],
+                        [
+                            "Mental",
+                            "6"
+                        ]
+                    ]
+                ]
+            ],
+            [
+                [
+                    [
+                        "ESSENCE",
+                        "detailed"
+                    ],
+                    [
+                        [
+                            "Essence",
+                            "0",
+                            "-       [Resplendent Destiny] Spend a mote as a transition scene action to create a d8 Destiny asset. When you include a Charm trait in a roll while wearing a Destiny, degrade the Destiny. (If the trait used is lower than or equal to the Destiny, step down the asset; if it is higher than the Destiny, remove the asset and flare your Anima.) You can freely don and doff destinies during transition scenes.\n-       [Chosen of Endings] Spend a mote to reroll any spoilers showing on your own or an ally’s roll to remove a complication. While your anima banner is visible, the GM must spend doom dice equal to or greater than your Essence to make a complication persistent on any character in the scene or to introduce a new scene complication.\n"
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "DISTINCTIONS",
+                        "detailed"
+                    ],
+                    [
+                        [
+                            "Scholarly Doctor",
+                            "8 / 4+mote",
+                            "-       [Tactical Brilliance] When you create a tactical asset for another character by spending a mote, that asset enters play as a d8 rather than a d6, but it cannot be extended past the end of the scene.\n"
+                        ],
+                        [
+                            "TROUBLE",
+                            "8 / 4+mote"
+                        ],
+                        [
+                            "FIX WHAT IS BROKEN",
+                            "8 / 4+mote"
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "INTIMACIES",
+                        "detailed"
+                    ],
+                    [
+                        [
+                            "Defining",
+                            "0"
+                        ],
+                        [
+                            "major",
+                            "8"
+                        ],
+                        [
+                            "minor",
+                            "6"
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "LIMIT",
+                        "stress"
+                    ],
+                    [
+                        [
+                            "Limit",
+                            "6",
+                            "[Limit Break] Curse of snobbishness"
+                        ]
+                    ]
+                ]
+            ]
+        ],
+        [
+            [
+                [
+                    [
+                        "CHARMS",
+                        "detailed"
+                    ],
+                    [
+                        [
+                            "New trait",
+                            "88888",
+                            "-                  One\n-                  Two\n-                  Three\n"
+                        ],
+                        [
+                            "TERRESTRIAL CIRCLE SORCERY",
+                            "8",
+                            "-      [Utility Magic] A dice pool containing Sorcery cannot be used to inflict stress.\n-      [Exhausted] Shutdown any Charms power to gain a mote. Activate a spoiler to recover the power, or recover for free during the next transition scene.\n"
+                        ]
+                    ]
+                ]
+            ],
+            [
+                [
+                    [
+                        "PANOPLY",
+                        "detailed"
+                    ],
+                    [
+                        [
+                            "???",
+                            "66"
+                        ],
+                        [
+                            "EBON SHADOW STYLE",
+                            "2",
+                            "<i>Style Weapons: Unarmed, Fighting Chains, Sai</i>\n-       ???\n"
+                        ],
+                        [
+                            "SALARY",
+                            "8",
+                            "You have access to substantial wealth, both in Yu-Shan and Creation."
+                        ],
+                        [
+                            "CELESTIAL MANSE",
+                            "6",
+                            "-       [Hearthstone of Wakefulness] You do not need to sleep.\n"
+                        ],
+                        [
+                            "CONNECTIONS",
+                            "6",
+                            "You have friends among the Celestial Monitors of the Seasons and the Weather."
+                        ]
+                    ]
+                ]
+            ]
+        ]
+    ],
+    "highlightColors": {
+        ":root": "#8700b8"
+    }
+}

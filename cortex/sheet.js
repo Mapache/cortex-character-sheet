@@ -1,3 +1,12 @@
+function c_to_html(html) {
+	if (html == "-") {
+		return "–"
+	}
+	if (html == "O" || html == "o") {
+		return "∅"
+	}
+	return html
+}
 function text_to_html(html) {
 	if (html.search(/^-/m) != -1) {
 		html = html.replace(/^-(.*)$/m, "<ul><li>$1</li>")
@@ -63,6 +72,17 @@ function init_event_handlers(parent) {
 	let editables = parent.querySelectorAll("div[contenteditable], h1[contenteditable], h2[contenteditable]")
 	for (let editable of editables) {
 		add_event_handlers(editable)
+	}
+
+	// C elements get limited conversion; we don't want to add nested C elements.
+	let cs = parent.querySelectorAll("c[contenteditable]")
+	for (let c of cs) {
+		c.addEventListener("blur", function (event) {
+			event.target.innerHTML = c_to_html(event.target.innerText)
+		})
+		c.addEventListener("focus", function (event) {
+			event.target.innerText = html_to_text(event.target.innerHTML)
+		})
 	}
 }
 
@@ -416,7 +436,7 @@ function load_characterV4(file) {
 						let trait = get_element_from_parts(["pages", pageIndex, columnIndex + 1, traitGroupIndex, traitGroupColumnIndex + 2, traitIndex])
 						let [name, value, description] = traitData
 						trait.querySelector(".trait-name").innerHTML = text_to_html(name)
-						trait.querySelector(".trait-value c").innerHTML = text_to_html(value)
+						trait.querySelector(".trait-value c").innerHTML = c_to_html(value)
 						if (description != null) {
 							trait.querySelector(".trait-description").innerHTML = text_to_html(description)
 						}
@@ -590,6 +610,7 @@ function reset_trait_group(elem) {
 
 	elem.classList.remove("abilities")
 	elem.classList.remove("compact")
+	elem.classList.remove("inline")
 	elem.classList.remove("milestones")
 	elem.classList.remove("resources")
 	elem.classList.remove("roles")
