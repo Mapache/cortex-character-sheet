@@ -5,6 +5,13 @@ function c_to_html(html) {
 	if (html == "O" || html == "o") {
 		return "∅"
 	}
+	html = html.replace(/\bd4\b/g, "4")
+	html = html.replace(/\bd6\b/g, "6")
+	html = html.replace(/\bd8\b/g, "8")
+	html = html.replace(/\bd10\b/g, "0")
+	html = html.replace(/\bd12\b/g, "2")
+	html = html.replace(/\bPP\b/g, "<pp></pp>")
+	html = html.replace(/\bMOTE\b/ig, "<mote></mote>")
 	return html
 }
 function text_to_html(html) {
