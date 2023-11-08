@@ -522,16 +522,17 @@ function add_child(parent, className) {
 }
 
 function add_group(event, className) {
-	add_child(event.target.parentElement, className)
+	return add_child(event.target.parentElement, className)
 }
 
 function add_page(e) {
-	add_group(e, "page")
-	install_title_listeners()
+	let page = add_group(e, "page")
+	install_title_listeners() // TODO: Switch to install_title_listener(page) after setting up the first page's listener.
 }
 
 function add_trait_group(e) {
-	add_group(e, "trait-group")
+	let traitGroup = add_group(e, "trait-group")
+	apply_data_style(traitGroup, "detailed")
 }
 
 function add_trait(e) {
@@ -539,13 +540,20 @@ function add_trait(e) {
 }
 
 function install_title_listeners() {
-	console.log("install_title_listeners")
 	let titles = document.getElementsByClassName("title")
-	console.log(titles)
 	for (let title of titles) {
 		title.addEventListener("input", function () {
 			let character_name = title.innerText
-			console.log(character_name)
+			update_titles(character_name, title)
+		})
+	}
+}
+
+function install_title_listener(page) {
+	let title = page.getElementsByClassName("title")
+	for (let title of titles) {
+		title.addEventListener("input", function () {
+			let character_name = title.innerText
 			update_titles(character_name, title)
 		})
 	}

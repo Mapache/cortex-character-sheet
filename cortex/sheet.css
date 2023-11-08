@@ -1559,6 +1559,7 @@ li:before {
     border: none;
     margin: unset;
     padding: unset;
+    color: var(--highlight);
 }
 
 /* Compact Two-Columns */
