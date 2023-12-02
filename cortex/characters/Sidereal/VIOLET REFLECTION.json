@@ -1,7 +1,7 @@
 {
     "version": 4,
     "characterName": "VIOLET REFLECTION",
-    "description": "Scholarly Doctor",
+    "description": "Experienced Doctor, Scholar, and Martial Artist. <span style=\"font-size: 10pt;\">Disappointed by the world, but still an idealist. Genuinely likes mortals. Frequently sad, but always hopeful.</span><span style=\"font-size: 10pt;\"> </span><span style=\"font-size: 10pt;\">All things end, but may they end well.</span>",
     "traits": [
         [
             [
@@ -14,7 +14,7 @@
                         [
                             "Anima",
                             "6",
-                            "<i>A soft spread of midnight purple blooming outward, flecked with countless stars</i>\n-             Adds to most actions, complicates stealth.\n-             Step up whenever you spend a mote.\n-             [Flare] Once per scene, you may add d6 to the doom pool to gain a mote and step up your anima.\n"
+                            "<i>A soft spread of midnight purple blooming outward, flecked with countless stars</i>\n-              Adds to most actions, complicates stealth.\n-              Step up whenever you spend a mote.\n-              [Flare] Once per scene, you may add d6 to the doom pool to gain a mote and step up your anima.\n"
                         ]
                     ]
                 ],
@@ -230,9 +230,9 @@
                     ],
                     [
                         [
-                            "Essence",
+                            "ESSENCE",
                             "0",
-                            "-    [Resplendent Destiny] Spend a mote as a transition scene action to craft a Destiny asset with die size matching a constellation. When you include a Charm in a roll while wearing a Destiny, degrade the Destiny. (If the Charm is higher than the Destiny, destroy the asset and flare your Anima; otherwise, step down the asset.) You can freely don and doff Destinies during transition scenes.\n-    [Chosen of Endings] Spend a mote to reroll any spoilers showing on your own or an ally’s roll to remove a complication. While your anima banner is visible, the GM must spend doom dice equal to or greater than your Essence to make a complication persistent on any character in the scene or to introduce a new scene complication.\n"
+                            "-     [Resplendent Destiny] Spend a mote as a transition scene action to craft a Destiny asset with die size matching a constellation. When you include a Charm in a roll while wearing a Destiny, degrade the Destiny. (If the Charm is higher than the Destiny, destroy the asset and flare your Anima; otherwise, step down the asset.) You can freely don and doff Destinies during transition scenes.\n-     [Chosen of Endings] Spend a mote to reroll any spoilers showing on your own or an ally’s roll to remove a complication. While your anima banner is visible, the GM must spend doom dice equal to or greater than your Essence to make a complication persistent on any character in the scene or to introduce a new scene complication.\n"
                         ]
                     ]
                 ],
@@ -245,15 +245,17 @@
                         [
                             "Scholarly Doctor",
                             "8 / 4+mote",
-                            "-    [Tactical Brilliance] When you create a tactical asset for another character by spending a mote, that asset enters play as a d8 rather than a d6, but it cannot be extended past the end of the scene.\n"
+                            "-  [Combat Medic] Spend a mote as an action to recover your own or another’s physical stress, or to step down physical trauma.\n"
                         ],
                         [
                             "SUFFERING IS INJUSTICE",
-                            "8 / 4+mote"
+                            "8 / 4+mote",
+                            ""
                         ],
                         [
                             "FIX WHAT IS BROKEN",
-                            "8 / 4+mote"
+                            "8 / 4+mote",
+                            ""
                         ]
                     ]
                 ],
@@ -303,12 +305,12 @@
                         [
                             "New trait",
                             "88888",
-                            "-                        [Someone Else's Destiny]\n-                        Two\n-                        Three\n"
+                            "-                         [Someone Else's Destiny]\n-                         Two\n-                         Three\n"
                         ],
                         [
                             "TERRESTRIAL CIRCLE SORCERY",
                             "8",
-                            "-            [Utility Magic] A dice pool containing Sorcery cannot be used to inflict stress.\n-            [Exhausted] Shutdown any Charms power to gain a mote. Activate a spoiler to recover the power, or recover for free during the next transition scene.\n"
+                            "-             [Utility Magic] A dice pool containing Sorcery cannot be used to inflict stress.\n-             [Exhausted] Shutdown any Charms power to gain a mote. Activate a spoiler to recover the power, or recover for free during the next transition scene.\n"
                         ]
                     ]
                 ]
@@ -328,12 +330,12 @@
                         [
                             "CELESTIAL MANSE",
                             "6",
-                            "-             [Hearthstone of Wakefulness] You do not need to sleep.\n"
+                            "-              [Hearthstone of Wakefulness] You do not need to sleep.\n"
                         ],
                         [
                             "CONNECTIONS",
                             "6",
-                            "-    [Celestial Monitors of the Seasons and the Weather] Not only responsible for the day-to-day running of climate, but also Heaven's military, including deployment of <i>Martial Weather</i>.\n"
+                            "-     [Celestial Monitors of the Seasons and the Weather] Not only responsible for the day-to-day running of climate, but also Heaven's military, including deployment of <i>Martial Weather</i>.\n"
                         ]
                     ]
                 ],
@@ -346,7 +348,7 @@
                         [
                             "CITRINE POXES OF CONTAGION",
                             "2",
-                            "<i>Style Weapons: Unarmed, Fighting Chains</i>\n-    d6 ???\n-    d6 ???\n"
+                            "<i>Style Weapons: Unarmed, Fighting Chains</i>\n-     d6 ???\n-     d6 ???\n"
                         ]
                     ]
                 ]
