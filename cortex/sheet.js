@@ -446,8 +446,8 @@ function load_characterV4(file) {
 						let [name, value] = traitData
 						trait.querySelector(".trait-name").innerHTML = text_to_html(name)
 						trait.querySelector(".trait-value c").innerHTML = c_to_html(value)
-						let description = traitData.slice(2).join("\n")
-						if (description != null) {
+						if (traitData.length > 2) {
+							let description = traitData.slice(2).join("\n")
 							trait.querySelector(".trait-description").innerHTML = text_to_html(description)
 						}
 					}
