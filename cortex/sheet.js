@@ -1,3 +1,5 @@
+// Character Sheet
+
 function c_to_html(html) {
 	if (html == "-") {
 		return "–"
@@ -16,8 +18,8 @@ function c_to_html(html) {
 }
 function text_to_html(html) {
 	if (html.search(/^-/m) != -1) {
-		html = html.replace(/^-(.*)$/m, "<ul><li>$1</li>")
-		html = html.replace(/^-(.*)$/gm, "<li>$1</li>")
+		html = html.replace(/^- *(.*)$/m, "<ul><li>$1</li>")
+		html = html.replace(/^- *(.*)$/gm, "<li>$1</li>")
 		index = html.lastIndexOf("</li>") + 5
 		html = html.substring(0, index) + "</ul>" + html.substring(index)
 	}
@@ -230,7 +232,7 @@ function save_characterV4() {
 							// Don't save default trait descriptions.
 							traitGroupColumnData.push([name, value])
 						} else {
-							traitGroupColumnData.push([name, value, description])
+							traitGroupColumnData.push([name, value].concat(description.trim().split("\n")))
 						}
 					}
 					if (traitGroupColumnData.length > 0) {
@@ -441,9 +443,10 @@ function load_characterV4(file) {
 				for (let [traitGroupColumnIndex, traitGroupColumnData] of traitGroupData.slice(1).entries()) {
 					for (let [traitIndex, traitData] of traitGroupColumnData.entries()) {
 						let trait = get_element_from_parts(["pages", pageIndex, columnIndex + 1, traitGroupIndex, traitGroupColumnIndex + 2, traitIndex])
-						let [name, value, description] = traitData
+						let [name, value] = traitData
 						trait.querySelector(".trait-name").innerHTML = text_to_html(name)
 						trait.querySelector(".trait-value c").innerHTML = c_to_html(value)
+						let description = traitData.slice(2).join("\n")
 						if (description != null) {
 							trait.querySelector(".trait-description").innerHTML = text_to_html(description)
 						}
