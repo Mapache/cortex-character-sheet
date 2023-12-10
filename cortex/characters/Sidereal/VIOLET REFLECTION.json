@@ -14,7 +14,10 @@
                         [
                             "Anima",
                             "6",
-                            "<i>A soft spread of midnight purple blooming outward, flecked with countless stars</i>\n- Adds to most actions, complicates stealth.\n- Step up whenever you spend a mote.\n- [Flare] Once per scene, you may add d6 to the doom pool to gain a mote and step up your anima.\n"
+                            "<i>A soft spread of midnight purple blooming outward, flecked with countless stars</i>",
+                            "- Adds to most actions, complicates stealth.",
+                            "- Step up whenever you spend a mote.",
+                            "- [Flare] Once per scene, you may add d6 to the doom pool to gain a mote and step up your anima."
                         ]
                     ]
                 ],
@@ -232,7 +235,8 @@
                         [
                             "ESSENCE",
                             "0",
-                            "- [Resplendent Destiny] Spend a mote as a transition scene action to craft a Destiny asset with die size matching a constellation. When you include a Charm in a roll while wearing a Destiny, degrade the Destiny. (If the Charm is higher than the Destiny, destroy the asset and flare your Anima; otherwise, step down the asset.) You can freely don and doff Destinies during transition scenes.\n- [Chosen of Endings] Spend a mote to reroll any spoilers showing on your own or an ally’s roll to remove a complication. While your anima banner is visible, the GM must spend doom dice equal to or greater than your Essence to make a complication persistent on any character in the scene or to introduce a new scene complication.\n"
+                            "- [Resplendent Destiny] Spend a mote as a transition scene action to craft a Destiny asset with die size matching a constellation. When you include a Charm in a roll while wearing a Destiny, degrade the Destiny. (If the Charm is higher than the Destiny, destroy the asset and flare your Anima; otherwise, step down the asset.) You can freely don and doff Destinies during transition scenes.",
+                            "- [Chosen of Endings] Spend a mote to reroll any spoilers showing on your own or an ally’s roll to remove a complication. While your anima banner is visible, the GM must spend doom dice equal to or greater than your Essence to make a complication persistent on any character in the scene or to introduce a new scene complication."
                         ]
                     ]
                 ],
@@ -245,7 +249,7 @@
                         [
                             "Scholarly Doctor",
                             "8 / 4+mote",
-                            "- [Combat Medic] Spend a mote as an action to recover your own or another’s physical stress, or to step down physical trauma.\n"
+                            "- [Combat Medic] Spend a mote as an action to recover your own or another’s physical stress, or to step down physical trauma."
                         ],
                         [
                             "SUFFERING IS INJUSTICE",
@@ -303,9 +307,25 @@
                     ],
                     [
                         [
-                            "New trait",
-                            "88888",
-                            "- [Someone Else's Destiny]\n- Two\n- Three\n- [Exhausted] Shutdown any Charms power to gain a mote. Activate a spoiler to recover the power, or recover for free during the next transition scene.\n"
+                            "ENHANCED DURABILITY",
+                            "8",
+                            ""
+                        ],
+                        [
+                            "ENHANCED REFLEXES",
+                            "8",
+                            ""
+                        ],
+                        [
+                            "ENHANCED SENSES",
+                            "8",
+                            ""
+                        ],
+                        [
+                            "INVISIBILITY",
+                            "8",
+                            "- [Someone Else's Destiny] Spend a mote when you successfully attack someone to transfer a complication or stress from you to them; your effect die must be at least as large as the die transferred.",
+                            "- [Exhausted] Shutdown any Charms power to gain a mote. Activate a spoiler to recover the power, or recover for free during the next transition scene."
                         ]
                     ]
                 ],
@@ -338,12 +358,12 @@
                         [
                             "CELESTIAL MANSE",
                             "6",
-                            "- [Hearthstone of Wakefulness] You do not need to sleep.\n"
+                            "- [Hearthstone of Wakefulness] You do not need to sleep."
                         ],
                         [
                             "CONNECTIONS",
                             "6",
-                            "- [Celestial Monitors of the Seasons and the Weather] Not only responsible for the day-to-day running of climate, but also Heaven's military, including deployment of <i>Martial Weather</i>.\n"
+                            "- [Celestial Monitors of the Seasons and the Weather] Not only responsible for the day-to-day running of climate, but also Heaven's military, including deployment of <i>Martial Weather</i>."
                         ]
                     ]
                 ],
@@ -356,7 +376,9 @@
                         [
                             "CITRINE POXES OF CONTAGION",
                             "2",
-                            "<i>Style Weapons: Unarmed, Fighting Chains</i>\n- d6 ???\n- d6 ???\n"
+                            "<i>Style Weapons: Unarmed, Fighting Chains</i>",
+                            "- [Gentle Touch of the Wicked Hand] Add a d6 and step up your effect die when inflicting physical stress or complications using this style.",
+                            "- [Essence-Shattering Typhoon] When attacking multiple targets with this style, spend a mote to, for each additional target, add a d6 and keep an additional effect die."
                         ]
                     ]
                 ]
