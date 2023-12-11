@@ -311,7 +311,6 @@
                             "88",
                             "- d8",
                             "- d8",
-                            "- d8",
                             "- [Exhausted] Shutdown any Charms power to gain a mote. Activate a spoiler to recover the power, or recover for free during the next transition scene."
                         ]
                     ]
@@ -323,8 +322,8 @@
                     ],
                     [
                         [
-                            "TERRESTRIAL CIRCLE SORCERY",
-                            "8",
+                            "CELESTIAL CIRCLE SORCERY",
+                            "0",
                             "- [Utility Magic] A dice pool containing Sorcery cannot be used to inflict stress."
                         ]
                     ]
@@ -338,33 +337,41 @@
                     ],
                     [
                         [
-                            "???",
-                            "6"
-                        ],
-                        [
                             "DANCING MOONSILVER DREAM &amp;\nWHIRLING SOULSTEEL NIGHTMARE",
                             "0",
                             "<i>A pair of vicious artifact throwing blades, enchanted to fight autonomously</i>",
-                            "- ???"
+                            "- [Twin Blades] When attacking, you may split this into d8 d8 and keep an additional effect die.",
+                            "- [Flight Needs No Hands] Spend a mote to act with the blades in addition to taking another action."
                         ],
                         [
                             "SALARY",
-                            "8",
-                            "You have access to substantial wealth, both in Yu-Shan and Creation."
-                        ],
-                        [
-                            "CELESTIAL MANSE",
-                            "6",
-                            "- [Hearthstone of Wakefulness] You do not need to sleep."
+                            "4",
+                            "You're damn near broke in Yu-Shan, but can scrape together a few funds in Creation."
                         ],
                         [
                             "CONNECTIONS",
                             "6",
-                            "You have friends among the Celestial Monitors of the Seasons and the Weather."
+                            "You have friends among the <i>Superintendency of Nature Grand and Humble</i>."
                         ],
                         [
                             "DEATH OF OBSIDIAN BUTTERFLIES",
-                            "6"
+                            "6",
+                            "<i>Ten thousand butterflies made of black volcanic glass with razor-sharp wings</i>",
+                            "- [Widespread] When attacking multiple targets with this spell, for each additional target add a d6 and keep an additional effect die.",
+                            "- [Fragile] Shutdown this power after use. Recover for free during the next transition scene."
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "MARTIAL ARTS",
+                        "detailed"
+                    ],
+                    [
+                        [
+                            "AIR DRAGON STYLE",
+                            "0",
+                            "- d6"
                         ]
                     ]
                 ]

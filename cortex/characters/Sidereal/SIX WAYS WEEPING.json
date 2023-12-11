@@ -309,9 +309,9 @@
                         [
                             "New trait",
                             "888",
-                            "- [Hot-Eyed Snake Whispering]",
-                            "- [Shun the Smiling Lady]",
-                            "- [Cash and Murder Games]",
+                            "- [Hot-Eyed Snake Whispering] d8",
+                            "- [Shun the Smiling Lady] d8",
+                            "- [Cash and Murder Games] d8",
                             "- [Exhausted] Shutdown any Charms power to gain a mote. Activate a spoiler to recover the power, or recover for free during the next transition scene."
                         ]
                     ]
@@ -325,14 +325,16 @@
                     ],
                     [
                         [
-                            "???",
-                            "66"
+                            "UNDERLING",
+                            "8",
+                            "<i>Watcher Perched Atop Paperwork Mountain</i>, a former owl familiar you have raised to minor godhood. Works as a functionary in the Bureau of Destiny. Can run errands for you in Yu-Shan."
                         ],
                         [
-                            "EBON SHADOW STYLE",
-                            "2",
-                            "<i>Style Weapons: Unarmed, Fighting Chains, Sai</i>",
-                            "- ???"
+                            "THE IRON JANG BONG",
+                            "6",
+                            "<i>A collapsible steel staff with Starmetal jackets on the ends</i>",
+                            "- [Concealable] You may carry it on your person in collapsed form without being noticed.",
+                            "- [???] d6 defensive ability"
                         ],
                         [
                             "SALARY",
@@ -340,14 +342,23 @@
                             "You have access to substantial wealth, both in Yu-Shan and Creation."
                         ],
                         [
-                            "CELESTIAL MANSE",
-                            "6",
-                            "- [Hearthstone of Wakefulness] You do not need to sleep."
-                        ],
-                        [
                             "CONNECTIONS",
+                            "8",
+                            "You have friends among the Realm, the Guild, outlaw groups, and the Bureau of Destiny."
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "MARTIAL ARTS",
+                        "detailed"
+                    ],
+                    [
+                        [
+                            "CRANE STYLE",
                             "6",
-                            "You have friends among the Celestial Monitors of the Seasons and the Weather."
+                            "<i>Style Weapons: Unarmed, Staves</i>",
+                            "- [???] d6"
                         ]
                     ]
                 ]

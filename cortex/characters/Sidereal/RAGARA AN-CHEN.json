@@ -307,11 +307,25 @@
                     ],
                     [
                         [
-                            "New trait",
-                            "888",
-                            "- [Presence in Absence Technique]",
-                            "- Two",
-                            "- Three",
+                            "ENHANCED CHARISMA",
+                            "8",
+                            ""
+                        ],
+                        [
+                            "ENHANCED REFLEXES",
+                            "8",
+                            ""
+                        ],
+                        [
+                            "ENHANCED SPEED",
+                            "8",
+                            ""
+                        ],
+                        [
+                            "ENHANCED STRENGTH",
+                            "8",
+                            "- [Presence in Absence Technique] d8",
+                            "- [???] d8",
                             "- [Exhausted] Shutdown any Charms power to gain a mote. Activate a spoiler to recover the power, or recover for free during the next transition scene."
                         ]
                     ]
@@ -325,29 +339,35 @@
                     ],
                     [
                         [
-                            "???",
-                            "66"
-                        ],
-                        [
-                            "EBON SHADOW STYLE",
-                            "2",
-                            "<i>Style Weapons: Unarmed, Fighting Chains, Sai</i>",
-                            "- ???"
+                            "FLAME LANCE",
+                            "8",
+                            "<i>A short spear with a red jade head. Bursts into flame on command and can shoot gouts of fire</i>",
+                            "- d6"
                         ],
                         [
                             "SALARY",
-                            "8",
-                            "You have access to substantial wealth, both in Yu-Shan and Creation."
-                        ],
-                        [
-                            "CELESTIAL MANSE",
                             "6",
-                            "- [Hearthstone of Wakefulness] You do not need to sleep."
+                            "You have access to reasonable wealth, both in Yu-Shan and Creation."
                         ],
                         [
                             "CONNECTIONS",
                             "6",
-                            "You have friends among the Celestial Monitors of the Seasons and the Weather."
+                            "You have friends among the <i>Dragon-Blooded</i> and the <i>Immaculate Order</i>."
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "MARTIAL ARTS",
+                        "detailed"
+                    ],
+                    [
+                        [
+                            "RIGHTEOUS DEVIL STYLE",
+                            "0",
+                            "<i>Style Weapons: Firewands, Firelances</i>",
+                            "- d6",
+                            "- d6"
                         ]
                     ]
                 ]

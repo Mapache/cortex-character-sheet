@@ -309,9 +309,9 @@
                         [
                             "New trait",
                             "888",
-                            "- [Secrets of Future Strife]",
-                            "- [Systematic Understanding of Everything]",
-                            "- [Of Truths Best Unspoken]",
+                            "- [Secrets of Future Strife] d8",
+                            "- [Systematic Understanding of Everything] d8",
+                            "- [Of Truths Best Unspoken] d8",
                             "- [Exhausted] Shutdown any Charms power to gain a mote. Activate a spoiler to recover the power, or recover for free during the next transition scene."
                         ]
                     ]
@@ -325,29 +325,43 @@
                     ],
                     [
                         [
-                            "???",
-                            "66"
+                            "FAMILIAR",
+                            "8",
+                            "<i>Midnight Beast Who Feasts Upon Minute Leviathans, a House Cat</i>"
                         ],
                         [
-                            "EBON SHADOW STYLE",
-                            "2",
-                            "<i>Style Weapons: Unarmed, Fighting Chains, Sai</i>",
-                            "- ???"
+                            "DAIKLAVE",
+                            "8",
+                            "<i>An absolutely ginormous sword</i>"
                         ],
                         [
                             "SALARY",
-                            "8",
-                            "You have access to substantial wealth, both in Yu-Shan and Creation."
+                            "6",
+                            "You have access to reasonable wealth, both in Yu-Shan and Creation."
                         ],
                         [
                             "CELESTIAL MANSE",
                             "6",
-                            "- [Hearthstone of Wakefulness] You do not need to sleep."
+                            "- [Hearthstone of Recognition] If you act like people know you, they will believe they do."
                         ],
                         [
                             "CONNECTIONS",
                             "6",
-                            "You have friends among the Celestial Monitors of the Seasons and the Weather."
+                            "You have friends among the <i>Divine Witnesses of Human Works and Deeds</i>, which include the <i>Five Directions Directorate</i> and the <i>Department of Universal Human Affairs</i>."
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "MARTIAL ARTS",
+                        "detailed"
+                    ],
+                    [
+                        [
+                            "VIOLET BIER OF SORROWS STYLE",
+                            "8",
+                            "<i>Style Weapons: Unarmed, Swords</i>",
+                            "- [Blade of the Battle Maiden] d6"
                         ]
                     ]
                 ]
