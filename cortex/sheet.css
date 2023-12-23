@@ -94,7 +94,7 @@
 	box-sizing: border-box;
 	width: 210mm;
 	height: 297.1mm;
-	margin: 1cm 1cm auto 1cm;
+	margin: 10mm 10mm auto 10mm;
 	border: 1px #D3D3D3 solid;
 	border-radius: 5px;
 	box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
@@ -104,24 +104,21 @@
 	font-size: 10pt;
 	line-height: normal;
 	font-weight: 400;
-	padding: 14mm 19mm 0 19mm;
-	column-count: 2;
-	column-gap: 12pt;
-}
-
-.page .left {
-	break-after: column;
-}
-
-.left,
-.right {
+	padding: 14mm 14mm 0 14mm;
 	/*
-	display: flex;
-	flex-direction: column;
-	flex-wrap: nowrap;
-	overflow-x: visible;
-	overflow-y: hidden;
+	column-count: 2;
+	column-gap: 4mm;
 	*/
+}
+
+.page-column {
+    width: 87mm;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.page-column.left {
+	margin-right: 6mm;
 }
 
 /* Headings */
@@ -472,7 +469,7 @@ ref {
 }
 
 .trait #remove-item:before {
-	left: 66mm;
+	left: 70mm;
 }
 
 #context-menu-button {
@@ -1498,7 +1495,7 @@ li:before {
 		width: 40mm;
 		height: 20mm;
 		color: white;
-		margin-left: 33.5mm;
+		margin-left: 40mm;
 		margin-top: -0.5mm;
 		text-shadow: -0.1mm -0.1mm 0.3mm #000, 0.1mm -0.1mm 0.3mm #000, -0.1mm 0.1mm 0.3mm #000, 0.1mm 0.1mm 0.3mm #000;
 		display: inline;
@@ -1513,7 +1510,7 @@ li:before {
 		content: '';
 		position: relative;
 		top: -0.6em;
-		width: calc(74.5mm - 100%);
+		width: calc(77.5mm - 100%);
 		left: 100%;
 		display: block;
 		z-index: -10;
