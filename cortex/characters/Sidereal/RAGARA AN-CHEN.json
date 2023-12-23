@@ -324,8 +324,8 @@
                         [
                             "ENHANCED STRENGTH",
                             "8",
-                            "- [Presence in Absence Technique] d8",
-                            "- [???] d8",
+                            "- [Presence in Absence Technique] Declare an impending social attack you will make and attach it to a target you are touching, with a trigger of your choosing for when the attack will happen against either the target or whoever they are interacting with.",
+                            "- [Duck Fate] Once per scene, spend a mote to avoid taking stress or a complication.",
                             "- [Exhausted] Shutdown any Charms power to gain a mote. Activate a spoiler to recover the power, or recover for free during the next transition scene."
                         ]
                     ]
@@ -339,10 +339,10 @@
                     ],
                     [
                         [
-                            "FLAME LANCE",
+                            "FLAME SPEAR",
                             "8",
-                            "<i>A short spear with a red jade head. Bursts into flame on command and can shoot gouts of fire</i>",
-                            "- d6"
+                            "<i>A short spear with a jagged head that at first glance appears to be made of red jade, but on close inspection is actually solid ever-burning fire. Can be used as a melee weapon or commanded to shoot gouts of flame.</i>",
+                            "- [Phoenix Flies on Golden Wings] Spend a mote to ignore any one complication."
                         ],
                         [
                             "SALARY",
@@ -365,9 +365,9 @@
                         [
                             "RIGHTEOUS DEVIL STYLE",
                             "0",
-                            "<i>Style Weapons: Firewands, Firelances</i>",
-                            "- d6",
-                            "- d6"
+                            "<i>Style Weapons: Firewands, Flamespears</i>",
+                            "- [Heaven's Inevitable Challenge] Spend a mote to force an opponent to duel you in single combat (or any one-on-one competition). No one else may interfere.",
+                            "- [Caress of 1,000 Hells] When attacking with this style, you may inflict both physical and mental stress simultaneously with a single effect die."
                         ]
                     ]
                 ]
