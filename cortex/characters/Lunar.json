@@ -14,7 +14,10 @@
                         [
                             "Anima",
                             "6",
-                            "A wolf-shaped comet of blue &amp; gold streaks across an aurora-filled sky at dusk\n-      Adds to most actions, complicates stealth.\n-      Step up whenever you spend a mote.\n-      [Flare] Once per scene, you may add d6 to the doom pool to gain a mote and step up your anima.\n"
+                            "A wolf-shaped comet of blue &amp; gold streaks across an aurora-filled sky at dusk",
+                            "- Adds to most actions, complicates stealth.",
+                            "- Step up whenever you spend a mote.",
+                            "- [Flare] Once per scene, you may add d6 to the doom pool to gain a mote and step up your anima."
                         ]
                     ]
                 ],
@@ -186,7 +189,8 @@
                         [
                             "Essence",
                             "0",
-                            "-      [Special: Supernal Skill] When you include a specialty from your caste skills in a dice pool, the specialty is a d8 rather than a d6. Your caste skills are Fight, Labor, Shoot, Throw, War, and any skill used to inflict fear-based social stress or complications.\n-      [Twilight Caste] Spend a mote to double your caste abilities for one roll. While your anima banner is visible, you may convert physical stress suffered to mental stress at no cost; if you would suffer physical trauma to stay in a scene, you may suffer mental trauma instead.\n"
+                            "- [Special: Supernal Skill] When you include a specialty from your caste skills in a dice pool, the specialty is a d8 rather than a d6. Your caste skills are Fight, Labor, Shoot, Throw, War, and any skill used to inflict fear-based social stress or complications.",
+                            "- [Twilight Caste] Spend a mote to double your caste abilities for one roll. While your anima banner is visible, you may convert physical stress suffered to mental stress at no cost; if you would suffer physical trauma to stay in a scene, you may suffer mental trauma instead."
                         ]
                     ]
                 ],
@@ -199,7 +203,7 @@
                         [
                             "Undefeated of the East",
                             "8 / 4+mote",
-                            "-      [Tactical Brilliance] When you create a tactical asset for another character by spending a mote, that asset enters play as a d8 rather than a d6, but it cannot be extended past the end of the scene.\n"
+                            "- [Tactical Brilliance] When you create a tactical asset for another character by spending a mote, that asset enters play as a d8 rather than a d6, but it cannot be extended past the end of the scene."
                         ],
                         [
                             "Barefoot General ",
@@ -262,17 +266,19 @@
                         [
                             "Mystic Senses",
                             "8",
-                            "-     [Craftsman Needs No Tools] When you make a roll including the Craft skill, you may spend a mote to reroll any spoilers showing.\n-     [Hardship-Surviving Mendicant Spirit] Spend a mote to ignore stress or complications from non-magical environmental hazards or the effects of deprivation.\n"
+                            "- [Craftsman Needs No Tools] When you make a roll including the Craft skill, you may spend a mote to reroll any spoilers showing.",
+                            "- [Hardship-Surviving Mendicant Spirit] Spend a mote to ignore stress or complications from non-magical environmental hazards or the effects of deprivation."
                         ],
                         [
                             "Essence blast",
                             "8",
-                            "-    [Impending Disaster] Step up or double Essence Blast against a single target, or spend a mote to do both. If the attack fails, shutdown Essence Blast. Recover by activating an opportunity or for free during a transition scene.\n"
+                            "- [Impending Disaster] Step up or double Essence Blast against a single target, or spend a mote to do both. If the attack fails, shutdown Essence Blast. Recover by activating an opportunity or for free during a transition scene."
                         ],
                         [
                             "Celestial circle sorcery",
                             "0",
-                            "-      [Utility Magic] A dice pool containing Sorcery cannot be used to inflict stress.\n-      [Exhausted] Shutdown any Solar Charms power to gain a mote. Activate a spoiler to recover the power, or recover for free during the next transition scene.\n"
+                            "- [Utility Magic] A dice pool containing Sorcery cannot be used to inflict stress.",
+                            "- [Exhausted] Shutdown any Solar Charms power to gain a mote. Activate a spoiler to recover the power, or recover for free during the next transition scene."
                         ]
                     ]
                 ]

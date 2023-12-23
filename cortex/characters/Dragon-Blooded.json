@@ -14,7 +14,11 @@
                         [
                             "Anima",
                             "6",
-                            "A mighty red-maned lion rears against\ngolden flames, roaring defiance\n-    Adds to most actions, complicates stealth.\n-    Step up whenever you spend a mote.\n-    [Flare] Once per scene, you may add d6 to the doom pool to gain a mote and step up your anima.\n"
+                            "A mighty red-maned lion rears against",
+                            "golden flames, roaring defiance",
+                            "- Adds to most actions, complicates stealth.",
+                            "- Step up whenever you spend a mote.",
+                            "- [Flare] Once per scene, you may add d6 to the doom pool to gain a mote and step up your anima."
                         ]
                     ]
                 ],
@@ -207,7 +211,8 @@
                         [
                             "Essence",
                             "0",
-                            "-      [Special: Supernal Skill] When you include a specialty from your caste skills in a dice pool, the specialty is a d8 rather than a d6. Your caste skills are Fight, Labor, Shoot, Throw, War, and any skill used to inflict fear-based social stress or complications.\n-      [SFX: Dawn Caste] Spend a mote to double your caste skills for one roll. When you inflict fear-based social stress or complications while your anima banner is visible, your opponent cannot negate the effect with an SFX.\n"
+                            "- [Special: Supernal Skill] When you include a specialty from your caste skills in a dice pool, the specialty is a d8 rather than a d6. Your caste skills are Fight, Labor, Shoot, Throw, War, and any skill used to inflict fear-based social stress or complications.",
+                            "- [SFX: Dawn Caste] Spend a mote to double your caste skills for one roll. When you inflict fear-based social stress or complications while your anima banner is visible, your opponent cannot negate the effect with an SFX."
                         ]
                     ]
                 ],
@@ -220,7 +225,7 @@
                         [
                             "Undefeated of the East",
                             "8 / 4+mote",
-                            "-      [SFX: Tactical Brilliance] When you create a tactical asset for another character by spending a mote, that asset enters play as a d8 rather than a d6, but it cannot be extended past the end of the scene.\n"
+                            "- [SFX: Tactical Brilliance] When you create a tactical asset for another character by spending a mote, that asset enters play as a d8 rather than a d6, but it cannot be extended past the end of the scene."
                         ],
                         [
                             "Barefoot General ",
@@ -278,7 +283,9 @@
                         [
                             "New trait",
                             "6",
-                            "-             One\n-             Two\n-             Three\n"
+                            "- One",
+                            "- Two",
+                            "- Three"
                         ]
                     ]
                 ]
