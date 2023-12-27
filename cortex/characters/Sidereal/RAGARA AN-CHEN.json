@@ -352,7 +352,9 @@
                         [
                             "CONNECTIONS",
                             "6",
-                            "You have friends among the <i>Dragon-Blooded</i> and the <i>Immaculate Order</i>."
+                            "You have friends among:",
+                            "- [The Dragon-Blooded] The ruling Terrestial Exalted of Creation.",
+                            "- [The Immaculate Order] The state religion of the Realm, with much sway over the Threshold."
                         ]
                     ]
                 ],

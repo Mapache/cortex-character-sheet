@@ -344,7 +344,11 @@
                         [
                             "CONNECTIONS",
                             "8",
-                            "You have friends among the Realm, the Guild, outlaw groups, and the Bureau of Destiny."
+                            "You have friends among:",
+                            "- [The Realm] The ruling Empire of Creation.",
+                            "- [The Guild] A vast mercantile order with fingers in every pie.",
+                            "- [Outlaws] Unsavory folk who know how to get things done, for a price.",
+                            "- [The Bureau of Destiny] The part of the Heavenly hierarchy directly responsible for charting and manipulating the Fate of Creation."
                         ]
                     ]
                 ],
