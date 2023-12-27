@@ -307,11 +307,21 @@
                     ],
                     [
                         [
-                            "New trait",
-                            "888",
-                            "- [Secrets of Future Strife] d8",
-                            "- [Systematic Understanding of Everything] d8",
-                            "- [Of Truths Best Unspoken] d8",
+                            "ENHANCED REFLEXES",
+                            "8",
+                            ""
+                        ],
+                        [
+                            "ENHANCED SENSES",
+                            "8",
+                            ""
+                        ],
+                        [
+                            "ENHANCED STRENGTH",
+                            "8",
+                            "- [Secrets of Future Strife] Borrow a die from the Doom Pool for a roll, then either step it up or spend a mote to step it down, and return it to the Doom Pool.",
+                            "- [Systematic Understanding of Everything] When creating an intangible asset, step up its die. (Either spend a mote to create a d8 asset instead of a d6, or step up the effect die of a roll to create an asset.)",
+                            "- [Of Truths Best Unspoken] Spend a mote to know the answer to a question from the perspective of your future self. The answer is binding, barring the action of entities outside of Fate.",
                             "- [Exhausted] Shutdown any Charms power to gain a mote. Activate a spoiler to recover the power, or recover for free during the next transition scene."
                         ]
                     ]
@@ -327,7 +337,7 @@
                         [
                             "FAMILIAR",
                             "8",
-                            "<i>Midnight Beast Who Feasts Upon Minute Leviathans, a House Cat</i>"
+                            "- [Midnight Beast Who Feasts Upon Minute Leviathans] A House Cat"
                         ],
                         [
                             "DAIKLAVE",
@@ -363,7 +373,7 @@
                             "VIOLET BIER OF SORROWS STYLE",
                             "8",
                             "<i>Style Weapons: Unarmed, Swords</i>",
-                            "- [Blade of the Battle Maiden] d6"
+                            "- [Blade of the Battle Maiden] You may split this die into d6 d6, or combine it with another d8 to form a d10."
                         ]
                     ]
                 ]

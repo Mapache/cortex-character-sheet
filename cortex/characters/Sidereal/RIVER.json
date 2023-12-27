@@ -1,7 +1,7 @@
 {
     "version": 4,
     "characterName": "RIVER",
-    "description": "Adventurous Explorer, Archaeologist, &amp; Occultist; Enjoys people, but better with artifacts<div>Youngest of the Circle, loves a good time, an optimist and idealist, not yet jaded and cynical</div>",
+    "description": "Adventurous Explorer, Archaeologist, &amp; Occultist; Enjoys people, but better with artifacts<div><span style=\"font-size: 10pt;\">Youngest of the Circle, loves a good time, an optimist and idealist, not yet jaded and cynical</span></div>",
     "traits": [
         [
             [
@@ -307,10 +307,19 @@
                     ],
                     [
                         [
-                            "New trait",
-                            "88",
-                            "- d8",
-                            "- d8",
+                            "ENHANCED DURABILITY",
+                            "8",
+                            ""
+                        ],
+                        [
+                            "ENHANCED SPEED",
+                            "8",
+                            ""
+                        ],
+                        [
+                            "INVISIBILITY",
+                            "8",
+                            "- [Life Gets Worse Approach] On a successful reaction roll against an attack, you may counterattack to inflict the same kind of stress or a complication without spending a mote.",
                             "- [Exhausted] Shutdown any Charms power to gain a mote. Activate a spoiler to recover the power, or recover for free during the next transition scene."
                         ]
                     ]
@@ -341,7 +350,7 @@
                             "0",
                             "<i>A pair of vicious artifact throwing blades, enchanted to fight autonomously</i>",
                             "- [Twin Blades] When attacking, you may split this into d8 d8 and keep an additional effect die.",
-                            "- [Flight Needs No Hands] Spend a mote to act with the blades in addition to taking another action."
+                            "- [On Wings of War] Spend a mote to act with the blades in addition to taking another action."
                         ],
                         [
                             "SALARY",
@@ -374,7 +383,7 @@
                         [
                             "AIR DRAGON STYLE",
                             "0",
-                            "- d6"
+                            "- [Hurricane Combat Method] Step up or double your Air Dragon Style for one roll, or spend a mote to do both. If the roll fails, suffer your second-highest rolling die as physical stress."
                         ]
                     ]
                 ]

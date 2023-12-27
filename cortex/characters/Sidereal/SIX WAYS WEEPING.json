@@ -307,11 +307,21 @@
                     ],
                     [
                         [
-                            "New trait",
-                            "888",
-                            "- [Hot-Eyed Snake Whispering] d8",
-                            "- [Shun the Smiling Lady] d8",
-                            "- [Cash and Murder Games] d8",
+                            "ENHANCED CHARISMA",
+                            "8",
+                            ""
+                        ],
+                        [
+                            "ENHANCED DURABILITY",
+                            "8",
+                            ""
+                        ],
+                        [
+                            "ENHANCED SENSES",
+                            "8",
+                            "- [Hot-Eyed Snake Whispering] While interacting with someone, you can make a roll to convince them that you are lying to them.",
+                            "- [Cash and Murder Games] Spend a mote to give the target a new minor d6 Intimacy.",
+                            "- [Shun the Smiling Lady] Spend a mote to make a roll to step down every intimacy everyone else feels for the target of this attack.",
                             "- [Exhausted] Shutdown any Charms power to gain a mote. Activate a spoiler to recover the power, or recover for free during the next transition scene."
                         ]
                     ]
@@ -327,14 +337,14 @@
                         [
                             "UNDERLING",
                             "8",
-                            "<i>Watcher Perched Atop Paperwork Mountain</i>, a former owl familiar you have raised to minor godhood. Works as a functionary in the Bureau of Destiny. Can run errands for you in Yu-Shan."
+                            "- [Watcher Perched Atop Paperwork Mountain] A former owl familiar you have raised to minor godhood. Works as a functionary in the Bureau of Destiny. Can run errands for you in Yu-Shan."
                         ],
                         [
                             "THE IRON JANG BONG",
                             "6",
                             "<i>A collapsible steel staff with Starmetal jackets on the ends</i>",
                             "- [Concealable] You may carry it on your person in collapsed form without being noticed.",
-                            "- [???] d6 defensive ability"
+                            "- [Death Parrying Stroke] Once per scene, spend a mote to avoid taking physical stress or a complication."
                         ],
                         [
                             "SALARY",
@@ -362,7 +372,7 @@
                             "CRANE STYLE",
                             "6",
                             "<i>Style Weapons: Unarmed, Staves</i>",
-                            "- [???] d6"
+                            "- [Crane Returns From Winter] Spend a mote to reroll when using Crane Style."
                         ]
                     ]
                 ]
