@@ -333,6 +333,7 @@
                         [
                             "CELESTIAL CIRCLE SORCERY",
                             "0",
+                            "You can summon demons of the First or Second Circle and perform advanced sorcerous workings.",
                             "- [Utility Magic] A dice pool containing Sorcery cannot be used to inflict stress."
                         ]
                     ]
@@ -383,6 +384,8 @@
                         [
                             "AIR DRAGON STYLE",
                             "0",
+                            "An Immaculate style built around speed, mobility, and a hailstorm of flung blades.",
+                            "<i>Style Weapons: Knives, Charkrams</i>",
                             "- [Hurricane Combat Method] Step up or double your Air Dragon Style for one roll, or spend a mote to do both. If the roll fails, suffer your second-highest rolling die as physical stress."
                         ]
                     ]
