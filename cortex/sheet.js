@@ -891,6 +891,26 @@ function move_to_bottom(e) {
 	close_context_menu()
 }
 
+function move_up(e) {
+	let traitGroup = g_context_target.parentElement
+	let previousTraitGroup = traitGroup.previousElementSibling
+	if (previousTraitGroup) {
+		previousTraitGroup.before(traitGroup)
+	}
+
+	close_context_menu()
+}
+
+function move_down(e) {
+	let traitGroup = g_context_target.parentElement
+	let nextTraitGroup = traitGroup.nextElementSibling
+	if (!nextTraitGroup.classList.contains("add-item")) {
+		nextTraitGroup.after(traitGroup)
+	}
+
+	close_context_menu()
+}
+
 window.onload = function () {
 	document.addEventListener("keydown", function (e) {
 		if ((window.navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey) && e.keyCode == 83) {
