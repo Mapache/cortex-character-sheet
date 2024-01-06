@@ -43,12 +43,12 @@
                     [
                         [
                             "Endurance",
-                            "6",
+                            "8",
                             "<i>The Mast</i>"
                         ],
                         [
                             "Ride",
-                            "4",
+                            "6",
                             "<i>The Messenger</i>"
                         ],
                         [
@@ -58,7 +58,7 @@
                         ],
                         [
                             "Survival",
-                            "8",
+                            "0",
                             "<i>The Ship's Wheel</i>"
                         ],
                         [
@@ -77,12 +77,12 @@
                     [
                         [
                             "Craft",
-                            "0",
+                            "2",
                             "<i>The Peacock</i>"
                         ],
                         [
                             "Dodge",
-                            "6",
+                            "8",
                             "<i>The Ewer</i>"
                         ],
                         [
@@ -92,7 +92,7 @@
                         ],
                         [
                             "PERFORMANCE",
-                            "4",
+                            "6",
                             "<i>The Musician</i>"
                         ],
                         [
@@ -111,27 +111,27 @@
                     [
                         [
                             "Archery",
-                            "∅",
+                            "4",
                             "<i>The Quiver</i>"
                         ],
                         [
                             "Integrity",
-                            "4",
+                            "6",
                             "<i>The Shield</i>"
                         ],
                         [
                             "Melee",
-                            "∅",
+                            "4",
                             "<i>The Spear</i>"
                         ],
                         [
                             "PRESENCE",
-                            "∅",
+                            "4",
                             "<i>The Banner</i>"
                         ],
                         [
                             "war",
-                            "∅",
+                            "4",
                             "<i>The Sword</i>"
                         ]
                     ]
@@ -150,12 +150,12 @@
                         ],
                         [
                             "Larceny",
-                            "8",
+                            "0",
                             "<i>The Guardians</i>"
                         ],
                         [
                             "Lore",
-                            "6",
+                            "8",
                             "<i>The Treasure Trove</i>"
                         ],
                         [
@@ -194,12 +194,12 @@
                         ],
                         [
                             "BUREAUCRACY",
-                            "∅",
+                            "4",
                             "<i>The Haywain</i>"
                         ],
                         [
                             "Medicine",
-                            "4",
+                            "6",
                             "<i>The Corpse</i>"
                         ]
                     ]
@@ -353,9 +353,14 @@
                             "The Gull carries a staff and wears a traveler's cape. He is dirty and hungry but also happy. The Gull is not displeased with his rough lot."
                         ],
                         [
+                            "THE PEACOCK",
+                            "",
+                            "The Peacock struts his magnificent finery, be it gang stylings, armor, or court clothing. He is proud and has excellent bearing. He shows discerning taste, and he is <i>obviously</i> sexually available."
+                        ],
+                        [
                             "THE Sorcerer",
                             "",
-                            "The Sorcerer is one of the Exalted, and a prince of the earth. He displays goods of the Five Magical Materials, a Caste Mark and a regal bearing. He wears armor and carries a daiklave."
+                            "The Sorcerer is one of the Exalted, and a prince of the earth. He displays goods of the Five Magical Materials, a Caste Mark, and a regal bearing. He wears armor and carries a daiklave."
                         ]
                     ]
                 ]

@@ -43,22 +43,22 @@
                     [
                         [
                             "Endurance",
-                            "4",
+                            "6",
                             "<i>The Mast</i>"
                         ],
                         [
                             "Ride",
-                            "∅",
+                            "4",
                             "<i>The Messenger</i>"
                         ],
                         [
                             "Sail",
-                            "∅",
+                            "4",
                             "<i>The Captain</i>"
                         ],
                         [
                             "Survival",
-                            "∅",
+                            "4",
                             "<i>The Ship's Wheel</i>"
                         ],
                         [
@@ -87,12 +87,12 @@
                         ],
                         [
                             "Linguistics",
-                            "6",
+                            "8",
                             "<i>The Pillar</i>"
                         ],
                         [
                             "PERFORMANCE",
-                            "4",
+                            "6",
                             "<i>The Musician</i>"
                         ],
                         [
@@ -111,12 +111,12 @@
                     [
                         [
                             "Archery",
-                            "∅",
+                            "4",
                             "<i>The Quiver</i>"
                         ],
                         [
                             "INTEGRITY",
-                            "8",
+                            "0",
                             "<i>The Shield</i>"
                         ],
                         [
@@ -126,7 +126,7 @@
                         ],
                         [
                             "Presence",
-                            "4",
+                            "6",
                             "<i>The Banner</i>"
                         ],
                         [
@@ -160,12 +160,12 @@
                         ],
                         [
                             "OCCULT",
-                            "6",
+                            "8",
                             "<i>The Sorcerer</i>"
                         ],
                         [
                             "Stealth",
-                            "8",
+                            "0",
                             "<i>The Mask</i>"
                         ]
                     ]
@@ -184,22 +184,22 @@
                         ],
                         [
                             "Awareness",
-                            "0",
+                            "2",
                             "<i>The Crow</i>"
                         ],
                         [
                             "Brawl",
-                            "∅",
+                            "4",
                             "<i>The Gauntlet</i>"
                         ],
                         [
                             "BUREAUCRACY",
-                            "6",
+                            "8",
                             "<i>The Haywain</i>"
                         ],
                         [
                             "Medicine",
-                            "4",
+                            "6",
                             "<i>The Corpse</i>"
                         ]
                     ]
@@ -336,14 +336,19 @@
                     ],
                     [
                         [
+                            "THE KEY",
+                            "",
+                            "The Key has a measuring stick and a pen, but no wax tablet or notebook. He claims he is innocent, but he has a dishonest expression, so this is doubtful. He is a creature of large appetites."
+                        ],
+                        [
                             "THE Guardians",
                             "",
                             "The Guardian is uneducated and carries a talisman. He is suspicious, he knows the weather and a wisdom that can aid you in your curren task."
                         ],
                         [
-                            "THE KEY",
+                            "THE CROW",
                             "",
-                            "The Key has a measuring stick and a pen, but no wax tablet or notebook. He claims he is innocent, but he has a dishonest expression, so this is doubtful. He is a creature of large appetites."
+                            "The Crow carries black feathers and wears a black cloak. She is morbidly humorous and clever, and she is attracted to shiny objects."
                         ]
                     ]
                 ]

@@ -43,27 +43,27 @@
                     [
                         [
                             "Endurance",
-                            "4",
+                            "6",
                             "<i>The Mast</i>"
                         ],
                         [
                             "Ride",
-                            "4",
+                            "6",
                             "<i>The Messenger</i>"
                         ],
                         [
                             "Sail",
-                            "∅",
+                            "4",
                             "<i>The Captain</i>"
                         ],
                         [
                             "Survival",
-                            "∅",
+                            "4",
                             "<i>The Ship's Wheel</i>"
                         ],
                         [
                             "Thrown",
-                            "∅",
+                            "4",
                             "<i>The Gull</i>"
                         ]
                     ]
@@ -77,22 +77,22 @@
                     [
                         [
                             "CRAFT",
-                            "6",
+                            "8",
                             "<i>The Peacock</i>"
                         ],
                         [
                             "Dodge",
-                            "4",
+                            "6",
                             "<i>The Ewer</i>"
                         ],
                         [
                             "Linguistics",
-                            "8",
+                            "0",
                             "<i>The Pillar</i>"
                         ],
                         [
                             "PERFORMANCE",
-                            "0",
+                            "2",
                             "<i>The Musician</i>"
                         ],
                         [
@@ -111,7 +111,7 @@
                     [
                         [
                             "Archery",
-                            "∅",
+                            "4",
                             "<i>The Quiver</i>"
                         ],
                         [
@@ -131,7 +131,7 @@
                         ],
                         [
                             "war",
-                            "∅",
+                            "4",
                             "<i>The Sword</i>"
                         ]
                     ]
@@ -150,7 +150,7 @@
                         ],
                         [
                             "Larceny",
-                            "6",
+                            "8",
                             "<i>The Guardians</i>"
                         ],
                         [
@@ -165,7 +165,7 @@
                         ],
                         [
                             "Stealth",
-                            "4",
+                            "6",
                             "<i>The Mask</i>"
                         ]
                     ]
@@ -179,7 +179,7 @@
                     [
                         [
                             "Athletics",
-                            "6",
+                            "8",
                             "<i>The Rising Smoke</i>"
                         ],
                         [
@@ -194,7 +194,7 @@
                         ],
                         [
                             "BUREAUCRACY",
-                            "8",
+                            "0",
                             "<i>The Haywain</i>"
                         ],
                         [
@@ -277,7 +277,7 @@
                         [
                             "Pleasure is purpose",
                             "8",
-                            "Everyone's in it for themselves, so enjoy yourself when you can. "
+                            "Everyone's in it for themselves, so enjoy yourself when you can."
                         ],
                         [
                             "My Underling is my only friend",
@@ -335,6 +335,11 @@
                         "detailed"
                     ],
                     [
+                        [
+                            "THE MUSICIAN",
+                            "",
+                            "The Musician wears facial makeup, dresses outlandishly and always carries a musical instrument. He is cynically wise and uninhibited."
+                        ],
                         [
                             "THE Lovers",
                             "",

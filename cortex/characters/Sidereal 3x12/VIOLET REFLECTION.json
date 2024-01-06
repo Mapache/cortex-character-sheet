@@ -43,27 +43,27 @@
                     [
                         [
                             "Endurance",
-                            "4",
+                            "6",
                             "<i>The Mast</i>"
                         ],
                         [
                             "Ride",
-                            "∅",
+                            "4",
                             "<i>The Messenger</i>"
                         ],
                         [
                             "Sail",
-                            "∅",
+                            "4",
                             "<i>The Captain</i>"
                         ],
                         [
                             "Survival",
-                            "4",
+                            "6",
                             "<i>The Ship's Wheel</i>"
                         ],
                         [
                             "Thrown",
-                            "∅",
+                            "4",
                             "<i>The Gull</i>"
                         ]
                     ]
@@ -77,7 +77,7 @@
                     [
                         [
                             "Craft",
-                            "6",
+                            "8",
                             "<i>The Peacock</i>"
                         ],
                         [
@@ -87,7 +87,7 @@
                         ],
                         [
                             "Linguistics",
-                            "0",
+                            "2",
                             "<i>The Pillar</i>"
                         ],
                         [
@@ -97,7 +97,7 @@
                         ],
                         [
                             "SOCIALIZE",
-                            "6",
+                            "8",
                             "<i>The Lovers</i>"
                         ]
                     ]
@@ -116,22 +116,22 @@
                         ],
                         [
                             "Integrity",
-                            "6",
+                            "8",
                             "<i>The Shield</i>"
                         ],
                         [
                             "Melee",
-                            "∅",
+                            "4",
                             "<i>The Spear</i>"
                         ],
                         [
                             "PRESENCE",
-                            "4",
+                            "6",
                             "<i>The Banner</i>"
                         ],
                         [
                             "War",
-                            "∅",
+                            "4",
                             "<i>The Sword</i>"
                         ]
                     ]
@@ -145,7 +145,7 @@
                     [
                         [
                             "Investigation",
-                            "4",
+                            "6",
                             "<i>The Key</i>"
                         ],
                         [
@@ -155,7 +155,7 @@
                         ],
                         [
                             "Lore",
-                            "8",
+                            "0",
                             "<i>The Treasure Trove</i>"
                         ],
                         [
@@ -165,7 +165,7 @@
                         ],
                         [
                             "Stealth",
-                            "8",
+                            "0",
                             "<i>The Mask</i>"
                         ]
                     ]
@@ -352,6 +352,11 @@
                         "detailed"
                     ],
                     [
+                        [
+                            "THE PILLAR",
+                            "",
+                            "The Pillar wears a wedding ring and dresses plainly. She is perceptive and practical. She is firm but just."
+                        ],
                         [
                             "THE GAUNTLET",
                             "",

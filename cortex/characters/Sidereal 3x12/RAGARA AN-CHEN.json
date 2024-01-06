@@ -43,27 +43,27 @@
                     [
                         [
                             "Endurance",
-                            "6",
+                            "8",
                             "<i>The Mast</i>"
                         ],
                         [
                             "Ride",
-                            "4",
+                            "6",
                             "<i>The Messenger</i>"
                         ],
                         [
                             "Sail",
-                            "∅",
+                            "4",
                             "<i>The Captain</i>"
                         ],
                         [
                             "Survival",
-                            "4",
+                            "6",
                             "<i>The Ship's Wheel</i>"
                         ],
                         [
                             "Thrown",
-                            "∅",
+                            "4",
                             "<i>The Gull</i>"
                         ]
                     ]
@@ -87,7 +87,7 @@
                         ],
                         [
                             "Linguistics",
-                            "4",
+                            "6",
                             "<i>The Pillar</i>"
                         ],
                         [
@@ -97,7 +97,7 @@
                         ],
                         [
                             "SOCIALIZE",
-                            "4",
+                            "6",
                             "<i>The Lovers</i>"
                         ]
                     ]
@@ -111,12 +111,12 @@
                     [
                         [
                             "Archery",
-                            "0",
+                            "2",
                             "<i>The Quiver</i>"
                         ],
                         [
                             "Integrity",
-                            "6",
+                            "8",
                             "<i>The Shield</i>"
                         ],
                         [
@@ -131,7 +131,7 @@
                         ],
                         [
                             "war",
-                            "8",
+                            "0",
                             "<i>The Sword</i>"
                         ]
                     ]
@@ -145,12 +145,12 @@
                     [
                         [
                             "Investigation",
-                            "∅",
+                            "4",
                             "<i>The Key</i>"
                         ],
                         [
                             "Larceny",
-                            "∅",
+                            "4",
                             "<i>The Guardians</i>"
                         ],
                         [
@@ -179,7 +179,7 @@
                     [
                         [
                             "Athletics",
-                            "8",
+                            "0",
                             "<i>The Rising Smoke</i>"
                         ],
                         [
@@ -194,12 +194,12 @@
                         ],
                         [
                             "BUREAUCRACY",
-                            "6",
+                            "8",
                             "<i>The Haywain</i>"
                         ],
                         [
                             "Medicine",
-                            "∅",
+                            "4",
                             "<i>The Corpse</i>"
                         ]
                     ]
@@ -275,9 +275,9 @@
                             "Chaos harms everyone. Hierarchy is needed for prosperity and safety."
                         ],
                         [
-                            "My siblings & their descendants",
+                            "My siblings &amp; their descendants",
                             "8",
-                            "Your Dragon-Blooded siblings Tisai & Debro, now elders, who remember flashes of you over the centuries and keep a portrait from when the three of you were children"
+                            "Your Dragon-Blooded siblings Tisai &amp; Debro, now elders, who remember flashes of you over the centuries and keep a portrait from when the three of you were children"
                         ],
                         [
                             "The Realm undervalues mortals",
@@ -340,14 +340,19 @@
                     ],
                     [
                         [
-                            "THE Banner",
+                            "THE QUIVER",
                             "",
-                            "The Banner is strikingly clad and always among you. He is fearless, victorious, and larger than life."
+                            "The Quiver carries a bow or a map case. He is clever and witty. His valor is not so important as his education."
                         ],
                         [
                             "THE SPEAR",
                             "",
                             "The Spear wears a uniform but posseses no rank. He is called by his family name or nickname. He is disciplined and brave."
+                        ],
+                        [
+                            "THE Banner",
+                            "",
+                            "The Banner is strikingly clad and always among you. He is fearless, victorious, and larger than life."
                         ]
                     ]
                 ]
