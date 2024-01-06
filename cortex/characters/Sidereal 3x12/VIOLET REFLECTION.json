@@ -1,0 +1,416 @@
+{
+    "version": 4,
+    "characterName": "VIOLET REFLECTION",
+    "description": "Experienced Doctor, Scholar, and Martial Artist. Disappointed by the world, but still an idealist. Genuinely likes mortals. Frequently sad, but always hopeful. All things end, but may they end well.",
+    "traits": [
+        [
+            [
+                [
+                    [
+                        "ANIMA",
+                        "stress"
+                    ],
+                    [
+                        [
+                            "Anima",
+                            "6",
+                            "<i>A soft spread of midnight purple blooming outward, flecked with countless stars</i>",
+                            "- Adds to most actions, complicates stealth.",
+                            "- Step up whenever you spend a mote.",
+                            "- [Flare] Once per scene, you may add d6 to the doom pool to gain a mote and step up your anima."
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "ABILITIES",
+                        "signature-asset"
+                    ],
+                    [
+                        [
+                            "<i>Pick 2 abilities when rolling.</i>",
+                            "",
+                            ""
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "JOURNEYS",
+                        "inline",
+                        "#ffa200"
+                    ],
+                    [
+                        [
+                            "Endurance",
+                            "4",
+                            "<i>The Mast</i>"
+                        ],
+                        [
+                            "Ride",
+                            "∅",
+                            "<i>The Messenger</i>"
+                        ],
+                        [
+                            "Sail",
+                            "∅",
+                            "<i>The Captain</i>"
+                        ],
+                        [
+                            "Survival",
+                            "4",
+                            "<i>The Ship's Wheel</i>"
+                        ],
+                        [
+                            "Thrown",
+                            "∅",
+                            "<i>The Gull</i>"
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "SERENITY",
+                        "inline",
+                        "#006eff"
+                    ],
+                    [
+                        [
+                            "Craft",
+                            "6",
+                            "<i>The Peacock</i>"
+                        ],
+                        [
+                            "Dodge",
+                            "8",
+                            "<i>The Ewer</i>"
+                        ],
+                        [
+                            "Linguistics",
+                            "0",
+                            "<i>The Pillar</i>"
+                        ],
+                        [
+                            "PERFORMANCE",
+                            "6",
+                            "<i>The Musician</i>"
+                        ],
+                        [
+                            "SOCIALIZE",
+                            "6",
+                            "<i>The Lovers</i>"
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "BATTLES",
+                        "inline",
+                        "#d50707"
+                    ],
+                    [
+                        [
+                            "Archery",
+                            "4",
+                            "<i>The Quiver</i>"
+                        ],
+                        [
+                            "Integrity",
+                            "6",
+                            "<i>The Shield</i>"
+                        ],
+                        [
+                            "Melee",
+                            "∅",
+                            "<i>The Spear</i>"
+                        ],
+                        [
+                            "PRESENCE",
+                            "4",
+                            "<i>The Banner</i>"
+                        ],
+                        [
+                            "War",
+                            "∅",
+                            "<i>The Sword</i>"
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "SECRETS",
+                        "inline",
+                        "#039900"
+                    ],
+                    [
+                        [
+                            "Investigation",
+                            "4",
+                            "<i>The Key</i>"
+                        ],
+                        [
+                            "Larceny",
+                            "4",
+                            "<i>The Guardians</i>"
+                        ],
+                        [
+                            "Lore",
+                            "8",
+                            "<i>The Treasure Trove</i>"
+                        ],
+                        [
+                            "Occult",
+                            "0",
+                            "<i>The Sorcerer</i>"
+                        ],
+                        [
+                            "Stealth",
+                            "8",
+                            "<i>The Mask</i>"
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "ENDINGS",
+                        "inline",
+                        "#8700b8"
+                    ],
+                    [
+                        [
+                            "Athletics",
+                            "6",
+                            "<i>The Rising Smoke</i>"
+                        ],
+                        [
+                            "Awareness",
+                            "0",
+                            "<i>The Crow</i>"
+                        ],
+                        [
+                            "Brawl",
+                            "2",
+                            "<i>The Gauntlet</i>"
+                        ],
+                        [
+                            "BUREAUCRACY",
+                            "8",
+                            "<i>The Haywain</i>"
+                        ],
+                        [
+                            "Medicine",
+                            "2",
+                            "<i>The Corpse</i>"
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "STRESS",
+                        "stress compact"
+                    ],
+                    [
+                        [
+                            "Physical",
+                            "6"
+                        ],
+                        [
+                            "Social",
+                            "6"
+                        ],
+                        [
+                            "Mental",
+                            "6"
+                        ]
+                    ]
+                ]
+            ],
+            [
+                [
+                    [
+                        "ESSENCE",
+                        "detailed"
+                    ],
+                    [
+                        [
+                            "ESSENCE",
+                            "0",
+                            "- [Resplendent Destiny] Spend a mote as a transition scene action to craft a Destiny asset with die size matching a constellation. When you include a Charm in a roll while wearing a Destiny, degrade the Destiny. (If the Charm is higher than the Destiny, destroy the asset and flare your Anima; otherwise, step down the asset.) You can freely don and doff Destinies during transition scenes.",
+                            "- [Chosen of Endings] Spend a mote to reroll any spoilers showing on your own or an ally’s roll to remove a complication. While your anima banner is visible, the GM must spend doom dice equal to or greater than your Essence to make a complication persistent on any character in the scene or to introduce a new scene complication."
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "DISTINCTIONS",
+                        "detailed"
+                    ],
+                    [
+                        [
+                            "Scholarly Doctor",
+                            "8 / 4+mote",
+                            "- [Combat Medic] Spend a mote as an action to recover your own or another’s physical stress, or to step down physical trauma."
+                        ],
+                        [
+                            "SUFFERING IS INJUSTICE",
+                            "8 / 4+mote",
+                            ""
+                        ],
+                        [
+                            "FIX WHAT IS BROKEN",
+                            "8 / 4+mote",
+                            ""
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "INTIMACIES",
+                        "detailed"
+                    ],
+                    [
+                        [
+                            "We build a future\nwe will not inhabit",
+                            "0",
+                            "All lives come to an end. Leave a legacy you would have been glad to inherit."
+                        ],
+                        [
+                            "Mercy above justice",
+                            "8",
+                            "Everyone deserves a second chance. Well, <i>almost</i> everyone…"
+                        ],
+                        [
+                            "There's nothing like\na good dumpling",
+                            "6",
+                            "Every culture in Creation has delicious dough-wrapped foods, but none can measure up to your grandmother's."
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "LIMIT",
+                        "stress"
+                    ],
+                    [
+                        [
+                            "Limit Break",
+                            "6",
+                            "[Red Rage of Tears] When I see innocents suffering through no fault of their own, I feel furious and destroy those who would torment them."
+                        ]
+                    ]
+                ]
+            ]
+        ],
+        [
+            [
+                [
+                    [
+                        "CHARMS",
+                        "detailed"
+                    ],
+                    [
+                        [
+                            "ENHANCED DURABILITY",
+                            "8",
+                            ""
+                        ],
+                        [
+                            "ENHANCED REFLEXES",
+                            "8",
+                            ""
+                        ],
+                        [
+                            "ENHANCED SENSES",
+                            "8",
+                            ""
+                        ],
+                        [
+                            "INVISIBILITY",
+                            "8",
+                            "- [Someone Else's Destiny] Spend a mote when you successfully attack someone to transfer a complication or stress from you to them; your effect die must be at least as large as the die transferred.",
+                            "- [Exhausted] Shutdown any Charms power to gain a mote. Activate a spoiler to recover the power, or recover for free during the next transition scene."
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "SORCERY",
+                        "detailed"
+                    ],
+                    [
+                        [
+                            "TERRESTRIAL CIRCLE SORCERY",
+                            "8",
+                            "You can summon demons of the First Circle and perform lesser sorcerous workings.",
+                            "- [Utility Magic] A dice pool containing Sorcery cannot be used to inflict stress."
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "RESPLENDENT DESTINIES",
+                        "detailed"
+                    ],
+                    [
+                        [
+                            "THE GAUNTLET",
+                            "",
+                            "The Gauntlet is worn. She carries or wears a withered flower, and she dresses in burial cerements. She weeps, but cannot be consoled. She is unshod."
+                        ],
+                        [
+                            "THE CORPSE",
+                            "",
+                            "The Corpse wears his best clothes. He is calm, and he bears the emblem of a butterfly somewhere on his person. He carries a textbook, which may be a guide to a new trade or a guide to the Underworld. Like the Gauntlet, he is unshod."
+                        ]
+                    ]
+                ]
+            ],
+            [
+                [
+                    [
+                        "PANOPLY",
+                        "detailed"
+                    ],
+                    [
+                        [
+                            "SALARY",
+                            "8",
+                            "You have access to substantial wealth, both in Yu-Shan and Creation."
+                        ],
+                        [
+                            "CELESTIAL MANSE",
+                            "6",
+                            "- [Hearthstone of Wakefulness] You do not need to sleep."
+                        ],
+                        [
+                            "CONNECTIONS",
+                            "6",
+                            "You have friends among:",
+                            "- [The Underworld] Just because someone's dead doesn't mean you have to say goodbye.",
+                            "- [Celestial Monitors of the Seasons and the Weather] Not only responsible for the day-to-day running of climate, but also Heaven's military, including deployment of <i>Martial Weather</i>."
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "MARTIAL ARTS",
+                        "detailed"
+                    ],
+                    [
+                        [
+                            "CITRINE POXES OF CONTAGION",
+                            "2",
+                            "A highly-advanced, esoteric style that manipulates the flows of Essence in the body to inflict (or cure) diseases both physical and spiritual, from the confounding Drunken Moth Sickness to the horrifying Jigsaw Organ Condition, or even the Great Contagion itself.",
+                            "<i>Style Weapons: Unarmed, Fighting Chains</i>",
+                            "- [Gentle Touch of the Wicked Hand] Add a d6 and step up your effect die when inflicting physical stress or complications using this style.",
+                            "- [Essence-Shattering Typhoon] When attacking multiple targets with this style, spend a mote to, for each additional target, add a d6 and keep an additional effect die."
+                        ]
+                    ]
+                ]
+            ]
+        ]
+    ],
+    "highlightColors": {
+        ":root": "#8700b8"
+    }
+}

@@ -1,0 +1,408 @@
+{
+    "version": 4,
+    "characterName": "EVENING JUSTICE",
+    "description": "Once a mortal thief, now Heaven's greatest investigator, or are they? Concerned with moral weight.<div>Always strives for excellence, measuring against their past deeds. Has trouble relying on others.</div>",
+    "traits": [
+        [
+            [
+                [
+                    [
+                        "ANIMA",
+                        "stress"
+                    ],
+                    [
+                        [
+                            "Anima",
+                            "6",
+                            "<i>Perfectly symmetrical green whorls, spiraling outward in waves of mirrored synchronicity</i>",
+                            "- Adds to most actions, complicates stealth.",
+                            "- Step up whenever you spend a mote.",
+                            "- [Flare] Once per scene, you may add d6 to the doom pool to gain a mote and step up your anima."
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "ABILITIES",
+                        "signature-asset"
+                    ],
+                    [
+                        [
+                            "<i>Pick 2 abilities when rolling.</i>",
+                            "",
+                            ""
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "JOURNEYS",
+                        "inline",
+                        "#ffa200"
+                    ],
+                    [
+                        [
+                            "Endurance",
+                            "4",
+                            "<i>The Mast</i>"
+                        ],
+                        [
+                            "Ride",
+                            "∅",
+                            "<i>The Messenger</i>"
+                        ],
+                        [
+                            "Sail",
+                            "∅",
+                            "<i>The Captain</i>"
+                        ],
+                        [
+                            "Survival",
+                            "∅",
+                            "<i>The Ship's Wheel</i>"
+                        ],
+                        [
+                            "Thrown",
+                            "4",
+                            "<i>The Gull</i>"
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "SERENITY",
+                        "inline",
+                        "#006eff"
+                    ],
+                    [
+                        [
+                            "CRAFT",
+                            "8",
+                            "<i>The Peacock</i>"
+                        ],
+                        [
+                            "Dodge",
+                            "6",
+                            "<i>The Ewer</i>"
+                        ],
+                        [
+                            "Linguistics",
+                            "6",
+                            "<i>The Pillar</i>"
+                        ],
+                        [
+                            "PERFORMANCE",
+                            "4",
+                            "<i>The Musician</i>"
+                        ],
+                        [
+                            "SOCIALIZE",
+                            "0",
+                            "<i>The Lovers</i>"
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "BATTLES",
+                        "inline",
+                        "#d50707"
+                    ],
+                    [
+                        [
+                            "Archery",
+                            "∅",
+                            "<i>The Quiver</i>"
+                        ],
+                        [
+                            "INTEGRITY",
+                            "8",
+                            "<i>The Shield</i>"
+                        ],
+                        [
+                            "Melee",
+                            "0",
+                            "<i>The Spear</i>"
+                        ],
+                        [
+                            "Presence",
+                            "4",
+                            "<i>The Banner</i>"
+                        ],
+                        [
+                            "War",
+                            "4",
+                            "<i>The Sword</i>"
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "SECRETS",
+                        "inline",
+                        "#039900"
+                    ],
+                    [
+                        [
+                            "Investigation",
+                            "2",
+                            "<i>The Key</i>"
+                        ],
+                        [
+                            "Larceny",
+                            "2",
+                            "<i>The Guardians</i>"
+                        ],
+                        [
+                            "Lore",
+                            "8",
+                            "<i>The Treasure Trove</i>"
+                        ],
+                        [
+                            "OCCULT",
+                            "6",
+                            "<i>The Sorcerer</i>"
+                        ],
+                        [
+                            "Stealth",
+                            "8",
+                            "<i>The Mask</i>"
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "ENDINGS",
+                        "inline",
+                        "#8700b8"
+                    ],
+                    [
+                        [
+                            "Athletics",
+                            "6",
+                            "<i>The Rising Smoke</i>"
+                        ],
+                        [
+                            "Awareness",
+                            "0",
+                            "<i>The Crow</i>"
+                        ],
+                        [
+                            "Brawl",
+                            "∅",
+                            "<i>The Gauntlet</i>"
+                        ],
+                        [
+                            "BUREAUCRACY",
+                            "6",
+                            "<i>The Haywain</i>"
+                        ],
+                        [
+                            "Medicine",
+                            "4",
+                            "<i>The Corpse</i>"
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "STRESS",
+                        "stress compact"
+                    ],
+                    [
+                        [
+                            "Physical",
+                            "6"
+                        ],
+                        [
+                            "Social",
+                            "6"
+                        ],
+                        [
+                            "Mental",
+                            "6"
+                        ]
+                    ]
+                ]
+            ],
+            [
+                [
+                    [
+                        "ESSENCE",
+                        "detailed"
+                    ],
+                    [
+                        [
+                            "ESSENCE",
+                            "0",
+                            "- [Resplendent Destiny] Spend a mote as a transition scene action to craft a Destiny asset with die size matching a constellation. When you include a Charm in a roll while wearing a Destiny, degrade the Destiny. (If the Charm is higher than the Destiny, destroy the asset and flare your Anima; otherwise, step down the asset.) You can freely don and doff Destinies during transition scenes.",
+                            "- [Chosen of Secrets] Spend a mote to reroll any spoilers showing on your own or an ally’s investigation, knowledge, or deception related rolls. While your anima banner is visible, the GM must spend doom dice equal to or greater than your Essence for each character to be split from the group."
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "DISTINCTIONS",
+                        "detailed"
+                    ],
+                    [
+                        [
+                            "Self-Doubting Investigator",
+                            "8 / 4+mote",
+                            "- [One More Thing…] When you attempt to inflict fear-based social stress on a criminal, add a d6 and step up the effect die."
+                        ],
+                        [
+                            "I'LL DO IT MYSELF",
+                            "8 / 4+mote",
+                            ""
+                        ],
+                        [
+                            "ONCE A THIEF",
+                            "8 / 4+mote",
+                            ""
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "INTIMACIES",
+                        "detailed"
+                    ],
+                    [
+                        [
+                            "Laws are choices made by others",
+                            "0",
+                            "Laws are just legacy consensus. We can and must continually reexamine them. Even the laws of the universe were chosen by Primordials."
+                        ],
+                        [
+                            "The Dispossessed",
+                            "8",
+                            "The poor, the downtrodden, the powerless, they are far too often forgotten by those with power. You will not."
+                        ],
+                        [
+                            "Cute Animals",
+                            "6",
+                            "Pets often have better judgement than their owners."
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "LIMIT",
+                        "stress"
+                    ],
+                    [
+                        [
+                            "Limit Break",
+                            "6",
+                            "[Analysis Paralysis] When others turn to me to make a major choice that decides lives and deaths, I feel overwhelmed and become incapable of making any decisions at all."
+                        ]
+                    ]
+                ]
+            ]
+        ],
+        [
+            [
+                [
+                    [
+                        "CHARMS",
+                        "detailed"
+                    ],
+                    [
+                        [
+                            "ENHANCED REFLEXES",
+                            "8",
+                            ""
+                        ],
+                        [
+                            "ENHANCED SENSES",
+                            "8",
+                            ""
+                        ],
+                        [
+                            "ENHANCED STRENGTH",
+                            "8",
+                            "- [Secrets of Future Strife] Borrow a die from the Doom Pool for a roll, then either step it up or spend a mote to step it down, and return it to the Doom Pool.",
+                            "- [Systematic Understanding of Everything] When creating an intangible asset, step up its die. (Either spend a mote to create a d8 asset instead of a d6, or step up the effect die of a roll to create an asset.)",
+                            "- [Of Truths Best Unspoken] Spend a mote to know the answer to a question from the perspective of your future self. The answer is binding, barring the action of entities outside of Fate. <i>(Demons of the Second Circle are outside of Fate.)</i>",
+                            "- [Exhausted] Shutdown any Charms power to gain a mote. Activate a spoiler to recover the power, or recover for free during the next transition scene."
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "RESPLENDENT DESTINIES",
+                        "detailed"
+                    ],
+                    [
+                        [
+                            "THE Guardians",
+                            "",
+                            "The Guardian is uneducated and carries a talisman. He is suspicious, he knows the weather and a wisdom that can aid you in your curren task."
+                        ],
+                        [
+                            "THE KEY",
+                            "",
+                            "The Key has a measuring stick and a pen, but no wax tablet or notebook. He claims he is innocent, but he has a dishonest expression, so this is doubtful. He is a creature of large appetites."
+                        ]
+                    ]
+                ]
+            ],
+            [
+                [
+                    [
+                        "PANOPLY",
+                        "detailed"
+                    ],
+                    [
+                        [
+                            "FAMILIAR",
+                            "8",
+                            "- [Midnight Beast Who Feasts Upon Minute Leviathans] A House Cat"
+                        ],
+                        [
+                            "DAIKLAVE",
+                            "8",
+                            "<i>An absolutely ginormous sword</i>"
+                        ],
+                        [
+                            "SALARY",
+                            "6",
+                            "You have access to reasonable wealth, both in Yu-Shan and Creation."
+                        ],
+                        [
+                            "CELESTIAL MANSE",
+                            "6",
+                            "- [Hearthstone of Recognition] If you act like people know you, they will believe they do."
+                        ],
+                        [
+                            "CONNECTIONS",
+                            "6",
+                            "You have friends among:",
+                            "- [The Bronze Faction] The majority of Sidereals who support the current order.",
+                            "- [Divine Witnesses of Human Works and Deeds] The Heavenly division overseeing humanity, split into the <i>Five Directions Directorate</i> governing cities and the <i>Department of Universal Human Affairs</i> focusing on mundane details."
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "MARTIAL ARTS",
+                        "detailed"
+                    ],
+                    [
+                        [
+                            "VIOLET BIER OF SORROWS STYLE",
+                            "8",
+                            "A practical, straighforward, non-nonsense sword-centric style, the standard taught to most Sidereals as a foundation, though many stick with it.",
+                            "<i>Style Weapons: Unarmed, Swords</i>",
+                            "- [Blade of the Battle Maiden] You may split this die into d6 d6, or combine it with another d8 to form a d10."
+                        ]
+                    ]
+                ]
+            ]
+        ]
+    ],
+    "highlightColors": {
+        ":root": "#039900"
+    }
+}

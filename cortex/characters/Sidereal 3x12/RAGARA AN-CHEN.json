@@ -1,0 +1,404 @@
+{
+    "version": 4,
+    "characterName": "RAGARA AN-CHEN",
+    "description": "Middle child of Realm Dragon-Blooded parents, a disappointment who failed to Exalt, then discovered their true destiny and faded from memory entirely; A military-trained hot-head with surprising flexibility",
+    "traits": [
+        [
+            [
+                [
+                    [
+                        "ANIMA",
+                        "stress"
+                    ],
+                    [
+                        [
+                            "Anima",
+                            "6",
+                            "<i>An uncoiling dragon made of stars that flicker and dance like angry, roiling fire</i>",
+                            "- Adds to most actions, complicates stealth.",
+                            "- Step up whenever you spend a mote.",
+                            "- [Flare] Once per scene, you may add d6 to the doom pool to gain a mote and step up your anima."
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "ABILITIES",
+                        "signature-asset"
+                    ],
+                    [
+                        [
+                            "<i>Pick 2 abilities when rolling.</i>",
+                            "",
+                            ""
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "JOURNEYS",
+                        "inline",
+                        "#ffa200"
+                    ],
+                    [
+                        [
+                            "Endurance",
+                            "6",
+                            "<i>The Mast</i>"
+                        ],
+                        [
+                            "Ride",
+                            "4",
+                            "<i>The Messenger</i>"
+                        ],
+                        [
+                            "Sail",
+                            "∅",
+                            "<i>The Captain</i>"
+                        ],
+                        [
+                            "Survival",
+                            "4",
+                            "<i>The Ship's Wheel</i>"
+                        ],
+                        [
+                            "Thrown",
+                            "∅",
+                            "<i>The Gull</i>"
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "SERENITY",
+                        "inline",
+                        "#006eff"
+                    ],
+                    [
+                        [
+                            "Craft",
+                            "8",
+                            "<i>The Peacock</i>"
+                        ],
+                        [
+                            "Dodge",
+                            "0",
+                            "<i>The Ewer</i>"
+                        ],
+                        [
+                            "Linguistics",
+                            "4",
+                            "<i>The Pillar</i>"
+                        ],
+                        [
+                            "PERFORMANCE",
+                            "4",
+                            "<i>The Musician</i>"
+                        ],
+                        [
+                            "SOCIALIZE",
+                            "4",
+                            "<i>The Lovers</i>"
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "BATTLES",
+                        "inline",
+                        "#d50707"
+                    ],
+                    [
+                        [
+                            "Archery",
+                            "0",
+                            "<i>The Quiver</i>"
+                        ],
+                        [
+                            "Integrity",
+                            "6",
+                            "<i>The Shield</i>"
+                        ],
+                        [
+                            "Melee",
+                            "2",
+                            "<i>The Spear</i>"
+                        ],
+                        [
+                            "PRESENCE",
+                            "2",
+                            "<i>The Banner</i>"
+                        ],
+                        [
+                            "war",
+                            "8",
+                            "<i>The Sword</i>"
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "SECRETS",
+                        "inline",
+                        "#039900"
+                    ],
+                    [
+                        [
+                            "Investigation",
+                            "∅",
+                            "<i>The Key</i>"
+                        ],
+                        [
+                            "Larceny",
+                            "∅",
+                            "<i>The Guardians</i>"
+                        ],
+                        [
+                            "Lore",
+                            "0",
+                            "<i>The Treasure Trove</i>"
+                        ],
+                        [
+                            "Occult",
+                            "6",
+                            "<i>The Sorcerer</i>"
+                        ],
+                        [
+                            "Stealth",
+                            "4",
+                            "<i>The Mask</i>"
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "ENDINGS",
+                        "inline",
+                        "#8700b8"
+                    ],
+                    [
+                        [
+                            "Athletics",
+                            "8",
+                            "<i>The Rising Smoke</i>"
+                        ],
+                        [
+                            "Awareness",
+                            "8",
+                            "<i>The Crow</i>"
+                        ],
+                        [
+                            "Brawl",
+                            "6",
+                            "<i>The Gauntlet</i>"
+                        ],
+                        [
+                            "BUREAUCRACY",
+                            "6",
+                            "<i>The Haywain</i>"
+                        ],
+                        [
+                            "Medicine",
+                            "∅",
+                            "<i>The Corpse</i>"
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "STRESS",
+                        "stress compact"
+                    ],
+                    [
+                        [
+                            "Physical",
+                            "6"
+                        ],
+                        [
+                            "Social",
+                            "6"
+                        ],
+                        [
+                            "Mental",
+                            "6"
+                        ]
+                    ]
+                ]
+            ],
+            [
+                [
+                    [
+                        "ESSENCE",
+                        "detailed"
+                    ],
+                    [
+                        [
+                            "ESSENCE",
+                            "0",
+                            "- [Resplendent Destiny] Spend a mote as a transition scene action to craft a Destiny asset with die size matching a constellation. When you include a Charm in a roll while wearing a Destiny, degrade the Destiny. (If the Charm is higher than the Destiny, destroy the asset and flare your Anima; otherwise, step down the asset.) You can freely don and doff Destinies during transition scenes.",
+                            "- [Chosen of Battles] Spend a mote to reroll any spoilers showing on your own or an ally’s combat-related roll. While your anima banner is visible, the GM must spend doom dice equal to or greater than your Essence to bring new enemies into the scene."
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "DISTINCTIONS",
+                        "detailed"
+                    ],
+                    [
+                        [
+                            "Loyal Dynast",
+                            "8 / 4+mote",
+                            "- [Tactical Brilliance] When you create a tactical asset for another character by spending a mote, that asset enters play as a d8 rather than a d6, but it cannot be extended past the end of the scene."
+                        ],
+                        [
+                            "PATIENCE IS EXHAUSTING",
+                            "8 / 4+mote",
+                            ""
+                        ],
+                        [
+                            "REED IN THE WIND",
+                            "8 / 4+mote",
+                            ""
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "INTIMACIES",
+                        "detailed"
+                    ],
+                    [
+                        [
+                            "Order is justice",
+                            "0",
+                            "Chaos harms everyone. Hierarchy is needed for prosperity and safety."
+                        ],
+                        [
+                            "My siblings & their descendants",
+                            "8",
+                            "Your Dragon-Blooded siblings Tisai & Debro, now elders, who remember flashes of you over the centuries and keep a portrait from when the three of you were children"
+                        ],
+                        [
+                            "The Realm undervalues mortals",
+                            "6",
+                            "You've been there and felt the pain."
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "LIMIT",
+                        "stress"
+                    ],
+                    [
+                        [
+                            "Limit Break",
+                            "6",
+                            "[Foolhardy Courage] When my courage is insulted or questioned, I feel furious and must prove myself to others at any cost."
+                        ]
+                    ]
+                ]
+            ]
+        ],
+        [
+            [
+                [
+                    [
+                        "CHARMS",
+                        "detailed"
+                    ],
+                    [
+                        [
+                            "ENHANCED CHARISMA",
+                            "8",
+                            ""
+                        ],
+                        [
+                            "ENHANCED REFLEXES",
+                            "8",
+                            ""
+                        ],
+                        [
+                            "ENHANCED SPEED",
+                            "8",
+                            ""
+                        ],
+                        [
+                            "ENHANCED STRENGTH",
+                            "8",
+                            "- [Presence in Absence Technique] Declare an impending social attack you will make and attach it to a target you are touching, with a trigger of your choosing for when the attack will happen against either the target or whoever they are interacting with.",
+                            "- [Duck Fate] Once per scene, spend a mote to avoid taking stress or a complication.",
+                            "- [Exhausted] Shutdown any Charms power to gain a mote. Activate a spoiler to recover the power, or recover for free during the next transition scene."
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "RESPLENDENT DESTINIES",
+                        "detailed"
+                    ],
+                    [
+                        [
+                            "THE Banner",
+                            "",
+                            "The Banner is strikingly clad and always among you. He is fearless, victorious, and larger than life."
+                        ],
+                        [
+                            "THE SPEAR",
+                            "",
+                            "The Spear wears a uniform but posseses no rank. He is called by his family name or nickname. He is disciplined and brave."
+                        ]
+                    ]
+                ]
+            ],
+            [
+                [
+                    [
+                        "PANOPLY",
+                        "detailed"
+                    ],
+                    [
+                        [
+                            "FLAME SPEAR",
+                            "8",
+                            "<i>A short spear with a jagged head that at first glance appears to be made of red jade, but on close inspection is actually solid ever-burning fire. Can be used as a melee weapon or commanded to shoot gouts of flame.</i>",
+                            "- [Phoenix Flies on Golden Wings] Spend a mote to ignore any one complication when attacking with your flame spear."
+                        ],
+                        [
+                            "SALARY",
+                            "6",
+                            "You have access to reasonable wealth, both in Yu-Shan and Creation."
+                        ],
+                        [
+                            "CONNECTIONS",
+                            "6",
+                            "You have friends among:",
+                            "- [The Dragon-Blooded] The ruling Terrestial Exalted of Creation.",
+                            "- [The Immaculate Order] The state religion of the Realm, with much sway over the Threshold."
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "MARTIAL ARTS",
+                        "detailed"
+                    ],
+                    [
+                        [
+                            "RIGHTEOUS DEVIL STYLE",
+                            "0",
+                            "An intense, firey style emphasizing exotic ranged weapons, which turns an enemy's sins against them to punish them with their own wickedness.",
+                            "<i>Style Weapons: Firewands, Flamespears</i>",
+                            "- [Heaven's Inevitable Challenge] Spend a mote to force an opponent to duel you in single combat (or any one-on-one competition). No one else may interfere.",
+                            "- [Caress of 1,000 Hells] When attacking with this style, you may inflict both physical and mental stress simultaneously with a single effect die."
+                        ]
+                    ]
+                ]
+            ]
+        ]
+    ],
+    "highlightColors": {
+        ":root": "#d50707"
+    }
+}
