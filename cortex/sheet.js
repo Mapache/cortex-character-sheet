@@ -478,6 +478,7 @@ function apply_highlight_color(elem, color) {
 	} else {
 		elem.setAttribute("highlight-color", color)
 		elem.style.setProperty("--highlight", color)
+		elem.style.setProperty("--aura", color + "20") // RGB + A
 	}
 }
 

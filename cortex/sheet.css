@@ -185,8 +185,8 @@ mote {
 }
 
 pp {
-	background: #eee;
-	border-color: #eee;
+	background: var(--aura);
+	border-color: var(--aura);
 }
 
 pp:before {
@@ -194,12 +194,15 @@ pp:before {
 }
 
 mote {
-	background: #fafcc3;
-	border-color: #fafcc3;
+	background: var(--aura);
+	border-color: var(--aura);
 }
 
 mote:before {
-	content: "☀️";
+	font-family: 'Font Awesome 5 Free';
+	font-weight: 900;
+	color: var(--highlight);
+	content: "\f185";
 }
 
 ref {
@@ -265,7 +268,7 @@ ref {
 	writing-mode: vertical-lr;
 	display: inline;
 	color: var(--highlight);
-	background-color: #eee;
+	background-color: var(--aura);
 	transform: rotate(180deg);
 	font-weight: 800;
 	text-align: center;
@@ -1283,7 +1286,7 @@ li:before {
 /* Signature asset */
 .signature-asset {
 	border: 1pt solid var(--highlight);
-	background-color: #eee;
+	background-color: var(--aura);
 	flex-wrap: wrap;
 }
 
