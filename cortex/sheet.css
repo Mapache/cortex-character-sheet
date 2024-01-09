@@ -1506,6 +1506,9 @@ li:before {
 		font-style: normal;
 		font-size: 14pt;
 		content: "4 6 8 0 2";
+		/* Print Background Fix */
+		-webkit-print-color-adjust: exact;
+		-webkit-filter: opacity(1);
 	}
 
 	&:after {
