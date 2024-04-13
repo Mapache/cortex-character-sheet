@@ -1,0 +1,375 @@
+{
+    "version": 4,
+    "characterName": "LASSAD THE LUCKY",
+    "description": "Wandering Librarian",
+    "traits": [
+        [
+            [
+                [
+                    [
+                        "ANIMA",
+                        "stress"
+                    ],
+                    [
+                        [
+                            "Anima",
+                            "6",
+                            "<i>A fennec fox, sleek and charming, hinting at speed and danger</i>",
+                            "- Adds to most actions, complicates stealth.",
+                            "- Step up whenever you spend a mote.",
+                            "- [Flare] Once per scene, you may add d6 to the doom pool to gain a mote and step up your anima."
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "ABILITIES",
+                        "signature-asset"
+                    ],
+                    [
+                        [
+                            "<i>Pick 2 abilities when rolling.</i>",
+                            "",
+                            ""
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "BATTLE",
+                        "compact"
+                    ],
+                    [
+                        [
+                            "Archery",
+                            "6"
+                        ],
+                        [
+                            "Athletics",
+                            "6"
+                        ],
+                        [
+                            "Awareness",
+                            "6"
+                        ],
+                        [
+                            "Brawl",
+                            "6"
+                        ],
+                        [
+                            "Dodge",
+                            "6"
+                        ],
+                        [
+                            "Endurance",
+                            "6"
+                        ],
+                        [
+                            "Integrity",
+                            "6"
+                        ],
+                        [
+                            "MELEE",
+                            "6"
+                        ],
+                        [
+                            "Thrown",
+                            "6"
+                        ],
+                        [
+                            "War",
+                            "6"
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "LIFE",
+                        "compact"
+                    ],
+                    [
+                        [
+                            "Craft",
+                            "6"
+                        ],
+                        [
+                            "Larceny",
+                            "6"
+                        ],
+                        [
+                            "Linguistics",
+                            "6"
+                        ],
+                        [
+                            "Performance",
+                            "6"
+                        ],
+                        [
+                            "Presence",
+                            "6"
+                        ],
+                        [
+                            "Ride",
+                            "6"
+                        ],
+                        [
+                            "Sail",
+                            "6"
+                        ],
+                        [
+                            "Socialize",
+                            "6"
+                        ],
+                        [
+                            "Stealth",
+                            "6"
+                        ],
+                        [
+                            "Survival",
+                            "6"
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "WISDOM",
+                        "compact"
+                    ],
+                    [
+                        [
+                            "Bureaucracy",
+                            "6"
+                        ],
+                        [
+                            "Investigation",
+                            "6"
+                        ],
+                        [
+                            "Lore",
+                            "6"
+                        ],
+                        [
+                            "Medicine",
+                            "6"
+                        ],
+                        [
+                            "Occult",
+                            "6"
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "STRESS",
+                        "stress compact"
+                    ],
+                    [
+                        [
+                            "Physical",
+                            "6"
+                        ],
+                        [
+                            "Social",
+                            "6"
+                        ],
+                        [
+                            "Mental",
+                            "6"
+                        ]
+                    ]
+                ]
+            ],
+            [
+                [
+                    [
+                        "ESSENCE",
+                        "detailed"
+                    ],
+                    [
+                        [
+                            "Essence",
+                            "0",
+                            "- [Changing Moon Caste] Spend a mote to double any Life ability for one roll. While your anima banner is visible, step up the effect die for any roll you make including Presence, Socialize, or Stealth.",
+                            "- [The Tell] In all forms, you have a fox tail. People will not notice this unless your Anima draws attention."
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "DISTINCTIONS",
+                        "detailed"
+                    ],
+                    [
+                        [
+                            "Outrageously Lucky",
+                            "8 / 4+mote",
+                            "- [Combat Medic] Spend a mote as an action to recover your own or another’s physical stress, or to step down physical trauma."
+                        ],
+                        [
+                            "SUFFERING IS INJUSTICE",
+                            "8 / 4+mote",
+                            ""
+                        ],
+                        [
+                            "FIX WHAT IS BROKEN",
+                            "8 / 4+mote",
+                            ""
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "INTIMACIES",
+                        "detailed"
+                    ],
+                    [
+                        [
+                            "We build a future\nwe will not inhabit",
+                            "0",
+                            "All lives come to an end. Leave a legacy you would have been glad to inherit."
+                        ],
+                        [
+                            "Mercy above justice",
+                            "8",
+                            "Everyone deserves a second chance. Well, <i>almost</i> everyone…"
+                        ],
+                        [
+                            "There's nothing like\na good dumpling",
+                            "6",
+                            "Every culture in Creation has delicious dough-wrapped foods, but none can measure up to your grandmother's."
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "LIMIT",
+                        "stress"
+                    ],
+                    [
+                        [
+                            "Limit Break",
+                            "6",
+                            "[Red Rage of Tears] When I see innocents suffering through no fault of their own, I feel furious and destroy those who would torment them."
+                        ]
+                    ]
+                ]
+            ]
+        ],
+        [
+            [
+                [
+                    [
+                        "Shapeshifting",
+                        "detailed"
+                    ],
+                    [
+                        [
+                            "Shapeshift",
+                            "8",
+                            "- [Moonsilver Tattoos] Spend a mote to ignore stress or complications from an attack including the Transmutation power or Wyld-based hazards.",
+                            "- [Finding the Spirit's Shape] Your True Forms are human, fennec, and fennect-human hybrid."
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "CHARMS",
+                        "detailed"
+                    ],
+                    [
+                        [
+                            "ENHANCED DURABILITY",
+                            "8",
+                            ""
+                        ],
+                        [
+                            "ENHANCED CHARISMA",
+                            "8",
+                            ""
+                        ],
+                        [
+                            "ENHANCED SENSES",
+                            "8",
+                            ""
+                        ],
+                        [
+                            "???",
+                            "888",
+                            "- [Deadly Beast Transformation] When in hybrid bear-human form, you may include any number of Charms powers in a roll.",
+                            "- [Exhausted] Shutdown any Charms power to gain a mote. Activate a spoiler to recover the power, or recover for free during the next transition scene."
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "HEART'S BLOOD",
+                        "detailed"
+                    ],
+                    [
+                        [
+                            "THE PILLAR",
+                            "",
+                            "The Pillar wears a wedding ring and dresses plainly. She is perceptive and practical. She is firm but just."
+                        ],
+                        [
+                            "THE GAUNTLET",
+                            "",
+                            "The Gauntlet is worn. She carries or wears a withered flower, and she dresses in burial cerements. She weeps, but cannot be consoled. She is unshod."
+                        ],
+                        [
+                            "THE CORPSE",
+                            "",
+                            "The Corpse wears his best clothes. He is calm, and he bears the emblem of a butterfly somewhere on his person. He carries a textbook, which may be a guide to a new trade or a guide to the Underworld. Like the Gauntlet, he is unshod."
+                        ]
+                    ]
+                ]
+            ],
+            [
+                [
+                    [
+                        "PANOPLY",
+                        "detailed"
+                    ],
+                    [
+                        [
+                            "SALARY",
+                            "8",
+                            "You have access to substantial wealth, both in Yu-Shan and Creation."
+                        ],
+                        [
+                            "CELESTIAL MANSE",
+                            "6",
+                            "- [Hearthstone of Wakefulness] You do not need to sleep."
+                        ],
+                        [
+                            "CONNECTIONS",
+                            "6",
+                            "You have friends among:",
+                            "- [The Underworld] Just because someone's dead doesn't mean you have to say goodbye.",
+                            "- [Celestial Monitors of the Seasons and the Weather] Not only responsible for the day-to-day running of climate, but also Heaven's military, including deployment of <i>Martial Weather</i>."
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "MARTIAL ARTS",
+                        "detailed"
+                    ],
+                    [
+                        [
+                            "CITRINE POXES OF CONTAGION",
+                            "2",
+                            "A highly-advanced, esoteric style that manipulates the flows of Essence in the body to inflict (or cure) diseases both physical and spiritual, from the confounding Drunken Moth Sickness to the horrifying Jigsaw Organ Condition, or even the Great Contagion itself.",
+                            "<i>Style Weapons: Unarmed, Fighting Chains</i>",
+                            "- [Gentle Touch of the Wicked Hand] Add a d6 and step up your effect die when inflicting physical stress or complications using this style.",
+                            "- [Essence-Shattering Typhoon] When attacking multiple targets with this style, spend a mote to, for each additional target, add a d6 and keep an additional effect die."
+                        ]
+                    ]
+                ]
+            ]
+        ]
+    ],
+    "highlightColors": {
+        ":root": "#878787"
+    }
+}

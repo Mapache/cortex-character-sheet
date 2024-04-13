@@ -1,1 +1,290 @@
-{"version":4,"characterName":"NPCS","description":"","traits":[[[[["Mnemon Akara","detailed","#c50852"],[["ESSENCE","8","Earth Aspect"],["REALM DIPLOMAT","6",""],["Master Manipulator","0",""],["In Control of the Situation","6",""],["Do you know who my mother is?","0",""],["TERRESTRIAL CIRCLE SORCERY","8",""]]],[["Peleps Regon","detailed","#c50852"],[["ESSENCE","8","Water Aspect"],["REALM DIPLOMAT","6",""],["Charming Bastard","0",""],["Let's make a deal","6",""],["Spies Everywhere","0",""],["Water Dragon Style","8",""]]],[["TRIPLICATE GOLDEN FIRMAMENT","detailed","#db8b00"],[["ESSENCE","0","God of Relevant Paperwork"],["HEAVENLY FUNCTIONARY","2",""],["GENUINELY CARES","8",""],["OVERWORKED &amp; EXASPERATED","4",""],["THAT'S NOT TECHNICALLY A BRIBE","0",""],["Personally Knows the Maidens","6",""],["Friends with Pattern Spiders","6",""]]],[["NEOMAH","detailed","#941010"]]],[[["Flashing Blade","detailed","#080ec4"],[["ESSENCE","8","Fire Aspect"],["ICEHALL DIPLOMAT","6",""],["Suspicious Nature","0",""],["But I was going to backstab you","6",""],["Pleasantly Charming","0",""],["Close Combat","8",""]]],[["Talar Black-Stag","detailed","#080ec4"],[["ESSENCE","8","Wood Aspect"],["ICEHALL DIPLOMAT","6",""],["Keenly Aware","0",""],["Cold as Ice","6",""],["Only the Best Bargains","0",""],["Archery Champion","8",""]]],[["Artful Surgeon of the Broken Household","detailed","#6e4771"],[["ESSENCE","0","Midnight Caste"],["Vengeful Jilted Lover","0 0 0",""],["Love Me And Despair","2",""],["Blades Everywhere","8",""],["Flesh is my Plaything","2",""],["Legions of the Dead","6 6 6 6 6 6",""]]]]]],"highlightColors":{":root":"#C50852"}}
+{
+    "version": 4,
+    "characterName": "NPCS",
+    "description": "",
+    "traits": [
+        [
+            [
+                [
+                    [
+                        "Mnemon Akara",
+                        "detailed",
+                        "#c50852"
+                    ],
+                    [
+                        [
+                            "ESSENCE",
+                            "8",
+                            "Earth Aspect"
+                        ],
+                        [
+                            "REALM DIPLOMAT",
+                            "6",
+                            ""
+                        ],
+                        [
+                            "Master Manipulator",
+                            "0",
+                            ""
+                        ],
+                        [
+                            "In Control of the Situation",
+                            "6",
+                            ""
+                        ],
+                        [
+                            "Do you know who my mother is?",
+                            "0",
+                            ""
+                        ],
+                        [
+                            "TERRESTRIAL CIRCLE SORCERY",
+                            "8",
+                            ""
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "Peleps Regon",
+                        "detailed",
+                        "#c50852"
+                    ],
+                    [
+                        [
+                            "ESSENCE",
+                            "8",
+                            "Water Aspect"
+                        ],
+                        [
+                            "REALM DIPLOMAT",
+                            "6",
+                            ""
+                        ],
+                        [
+                            "Charming Bastard",
+                            "0",
+                            ""
+                        ],
+                        [
+                            "Let's make a deal",
+                            "6",
+                            ""
+                        ],
+                        [
+                            "Spies Everywhere",
+                            "0",
+                            ""
+                        ],
+                        [
+                            "Water Dragon Style",
+                            "8",
+                            ""
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "TRIPLICATE GOLDEN FIRMAMENT",
+                        "detailed",
+                        "#db8b00"
+                    ],
+                    [
+                        [
+                            "ESSENCE",
+                            "0",
+                            "God of Relevant Paperwork"
+                        ],
+                        [
+                            "HEAVENLY FUNCTIONARY",
+                            "2",
+                            ""
+                        ],
+                        [
+                            "GENUINELY CARES",
+                            "8",
+                            ""
+                        ],
+                        [
+                            "OVERWORKED &amp; EXASPERATED",
+                            "4",
+                            ""
+                        ],
+                        [
+                            "THAT'S NOT TECHNICALLY A BRIBE",
+                            "0",
+                            ""
+                        ],
+                        [
+                            "Personally Knows the Maidens",
+                            "6",
+                            ""
+                        ],
+                        [
+                            "Friends with Pattern Spiders",
+                            "6",
+                            ""
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "NEOMAH",
+                        "detailed",
+                        "#941010"
+                    ],
+                    [
+                        [
+                            "ESSENCE",
+                            "8",
+                            "Demon of the First Circle"
+                        ],
+                        [
+                            "THE SCIENCE OF PLEASURE",
+                            "2",
+                            ""
+                        ],
+                        [
+                            "THE ART OF FLESH",
+                            "2",
+                            ""
+                        ],
+                        [
+                            "A BARGAIN MADE IS A BARGAIN KEPT",
+                            "8",
+                            ""
+                        ],
+                        [
+                            "My Sisters Shall Hear of This",
+                            "8",
+                            ""
+                        ]
+                    ]
+                ]
+            ],
+            [
+                [
+                    [
+                        "Flashing Blade",
+                        "detailed",
+                        "#080ec4"
+                    ],
+                    [
+                        [
+                            "ESSENCE",
+                            "8",
+                            "Fire Aspect"
+                        ],
+                        [
+                            "ICEHALL DIPLOMAT",
+                            "6",
+                            ""
+                        ],
+                        [
+                            "Suspicious Nature",
+                            "0",
+                            ""
+                        ],
+                        [
+                            "But I was going to backstab you",
+                            "6",
+                            ""
+                        ],
+                        [
+                            "Pleasantly Charming",
+                            "0",
+                            ""
+                        ],
+                        [
+                            "Close Combat",
+                            "8",
+                            ""
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "Talar Black-Stag",
+                        "detailed",
+                        "#080ec4"
+                    ],
+                    [
+                        [
+                            "ESSENCE",
+                            "8",
+                            "Wood Aspect"
+                        ],
+                        [
+                            "ICEHALL DIPLOMAT",
+                            "6",
+                            ""
+                        ],
+                        [
+                            "Keenly Aware",
+                            "0",
+                            ""
+                        ],
+                        [
+                            "Cold as Ice",
+                            "6",
+                            ""
+                        ],
+                        [
+                            "Only the Best Bargains",
+                            "0",
+                            ""
+                        ],
+                        [
+                            "Archery Champion",
+                            "8",
+                            ""
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "Artful Surgeon of the Broken Household",
+                        "detailed",
+                        "#6e4771"
+                    ],
+                    [
+                        [
+                            "ESSENCE",
+                            "0",
+                            "Midnight Caste, A Vortex of Wailing Scalpels"
+                        ],
+                        [
+                            "Vengeful Jilted Lover",
+                            "0 0 0",
+                            ""
+                        ],
+                        [
+                            "Love Me And Despair",
+                            "2",
+                            "[Heart-Sculpting Oration] Attempt to afflict the listener with a temporary Intimacy for you equal to the effect die on success."
+                        ],
+                        [
+                            "Blades Everywhere",
+                            "8",
+                            ""
+                        ],
+                        [
+                            "Flesh is my Plaything",
+                            "2",
+                            ""
+                        ],
+                        [
+                            "Legions of the Dead",
+                            "6 6 6 6 6",
+                            "- [Elegant Tyrant's Majesty] Spend a mote to command a newly-dead victim to join your legion, adding another d6.",
+                            "- [Bone-Grafting Technique] As an action, remove one die from the Legion to step up the remaining dice."
+                        ]
+                    ]
+                ]
+            ]
+        ]
+    ],
+    "highlightColors": {
+        ":root": "#C50852"
+    }
+}
