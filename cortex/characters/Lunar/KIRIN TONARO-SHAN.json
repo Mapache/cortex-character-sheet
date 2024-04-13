@@ -249,7 +249,7 @@
                         [
                             "Limit Break",
                             "6",
-                            "[Red Rage of Tears] When I see innocents suffering through no fault of their own, I feel furious and destroy those who would torment them."
+                            "[Heart of Flint] When the people around me give into their emotions and cause trouble, I feel contempt and do my best to close off my own emotions completely, acting only through cold, remorseless logic."
                         ]
                     ]
                 ]
@@ -346,37 +346,14 @@
                     ],
                     [
                         [
+                            "FAMILIAR",
+                            "8",
+                            "- [Silent Death That Strikes From Above At Midnight] An owl with whom you can communicate telepathically"
+                        ],
+                        [
                             "MAGMA KRAKEN",
                             "0",
                             "Whenever you have a problem, you summon the Magma Kraken, and BOOM, right away a different problem!"
-                        ],
-                        [
-                            "CELESTIAL MANSE",
-                            "6",
-                            "- [Hearthstone of Wakefulness] You do not need to sleep."
-                        ],
-                        [
-                            "CONNECTIONS",
-                            "6",
-                            "You have friends among:",
-                            "- [The Underworld] Just because someone's dead doesn't mean you have to say goodbye.",
-                            "- [Celestial Monitors of the Seasons and the Weather] Not only responsible for the day-to-day running of climate, but also Heaven's military, including deployment of <i>Martial Weather</i>."
-                        ]
-                    ]
-                ],
-                [
-                    [
-                        "MARTIAL ARTS",
-                        "detailed"
-                    ],
-                    [
-                        [
-                            "CITRINE POXES OF CONTAGION",
-                            "2",
-                            "A highly-advanced, esoteric style that manipulates the flows of Essence in the body to inflict (or cure) diseases both physical and spiritual, from the confounding Drunken Moth Sickness to the horrifying Jigsaw Organ Condition, or even the Great Contagion itself.",
-                            "<i>Style Weapons: Unarmed, Fighting Chains</i>",
-                            "- [Gentle Touch of the Wicked Hand] Add a d6 and step up your effect die when inflicting physical stress or complications using this style.",
-                            "- [Essence-Shattering Typhoon] When attacking multiple targets with this style, spend a mote to, for each additional target, add a d6 and keep an additional effect die."
                         ]
                     ]
                 ]

@@ -249,7 +249,7 @@
                         [
                             "Limit Break",
                             "6",
-                            "[Red Rage of Tears] When I see innocents suffering through no fault of their own, I feel furious and destroy those who would torment them."
+                            "[Analysis Paralysis] When others turn to me to make a major choice that decides lives and deaths, I feel overwhelmed and become incapable of making any decisions at all."
                         ]
                     ]
                 ]
@@ -346,21 +346,26 @@
                     ],
                     [
                         [
-                            "SALARY",
+                            "RESOURCES",
                             "8",
-                            "You have access to substantial wealth, both in Yu-Shan and Creation."
+                            "You have access to substantial wealth and know how to use it to gain influence."
                         ],
                         [
-                            "CELESTIAL MANSE",
+                            "MANSE",
                             "6",
-                            "- [Hearthstone of Wakefulness] You do not need to sleep."
+                            "- [Hearthstone of the Dreamwalker] You can enter the dreams of other people in your presence, and attempt to purloin their thoughts and memories, or even plant new ones."
                         ],
                         [
                             "CONNECTIONS",
                             "6",
-                            "You have friends among:",
-                            "- [The Underworld] Just because someone's dead doesn't mean you have to say goodbye.",
-                            "- [Celestial Monitors of the Seasons and the Weather] Not only responsible for the day-to-day running of climate, but also Heaven's military, including deployment of <i>Martial Weather</i>."
+                            "You have friends here and there, mostly among those without much influence."
+                        ],
+                        [
+                            "DEATH OF OBSIDIAN BUTTERFLIES",
+                            "6",
+                            "<i>Ten thousand butterflies made of black volcanic glass with razor-sharp wings</i>",
+                            "- [Widespread] When attacking multiple targets with this spell, for each additional target add a d6 and keep an additional effect die.",
+                            "- [Fragile] Shutdown this power after use. Recover for free during the next transition scene."
                         ]
                     ]
                 ],
@@ -371,12 +376,9 @@
                     ],
                     [
                         [
-                            "CITRINE POXES OF CONTAGION",
-                            "2",
-                            "A highly-advanced, esoteric style that manipulates the flows of Essence in the body to inflict (or cure) diseases both physical and spiritual, from the confounding Drunken Moth Sickness to the horrifying Jigsaw Organ Condition, or even the Great Contagion itself.",
-                            "<i>Style Weapons: Unarmed, Fighting Chains</i>",
-                            "- [Gentle Touch of the Wicked Hand] Add a d6 and step up your effect die when inflicting physical stress or complications using this style.",
-                            "- [Essence-Shattering Typhoon] When attacking multiple targets with this style, spend a mote to, for each additional target, add a d6 and keep an additional effect die."
+                            "Ebon Shadow Style",
+                            "6",
+                            "A style spoken of in hushed tones, focusing on speed, striking first, and the manipulation of literal shadows to cloak you or even strike your enemies."
                         ]
                     ]
                 ]

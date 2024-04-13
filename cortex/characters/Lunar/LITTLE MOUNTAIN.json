@@ -249,7 +249,7 @@
                         [
                             "Limit Break",
                             "6",
-                            "[Red Rage of Tears] When I see innocents suffering through no fault of their own, I feel furious and destroy those who would torment them."
+                            "[Foolhardy Courage] When my courage is insulted or questioned, I feel furious and must prove myself to others at any cost."
                         ]
                     ]
                 ]
@@ -264,7 +264,7 @@
                     ],
                     [
                         [
-                            "Shapeshif",
+                            "Shapeshift",
                             "8",
                             "- [Moonsilver Tattoos] Spend a mote to ignore stress or complications from an attack including the Transmutation power or Wyld-based hazards.",
                             "- [Finding the Spirit's Shape] Your True Forms are human, bear, and bear-human hybrid."
@@ -337,37 +337,14 @@
                     ],
                     [
                         [
-                            "SALARY",
+                            "CULT",
+                            "10",
+                            "You have a wide-ranging cult of followers who worship you and will assist you, and some of them are always at your side."
+                        ],
+                        [
+                            "RENOWN",
                             "8",
-                            "You have access to substantial wealth, both in Yu-Shan and Creation."
-                        ],
-                        [
-                            "CELESTIAL MANSE",
-                            "6",
-                            "- [Hearthstone of Wakefulness] You do not need to sleep."
-                        ],
-                        [
-                            "CONNECTIONS",
-                            "6",
-                            "You have friends among:",
-                            "- [The Underworld] Just because someone's dead doesn't mean you have to say goodbye.",
-                            "- [Celestial Monitors of the Seasons and the Weather] Not only responsible for the day-to-day running of climate, but also Heaven's military, including deployment of <i>Martial Weather</i>."
-                        ]
-                    ]
-                ],
-                [
-                    [
-                        "MARTIAL ARTS",
-                        "detailed"
-                    ],
-                    [
-                        [
-                            "CITRINE POXES OF CONTAGION",
-                            "2",
-                            "A highly-advanced, esoteric style that manipulates the flows of Essence in the body to inflict (or cure) diseases both physical and spiritual, from the confounding Drunken Moth Sickness to the horrifying Jigsaw Organ Condition, or even the Great Contagion itself.",
-                            "<i>Style Weapons: Unarmed, Fighting Chains</i>",
-                            "- [Gentle Touch of the Wicked Hand] Add a d6 and step up your effect die when inflicting physical stress or complications using this style.",
-                            "- [Essence-Shattering Typhoon] When attacking multiple targets with this style, spend a mote to, for each additional target, add a d6 and keep an additional effect die."
+                            "You have the respect and admiration of Lunar society."
                         ]
                     ]
                 ]
