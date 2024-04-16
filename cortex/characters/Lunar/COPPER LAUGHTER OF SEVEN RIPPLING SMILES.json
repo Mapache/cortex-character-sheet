@@ -203,15 +203,15 @@
                         [
                             "Whoever You Want To Be",
                             "8 / 4+mote",
-                            "- [Combat Medic] Spend a mote as an action to recover your own or another’s physical stress, or to step down physical trauma."
+                            "- [Friends in Low Places] When you spend a mote to create an NPC Extra as an asset, that asset enters play as a d8 rather than a d6."
                         ],
                         [
-                            "SUFFERING IS INJUSTICE",
+                            "ATTACHMENTS ARE FOR OTHERS",
                             "8 / 4+mote",
                             ""
                         ],
                         [
-                            "FIX WHAT IS BROKEN",
+                            "FLEE THE CONSQUENCES",
                             "8 / 4+mote",
                             ""
                         ]
@@ -314,29 +314,6 @@
                             "8",
                             "You can summon demons of the First Circle and perform lesser sorcerous workings.",
                             "- [Utility Magic] A dice pool containing Sorcery cannot be used to inflict stress."
-                        ]
-                    ]
-                ],
-                [
-                    [
-                        "HEART'S BLOOD",
-                        "detailed"
-                    ],
-                    [
-                        [
-                            "THE PILLAR",
-                            "",
-                            "The Pillar wears a wedding ring and dresses plainly. She is perceptive and practical. She is firm but just."
-                        ],
-                        [
-                            "THE GAUNTLET",
-                            "",
-                            "The Gauntlet is worn. She carries or wears a withered flower, and she dresses in burial cerements. She weeps, but cannot be consoled. She is unshod."
-                        ],
-                        [
-                            "THE CORPSE",
-                            "",
-                            "The Corpse wears his best clothes. He is calm, and he bears the emblem of a butterfly somewhere on his person. He carries a textbook, which may be a guide to a new trade or a guide to the Underworld. Like the Gauntlet, he is unshod."
                         ]
                     ]
                 ]

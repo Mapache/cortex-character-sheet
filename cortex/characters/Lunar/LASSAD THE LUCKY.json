@@ -203,15 +203,15 @@
                         [
                             "Outrageously Lucky",
                             "8 / 4+mote",
-                            "- [Combat Medic] Spend a mote as an action to recover your own or another’s physical stress, or to step down physical trauma."
+                            "- [Just What I Needed] When you create a tactical asset by spending a mote, that asset enters play as a d8 rather than a d6, but it cannot be extended past the end of the scene."
                         ],
                         [
-                            "SUFFERING IS INJUSTICE",
+                            "LIFE IS FUN",
                             "8 / 4+mote",
                             ""
                         ],
                         [
-                            "FIX WHAT IS BROKEN",
+                            "SEE THE WORLD, ALL OF IT",
                             "8 / 4+mote",
                             ""
                         ]
@@ -298,31 +298,7 @@
                         [
                             "???",
                             "888",
-                            "- [Deadly Beast Transformation] When in hybrid fennec-human form, you may include any number of Charms powers in a roll.",
                             "- [Exhausted] Shutdown any Charms power to gain a mote. Activate a spoiler to recover the power, or recover for free during the next transition scene."
-                        ]
-                    ]
-                ],
-                [
-                    [
-                        "HEART'S BLOOD",
-                        "detailed"
-                    ],
-                    [
-                        [
-                            "THE PILLAR",
-                            "",
-                            "The Pillar wears a wedding ring and dresses plainly. She is perceptive and practical. She is firm but just."
-                        ],
-                        [
-                            "THE GAUNTLET",
-                            "",
-                            "The Gauntlet is worn. She carries or wears a withered flower, and she dresses in burial cerements. She weeps, but cannot be consoled. She is unshod."
-                        ],
-                        [
-                            "THE CORPSE",
-                            "",
-                            "The Corpse wears his best clothes. He is calm, and he bears the emblem of a butterfly somewhere on his person. He carries a textbook, which may be a guide to a new trade or a guide to the Underworld. Like the Gauntlet, he is unshod."
                         ]
                     ]
                 ]

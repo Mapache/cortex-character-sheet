@@ -203,15 +203,15 @@
                         [
                             "Conniving Sorcerer",
                             "8 / 4+mote",
-                            "- [Combat Medic] Spend a mote as an action to recover your own or another’s physical stress, or to step down physical trauma."
+                            "- [Sorcerous Workings]. When you take an action to create an asset with Sorcery, you may add d6 to the doom pool to extend that asset to the end of the Act instead of spending a mote."
                         ],
                         [
-                            "SUFFERING IS INJUSTICE",
+                            "KNOWLEDGE IS POWER",
                             "8 / 4+mote",
                             ""
                         ],
                         [
-                            "FIX WHAT IS BROKEN",
+                            "PULL THE STRINGS",
                             "8 / 4+mote",
                             ""
                         ]
@@ -312,29 +312,6 @@
                             "0",
                             "You can summon demons of the First or Second Circle and perform advanced sorcerous workings.",
                             "- [Utility Magic] A dice pool containing Sorcery cannot be used to inflict stress."
-                        ]
-                    ]
-                ],
-                [
-                    [
-                        "HEART'S BLOOD",
-                        "detailed"
-                    ],
-                    [
-                        [
-                            "THE PILLAR",
-                            "",
-                            "The Pillar wears a wedding ring and dresses plainly. She is perceptive and practical. She is firm but just."
-                        ],
-                        [
-                            "THE GAUNTLET",
-                            "",
-                            "The Gauntlet is worn. She carries or wears a withered flower, and she dresses in burial cerements. She weeps, but cannot be consoled. She is unshod."
-                        ],
-                        [
-                            "THE CORPSE",
-                            "",
-                            "The Corpse wears his best clothes. He is calm, and he bears the emblem of a butterfly somewhere on his person. He carries a textbook, which may be a guide to a new trade or a guide to the Underworld. Like the Gauntlet, he is unshod."
                         ]
                     ]
                 ]
