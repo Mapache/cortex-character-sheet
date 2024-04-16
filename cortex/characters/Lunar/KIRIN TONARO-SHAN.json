@@ -190,7 +190,7 @@
                             "Essence",
                             "0",
                             "- [No Moon Caste] Spend a mote to double any Wisdom ability or Sorcery for one roll. While your anima banner is visible, step up the effect die for any roll you make including Investigation, Lore, or Medicine.",
-                            "- [The Tell] In all forms, you have long rabbit ears. People will not notice this unless your Anima draws attention."
+                            "- [The Tell] In all forms, you have long rabbit ears. People will not notice this unless your Anima reaches d8."
                         ]
                     ]
                 ],
@@ -266,8 +266,9 @@
                         [
                             "Shapeshift",
                             "8",
-                            "- [Moonsilver Tattoos] Spend a mote to ignore stress or complications from an attack including the Transmutation power or Wyld-based hazards.",
-                            "- [Finding the Spirit's Shape] Your True Forms are human and rabbit."
+                            "- [Heart's Blood] You can take the form of any beast whose heart you have eaten.",
+                            "- [Finding the Spirit's Shape] Your True Forms are human and rabbit.",
+                            "- [Moonsilver Tattoos] Spend a mote to ignore stress or complications from an attack including the Transmutation power or Wyld-based hazards."
                         ]
                     ]
                 ],

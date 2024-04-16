@@ -190,7 +190,7 @@
                             "Essence",
                             "0",
                             "- [Changing Moon Caste] Spend a mote to double any Life ability for one roll. While your anima banner is visible, step up the effect die for any roll you make including Presence, Socialize, or Stealth.",
-                            "- [The Tell] In all forms, you have a fox tail. People will not notice this unless your Anima draws attention."
+                            "- [The Tell] In all forms, you have a fox tail. People will not notice this unless your Anima reaches d6."
                         ]
                     ]
                 ],
@@ -266,8 +266,11 @@
                         [
                             "Shapeshift",
                             "8",
-                            "- [Moonsilver Tattoos] Spend a mote to ignore stress or complications from an attack including the Transmutation power or Wyld-based hazards.",
-                            "- [Finding the Spirit's Shape] Your True Forms are human, fennec, and fennect-human hybrid."
+                            "- [Heart's Blood] You can take the form of any beast whose heart you have eaten.",
+                            "- [Prey's Skin Disguise] As an alternative to eating something's heart, you only need to study them closely to mimic their form.",
+                            "- [Finding the Spirit's Shape] Your True Forms are human, fennec, and fennec-human hybrid.",
+                            "- [Deadly Beast Transformation] When in hybrid fennec-human form, you may include any number of Charms powers in a roll.",
+                            "- [Moonsilver Tattoos] Spend a mote to ignore stress or complications from an attack including the Transmutation power or Wyld-based hazards."
                         ]
                     ]
                 ],

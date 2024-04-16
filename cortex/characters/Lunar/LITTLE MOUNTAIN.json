@@ -189,8 +189,8 @@
                         [
                             "Essence",
                             "0",
-                            "- [Full Moon Caste] Spend a mote to double any War ability for one roll. While your anima banner is visible, step up the effect die for any roll you make including Athletics, Dodge, or Endurance.",
-                            "- [The Tell] In all forms, you have vicious bear teeth and are unusually shaggy. People will not notice this unless your Anima draws attention."
+                            "- [Full Moon Caste] Spend a mote to double any Battle ability for one roll. While your anima banner is visible, step up the effect die for any roll you make including Athletics, Dodge, or Endurance.",
+                            "- [The Tell] In all forms, you have vicious bear teeth and are unusually shaggy. People will not notice this unless your Anima reaches d4."
                         ]
                     ]
                 ],
@@ -266,8 +266,10 @@
                         [
                             "Shapeshift",
                             "8",
-                            "- [Moonsilver Tattoos] Spend a mote to ignore stress or complications from an attack including the Transmutation power or Wyld-based hazards.",
-                            "- [Finding the Spirit's Shape] Your True Forms are human, bear, and bear-human hybrid."
+                            "- [Heart's Blood] You can take the form of any beast whose heart you have eaten.",
+                            "- [Finding the Spirit's Shape] Your True Forms are human, bear, and bear-human hybrid.",
+                            "- [Deadly Beast Transformation] When in hybrid bear-human form, you may include any number of Charms powers in a roll.",
+                            "- [Moonsilver Tattoos] Spend a mote to ignore stress or complications from an attack including the Transmutation power or Wyld-based hazards."
                         ]
                     ]
                 ],
@@ -300,7 +302,6 @@
                         [
                             "???",
                             "88",
-                            "- [Deadly Beast Transformation] When in hybrid bear-human form, you may include any number of Charms powers in a roll.",
                             "- [Exhausted] Shutdown any Charms power to gain a mote. Activate a spoiler to recover the power, or recover for free during the next transition scene."
                         ]
                     ]
@@ -338,7 +339,7 @@
                     [
                         [
                             "CULT",
-                            "10",
+                            "0",
                             "You have a wide-ranging cult of followers who worship you and will assist you, and some of them are always at your side."
                         ],
                         [
