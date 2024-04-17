@@ -42,7 +42,7 @@
                     [
                         [
                             "Archery",
-                            "6"
+                            "4"
                         ],
                         [
                             "Athletics",
@@ -50,7 +50,7 @@
                         ],
                         [
                             "Awareness",
-                            "6"
+                            "8"
                         ],
                         [
                             "Brawl",
@@ -58,7 +58,7 @@
                         ],
                         [
                             "Dodge",
-                            "6"
+                            "8"
                         ],
                         [
                             "Endurance",
@@ -70,15 +70,15 @@
                         ],
                         [
                             "Melee",
-                            "6"
+                            "4"
                         ],
                         [
                             "Thrown",
-                            "6"
+                            "4"
                         ],
                         [
                             "War",
-                            "6"
+                            "4"
                         ]
                     ]
                 ],
@@ -90,39 +90,39 @@
                     [
                         [
                             "Craft",
-                            "6"
+                            "8"
                         ],
                         [
                             "Larceny",
-                            "6"
+                            "2"
                         ],
                         [
                             "Linguistics",
-                            "6"
+                            "0"
                         ],
                         [
                             "Performance",
-                            "6"
+                            "2"
                         ],
                         [
                             "Presence",
-                            "6"
+                            "8"
                         ],
                         [
                             "Ride",
-                            "6"
+                            "4"
                         ],
                         [
                             "Sail",
-                            "6"
+                            "4"
                         ],
                         [
                             "Socialize",
-                            "6"
+                            "2"
                         ],
                         [
                             "Stealth",
-                            "6"
+                            "0"
                         ],
                         [
                             "Survival",
@@ -138,11 +138,11 @@
                     [
                         [
                             "Bureaucracy",
-                            "6"
+                            "0"
                         ],
                         [
                             "Investigation",
-                            "6"
+                            "0"
                         ],
                         [
                             "Lore",
@@ -150,11 +150,11 @@
                         ],
                         [
                             "Medicine",
-                            "6"
+                            "4"
                         ],
                         [
                             "Occult",
-                            "6"
+                            "8"
                         ]
                     ]
                 ],
@@ -265,11 +265,12 @@
                     [
                         [
                             "SHAPESHIFT",
-                            "8",
+                            "0",
                             "- [Heart's Blood] You can take the form of any beast whose heart you have eaten.",
                             "- [Prey's Skin Disguise] As an alternative to eating something's heart, you only need to study them closely to mimic their form.",
                             "- [Finding the Spirit's Shape] Your True Form is human.",
                             "- [Masking the Brilliant Form] Your Tell is very hard to discern.",
+                            "- [Wondrous Lunar Transformation] You can use your shapeshifting ability on another subject, but it takes a great deal of time and effort.",
                             "- [Lunacy] When you include Shapeshift in a roll to create an asset or complication, both 1s and 2s count as spoilers. Only 1s are excluded from use as total and effect dice."
                         ]
                     ]
@@ -281,24 +282,18 @@
                     ],
                     [
                         [
-                            "ENHANCED DURABILITY",
-                            "8",
+                            "Supernatural CHARISMA",
+                            "0",
                             ""
                         ],
                         [
-                            "ENHANCED CHARISMA",
+                            "ENHANCED Reflexes",
                             "8",
                             ""
                         ],
                         [
                             "ENHANCED SENSES",
                             "8",
-                            ""
-                        ],
-                        [
-                            "???",
-                            "8888",
-                            "- [???] ???",
                             "- [Exhausted] Shutdown any Charms power to gain a mote. Activate a spoiler to recover the power, or recover for free during the next transition scene."
                         ]
                     ]

@@ -42,31 +42,31 @@
                     [
                         [
                             "Archery",
-                            "6"
+                            "4"
                         ],
                         [
                             "Athletics",
-                            "6"
+                            "2"
                         ],
                         [
                             "Awareness",
-                            "6"
+                            "8"
                         ],
                         [
                             "Brawl",
-                            "6"
+                            "2"
                         ],
                         [
                             "Dodge",
-                            "6"
+                            "8"
                         ],
                         [
                             "Endurance",
-                            "6"
+                            "0"
                         ],
                         [
                             "Integrity",
-                            "6"
+                            "0"
                         ],
                         [
                             "Melee",
@@ -78,7 +78,7 @@
                         ],
                         [
                             "War",
-                            "6"
+                            "8"
                         ]
                     ]
                 ],
@@ -94,7 +94,7 @@
                         ],
                         [
                             "Larceny",
-                            "6"
+                            "4"
                         ],
                         [
                             "Linguistics",
@@ -102,31 +102,31 @@
                         ],
                         [
                             "Performance",
-                            "6"
+                            "0"
                         ],
                         [
                             "Presence",
-                            "6"
+                            "2"
                         ],
                         [
                             "Ride",
-                            "6"
+                            "4"
                         ],
                         [
                             "Sail",
-                            "6"
+                            "4"
                         ],
                         [
                             "Socialize",
-                            "6"
+                            "8"
                         ],
                         [
                             "Stealth",
-                            "6"
+                            "4"
                         ],
                         [
                             "Survival",
-                            "6"
+                            "0"
                         ]
                     ]
                 ],
@@ -138,7 +138,7 @@
                     [
                         [
                             "Bureaucracy",
-                            "6"
+                            "4"
                         ],
                         [
                             "Investigation",
@@ -150,11 +150,11 @@
                         ],
                         [
                             "Medicine",
-                            "6"
+                            "8"
                         ],
                         [
                             "Occult",
-                            "6"
+                            "4"
                         ]
                     ]
                 ],
@@ -269,6 +269,7 @@
                             "- [Heart's Blood] You can take the form of any beast whose heart you have eaten.",
                             "- [Finding the Spirit's Shape] Your True Forms are human, bear, and bear-human hybrid.",
                             "- [Deadly Beast Transformation] When in hybrid bear-human form, you may include any number of Charms powers in a roll.",
+                            "- [Towering Beast Form] You can shapeshift into enormous animals, including larger versions of shapes you know.",
                             "- [Moonsilver Tattoos] Spend a mote to ignore stress or complications from an attack including the Transmutation power or Wyld-based hazards."
                         ]
                     ]
@@ -280,28 +281,23 @@
                     ],
                     [
                         [
-                            "ENHANCED DURABILITY",
-                            "8",
-                            ""
-                        ],
-                        [
                             "ENHANCED CHARISMA",
                             "8",
                             ""
                         ],
                         [
-                            "ENHANCED SENSES",
+                            "ENHANCED DURABILITY",
                             "8",
                             ""
                         ],
                         [
-                            "ENHANCED Strength",
+                            "ENHANCED Speed",
                             "8",
                             ""
                         ],
                         [
-                            "???",
-                            "88",
+                            "Superhuman Strength",
+                            "0",
                             "- [Exhausted] Shutdown any Charms power to gain a mote. Activate a spoiler to recover the power, or recover for free during the next transition scene."
                         ]
                     ]

@@ -42,7 +42,7 @@
                     [
                         [
                             "Archery",
-                            "6"
+                            "4"
                         ],
                         [
                             "Athletics",
@@ -50,7 +50,7 @@
                         ],
                         [
                             "Awareness",
-                            "6"
+                            "0"
                         ],
                         [
                             "Brawl",
@@ -58,7 +58,7 @@
                         ],
                         [
                             "Dodge",
-                            "6"
+                            "0"
                         ],
                         [
                             "Endurance",
@@ -66,19 +66,19 @@
                         ],
                         [
                             "Integrity",
-                            "6"
+                            "0"
                         ],
                         [
                             "Melee",
-                            "6"
+                            "4"
                         ],
                         [
                             "Thrown",
-                            "6"
+                            "4"
                         ],
                         [
                             "War",
-                            "6"
+                            "8"
                         ]
                     ]
                 ],
@@ -90,31 +90,31 @@
                     [
                         [
                             "Craft",
-                            "6"
+                            "8"
                         ],
                         [
                             "Larceny",
-                            "6"
+                            "8"
                         ],
                         [
                             "Linguistics",
-                            "6"
+                            "8"
                         ],
                         [
                             "Performance",
-                            "6"
+                            "4"
                         ],
                         [
                             "Presence",
-                            "6"
+                            "4"
                         ],
                         [
                             "Ride",
-                            "6"
+                            "4"
                         ],
                         [
                             "Sail",
-                            "6"
+                            "4"
                         ],
                         [
                             "Socialize",
@@ -122,11 +122,11 @@
                         ],
                         [
                             "Stealth",
-                            "6"
+                            "2"
                         ],
                         [
                             "Survival",
-                            "6"
+                            "8"
                         ]
                     ]
                 ],
@@ -142,11 +142,11 @@
                         ],
                         [
                             "Investigation",
-                            "6"
+                            "2"
                         ],
                         [
                             "Lore",
-                            "6"
+                            "0"
                         ],
                         [
                             "Medicine",
@@ -154,7 +154,7 @@
                         ],
                         [
                             "Occult",
-                            "6"
+                            "2"
                         ]
                     ]
                 ],
@@ -268,6 +268,8 @@
                             "8",
                             "- [Heart's Blood] You can take the form of any beast whose heart you have eaten.",
                             "- [Finding the Spirit's Shape] Your True Forms are human and rabbit.",
+                            "- [Humble Mouse Form] You can shapeshift into tiny animals, including smaller versions of shapes you know.",
+                            "- [Shape the Once-Living Form] You can easily reshape formerly living materials, like wood, bone, and leather.",
                             "- [Moonsilver Tattoos] Spend a mote to ignore stress or complications from an attack including the Transmutation power or Wyld-based hazards."
                         ]
                     ]
@@ -284,19 +286,13 @@
                             ""
                         ],
                         [
-                            "ENHANCED CHARISMA",
-                            "8",
+                            "Superhuman SENSES",
+                            "0",
                             ""
                         ],
                         [
-                            "ENHANCED SENSES",
+                            "ENHANCED Speed",
                             "8",
-                            ""
-                        ],
-                        [
-                            "???",
-                            "88",
-                            "- [???] ???",
                             "- [Exhausted] Shutdown any Charms power to gain a mote. Activate a spoiler to recover the power, or recover for free during the next transition scene."
                         ]
                     ]

@@ -42,15 +42,15 @@
                     [
                         [
                             "Archery",
-                            "6"
+                            "4"
                         ],
                         [
                             "Athletics",
-                            "6"
+                            "0"
                         ],
                         [
                             "Awareness",
-                            "6"
+                            "4"
                         ],
                         [
                             "Brawl",
@@ -58,7 +58,7 @@
                         ],
                         [
                             "Dodge",
-                            "6"
+                            "2"
                         ],
                         [
                             "Endurance",
@@ -70,15 +70,15 @@
                         ],
                         [
                             "MELEE",
-                            "6"
+                            "2"
                         ],
                         [
                             "Thrown",
-                            "6"
+                            "8"
                         ],
                         [
                             "War",
-                            "6"
+                            "4"
                         ]
                     ]
                 ],
@@ -90,11 +90,11 @@
                     [
                         [
                             "Craft",
-                            "6"
+                            "4"
                         ],
                         [
                             "Larceny",
-                            "6"
+                            "2"
                         ],
                         [
                             "Linguistics",
@@ -102,11 +102,11 @@
                         ],
                         [
                             "Performance",
-                            "6"
+                            "8"
                         ],
                         [
                             "Presence",
-                            "6"
+                            "8"
                         ],
                         [
                             "Ride",
@@ -118,15 +118,15 @@
                         ],
                         [
                             "Socialize",
-                            "6"
+                            "0"
                         ],
                         [
                             "Stealth",
-                            "6"
+                            "0"
                         ],
                         [
                             "Survival",
-                            "6"
+                            "0"
                         ]
                     ]
                 ],
@@ -138,23 +138,23 @@
                     [
                         [
                             "Bureaucracy",
-                            "6"
+                            "8"
                         ],
                         [
                             "Investigation",
-                            "6"
+                            "8"
                         ],
                         [
                             "Lore",
-                            "6"
+                            "4"
                         ],
                         [
                             "Medicine",
-                            "6"
+                            "4"
                         ],
                         [
                             "Occult",
-                            "6"
+                            "4"
                         ]
                     ]
                 ],
@@ -281,23 +281,24 @@
                     ],
                     [
                         [
-                            "ENHANCED DURABILITY",
-                            "8",
-                            ""
-                        ],
-                        [
                             "ENHANCED CHARISMA",
                             "8",
                             ""
                         ],
                         [
-                            "ENHANCED SENSES",
+                            "ENHANCED Reflexes",
                             "8",
                             ""
                         ],
                         [
-                            "???",
-                            "888",
+                            "ENHANCED Speed",
+                            "8",
+                            ""
+                        ],
+                        [
+                            "ENHANCED Strength",
+                            "8",
+                            "- [Corrosive Spit] You can make ranged attacks by spitting acidic projectiles.",
                             "- [Exhausted] Shutdown any Charms power to gain a mote. Activate a spoiler to recover the power, or recover for free during the next transition scene."
                         ]
                     ]
