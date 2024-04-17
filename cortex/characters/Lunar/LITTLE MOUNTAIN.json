@@ -1,7 +1,7 @@
 {
     "version": 4,
     "characterName": "LITTLE MOUNTAIN",
-    "description": "Wandering Librarian",
+    "description": "An impressively craggy tower of a person even in human form, takes up space both physically and socially,<div>Projects strength and charm, and wields both to take power, but uses it responsibly; Leads a mortal cult</div>",
     "traits": [
         [
             [
@@ -224,19 +224,19 @@
                     ],
                     [
                         [
-                            "We build a future\nwe will not inhabit",
+                            "THE CHILDREN OF THE BEAR",
                             "0",
-                            "All lives come to an end. Leave a legacy you would have been glad to inherit."
+                            "You cherish and care for each of your worshippers, and will protect them from anything."
                         ],
                         [
-                            "Mercy above justice",
+                            "THE SILVER PACT",
                             "8",
-                            "Everyone deserves a second chance. Well, <i>almost</i> everyone…"
+                            "As Lunars, the future is ours, if we learn from the lessons of the past."
                         ],
                         [
-                            "There's nothing like\na good dumpling",
+                            "BREAKING BREAD IS FORGING BONDS",
                             "6",
-                            "Every culture in Creation has delicious dough-wrapped foods, but none can measure up to your grandmother's."
+                            "Food is life, and shared food is sacred. To dine with another invokes ancient laws of hospitality and exposes the heart."
                         ]
                     ]
                 ],

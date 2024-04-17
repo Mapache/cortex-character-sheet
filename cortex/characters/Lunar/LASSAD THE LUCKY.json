@@ -1,7 +1,7 @@
 {
     "version": 4,
     "characterName": "LASSAD THE LUCKY",
-    "description": "Wandering Librarian",
+    "description": "A happy-go-lucky rogue and a scoundrel; Loves traveling, sharing a good adventure with companions, then seeing what's over the next horizon; Better lucky than good, never learned to be careful, it always works out",
     "traits": [
         [
             [
@@ -270,6 +270,7 @@
                             "- [Prey's Skin Disguise] As an alternative to eating something's heart, you only need to study them closely to mimic their form.",
                             "- [Finding the Spirit's Shape] Your True Forms are human, fennec, and fennec-human hybrid.",
                             "- [Deadly Beast Transformation] When in hybrid fennec-human form, you may include any number of Charms powers in a roll.",
+                            "- [Corrosive Spit] You can make ranged attacks by spitting acidic projectiles.",
                             "- [Moonsilver Tattoos] Spend a mote to ignore stress or complications from an attack including the Transmutation power or Wyld-based hazards."
                         ]
                     ]
@@ -298,7 +299,6 @@
                         [
                             "ENHANCED Strength",
                             "8",
-                            "- [Corrosive Spit] You can make ranged attacks by spitting acidic projectiles.",
                             "- [Exhausted] Shutdown any Charms power to gain a mote. Activate a spoiler to recover the power, or recover for free during the next transition scene."
                         ]
                     ]

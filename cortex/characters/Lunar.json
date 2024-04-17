@@ -201,17 +201,19 @@
                     ],
                     [
                         [
-                            "Undefeated of the East",
+                            "Scholarly Doctor",
                             "8 / 4+mote",
-                            "- [Tactical Brilliance] When you create a tactical asset for another character by spending a mote, that asset enters play as a d8 rather than a d6, but it cannot be extended past the end of the scene."
+                            "- [Combat Medic] Spend a mote as an action to recover your own or another’s physical stress, or to step down physical trauma."
                         ],
                         [
-                            "Barefoot General ",
-                            "8 / 4+mote"
+                            "SUFFERING IS INJUSTICE",
+                            "8 / 4+mote",
+                            ""
                         ],
                         [
-                            "Compassion is Blind",
-                            "8 / 4+mote"
+                            "FIX WHAT IS BROKEN",
+                            "8 / 4+mote",
+                            ""
                         ]
                     ]
                 ],
@@ -222,16 +224,19 @@
                     ],
                     [
                         [
-                            "Defining",
-                            "0"
+                            "We build a future\nwe will not inhabit",
+                            "0",
+                            "All lives come to an end. Leave a legacy you would have been glad to inherit."
                         ],
                         [
-                            "major",
-                            "8"
+                            "Mercy above justice",
+                            "8",
+                            "Everyone deserves a second chance. Well, <i>almost</i> everyone…"
                         ],
                         [
-                            "minor",
-                            "6"
+                            "There's nothing like\na good dumpling",
+                            "6",
+                            "Every culture in Creation has delicious dough-wrapped foods, but none can measure up to your grandmother's."
                         ]
                     ]
                 ],
@@ -242,9 +247,9 @@
                     ],
                     [
                         [
-                            "Limit",
+                            "Limit Break",
                             "6",
-                            "[Limit Break] Curse of snobbishness"
+                            "[Red Rage of Tears] When I see innocents suffering through no fault of their own, I feel furious and destroy those who would torment them."
                         ]
                     ]
                 ]
@@ -259,26 +264,62 @@
                     ],
                     [
                         [
-                            "enhanced speed",
+                            "ENHANCED DURABILITY",
                             "8",
                             ""
                         ],
                         [
-                            "Mystic Senses",
+                            "ENHANCED REFLEXES",
                             "8",
-                            "- [Craftsman Needs No Tools] When you make a roll including the Craft skill, you may spend a mote to reroll any spoilers showing.",
-                            "- [Hardship-Surviving Mendicant Spirit] Spend a mote to ignore stress or complications from non-magical environmental hazards or the effects of deprivation."
+                            ""
                         ],
                         [
-                            "Essence blast",
+                            "ENHANCED SENSES",
                             "8",
-                            "- [Impending Disaster] Step up or double Essence Blast against a single target, or spend a mote to do both. If the attack fails, shutdown Essence Blast. Recover by activating an opportunity or for free during a transition scene."
+                            ""
                         ],
                         [
-                            "Celestial circle sorcery",
-                            "0",
-                            "- [Utility Magic] A dice pool containing Sorcery cannot be used to inflict stress.",
-                            "- [Exhausted] Shutdown any Solar Charms power to gain a mote. Activate a spoiler to recover the power, or recover for free during the next transition scene."
+                            "INVISIBILITY",
+                            "8",
+                            "- [Someone Else's Destiny] Spend a mote when you successfully attack someone to transfer a complication or stress from you to them; your effect die must be at least as large as the die transferred.",
+                            "- [Exhausted] Shutdown any Charms power to gain a mote. Activate a spoiler to recover the power, or recover for free during the next transition scene."
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "SORCERY",
+                        "detailed"
+                    ],
+                    [
+                        [
+                            "TERRESTRIAL CIRCLE SORCERY",
+                            "8",
+                            "You can summon demons of the First Circle and perform lesser sorcerous workings.",
+                            "- [Utility Magic] A dice pool containing Sorcery cannot be used to inflict stress."
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "RESPLENDENT DESTINIES",
+                        "detailed"
+                    ],
+                    [
+                        [
+                            "THE PILLAR",
+                            "",
+                            "The Pillar wears a wedding ring and dresses plainly. She is perceptive and practical. She is firm but just."
+                        ],
+                        [
+                            "THE GAUNTLET",
+                            "",
+                            "The Gauntlet is worn. She carries or wears a withered flower, and she dresses in burial cerements. She weeps, but cannot be consoled. She is unshod."
+                        ],
+                        [
+                            "THE CORPSE",
+                            "",
+                            "The Corpse wears his best clothes. He is calm, and he bears the emblem of a butterfly somewhere on his person. He carries a textbook, which may be a guide to a new trade or a guide to the Underworld. Like the Gauntlet, he is unshod."
                         ]
                     ]
                 ]
@@ -291,8 +332,37 @@
                     ],
                     [
                         [
-                            "DANCING MOONSILVER DREAM &amp;\nWHIRLING SOULSTEEL NIGHTMARE",
-                            "8"
+                            "SALARY",
+                            "8",
+                            "You have access to substantial wealth, both in Yu-Shan and Creation."
+                        ],
+                        [
+                            "CELESTIAL MANSE",
+                            "6",
+                            "- [Hearthstone of Wakefulness] You do not need to sleep."
+                        ],
+                        [
+                            "CONNECTIONS",
+                            "6",
+                            "You have friends among:",
+                            "- [The Underworld] Just because someone's dead doesn't mean you have to say goodbye.",
+                            "- [Celestial Monitors of the Seasons and the Weather] Not only responsible for the day-to-day running of climate, but also Heaven's military, including deployment of <i>Martial Weather</i>."
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "MARTIAL ARTS",
+                        "detailed"
+                    ],
+                    [
+                        [
+                            "CITRINE POXES OF CONTAGION",
+                            "2",
+                            "A highly-advanced, esoteric style that manipulates the flows of Essence in the body to inflict (or cure) diseases both physical and spiritual, from the confounding Drunken Moth Sickness to the horrifying Jigsaw Organ Condition, or even the Great Contagion itself.",
+                            "<i>Style Weapons: Unarmed, Fighting Chains</i>",
+                            "- [Gentle Touch of the Wicked Hand] Add a d6 and step up your effect die when inflicting physical stress or complications using this style.",
+                            "- [Essence-Shattering Typhoon] When attacking multiple targets with this style, spend a mote to, for each additional target, add a d6 and keep an additional effect die."
                         ]
                     ]
                 ]
