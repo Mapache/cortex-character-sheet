@@ -1,7 +1,7 @@
 {
     "version": 4,
-    "characterName": "LASSAD THE LUCKY",
-    "description": "A happy-go-lucky rogue and a scoundrel; Loves traveling, sharing a good adventure with companions, then seeing what's over the next horizon; Better lucky than good, never learned to be careful, it always works out",
+    "characterName": "AUSPICIOUS FLAME / IRON BEAK",
+    "description": "You were once a smith, turning a blind eye to the source of the profits you made outfitting Lintha pirates, until they kidnapped your children to ensure compliance, and in a moment of rage you Exalted, slaying their emissary with a red-hot blade and turning into a giant seagull to track down their ship and wipe out the abductors. Now you lead a double life as the dread Iron Beak, hunting down bandits and marauders of all sort.",
     "traits": [
         [
             [
@@ -14,7 +14,7 @@
                         [
                             "Anima",
                             "6",
-                            "<i>A fennec fox, sleek and charming, hinting at speed and danger</i>",
+                            "<i>An oversized seagull, imposing, determined, and with clear spite filling its eyes</i>",
                             "- Adds to most actions, complicates stealth.",
                             "- Step up whenever you spend a mote.",
                             "- [Flare] Once per scene, you may add d6 to the doom pool to gain a mote and step up your anima."
@@ -41,7 +41,7 @@
                     ],
                     [
                         [
-                            "Archery",
+                            "ARCHERY",
                             "4"
                         ],
                         [
@@ -50,11 +50,11 @@
                         ],
                         [
                             "Awareness",
-                            "4"
+                            "6"
                         ],
                         [
                             "Brawl",
-                            "6"
+                            "2"
                         ],
                         [
                             "Dodge",
@@ -62,19 +62,19 @@
                         ],
                         [
                             "Endurance",
-                            "6"
+                            "0"
                         ],
                         [
                             "Integrity",
-                            "6"
+                            "8"
                         ],
                         [
                             "MELEE",
-                            "2"
+                            "6"
                         ],
                         [
                             "Thrown",
-                            "8"
+                            "6"
                         ],
                         [
                             "War",
@@ -89,44 +89,44 @@
                     ],
                     [
                         [
-                            "Craft",
-                            "4"
-                        ],
-                        [
-                            "Larceny",
+                            "CRAFT",
                             "2"
                         ],
                         [
-                            "Linguistics",
+                            "Larceny",
                             "6"
+                        ],
+                        [
+                            "Linguistics",
+                            "4"
                         ],
                         [
                             "Performance",
-                            "8"
+                            "4"
                         ],
                         [
                             "Presence",
-                            "8"
+                            "4"
                         ],
                         [
                             "Ride",
-                            "6"
+                            "4"
                         ],
                         [
                             "Sail",
-                            "6"
+                            "0"
                         ],
                         [
                             "Socialize",
-                            "0"
+                            "6"
                         ],
                         [
                             "Stealth",
-                            "0"
+                            "8"
                         ],
                         [
                             "Survival",
-                            "0"
+                            "8"
                         ]
                     ]
                 ],
@@ -138,23 +138,23 @@
                     [
                         [
                             "Bureaucracy",
-                            "8"
+                            "4"
                         ],
                         [
                             "Investigation",
-                            "8"
+                            "6"
                         ],
                         [
                             "Lore",
-                            "4"
+                            "8"
                         ],
                         [
                             "Medicine",
-                            "4"
+                            "8"
                         ],
                         [
                             "Occult",
-                            "4"
+                            "0"
                         ]
                     ]
                 ],
@@ -187,10 +187,10 @@
                     ],
                     [
                         [
-                            "Essence",
+                            "ESSENCE",
                             "0",
                             "- [Changing Moon Caste] Spend a mote to double any Life ability for one roll. While your anima banner is visible, step up the effect die for any roll you make including Presence, Socialize, or Stealth.",
-                            "- [The Tell] In all forms, you have a fox tail. People will not notice this unless your Anima reaches d6."
+                            "- [The Tell] In all forms, you have nails and teeth made of iron. People will not notice this unless your Anima reaches d6."
                         ]
                     ]
                 ],
@@ -201,17 +201,17 @@
                     ],
                     [
                         [
-                            "Outrageously Lucky",
+                            "MASTER SMITH",
                             "8 / 4+mote",
-                            "- [Just What I Needed] When you create a tactical asset by spending a mote, that asset enters play as a d8 rather than a d6, but it cannot be extended past the end of the scene."
+                            "- [Craftsman Needs No Tools] When you create an asset representing a physical object you made, that asset enters play as a d8 and it automatically lasts for the rest of the act."
                         ],
                         [
-                            "LIFE IS FUN",
+                            "RELENTLESS PURSUIT",
                             "8 / 4+mote",
                             ""
                         ],
                         [
-                            "SEE THE WORLD, ALL OF IT",
+                            "COMPLICITY REQUIRES ATONEMENT",
                             "8 / 4+mote",
                             ""
                         ]
@@ -249,7 +249,7 @@
                         [
                             "Limit Break",
                             "6",
-                            "[Deliberate Cruelty] When the foolishness of others impedes my efforts, I feel frustrated and viciously lash out at my friends and allies."
+                            "[Red Rage of Tears] When I see innocents suffering through no fault of their own, I feel furious and destroy those who would torment them."
                         ]
                     ]
                 ]
@@ -265,12 +265,10 @@
                     [
                         [
                             "Shapeshift",
-                            "8",
+                            "0",
                             "- [Heart's Blood] You can take the form of any beast whose heart you have eaten.",
-                            "- [Prey's Skin Disguise] As an alternative to eating something's heart, you only need to study them closely to mimic their form.",
-                            "- [Finding the Spirit's Shape] Your True Forms are human, fennec, and fennec-human hybrid.",
-                            "- [Deadly Beast Transformation] When in hybrid fennec-human form, you may include any number of Charms powers in a roll.",
-                            "- [Spitfire] You can make ranged attacks by spitting flaming projectiles. People find this very surprising, but you had to learn to do it after a terrible pun involving \"firefox\".",
+                            "- [Finding the Spirit's Shape] Your True Forms are human and seagull.",
+                            "- [Iron Blood Understanding] You can shapeshift into metal as well as flesh. Spend a mote to ignore physical stress not inflicted with a Magical Material.",
                             "- [Moonsilver Tattoos] Spend a mote to ignore stress or complications from an attack including the Transmutation power or Wyld-based hazards."
                         ]
                     ]
@@ -282,12 +280,12 @@
                     ],
                     [
                         [
-                            "ENHANCED CHARISMA",
+                            "ENHANCED DURABILITY",
                             "8",
                             ""
                         ],
                         [
-                            "ENHANCED Reflexes",
+                            "ENHANCED SENSES",
                             "8",
                             ""
                         ],
@@ -302,6 +300,20 @@
                             "- [Exhausted] Shutdown any Charms power to gain a mote. Activate a spoiler to recover the power, or recover for free during the next transition scene."
                         ]
                     ]
+                ],
+                [
+                    [
+                        "SORCERY",
+                        "detailed"
+                    ],
+                    [
+                        [
+                            "TERRESTRIAL CIRCLE SORCERY",
+                            "8",
+                            "You can summon demons of the First Circle and perform lesser sorcerous workings.",
+                            "- [Utility Magic] A dice pool containing Sorcery cannot be used to inflict stress."
+                        ]
+                    ]
                 ]
             ],
             [
@@ -312,19 +324,32 @@
                     ],
                     [
                         [
-                            "The Flaming Blade",
-                            "8",
-                            "A moonsilver daiklave with swirls of red jade embedded throughout, capable of igniting on command."
-                        ],
-                        [
                             "CONNECTIONS",
-                            "8",
-                            "You have friends absolutely everywhere."
+                            "6",
+                            "You have friends among sailors and soldiers, those who work with the sea or with steel."
                         ],
                         [
-                            "Luck",
+                            "Resources",
                             "6",
-                            "You really are just stupidly lucky."
+                            "You have a decent amount of wealth built up."
+                        ],
+                        [
+                            "RENOWN",
+                            "6",
+                            "You are developing a reputation within Lunar society."
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "MARTIAL ARTS",
+                        "detailed"
+                    ],
+                    [
+                        [
+                            "MOLTEN BLADE STYLE",
+                            "8",
+                            "Your own creation, a unique approach relying on the ability to turn parts of your body to metal and back mid-motion in order to deflect blows and strike with terrifying force while remaining agile."
                         ]
                     ]
                 ]
