@@ -1,0 +1,284 @@
+{
+    "version": 4,
+    "characterName": "NPCS",
+    "description": "",
+    "traits": [
+        [
+            [
+                [
+                    [
+                        "CYNIS DEVON",
+                        "detailed",
+                        "#009e0b"
+                    ],
+                    [
+                        [
+                            "ESSENCE",
+                            "8",
+                            "Earth Aspect"
+                        ],
+                        [
+                            "CYNIS ENFORCER",
+                            "6",
+                            ""
+                        ],
+                        [
+                            "LIKE A HAMMER",
+                            "0",
+                            ""
+                        ],
+                        [
+                            "In Control of the Situation",
+                            "6",
+                            ""
+                        ],
+                        [
+                            "MONEY SOLVES MANY PROBLEMS",
+                            "0",
+                            ""
+                        ],
+                        [
+                            "FORMER REALM CENTURION",
+                            "8",
+                            ""
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "CYNIS YARA",
+                        "detailed",
+                        "#009e0b"
+                    ],
+                    [
+                        [
+                            "ESSENCE",
+                            "8",
+                            "Wood Aspect"
+                        ],
+                        [
+                            "CYNIS INVESTIGATOR",
+                            "6",
+                            ""
+                        ],
+                        [
+                            "Keenly Aware",
+                            "0",
+                            ""
+                        ],
+                        [
+                            "WRY CHARM",
+                            "6",
+                            ""
+                        ],
+                        [
+                            "MORAL FLEXIBILITY",
+                            "0",
+                            ""
+                        ],
+                        [
+                            "Archery Champion",
+                            "8",
+                            ""
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "NEOMAH",
+                        "detailed",
+                        "#941010"
+                    ],
+                    [
+                        [
+                            "ESSENCE",
+                            "8",
+                            "Demon of the First Circle"
+                        ],
+                        [
+                            "THE SCIENCE OF PLEASURE",
+                            "2",
+                            ""
+                        ],
+                        [
+                            "THE ART OF FLESH",
+                            "2",
+                            ""
+                        ],
+                        [
+                            "A BARGAIN MADE IS A BARGAIN KEPT",
+                            "8",
+                            ""
+                        ],
+                        [
+                            "My Sisters Shall Hear of This",
+                            "8",
+                            ""
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "BLOOD APE",
+                        "detailed",
+                        "#ff0000"
+                    ],
+                    [
+                        [
+                            "ESSENCE",
+                            "8",
+                            "Demon of the First Circle"
+                        ],
+                        [
+                            "RED HAZE OF VIOLENCE",
+                            "2 2",
+                            "[Berserk Rampage] Add a doom die to a roll to fight. On a successful attack, step the die back and return it to the doom pool."
+                        ],
+                        [
+                            "TERRIFYING VISAGE",
+                            "0",
+                            ""
+                        ],
+                        [
+                            "THICK ARMORED FUR",
+                            "0",
+                            ""
+                        ],
+                        [
+                            "RELENTLESS TRACKER",
+                            "8",
+                            ""
+                        ],
+                        [
+                            "Easily Distracted",
+                            "4",
+                            ""
+                        ]
+                    ]
+                ]
+            ],
+            [
+                [
+                    [
+                        "HUNGRY JAGUAR",
+                        "detailed",
+                        "#db008b"
+                    ],
+                    [
+                        [
+                            "ESSENCE",
+                            "8",
+                            "Fire Aspect"
+                        ],
+                        [
+                            "GUILD LIEUTENANT",
+                            "0",
+                            ""
+                        ],
+                        [
+                            "Suspicious Nature",
+                            "0",
+                            ""
+                        ],
+                        [
+                            "IT'S NOT FAIR",
+                            "6",
+                            ""
+                        ],
+                        [
+                            "VELVET-WRAPPED STEEL",
+                            "8",
+                            ""
+                        ],
+                        [
+                            "Close Combat",
+                            "8",
+                            ""
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "FLOWING SHADOW",
+                        "detailed",
+                        "#0084d6"
+                    ],
+                    [
+                        [
+                            "ESSENCE",
+                            "8",
+                            "Water Aspect"
+                        ],
+                        [
+                            "LOST EGG MERCENARY",
+                            "6",
+                            ""
+                        ],
+                        [
+                            "WHERE'D SHE GO?",
+                            "0",
+                            ""
+                        ],
+                        [
+                            "I HEARD SOMETHING",
+                            "6",
+                            ""
+                        ],
+                        [
+                            "TERRESTRIAL CIRCLE SORCERY",
+                            "8",
+                            ""
+                        ],
+                        [
+                            "Water Dragon Style",
+                            "0",
+                            ""
+                        ]
+                    ]
+                ],
+                [
+                    [
+                        "THE BEAST",
+                        "detailed",
+                        "#3d6c4b"
+                    ],
+                    [
+                        [
+                            "ESSENCE",
+                            "6",
+                            "Ancient Living Drug Factory"
+                        ],
+                        [
+                            "HEROIN-PISSING DINOSAUR",
+                            "2 2 2",
+                            ""
+                        ],
+                        [
+                            "REALLY HUNGRY",
+                            "8 8",
+                            ""
+                        ],
+                        [
+                            "EVEN MORE SLEEPY",
+                            "6 6 6",
+                            ""
+                        ],
+                        [
+                            "A LOT OF GUARDS",
+                            "8 8 8 8 8 8",
+                            ""
+                        ],
+                        [
+                            "ALSO ELITE GUARDS",
+                            "0 0 0",
+                            ""
+                        ]
+                    ]
+                ]
+            ]
+        ]
+    ],
+    "highlightColors": {
+        ":root": "#C50852"
+    }
+}
