@@ -1509,6 +1509,8 @@ li:before {
 		/* Print Background Fix */
 		-webkit-print-color-adjust: exact;
 		-webkit-filter: opacity(1);
+		print-color-adjust: exact;
+		filter: opacity(1);
 	}
 
 	&:after {

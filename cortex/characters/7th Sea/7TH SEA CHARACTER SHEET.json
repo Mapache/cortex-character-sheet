@@ -1,0 +1,257 @@
+{
+  "version": 4,
+  "characterName": "7TH SEA CHARACTER SHEET",
+  "description": "Character Description",
+  "traits": [
+    [
+      [
+        [
+          [
+            "DISTINCTIONS",
+            "detailed"
+          ],
+          [
+            [
+              "Reputation: {Phrase}",
+              "8 / 4+mote",
+              "{Elaborate on reputation}"
+            ],
+            [
+              "VIRTUE: {ARCANA}",
+              "8",
+              "- Once per session, activate your Virtue to…"
+            ],
+            [
+              "HUBRIS: {ARCANA}",
+              "4+mote",
+              "- Once per session, you receive a mote when…"
+            ],
+            [
+              "BACKGROUND: {BACKGROUND 1}",
+              "6",
+              "[Quirk]: Earn a mote when…"
+            ],
+            [
+              "BACKGROUND: {BACKGROUND 2}",
+              "6",
+              "[Quirk]: Earn a mote when…"
+            ],
+            [
+              "NATIONALITY: {NATION}",
+              "",
+              ""
+            ]
+          ]
+        ],
+        [
+          [
+            "Attributes",
+            "compact"
+          ],
+          [
+            [
+              "BRAWN",
+              "4"
+            ],
+            [
+              "Finesse",
+              "4"
+            ],
+            [
+              "Panache",
+              "4"
+            ],
+            [
+              "Resolve",
+              "4"
+            ],
+            [
+              "Wits",
+              "4"
+            ]
+          ]
+        ],
+        [
+          [
+            "Skills",
+            "compact"
+          ],
+          [
+            [
+              "Aim",
+              "4"
+            ],
+            [
+              "Athletics",
+              "4"
+            ],
+            [
+              "Brawl",
+              "4"
+            ],
+            [
+              "Convince",
+              "4"
+            ],
+            [
+              "Empathy",
+              "4"
+            ],
+            [
+              "Hide",
+              "4"
+            ],
+            [
+              "Intimidate",
+              "4"
+            ],
+            [
+              "Notice",
+              "4"
+            ],
+            [
+              "Perform",
+              "4"
+            ],
+            [
+              "Ride",
+              "4"
+            ],
+            [
+              "Sailing",
+              "4"
+            ],
+            [
+              "Scholarship",
+              "4"
+            ],
+            [
+              "Tempt",
+              "4"
+            ],
+            [
+              "Theft",
+              "4"
+            ],
+            [
+              "Warfare",
+              "4"
+            ],
+            [
+              "Weaponry",
+              "4"
+            ]
+          ]
+        ],
+        [
+          [
+            "Consequences",
+            "stress compact"
+          ],
+          [
+            [
+              "Stress",
+              "6"
+            ],
+            [
+              "Wounds",
+              "6"
+            ],
+            [
+              "Corruption",
+              "6"
+            ]
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            "ADVANTAGES",
+            "detailed"
+          ],
+          [
+            [
+              "{FROM BACKGROUND 1}",
+              "",
+              "{What it does}"
+            ],
+            [
+              "{FROM BACKGROUND 1}",
+              "",
+              "{What it does}"
+            ],
+            [
+              "{FROM BACKGROUND 2}",
+              "",
+              "{What it does}"
+            ],
+            [
+              "{FROM BACKGROUND 2}",
+              "",
+              "{What it does}"
+            ],
+            [
+              "{PURCHASED}",
+              "",
+              "{What it does}"
+            ],
+            [
+              "{PURCHASED}",
+              "",
+              "{What it does}"
+            ]
+          ]
+        ],
+        [
+          [
+            "LANGUAGES",
+            "detailed"
+          ],
+          [
+            [
+              "{NATIVE LANGUAGE}",
+              "",
+              ""
+            ],
+            [
+              "LATIN",
+              "",
+              ""
+            ],
+            [
+              "{REQUIRES WITS D8}",
+              "",
+              ""
+            ],
+            [
+              "{REQUIRES WITS D10}",
+              "",
+              ""
+            ],
+            [
+              "{REQUIRES WITS D12}",
+              "",
+              ""
+            ]
+          ]
+        ],
+        [
+          [
+            "ASSETS",
+            "detailed"
+          ],
+          [
+            [
+              "SECRET SOCIETY: {NAME}",
+              "6"
+            ]
+          ]
+        ]
+      ]
+    ]
+  ],
+  "highlightColors": {
+    ":root": "#a5003c"
+  }
+}
