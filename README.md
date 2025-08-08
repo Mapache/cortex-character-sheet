@@ -1,7 +1,3 @@
-# tamas-rabel.github.io
-
-[2nd edition AD&D character sheet](./adnd2e/sheet.html)
+# Forked from tamas-rabel.github.io
 
 [Cortex Prime character sheet](./cortex/sheet.html)
-
-[Hex world generator](./hex_world_generator/hex_world_generator.html)
