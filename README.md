@@ -1,3 +1,3 @@
 # Forked from tamas-rabel.github.io
 
-[Cortex Prime character sheet](./cortex/sheet.html)
+A [Cortex Prime character sheet](./cortex/sheet.html) supporting open-ended content blocks across two columns and multiple pages, and saving and restoring characters via local JSON files.
