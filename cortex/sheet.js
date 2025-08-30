@@ -1,3 +1,15 @@
+// URL Parameters
+
+function load_default_sheet() {
+	const queryString = window.location.search
+	const urlParams = new URLSearchParams(queryString)
+	const sheetParam = "sheet"
+	if (urlParams.has(sheetParam)) {
+		const sheetPath = urlParams.get(sheetParam)
+		load_character_path("characters/" + sheetPath)
+	}
+}
+
 // Character Sheet
 
 function c_to_html(html) {
