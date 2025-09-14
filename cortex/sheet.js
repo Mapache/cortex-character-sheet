@@ -784,12 +784,15 @@ function set_global_highlight_color(e) {
 }
 
 class ToggleableStyle {
-	constructor(controlSelector, controlClass, style, startsEnabled) {
+	constructor(controlSelector, enabledControlClass, enabledStyle, disabledStyle, startsEnabled) {
 		this.controlSelector = controlSelector
-		this.controlClass = controlClass
+		this.enabledControlClass = enabledControlClass
 
-		this.styleSheet = document.createElement("style")
-		this.styleSheet.innerText = style
+		this.enabledStyleSheet = document.createElement("style")
+		this.enabledStyleSheet.innerText = enabledStyle
+
+		this.disabledStyleSheet = document.createElement("style")
+		this.disabledStyleSheet.innerText = disabledStyle
 
 		this.enabled = false
 		if (startsEnabled) {
@@ -802,17 +805,32 @@ class ToggleableStyle {
 		}
 	}
 
+	enable() {
+		this.enabled = true
+		if (this.disabledStyleSheet.parentNode !== null) {
+			document.head.removeChild(this.disabledStyleSheet)
+		}
+		document.head.appendChild(this.enabledStyleSheet)
+		document.querySelector(this.controlSelector).classList.add(this.enabledControlClass)
+	}
+
+	disable() {
+		this.enabled = false
+		if (this.enabledStyleSheet.parentNode !== null) {
+			document.head.removeChild(this.enabledStyleSheet)
+		}
+		document.head.appendChild(this.disabledStyleSheet)
+		document.querySelector(this.controlSelector).classList.remove(this.enabledControlClass)
+	}
+
 	toggle() {
-		this.enabled = !this.enabled
-		let control = document.querySelector(this.controlSelector)
 		if (this.enabled) {
-			document.head.appendChild(this.styleSheet)
-			control.classList.add(this.controlClass)
+			this.disable()
 		} else {
-			document.head.removeChild(this.styleSheet)
-			control.classList.remove(this.controlClass)
+			this.enable()
 		}
 	}
+
 }
 
 // Show layout controls by default
@@ -824,6 +842,7 @@ const layoutControlsHidden = new ToggleableStyle(
 			display: none !important;
 		}
 	`,
+	"",
 	false)
 
 // Hide empty trait descriptions by default
@@ -833,6 +852,21 @@ const emptyDescriptionsHidden = new ToggleableStyle(
 	`
 		.trait-description:empty {
 			display: none !important;
+		}
+	`,
+	`
+		.trait-description:empty {
+			background: linear-gradient(-45deg, #eee 40%, #fafafa 50%, #eee 60%);
+			background-size: 300%;
+			animation: shimmer 4s infinite linear;
+		}
+		@keyframes shimmer {
+			0% {
+				background-position-x: 100%;
+			}
+			25%, 100% {
+				background-position-x: 0%;
+			}
 		}
 	`,
 	true)
