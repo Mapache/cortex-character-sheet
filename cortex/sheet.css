@@ -1252,6 +1252,23 @@ li:before {
 #menu #toggle-empty-descriptions:not(.descriptions-hidden):before {
 	font-weight: 400;
 	content: "\f075";
+
+	animation: iconShimmer 4s infinite linear;
+}
+
+@keyframes iconShimmer {
+	0% {
+		color: #000;
+	}
+
+	12.5% {
+		color: #ccc;
+	}
+
+	25%,
+	100% {
+		color: #000;
+	}
 }
 
 #menu #toggle-empty-descriptions.descriptions-hidden:before {
