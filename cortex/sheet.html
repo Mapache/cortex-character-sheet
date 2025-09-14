@@ -241,13 +241,14 @@
 
 	<!-- Menu -->
 	<div id="menu" class="no-print">
-		<div id="save" onclick="save_character(event)"></div>
-		<div>
+		<div id="save" title="Download Sheet" onclick="save_character(event)"></div>
+		<div title="Highlight Color">
 			<input id="global-highlight-picker" type="color" value="#C50852"
 				onchange="set_global_highlight_color(event)" oninput="set_global_highlight_color(event)"></input>
 		</div>
-		<div id="toggle-layout-controls" onclick="toggle_layout_controls(event)"></div>
-		<div id="help" onclick="show_help(event)"></div>
+		<div id="toggle-layout-controls" title="Toggle Layout Controls" onclick="layoutControlsHidden.toggle(event)"></div>
+		<div id="toggle-empty-descriptions" title="Toggle Empty Descriptions" onclick="emptyDescriptionsHidden.toggle(event)"></div>
+		<div id="help" title="Help" onclick="show_help(event)"></div>
 	</div>
 
 	<!-- Templates -->

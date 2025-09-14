@@ -112,9 +112,9 @@
 }
 
 .page-column {
-    width: 87mm;
-    display: inline-block;
-    vertical-align: top;
+	width: 87mm;
+	display: inline-block;
+	vertical-align: top;
 }
 
 .page-column.left {
@@ -1249,6 +1249,15 @@ li:before {
 	content: "\f070";
 }
 
+#menu #toggle-empty-descriptions:not(.descriptions-hidden):before {
+	font-weight: 400;
+	content: "\f075";
+}
+
+#menu #toggle-empty-descriptions.descriptions-hidden:before {
+	content: "\f4b3";
+}
+
 #menu #help:before {
 	content: "\f128";
 }
@@ -1558,20 +1567,14 @@ li:before {
 }
 
 .inline .trait-description {
-    display: inline;
-    float: right;
-    width: 45%;
-    border: none;
-    margin: unset;
-    padding: unset;
-    color: var(--highlight);
+	display: inline;
+	float: right;
+	width: 45%;
+	border: none;
+	margin: unset;
+	padding: unset;
+	color: var(--highlight);
 }
 
 /* Compact Two-Columns */
 /* No special handling needed */
-
-/* Automatically compact empty trait descriptions */
-
-.trait-description:empty {
-	display: none !important;
-}

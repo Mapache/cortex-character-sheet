@@ -783,27 +783,59 @@ function set_global_highlight_color(e) {
 	apply_highlight_color(root, colorPicker.value)
 }
 
-let shouldShowLayoutControls = true
-let hideControlsStyleSheet = function () {
-	let styleSheet = document.createElement("style")
-	styleSheet.innerText = `
+class ToggleableStyle {
+	constructor(controlSelector, controlClass, style, startsEnabled) {
+		this.controlSelector = controlSelector
+		this.controlClass = controlClass
+
+		this.styleSheet = document.createElement("style")
+		this.styleSheet.innerText = style
+
+		this.enabled = false
+		if (startsEnabled) {
+			// Need to wait until the DOM is loaded before trying to alter it.
+			document.addEventListener("readystatechange", (event) => {
+				if (event.target.readyState === "interactive") {
+					this.toggle()
+				}
+			})
+		}
+	}
+
+	toggle() {
+		this.enabled = !this.enabled
+		let control = document.querySelector(this.controlSelector)
+		if (this.enabled) {
+			document.head.appendChild(this.styleSheet)
+			control.classList.add(this.controlClass)
+		} else {
+			document.head.removeChild(this.styleSheet)
+			control.classList.remove(this.controlClass)
+		}
+	}
+}
+
+// Show layout controls by default
+const layoutControlsHidden = new ToggleableStyle(
+	"#toggle-layout-controls",
+	"controls-hidden",
+	`
 		.pages .no-print {
 			display: none !important;
 		}
+	`,
+	false)
+
+// Hide empty trait descriptions by default
+const emptyDescriptionsHidden = new ToggleableStyle(
+	"#toggle-empty-descriptions",
+	"descriptions-hidden",
 	`
-	return styleSheet
-}()
-function toggle_layout_controls(e) {
-	shouldShowLayoutControls = !shouldShowLayoutControls
-	let layoutControls = document.querySelector("#toggle-layout-controls")
-	if (shouldShowLayoutControls) {
-		document.head.removeChild(hideControlsStyleSheet)
-		layoutControls.classList.remove("controls-hidden")
-	} else {
-		document.head.appendChild(hideControlsStyleSheet)
-		layoutControls.classList.add("controls-hidden")
-	}
-}
+		.trait-description:empty {
+			display: none !important;
+		}
+	`,
+	true)
 
 function show_help(e) {
 	show_modal("help-modal", e.pageX, e.pageY, function () { })
