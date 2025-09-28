@@ -1001,6 +1001,21 @@ function move_down(e) {
 	close_context_menu()
 }
 
+function move_to_other_column(e) {
+	let traitGroup = g_context_target.parentElement
+	let column = traitGroup.parentElement
+	if (column.classList.contains("left")) {
+		column = column.nextElementSibling
+	} else {
+		column = column.previousElementSibling
+	}
+	let traitGroups = column.children
+	let traitGroupPlaceholder = traitGroups[traitGroups.length - 1]
+	traitGroupPlaceholder.before(traitGroup)
+
+	close_context_menu()
+}
+
 window.onload = function () {
 	document.addEventListener("keydown", function (e) {
 		if ((window.navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey) && e.keyCode == 83) {
