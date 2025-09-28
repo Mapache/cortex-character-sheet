@@ -169,7 +169,8 @@ c {
 }
 
 pp,
-mote {
+mote,
+hero {
 	all: initial;
 	font-family: 'Open Sans', sans-serif;
 
@@ -184,7 +185,9 @@ mote {
 	line-height: 1.6em;
 }
 
-pp {
+pp,
+mote,
+hero {
 	background: var(--aura);
 	border-color: var(--aura);
 }
@@ -193,16 +196,18 @@ pp:before {
 	content: "PP";
 }
 
-mote {
-	background: var(--aura);
-	border-color: var(--aura);
-}
-
 mote:before {
 	font-family: 'Font Awesome 5 Free';
 	font-weight: 900;
 	color: var(--highlight);
 	content: "\f185";
+}
+
+hero:before {
+	font-family: 'Font Awesome 5 Free';
+	font-weight: 900;
+	color: var(--highlight);
+	content: "\f521";
 }
 
 ref {
