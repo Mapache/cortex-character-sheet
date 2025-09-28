@@ -974,9 +974,7 @@ function move_to_top(e) {
 function move_to_bottom(e) {
 	let traitGroup = g_context_target.parentElement
 	let column = traitGroup.parentElement
-	let traitGroups = column.children
-	let traitGroupPlaceholder = traitGroups[traitGroups.length - 1]
-	traitGroupPlaceholder.before(traitGroup)
+	add_trait_group_to_column_bottom(traitGroup, column)
 
 	close_context_menu()
 }
@@ -1009,11 +1007,41 @@ function move_to_other_column(e) {
 	} else {
 		column = column.previousElementSibling
 	}
+	add_trait_group_to_column_bottom(traitGroup, column)
+
+	close_context_menu()
+}
+
+function move_to_next_page(e) {
+	let traitGroup = g_context_target.parentElement
+	let column = traitGroup.parentElement
+	let page = column.parentElement
+	let newPage = page.nextElementSibling
+	if (newPage && newPage.classList.contains("page")) { // Avoid the placeholder
+		let newColumn = newPage.querySelector(".page-column.left")
+		add_trait_group_to_column_bottom(traitGroup, newColumn)
+	}
+
+	close_context_menu()
+}
+
+function move_to_previous_page(e) {
+	let traitGroup = g_context_target.parentElement
+	let column = traitGroup.parentElement
+	let page = column.parentElement
+	let newPage = page.previousElementSibling
+	if (newPage && newPage.classList.contains("page")) { // Previous sibling should always be a page, but still check
+		let newColumn = newPage.querySelector(".page-column.right")
+		add_trait_group_to_column_bottom(traitGroup, newColumn)
+	}
+
+	close_context_menu()
+}
+
+function add_trait_group_to_column_bottom(traitGroup, column) {
 	let traitGroups = column.children
 	let traitGroupPlaceholder = traitGroups[traitGroups.length - 1]
 	traitGroupPlaceholder.before(traitGroup)
-
-	close_context_menu()
 }
 
 window.onload = function () {
