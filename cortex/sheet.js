@@ -128,14 +128,14 @@ function get_parent_with_class(element, c) {
 }
 
 function save_character(e) {
-	let file = save_characterV4()
-	download(file)
+	let json = save_characterV4()
+	download(json)
 }
 
 function save_characterV3() {
-	let file = {}
+	let json = {}
 	let data = {}
-	file.version = 3;
+	json.version = 3;
 	inputs = document.querySelectorAll("input, textarea, img, div[contenteditable], h1[contenteditable], h2[contenteditable], c[contenteditable], span[contenteditable]")
 	for (let input of inputs) {
 		if (input.classList.contains("non-serialized") || input.classList.contains("no-print") || input.classList.contains("template")) {
@@ -187,7 +187,7 @@ function save_characterV3() {
 			data[id].style = input.getAttribute("data-style")
 		}
 	}
-	file.data = data
+	json.data = data
 
 	let styles = {}
 	let styledDivs = document.querySelectorAll("div[data-style]")
@@ -195,7 +195,7 @@ function save_characterV3() {
 		styles[get_path_from_element(elem)] = elem.getAttribute("data-style")
 	}
 	if (Object.keys(styles).length) {
-		file.styles = styles
+		json.styles = styles
 	}
 
 	let classList = {}
@@ -204,7 +204,7 @@ function save_characterV3() {
 		classList[get_path_from_element(elem)] = elem.getAttribute("custom-classes")
 	}
 	if (Object.keys(classList).length) {
-		file.classList = classList
+		json.classList = classList
 	}
 
 	let highlightColors = {}
@@ -214,17 +214,17 @@ function save_characterV3() {
 		highlightColors[get_path_from_element(elem)] = elem.getAttribute("highlight-color")
 	}
 	if (Object.keys(highlightColors).length) {
-		file.highlightColors = highlightColors
+		json.highlightColors = highlightColors
 	}
 
-	return file
+	return json
 }
 
 function save_characterV4() {
-	let file = {}
-	file.version = 4
-	file.characterName = html_to_text(document.querySelector("#character-name").innerHTML)
-	file.description = html_to_text(document.querySelector("#description").innerHTML)
+	let json = {}
+	json.version = 4
+	json.characterName = html_to_text(document.querySelector("#character-name").innerHTML)
+	json.description = html_to_text(document.querySelector("#description").innerHTML)
 
 	let traitsData = []
 	let pages = document.querySelector("#pages")
@@ -265,17 +265,17 @@ function save_characterV4() {
 		}
 		traitsData.push(pageData)
 	}
-	file.traits = traitsData
+	json.traits = traitsData
 
 	let highlightColors = {}
 	highlightColors[":root"] = document.querySelector(":root").getAttribute("highlight-color") ?? defaultHighlightColor
-	file.highlightColors = highlightColors
+	json.highlightColors = highlightColors
 
-	return file
+	return json
 }
 
-function download(file) {
-	let uri = encodeURI("data:application/json;charset=utf-8," + JSON.stringify(file))
+function download(json) {
+	let uri = encodeURI("data:application/json;charset=utf-8," + JSON.stringify(json))
 	uri = uri.replace(/#/g, "%23")
 	let link = document.createElement("a")
 	link.setAttribute("href", uri)
@@ -328,18 +328,18 @@ function get_element_from_parts(parts) {
 	return current
 }
 
-function load_character(file) {
+function load_character(json) {
 	nuke_character()
-	let version = file.version
+	let version = json.version
 	switch (version) {
 		case 3:
-			load_characterV3(file)
+			load_characterV3(json)
 			break
 		case 4:
-			load_characterV4(file)
+			load_characterV4(json)
 			break
 		default:
-			console.error("Unknown file version " + version)
+			console.error("Unknown data format version " + version)
 
 	}
 }
@@ -355,8 +355,8 @@ function nuke_character() {
 	}
 }
 
-function load_characterV3(file) {
-	let data = file.data
+function load_characterV3(json) {
+	let data = json.data
 	for (let path in data) {
 		let object = null
 		let value = null
@@ -405,24 +405,24 @@ function load_characterV3(file) {
 		}
 	}
 
-	if (file.styles != null) {
-		for (let path in file.styles) {
+	if (json.styles != null) {
+		for (let path in json.styles) {
 			let elem = get_element_from_path(path)
-			let style = file.styles[path]
+			let style = json.styles[path]
 			apply_data_style(elem, style)
 		}
 	}
 
-	if (file.classList != null) {
-		for (let path in file.classList) {
+	if (json.classList != null) {
+		for (let path in json.classList) {
 			let elem = get_element_from_path(path)
-			let classList = file.classList[path]
+			let classList = json.classList[path]
 			elem.setAttribute("custom-classes", classList)
 			elem.classList.add(classList)
 		}
 	}
 
-	load_highlight_colors(file.highlightColors)
+	load_highlight_colors(json.highlightColors)
 
 	update_titles(data["character-name"], null)
 }
@@ -444,15 +444,15 @@ function load_highlight_colors(highlightColors) {
 	colorPicker.value = globalHighlightColor
 }
 
-function load_characterV4(file) {
-	if (file.version != 4) {
+function load_characterV4(json) {
+	if (json.version != 4) {
 		return
 	}
-	let characterName = text_to_html(file.characterName)
+	let characterName = text_to_html(json.characterName)
 	document.querySelector("#character-name").innerHTML = text_to_html(characterName)
-	document.querySelector("#description").innerHTML = text_to_html(file.description)
+	document.querySelector("#description").innerHTML = text_to_html(json.description)
 
-	for (let [pageIndex, pageData] of file.traits.entries()) {
+	for (let [pageIndex, pageData] of json.traits.entries()) {
 		for (let [columnIndex, columnData] of pageData.entries()) {
 			for (let [traitGroupIndex, traitGroupData] of columnData.entries()) {
 				let traitGroup = get_element_from_parts(["pages", pageIndex, columnIndex + 1, traitGroupIndex])
@@ -476,7 +476,7 @@ function load_characterV4(file) {
 		}
 	}
 
-	load_highlight_colors(file.highlightColors)
+	load_highlight_colors(json.highlightColors)
 
 	update_titles(characterName, null)
 }
