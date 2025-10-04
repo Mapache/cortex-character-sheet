@@ -12,14 +12,14 @@
 }
 
 @font-face {
-	font-family: 'Font Awesome 5 Free';
+	font-family: 'Font Awesome 7 Free';
 	font-style: normal;
 	font-display: block;
 	src: url("font/fa-regular-400.woff2");
 }
 
 @font-face {
-	font-family: 'Font Awesome 5 Free';
+	font-family: 'Font Awesome 7 Free';
 	font-style: normal;
 	font-weight: 900;
 	font-display: block;
@@ -197,14 +197,14 @@ pp:before {
 }
 
 mote:before {
-	font-family: 'Font Awesome 5 Free';
+	font-family: 'Font Awesome 7 Free';
 	font-weight: 900;
 	color: var(--highlight);
 	content: "\f185";
 }
 
 hero:before {
-	font-family: 'Font Awesome 5 Free';
+	font-family: 'Font Awesome 7 Free';
 	font-weight: 900;
 	color: var(--highlight);
 	content: "\f521";
@@ -392,7 +392,7 @@ ref {
 }
 
 .add-item:before {
-	font-family: 'Font Awesome 5 Free';
+	font-family: 'Font Awesome 7 Free';
 	font-size: 32px;
 	color: var(--highlight);
 	content: "\f0fe";
@@ -452,7 +452,7 @@ ref {
 }
 
 #remove-item:before {
-	font-family: 'Font Awesome 5 Free';
+	font-family: 'Font Awesome 7 Free';
 	font-size: 16px;
 	color: var(--highlight);
 	content: "\f146";
@@ -494,7 +494,7 @@ ref {
 }
 
 #context-menu-button:before {
-	font-family: 'Font Awesome 5 Free';
+	font-family: 'Font Awesome 7 Free';
 	font-size: 16px;
 	font-weight: 900;
 	color: var(--highlight);
@@ -520,7 +520,7 @@ ref {
 }
 
 #color-removal:before {
-	font-family: 'Font Awesome 5 Free';
+	font-family: 'Font Awesome 7 Free';
 	font-size: 16px;
 	font-weight: 900;
 	color: var(--highlight);
@@ -990,7 +990,7 @@ li:before {
 
 /* Portrait */
 #portrait #edit-image:before {
-	font-family: 'Font Awesome 5 Free';
+	font-family: 'Font Awesome 7 Free';
 	font-weight: 900;
 	font-size: 16px;
 	color: black;
@@ -1189,7 +1189,7 @@ li:before {
 }
 
 #help-modal .remove-item:before {
-	font-family: 'Font Awesome 5 Free';
+	font-family: 'Font Awesome 7 Free';
 	font-size: 12pt;
 	color: var(--highlight);
 	content: "\f146";
@@ -1220,7 +1220,7 @@ li:before {
 	margin: 16px 8px 16px 16px;
 	border: 0;
 	background: none;
-	font-family: 'Font Awesome 5 Free';
+	font-family: 'Font Awesome 7 Free';
 	font-style: normal;
 	font-weight: 900;
 	font-size: 32px;
@@ -1233,7 +1233,19 @@ li:before {
 	content: "\f01e";
 }
 
-#menu #save:before {
+#menu #campaigns:before {
+	content: "\f07b";
+}
+
+#menu #characters:before {
+	content: "\f007";
+}
+
+#menu #upload:before {
+	content: "\f0ee";
+}
+
+#menu #download:before {
 	content: "\f019";
 }
 
@@ -1494,7 +1506,7 @@ li:before {
 }
 
 .fa-angle-right:before {
-	font-family: 'Font Awesome 5 Free';
+	font-family: 'Font Awesome 7 Free';
 	font-style: normal;
 	font-weight: 900;
 	font-display: block;
@@ -1504,7 +1516,7 @@ li:before {
 }
 
 .fa-ellipsis-v:before {
-	font-family: 'Font Awesome 5 Free';
+	font-family: 'Font Awesome 7 Free';
 	font-style: normal;
 	font-weight: 900;
 	font-display: block;
