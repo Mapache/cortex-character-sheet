@@ -1,4 +1,7 @@
+
+import { install_title_listeners } from "./addElements.js"
 import { init_event_handlers } from "./eventHandlers.js"
+import { load_default_sheet } from "./load.js"
 import { download_character } from "./save.js"
 
 window.onload = function () {
@@ -10,4 +13,6 @@ window.onload = function () {
   }, false);
 
   init_event_handlers(document)
+  install_title_listeners()
+  load_default_sheet()
 }

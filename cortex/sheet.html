@@ -6,11 +6,10 @@
 	<meta property="og:image" content="images/cortex_sheet_preview.png" />
 	<link href="sheet.css" rel="stylesheet">
 	<script type="module">
-		import { add_page, add_trait_group, add_trait, install_title_listeners, remove_item } from "./modules/addElements.js"
+		import { add_page, add_trait_group, add_trait, remove_item } from "./modules/addElements.js"
 		window.add_page = add_page
 		window.add_trait_group = add_trait_group
 		window.add_trait = add_trait
-		window.install_title_listeners = install_title_listeners
 		window.remove_item = remove_item
 	</script>
 	<!--script type="module" src="characters.js" charset="utf-8"></script-->
@@ -24,10 +23,6 @@
 		window.on_drag_enter = on_drag_enter
 		window.on_drag_leave = on_drag_leave
 		window.on_drop = on_drop
-	</script>
-	<script type="module">
-		import { load_default_sheet } from "./modules/load.js"
-		window.load_default_sheet = load_default_sheet
 	</script>
 	<script type="module">
 		import { set_global_highlight_color, layoutControlsHidden, emptyDescriptionsHidden, show_help } from "./modules/menu.js"
@@ -70,7 +65,7 @@
 </head>
 
 <body ondragenter="on_drag_enter(event)" ondragover="on_drag_enter(event)" ondrop="on_drop(event)"
-	ondragleave="on_drag_leave(event)" onload="install_title_listeners(); load_default_sheet()">
+	ondragleave="on_drag_leave(event)">
 
 	<!-- URL Modal -->
 	<div id="modal-bg" onclick="close_modal(event)"></div>
