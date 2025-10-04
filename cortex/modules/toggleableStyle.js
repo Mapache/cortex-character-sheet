@@ -10,13 +10,15 @@ export class ToggleableStyle {
     this.disabledStyleSheet.innerText = disabledStyle
 
     this.enabled = false
-    if (startsEnabled) {
+    if (document.readyState === "loading") {
       // Need to wait until the DOM is loaded before trying to alter it.
       document.addEventListener("readystatechange", (event) => {
         if (event.target.readyState === "interactive") {
-          this.toggle()
+          this.setEnabled(startsEnabled)
         }
       })
+    } else {
+      this.setEnabled(startsEnabled)
     }
   }
 
@@ -38,12 +40,16 @@ export class ToggleableStyle {
     document.querySelector(this.controlSelector).classList.remove(this.enabledControlClass)
   }
 
-  toggle() {
-    if (this.enabled) {
-      this.disable()
-    } else {
+  setEnabled(enabled) {
+    if (enabled) {
       this.enable()
+    } else {
+      this.disable()
     }
+  }
+
+  toggle() {
+    this.setEnabled(!this.enabled)
   }
 
 }
