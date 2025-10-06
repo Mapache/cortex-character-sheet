@@ -1320,10 +1320,8 @@ li:before {
 }
 
 #disclaimer #logo img {
-	width: 50%;
+	width: 20%;
 	margin: 8px;
-	min-width: 128px;
-	max-width: 128mm;
 }
 
 /* Signature asset */

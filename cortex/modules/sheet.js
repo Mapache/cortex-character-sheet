@@ -13,10 +13,7 @@ window.campaigns_menu = campaigns_menu
 window.characters_menu = characters_menu
 window.upload_character = upload_character
 
-import { on_drag_enter, on_drag_leave, on_drop } from "./dragAndDrop.js"
-window.on_drag_enter = on_drag_enter
-window.on_drag_leave = on_drag_leave
-window.on_drop = on_drop
+import "./dragAndDrop.js"
 
 import { set_global_highlight_color, layoutControlsHidden, emptyDescriptionsHidden, show_help } from "./menu.js"
 window.set_global_highlight_color = set_global_highlight_color

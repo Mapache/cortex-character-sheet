@@ -1,20 +1,16 @@
 import { load_character } from "./load.js"
 
-export function on_drag_enter(e) {
+function ignore(e) {
 	e.preventDefault()
 	e.stopPropagation()
 }
 
-export function on_drag_leave(e) {
-	e.preventDefault()
-	e.stopPropagation()
-}
+document.body.ondragenter = ignore
+document.body.ondragover = ignore
+document.body.ondragleave = ignore
 
-export function on_drop(e) {
-	on_drag_leave(e)
-
-	e.preventDefault()
-	e.stopPropagation()
+document.body.ondrop = function(e) {
+	ignore(e)
 
 	let blob = e.dataTransfer.files[0]
 	let reader = new FileReader()
