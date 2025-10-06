@@ -1,4 +1,5 @@
 import { app, analytics, auth, db } from "./firebase.js"
+import { save_character } from "./save.js"
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js"
 import { collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js"
 
@@ -43,6 +44,13 @@ export class CharacterSheet {
 		this.docId = docId
 	}
 
+	doc() {
+		return {
+			json: JSON.stringify(this.json),
+			name: this.name,
+			campaignId: this.campaignId
+		}
+	}
 
 }
 
@@ -60,23 +68,26 @@ export class Cloud {
 export async function campaigns_menu() {
 	await require_sign_in()
 
-	try {
-		const docRef = await addDoc(collection(db, "users"), {
-			first: "Ada",
-			last: "Lovelace",
-			born: 1815
-		})
-		console.log("Document written with ID: ", docRef.id)
-	} catch (e) {
-		console.error("Error adding document: ", e)
-	}
+	//TODO
 }
 
 export async function characters_menu() {
 	await require_sign_in()
 
-	const querySnapshot = await getDocs(collection(db, "users"));
+	const querySnapshot = await getDocs(collection(db, "characters"));
 	querySnapshot.forEach((doc) => {
 		console.log(`${doc.id} => ${JSON.stringify(doc.data(), null, 2)}`)
 	})
+}
+
+export async function upload_character(e) {
+	await require_sign_in()
+
+	let json = save_character()
+	try {
+		const docRef = await addDoc(collection(db, "characters"), new CharacterSheet(json, null, null).doc())
+		console.log("Document written with ID: ", docRef.id)
+	} catch (error) {
+		console.error("Error adding document: ", error)
+	}
 }
