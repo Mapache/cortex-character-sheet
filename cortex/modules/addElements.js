@@ -1,11 +1,14 @@
 import { init_event_handlers } from "./eventHandlers.js"
 import { apply_data_style } from "./traitGroupStyle.js"
 
-function add_child(parent, className) {
+function new_group(className) {
   let template = document.querySelector("." + className + ".template")
   let newGroup = template.cloneNode(true)
   newGroup.classList.remove("template")
+  return newGroup
+}
 
+function add_child(parent, newGroup) {
   let children = parent.children
   let placeholder = children[children.length - 1]
   parent.insertBefore(newGroup, placeholder)
@@ -14,7 +17,8 @@ function add_child(parent, className) {
 }
 
 function add_group(event, className) {
-  return add_child(event.target.parentElement, className)
+  let newGroup = new_group(className)
+  return add_child(event.target.parentElement, newGroup)
 }
 
 export function add_page(e) {
