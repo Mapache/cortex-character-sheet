@@ -1,5 +1,5 @@
 
-import { update_titles } from "./addElements.js"
+import { update_titles } from "./elements.js"
 import { c_to_html, text_to_html } from "./conversion.js"
 import { apply_data_style, apply_highlight_color, defaultHighlightColor } from "./traitGroupStyle.js"
 

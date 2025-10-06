@@ -1,5 +1,5 @@
 
-import { install_title_listeners } from "./addElements.js"
+import { install_title_listeners } from "./elements.js"
 import { init_event_handlers } from "./eventHandlers.js"
 import { load_default_sheet } from "./load.js"
 import { download_character } from "./save.js"
