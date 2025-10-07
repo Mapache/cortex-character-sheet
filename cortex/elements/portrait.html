@@ -1,0 +1,17 @@
+<div id="portrait">
+  <div id="circle" width=100% height=100%>
+    <div id="edit-image" class="no-print" onclick="change_image_url(event)"></div>
+    <img src="" width="110%" draggable="false" id="image" onpointerdown="start_drag(event)"
+      onpointerup="end_drag(event)" onpointermove="drag_move(event)" data-x="0" data-y="0" data-zoom="1"></img>
+  </div>
+</div>
+<div id="attribute-curve" xmlns="http://www.w3.org/2000/svg">
+  <svg viewBox="0 0 62 62" width="62mm" height="30mm" preserveAspectRatio="xMidYMid slice">
+    <path d="M -17 -25 A 32 32 0 0 0 79 0" stroke="#C50852" stroke-width="0.5mm" fill="transparent"
+      vector-effect="non-scaling-stroke" />
+  </svg>
+</div>
+<div id="attributes">
+  <div id="attribute-placeholder" class="add-item no-print" onclick="add_attribute(event)" data-onload="add_attribute">
+  </div>
+</div>

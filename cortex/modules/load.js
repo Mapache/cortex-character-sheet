@@ -3,15 +3,15 @@ import { update_titles } from "./elements.js"
 import { c_to_html, text_to_html } from "./conversion.js"
 import { apply_data_style, apply_highlight_color, defaultHighlightColor } from "./traitGroupStyle.js"
 
-export function load_character(json) {
+export async function load_character(json) {
   nuke_character()
   let version = json.version
   switch (version) {
     case 3:
-      load_characterV3(json)
+      await load_characterV3(json)
       break
     case 4:
-      load_characterV4(json)
+      await load_characterV4(json)
       break
     default:
       console.error("Unknown data format version " + version)
@@ -29,12 +29,12 @@ export function nuke_character() {
   }
 }
 
-function get_element_from_path(path) {
+async function get_element_from_path(path) {
   let parts = path.split("/")
-  return get_element_from_parts(parts)
+  return await get_element_from_parts(parts)
 }
 
-function get_element_from_parts(parts) {
+async function get_element_from_parts(parts) {
   let current = (parts[0] == ":root") ? document.querySelector(":root") : document.querySelector("div#" + parts[0])
   for (let p = 1; p < parts.length; p++) {
     try {
@@ -47,7 +47,7 @@ function get_element_from_parts(parts) {
     }
     if (current.getAttribute("data-onload") !== null) {
       // console.log("Creating new element")
-      window[current.getAttribute("data-onload")]({ target: current })
+      await window[current.getAttribute("data-onload")]({ target: current })
       p = p - 1
       current = current.parentElement
     }
@@ -56,11 +56,11 @@ function get_element_from_parts(parts) {
   return current
 }
 
-function load_highlight_colors(highlightColors) {
+async function load_highlight_colors(highlightColors) {
   let globalHighlightColor = defaultHighlightColor
   if (highlightColors != null) {
     for (let path in highlightColors) {
-      let elem = get_element_from_path(path)
+      let elem = await get_element_from_path(path)
       let highlightColor = highlightColors[path]
       apply_highlight_color(elem, highlightColor)
 
@@ -73,7 +73,7 @@ function load_highlight_colors(highlightColors) {
   colorPicker.value = globalHighlightColor
 }
 
-function load_characterV3(json) {
+async function load_characterV3(json) {
   let data = json.data
   for (let path in data) {
     let object = null
@@ -89,7 +89,7 @@ function load_characterV3(json) {
       element = document.getElementById(path)
     }
     else {
-      element = get_element_from_path(path)
+      element = await get_element_from_path(path)
     }
 
     if (element == null) continue
@@ -125,7 +125,7 @@ function load_characterV3(json) {
 
   if (json.styles != null) {
     for (let path in json.styles) {
-      let elem = get_element_from_path(path)
+      let elem = await get_element_from_path(path)
       let style = json.styles[path]
       apply_data_style(elem, style)
     }
@@ -133,19 +133,19 @@ function load_characterV3(json) {
 
   if (json.classList != null) {
     for (let path in json.classList) {
-      let elem = get_element_from_path(path)
+      let elem = await get_element_from_path(path)
       let classList = json.classList[path]
       elem.setAttribute("custom-classes", classList)
       elem.classList.add(classList)
     }
   }
 
-  load_highlight_colors(json.highlightColors)
+  await load_highlight_colors(json.highlightColors)
 
   update_titles(data["character-name"], null)
 }
 
-function load_characterV4(json) {
+async function load_characterV4(json) {
   if (json.version != 4) {
     return
   }
@@ -156,14 +156,14 @@ function load_characterV4(json) {
   for (let [pageIndex, pageData] of json.traits.entries()) {
     for (let [columnIndex, columnData] of pageData.entries()) {
       for (let [traitGroupIndex, traitGroupData] of columnData.entries()) {
-        let traitGroup = get_element_from_parts(["pages", pageIndex, columnIndex + 1, traitGroupIndex])
+        let traitGroup = await get_element_from_parts(["pages", pageIndex, columnIndex + 1, traitGroupIndex])
         let [title, style, color] = traitGroupData[0]
         traitGroup.querySelector(".header").innerHTML = text_to_html(title)
         apply_data_style(traitGroup, style)
         apply_highlight_color(traitGroup, color)
         for (let [traitGroupColumnIndex, traitGroupColumnData] of traitGroupData.slice(1).entries()) {
           for (let [traitIndex, traitData] of traitGroupColumnData.entries()) {
-            let trait = get_element_from_parts(["pages", pageIndex, columnIndex + 1, traitGroupIndex, traitGroupColumnIndex + 2, traitIndex])
+            let trait = await get_element_from_parts(["pages", pageIndex, columnIndex + 1, traitGroupIndex, traitGroupColumnIndex + 2, traitIndex])
             let [name, value] = traitData
             trait.querySelector(".trait-name").innerHTML = text_to_html(name)
             trait.querySelector(".trait-value c").innerHTML = c_to_html(value)
@@ -177,14 +177,14 @@ function load_characterV4(json) {
     }
   }
 
-  load_highlight_colors(json.highlightColors)
+  await load_highlight_colors(json.highlightColors)
 
   update_titles(characterName, null)
 }
 
 // Load the static sheet specified by the relative path in the URL Parameter "sheet"
 
-export function load_default_sheet() {
+export async function load_default_sheet() {
   const queryString = window.location.search
   const urlParams = new URLSearchParams(queryString)
   const sheetParam = "sheet"
@@ -194,8 +194,8 @@ export function load_default_sheet() {
   }
 }
 
-function load_character_path(path) {
+async function load_character_path(path) {
   fetch(path)
     .then((response) => response.json())
-    .then((json) => load_character(json));
+    .then((json) => load_character(json))
 }

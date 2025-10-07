@@ -1,6 +1,37 @@
 import { init_event_handlers } from "./eventHandlers.js"
 import { apply_data_style } from "./traitGroupStyle.js"
 
+class Template {
+  constructor(html) {
+    const template = document.createElement("template")
+    template.innerHTML = html
+    if (template.content.childNodes.length !== 1) {
+      throw new Error(
+        "html parameter must represent a single node."
+      )
+    }
+    this.element = template.content.firstChild
+  }
+
+  newInstance() {
+    return this.element.cloneNode(true)
+  }
+
+  static async build(templateClass) {
+    return fetch(`/elements/${templateClass}.html`)
+      .then(response => response.text()) // Convert the response to text (HTML)
+      .then(html => new Template(html))
+      .catch(error => {
+        console.error("Error fetching HTML: ", error)
+      })
+  }
+
+  static page = Template.build("page")
+  static traitGroup = Template.build("trait-group")
+  static trait = Template.build("trait")
+
+}
+
 function new_group(className) {
   let template = document.querySelector("." + className + ".template")
   let newGroup = template.cloneNode(true)
@@ -16,23 +47,22 @@ function add_child(parent, newGroup) {
   return newGroup
 }
 
-function add_group(event, className) {
-  let newGroup = new_group(className)
+function add_group(event, newGroup) {
   return add_child(event.target.parentElement, newGroup)
 }
 
-export function add_page(e) {
-  let page = add_group(e, "page")
+export async function add_page(e) {
+  let page = add_group(e, (await Template.page).newInstance())
   install_title_listeners() // TODO: Switch to install_title_listener(page) after setting up the first page's listener.
 }
 
-export function add_trait_group(e) {
-  let traitGroup = add_group(e, "trait-group")
+export async function add_trait_group(e) {
+  let traitGroup = add_group(e, (await Template.traitGroup).newInstance())
   apply_data_style(traitGroup, "detailed")
 }
 
-export function add_trait(e) {
-  add_group(e, "trait")
+export async function add_trait(e) {
+  add_group(e, (await Template.trait).newInstance())
 }
 
 export function install_title_listeners() {
