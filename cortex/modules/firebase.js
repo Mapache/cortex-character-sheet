@@ -1,4 +1,5 @@
 import { firebaseConfig } from "./firebase-config.js"
+import { Flags } from "./flags.js"
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js"
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-analytics.js"
@@ -11,7 +12,7 @@ export const analytics = getAnalytics(app)
 export const auth = getAuth(app)
 export const db = getFirestore(app)
 
-if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
+if (Flags.development) {
   connectFirestoreEmulator(db, "localhost", 8080) // Firestore emulator
   connectAuthEmulator(auth, "http://localhost:9099") // Authentication emulator
 }
