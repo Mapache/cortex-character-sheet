@@ -1,4 +1,4 @@
-import { show_modal } from "./modal.js"
+import { Modal } from "./modal.js"
 import { apply_highlight_color } from "./traitGroupStyle.js"
 import { ToggleableStyle } from "./toggleableStyle.js"
 
@@ -49,6 +49,4 @@ export const emptyDescriptionsHidden = new ToggleableStyle(
 	`,
   true)
 
-export function show_help(e) {
-  show_modal("help-modal", e.pageX, e.pageY, function () { })
-}
+export const helpModal = new Modal("help-modal", function () {})

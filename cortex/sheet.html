@@ -12,12 +12,12 @@
 
 	<!-- Modal Menus -->
 	<div id="modal-bg" onclick="close_modal(event)"></div>
-	<div id="url-modal" class="modal non-serialized">
+	<div id="url-modal" class="modal dialog non-serialized">
 		<p>Enter URL</p>
-		<input id="url" value="http://" onchange="close_modal(event)"
-			onkeyup="if (event.key == 'Enter') { close_modal(event) }" />
+		<input id="url" value="http://" onchange="portraitURLModal.hide()"
+			onkeyup="if (event.key == 'Enter') { portraitURLModal.hide() }" />
 	</div>
-	<div id="help-modal" class="modal">
+	<div id="help-modal" class="modal dialog">
 		<div id="top">
 			<table>
 				<tr>
@@ -191,13 +191,13 @@
 				tool.
 			</div>
 			<div id="close">
-				<button onclick="close_modal(event)">OK</button>
+				<button onclick="helpModal.hide()">OK</button>
 			</div>
 		</div>
 	</div>
 
 	<!-- Context menu -->
-	<div id="context-menu" class="context-menu non-serialized">
+	<div id="context-menu" class="modal context-menu non-serialized">
 		<ul>
 			<li>
 				<div id="color-selection">
@@ -266,7 +266,7 @@
 		<div id="toggle-layout-controls" title="Toggle Layout Controls" onclick="layoutControlsHidden.toggle(event)"></div>
 		<div id="toggle-empty-descriptions" title="Toggle Empty Descriptions" onclick="emptyDescriptionsHidden.toggle(event)"></div>
 		<hr>
-		<div id="help" title="Help" onclick="show_help(event)"></div>
+		<div id="help" title="Help" onclick="helpModal.show(event)"></div>
 	</div>
 
 	<!-- PAGE -->

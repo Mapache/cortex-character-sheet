@@ -1,3 +1,5 @@
+import { Modal } from "./modal.js"
+
 function update_attribute_positions() {
 	let attributes = document.querySelectorAll(".attribute:not(.template)")
 
@@ -94,15 +96,18 @@ function drag_move(e) {
 	}
 }
 
+const portraitURLModal = new Modal("url-modal", function () {})
+
 function change_image_url(e) {
 	let url = document.querySelector("#url-modal input")
 	let img = e.target.parentElement.querySelector("img")
 	url.value = img.src
-	show_modal("url-modal", e.pageX, e.pageY, function () {
+	portraitURLModal.callback = function () {
 		img.src = url.value
 		img.setAttribute("data-x", 0)
 		img.setAttribute("data-y", 0)
 		img.setAttribute("data-zoom", 1)
 		img.style.transform = "translate(0, 0) scale(1)"
-	})
+	}
+	portraitURLModal.show(e)
 }

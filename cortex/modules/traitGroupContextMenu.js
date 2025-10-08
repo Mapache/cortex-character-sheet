@@ -1,5 +1,7 @@
-import { show_modal, close_modal } from "./modal.js"
+import { Modal } from "./modal.js"
 import { apply_data_style, apply_highlight_color } from "./traitGroupStyle.js"
+
+const contextMenuModal = new Modal("context-menu", function () {})
 
 let g_context_target = null
 export function show_context_menu(e) {
@@ -30,15 +32,12 @@ export function show_context_menu(e) {
     document.getElementById("style-detailed").checked = true
   }
 
-  show_modal("context-menu", x, y, function () {
-    let menu = document.getElementById("context-menu")
-    menu.style.display = "none"
-  })
+  contextMenuModal.showAt(x, y)
 }
 
 function close_context_menu() {
   g_context_target = null
-  close_modal(null)
+  contextMenuModal.hide()
 }
 
 export function set_trait_collection_highlight_color(e) {
