@@ -8,7 +8,6 @@ export function set_global_highlight_color(e) {
   apply_highlight_color(root, colorPicker.value)
 }
 
-
 // Show layout controls by default
 export const layoutControlsHidden = new ToggleableStyle(
   "#toggle-layout-controls",

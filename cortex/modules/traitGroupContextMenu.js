@@ -1,3 +1,4 @@
+import { show_modal, close_modal } from "./modal.js"
 import { apply_data_style, apply_highlight_color } from "./traitGroupStyle.js"
 
 let g_context_target = null
