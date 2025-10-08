@@ -1206,8 +1206,8 @@ li:before {
 	margin-top: 0;
 }
 
-/* Menu */
-#menu {
+/* Toolbar */
+#toolbar {
 	position: fixed;
 	left: -8px;
 	border-radius: 5px;
@@ -1215,7 +1215,7 @@ li:before {
 	box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
-#menu div {
+#toolbar div {
 	display: block;
 	margin: 16px 8px 16px 16px;
 	border: 0;
@@ -1229,44 +1229,44 @@ li:before {
 	width: 40px;
 }
 
-#menu #reset:before {
+#toolbar #reset:before {
 	content: "\f01e";
 }
 
-#menu #campaigns:before {
+#toolbar #campaigns:before {
 	content: "\f07b";
 }
 
-#menu #characters:before {
+#toolbar #characters:before {
 	content: "\f007";
 }
 
-#menu #upload:before {
+#toolbar #upload:before {
 	content: "\f0ee";
 }
 
-#menu #download:before {
+#toolbar #download:before {
 	content: "\f019";
 }
 
-#menu #show-global-highlight-menu:before {
+#toolbar #show-global-highlight-menu:before {
 	content: "\f043";
 }
 
-#menu #global-highlight-picker {
+#toolbar #global-highlight-picker {
 	height: 32px;
 	width: 32px;
 }
 
-#menu #toggle-layout-controls:not(.controls-hidden):before {
+#toolbar #toggle-layout-controls:not(.controls-hidden):before {
 	content: "\f06e";
 }
 
-#menu #toggle-layout-controls.controls-hidden:before {
+#toolbar #toggle-layout-controls.controls-hidden:before {
 	content: "\f070";
 }
 
-#menu #toggle-empty-descriptions:not(.descriptions-hidden):before {
+#toolbar #toggle-empty-descriptions:not(.descriptions-hidden):before {
 	font-weight: 400;
 	content: "\f075";
 
@@ -1288,11 +1288,11 @@ li:before {
 	}
 }
 
-#menu #toggle-empty-descriptions.descriptions-hidden:before {
+#toolbar #toggle-empty-descriptions.descriptions-hidden:before {
 	content: "\f4b3";
 }
 
-#menu #help:before {
+#toolbar #help:before {
 	content: "\f128";
 }
 
