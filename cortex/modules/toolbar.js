@@ -49,4 +49,4 @@ export const emptyDescriptionsHidden = new ToggleableStyle(
 	`,
   true)
 
-export const helpModal = new Modal("help-modal", function () {})
+export const helpModal = await Modal.build("help-modal", function () {})

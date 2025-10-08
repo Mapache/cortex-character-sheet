@@ -1,26 +1,22 @@
 import { Modal } from "./modal.js"
-import { apply_data_style, apply_highlight_color } from "./traitGroupStyle.js"
+import { apply_data_style, apply_highlight_color, defaultHighlightColor } from "./traitGroupStyle.js"
 
-const contextMenuModal = new Modal("context-menu", function () {})
+const contextMenuModal = await Modal.build("context-menu", function () { })
+const contextMenu = contextMenuModal.modal
+const colorPicker = contextMenu.querySelector("#trait-collection-highlight-picker")
 
 let g_context_target = null
-export function show_context_menu(e) {
+export async function show_context_menu(e) {
   g_context_target = e.target
   let traitGroup = g_context_target.parentElement
 
-  let rect = e.target.getBoundingClientRect()
-  let x = rect.left + window.scrollX + "px"
-  let y = rect.top + window.scrollY + "px"
-
   let traitGroupColor = traitGroup.getAttribute("highlight-color")
   let rootColor = document.querySelector(":root").getAttribute("highlight-color")
-  let colorPicker = document.getElementById("trait-collection-highlight-picker")
   colorPicker.value = traitGroupColor ?? rootColor ?? defaultHighlightColor
 
   // Check matching data-style
   let traitGroupStyle = traitGroup.getAttribute("data-style")
-  let menu = document.getElementById("context-menu")
-  let menuEntries = document.querySelectorAll("#context-menu #styles input")
+  let menuEntries = contextMenu.querySelectorAll("#context-menu #styles input")
   let found = false
   for (let menuEntry of menuEntries) {
     let menuStyle = menuEntry.getAttribute("data-style")
@@ -29,26 +25,28 @@ export function show_context_menu(e) {
     found = found || checked
   }
   if (!found) {
-    document.getElementById("style-detailed").checked = true
+    contextMenu.querySelector("#style-detailed").checked = true
   }
 
+  let rect = e.target.getBoundingClientRect()
+  let x = rect.left + window.scrollX + "px"
+  let y = rect.top + window.scrollY + "px"
   contextMenuModal.showAt(x, y)
 }
 
-function close_context_menu() {
+async function close_context_menu() {
   g_context_target = null
   contextMenuModal.hide()
 }
 
-export function set_trait_collection_highlight_color(e) {
-  let colorPicker = document.getElementById("trait-collection-highlight-picker")
+export async function set_trait_collection_highlight_color(e) {
   let traitGroup = g_context_target.parentElement
   apply_highlight_color(traitGroup, colorPicker.value)
 
   // Do NOT close_context_menu()
 }
 
-export function remove_trait_collection_highlight_color(e) {
+export async function remove_trait_collection_highlight_color(e) {
   let traitGroup = g_context_target.parentElement
   traitGroup.removeAttribute("highlight-color")
   traitGroup.style.removeProperty("--highlight")
@@ -56,7 +54,7 @@ export function remove_trait_collection_highlight_color(e) {
   close_context_menu()
 }
 
-export function set_style(e) {
+export async function set_style(e) {
   let elem = g_context_target.parentElement
   let style = e.target.getAttribute("data-style")
   apply_data_style(elem, style)
@@ -64,14 +62,14 @@ export function set_style(e) {
   close_context_menu()
 }
 
-export function context_menu_remove_item(e) {
-	let item = g_context_target.parentElement
-	item.parentElement.removeChild(item)
+export async function context_menu_remove_item(e) {
+  let item = g_context_target.parentElement
+  item.parentElement.removeChild(item)
 
   close_context_menu()
 }
 
-export function move_to_top(e) {
+export async function move_to_top(e) {
   let traitGroup = g_context_target.parentElement
   let column = traitGroup.parentElement
   column.prepend(traitGroup)
@@ -79,7 +77,7 @@ export function move_to_top(e) {
   close_context_menu()
 }
 
-export function move_to_bottom(e) {
+export async function move_to_bottom(e) {
   let traitGroup = g_context_target.parentElement
   let column = traitGroup.parentElement
   add_trait_group_to_column_bottom(traitGroup, column)
@@ -87,7 +85,7 @@ export function move_to_bottom(e) {
   close_context_menu()
 }
 
-export function move_up(e) {
+export async function move_up(e) {
   let traitGroup = g_context_target.parentElement
   let previousTraitGroup = traitGroup.previousElementSibling
   if (previousTraitGroup) {
@@ -97,7 +95,7 @@ export function move_up(e) {
   close_context_menu()
 }
 
-export function move_down(e) {
+export async function move_down(e) {
   let traitGroup = g_context_target.parentElement
   let nextTraitGroup = traitGroup.nextElementSibling
   if (!nextTraitGroup.classList.contains("add-item")) {
@@ -107,7 +105,7 @@ export function move_down(e) {
   close_context_menu()
 }
 
-export function move_to_other_column(e) {
+export async function move_to_other_column(e) {
   let traitGroup = g_context_target.parentElement
   let column = traitGroup.parentElement
   if (column.classList.contains("left")) {
@@ -120,7 +118,7 @@ export function move_to_other_column(e) {
   close_context_menu()
 }
 
-export function move_to_next_page(e) {
+export async function move_to_next_page(e) {
   let traitGroup = g_context_target.parentElement
   let column = traitGroup.parentElement
   let page = column.parentElement
@@ -133,7 +131,7 @@ export function move_to_next_page(e) {
   close_context_menu()
 }
 
-export function move_to_previous_page(e) {
+export async function move_to_previous_page(e) {
   let traitGroup = g_context_target.parentElement
   let column = traitGroup.parentElement
   let page = column.parentElement

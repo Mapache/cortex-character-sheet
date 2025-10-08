@@ -1,3 +1,5 @@
+import { fetchHtml } from "./fetchHtml.js"
+
 let currentModal = null
 export function close_modal(e) {
   if (currentModal != null) {
@@ -17,9 +19,14 @@ function hideModalBackground() {
 }
 
 export class Modal {
-  constructor(id, callback) {
-    this.modal = document.getElementById(id)
+  constructor(modal, callback) {
+    this.modal = modal
     this.callback = callback
+  }
+
+  static async build(id, callback) {
+    const modal = await fetchHtml(`/modals/${id}.html`)
+    return new Modal(modal, callback)
   }
 
   show(e) {
@@ -30,7 +37,7 @@ export class Modal {
     currentModal = this
 
     showModalBackground()
-
+    modalBackground.insertAdjacentElement("afterend", this.modal)
     this.modal.style.display = "block"
     this.modal.style.left = left
     this.modal.style.top = top
@@ -43,6 +50,7 @@ export class Modal {
 
   hide() {
     this.modal.style.display = "none"
+    this.modal.remove()
 
     hideModalBackground()
 

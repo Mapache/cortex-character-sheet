@@ -1,16 +1,10 @@
 import { init_event_handlers } from "./eventHandlers.js"
+import { fetchHtml } from "./fetchHtml.js"
 import { apply_data_style } from "./traitGroupStyle.js"
 
 class Template {
-  constructor(html) {
-    const template = document.createElement("template")
-    template.innerHTML = html
-    if (template.content.childNodes.length !== 1) {
-      throw new Error(
-        "html parameter must represent a single node."
-      )
-    }
-    this.element = template.content.firstChild
+  constructor(element) {
+    this.element = element
   }
 
   newInstance() {
@@ -18,12 +12,8 @@ class Template {
   }
 
   static async build(templateClass) {
-    return fetch(`/elements/${templateClass}.html`)
-      .then(response => response.text()) // Convert the response to text (HTML)
-      .then(html => new Template(html))
-      .catch(error => {
-        console.error("Error fetching HTML: ", error)
-      })
+    const element = await fetchHtml(`/elements/${templateClass}.html`)
+    return new Template(element)
   }
 
   static page = Template.build("page")

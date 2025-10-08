@@ -96,7 +96,7 @@ function drag_move(e) {
 	}
 }
 
-const portraitURLModal = new Modal("url-modal", function () {})
+const portraitURLModal = await Modal.build("url-modal", function () {})
 
 function change_image_url(e) {
 	let url = document.querySelector("#url-modal input")
