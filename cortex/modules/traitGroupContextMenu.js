@@ -7,8 +7,8 @@ export function show_context_menu(e) {
   let traitGroup = g_context_target.parentElement
 
   let rect = e.target.getBoundingClientRect()
-  let x = rect.left + "px"
-  let y = rect.top + "px"
+  let x = rect.left + window.scrollX + "px"
+  let y = rect.top + window.scrollY + "px"
 
   let traitGroupColor = traitGroup.getAttribute("highlight-color")
   let rootColor = document.querySelector(":root").getAttribute("highlight-color")
