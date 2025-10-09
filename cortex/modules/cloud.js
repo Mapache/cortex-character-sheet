@@ -19,27 +19,25 @@ export class Campaign {
 	constructor(name, id) {
 		this.name = name
 		this.id = id
-		this.adminUsers = []
-		this.editUsers = []
-		this.viewUsers = []
+		this.users = {}
 	}
+
+	static reader = 1
+	static editor = 2
+	static admin = 3
 }
 
 const campaignConverter = {
 	toFirestore: (campaign) => {
 		return {
 			name: campaign.name,
-			adminUsers: campaign.adminUsers,
-			editUsers: campaign.editUsers,
-			viewUsers: campaign.viewUsers,
+			users: campaign.users,
 		}
 	},
 	fromFirestore: (snapshot, options) => {
 		const data = snapshot.data(options)
 		let campaign = new Campaign(data.name, snapshot.id)
-		campaign.adminUsers = data.adminUsers
-		campaign.editUsers = data.editUsers
-		campaign.viewUsers = data.viewUsers
+		campaign.users = data.users
 		return campaign
 	}
 }
@@ -104,9 +102,7 @@ export class Cloud {
 	findDefaultCampaign(user) {
 		for (const [index, campaign] of this.campaigns.entries()) {
 			if (campaign.name == defaultCampaignName &&
-				campaign.adminUsers.length == 1 && campaign.adminUsers[0] == user.uid &&
-				campaign.editUsers.length == 1 && campaign.editUsers[0] == user.uid &&
-				campaign.viewUsers.length == 1 && campaign.viewUsers[0] == user.uid
+				campaign.users.length == 1 && campaign.users[user.uid] == Campaign.admin
 			) {
 				this.defaultCampaign = campaign
 				this.campaigns.splice(index, 1)
@@ -119,9 +115,7 @@ export class Cloud {
 	createDefaultCampaign(user) {
 		this.defaultCampaign = new Campaign(defaultCampaignName, null)
 		this.defaultCampaign.id = user.uid
-		this.defaultCampaign.adminUsers = [user.uid]
-		this.defaultCampaign.editUsers = [user.uid]
-		this.defaultCampaign.viewUsers = [user.uid]
+		this.defaultCampaign.users[user.uid] = Campaign.admin
 	}
 
 	async getCampaigns() {
@@ -129,7 +123,7 @@ export class Cloud {
 
 		const querySnapshot = await getDocs(
 			collection(db, campaignsCollection).withConverter(campaignConverter),
-			where("viewUsers", "array-contains", user.uid))
+			where("users." + user.uid, ">", 0))
 		this.campaigns = querySnapshot.docs.map((doc) => doc.data())
 
 		this.findDefaultCampaign(user)
@@ -203,7 +197,7 @@ export class Cloud {
 let cloud = new Cloud()
 
 export async function campaigns_menu(e) {
-	await cloud.getCampaigns()
+	await cloud.requireCurrentCampaign()
 
 	const campaignsMenu = new Modal()
 
@@ -233,7 +227,7 @@ export async function campaigns_menu(e) {
 }
 
 export async function characters_menu(e) {
-	await cloud.getCharactersForCurrentCampaign()
+	await cloud.requireCurrentCharacterSheets()
 
 	const charactersMenu = new Modal()
 
@@ -254,8 +248,8 @@ export async function upload_character(e) {
 }
 
 function titleCase(string) {
-  return string.replace(
-    /\w\S*/g,
-    text => text.charAt(0).toUpperCase() + text.substring(1).toLowerCase()
-  )
+	return string.replace(
+		/\w\S*/g,
+		text => text.charAt(0).toUpperCase() + text.substring(1).toLowerCase()
+	)
 }
