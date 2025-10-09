@@ -239,7 +239,7 @@ export async function characters_menu(e) {
 
 	let entries = []
 	for (const characterSheet of cloud.currentCharacterSheets) {
-		entries.push(menuEntry(characterSheet.name, function (e) {
+		entries.push(menuEntry(titleCase(characterSheet.name), function (e) {
 			load_character(characterSheet.json)
 			charactersMenu.hide()
 		}))
@@ -251,4 +251,11 @@ export async function characters_menu(e) {
 
 export async function upload_character(e) {
 	await cloud.uploadCharacter()
+}
+
+function titleCase(string) {
+  return string.replace(
+    /\w\S*/g,
+    text => text.charAt(0).toUpperCase() + text.substring(1).toLowerCase()
+  )
 }
