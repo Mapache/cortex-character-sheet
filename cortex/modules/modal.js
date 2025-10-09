@@ -30,6 +30,7 @@ export class Modal {
   }
 
   show(e) {
+    console.log(e.pageX, e.pageY)
     this.showAt(e.pageX, e.pageY)
   }
 

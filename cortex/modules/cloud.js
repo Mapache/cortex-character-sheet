@@ -1,38 +1,10 @@
 import { app, analytics, auth, db } from "./firebase.js"
+import { load_character } from "./load.js"
+import { menu, menuEntry, menuDivider, menuSubMenu } from "./menu.js"
+import { Modal } from "./modal.js"
 import { save_character } from "./save.js"
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js"
 import { doc, collection, addDoc, setDoc, getDocs, where } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js"
-
-async function require_sign_in() {
-	if (!auth.currentUser) {
-		await sign_in()
-	}
-	return auth.currentUser
-}
-
-async function sign_in() {
-	const provider = new GoogleAuthProvider()
-	signInWithPopup(auth, provider)
-		.then((result) => {
-			// This gives you a Google Access Token. You can use it to access the Google API.
-			const credential = GoogleAuthProvider.credentialFromResult(result)
-			const token = credential.accessToken
-			// The signed-in user info.
-			const user = result.user
-			// IdP data available using getAdditionalUserInfo(result)
-			// ...
-		}).catch((error) => {
-			// Handle Errors here.
-			const errorCode = error.code
-			const errorMessage = error.message
-			// The email of the user's account used.
-			const email = error.customData.email
-			// The AuthCredential type that was used.
-			const credential = GoogleAuthProvider.credentialFromError(error)
-			// ...
-			console.log("Sign-in error for ", error.customData.email, error.code, error.message)
-		})
-}
 
 const generateHash = (string) => {
 	let hash = 0
@@ -105,6 +77,30 @@ export class Cloud {
 		this.currentCharacterSheets = null
 	}
 
+	async signIn() {
+		const provider = new GoogleAuthProvider()
+		signInWithPopup(auth, provider)
+			.then((result) => {
+				const credential = GoogleAuthProvider.credentialFromResult(result)
+				const token = credential.accessToken
+				const user = result.user
+				// IdP data available using getAdditionalUserInfo(result)
+			}).catch((error) => {
+				const errorCode = error.code
+				const errorMessage = error.errorMessage
+				const email = error.customData.email
+				const credential = GoogleAuthProvider.credentialFromError(error)
+				console.log("Sign-in error for ", error.customData.email, error.code, error.message)
+			})
+	}
+
+	async requireSignIn() {
+		if (!auth.currentUser) {
+			await signIn()
+		}
+		return auth.currentUser
+	}
+
 	findDefaultCampaign(user) {
 		for (const [index, campaign] of this.campaigns.entries()) {
 			if (campaign.name == defaultCampaignName &&
@@ -129,7 +125,7 @@ export class Cloud {
 	}
 
 	async getCampaigns() {
-		const user = await require_sign_in()
+		const user = await this.requireSignIn()
 
 		const querySnapshot = await getDocs(
 			collection(db, campaignsCollection).withConverter(campaignConverter),
@@ -158,14 +154,12 @@ export class Cloud {
 	}
 
 	async getCharactersForCurrentCampaign() {
-		await require_sign_in()
+		await this.requireSignIn()
 		await this.requireCurrentCampaign()
 
 		const querySnapshot = await getDocs(collection(db, campaignsCollection, this.currentCampaign.id, charactersCollection).withConverter(characterSheetConverter))
 		this.currentCharacterSheets = querySnapshot.docs.map((doc) => doc.data())
 		this.currentCharacterSheets.sort((a, b) => a.name.localeCompare(b.name))
-
-		console.log(this.currentCharacterSheets)
 	}
 
 	async requireCurrentCharacterSheets() {
@@ -175,7 +169,7 @@ export class Cloud {
 	}
 
 	async uploadCharacter() {
-		await require_sign_in()
+		await this.requireSignIn()
 		await this.requireCurrentCampaign()
 		await this.requireCurrentCharacterSheets()
 
@@ -208,14 +202,51 @@ export class Cloud {
 
 let cloud = new Cloud()
 
-export async function campaigns_menu() {
+export async function campaigns_menu(e) {
 	await cloud.getCampaigns()
-	// TODO: Show menu.
+
+	const campaignsMenu = new Modal()
+
+	let entries = [
+		menuEntry(defaultCampaignName, function (e) {
+			cloud.currentCampaign = cloud.defaultCampaign
+			campaignsMenu.hide()
+		}),
+		menuDivider()
+	]
+	for (const campaign of cloud.campaigns) {
+		entries.push(menuEntry(campaign.name, function (e) {
+			cloud.currentCampaign = campaign
+			campaignsMenu.hide()
+		}))
+	}
+	if (cloud.campaigns.length > 0) {
+		entries.push(menuDivider())
+	}
+	entries.push(menuEntry("Create New Campaign…", function (e) {
+		// TODO: Create New Campaign
+		campaignsMenu.hide()
+	}))
+
+	campaignsMenu.modal = menu(entries)
+	campaignsMenu.show(e)
 }
 
-export async function characters_menu() {
+export async function characters_menu(e) {
 	await cloud.getCharactersForCurrentCampaign()
-	// TODO: Show menu.
+
+	const charactersMenu = new Modal()
+
+	let entries = []
+	for (const characterSheet of cloud.currentCharacterSheets) {
+		entries.push(menuEntry(characterSheet.name, function (e) {
+			load_character(characterSheet.json)
+			charactersMenu.hide()
+		}))
+	}
+
+	charactersMenu.modal = menu(entries)
+	charactersMenu.show(e)
 }
 
 export async function upload_character(e) {
