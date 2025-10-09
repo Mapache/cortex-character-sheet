@@ -40,8 +40,8 @@ export class Modal {
     showModalBackground()
     modalBackground.insertAdjacentElement("afterend", this.modal)
     this.modal.style.display = "block"
-    this.modal.style.left = left
-    this.modal.style.top = top
+    this.modal.style.left = left + "px"
+    this.modal.style.top = top + "px"
 
     let input = this.modal.querySelector("input")
     if (input != null) {

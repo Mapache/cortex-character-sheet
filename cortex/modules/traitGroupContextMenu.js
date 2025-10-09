@@ -29,8 +29,8 @@ export async function show_context_menu(e) {
   }
 
   let rect = e.target.getBoundingClientRect()
-  let x = rect.left + window.scrollX + "px"
-  let y = rect.top + window.scrollY + "px"
+  let x = rect.left + window.scrollX
+  let y = rect.top + window.scrollY
   contextMenuModal.showAt(x, y)
 }
 
