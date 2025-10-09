@@ -29,19 +29,22 @@ export class Modal {
     return new Modal(modal, callback)
   }
 
-  show(e) {
-    console.log(e.pageX, e.pageY)
+  showAtEvent(e) {
     this.showAt(e.pageX, e.pageY)
   }
 
   showAt(left, top) {
+    this.modal.style.left = left + "px"
+    this.modal.style.top = top + "px"
+    this.show()
+  }
+
+  show() {
     currentModal = this
 
     showModalBackground()
     modalBackground.insertAdjacentElement("afterend", this.modal)
     this.modal.style.display = "block"
-    this.modal.style.left = left + "px"
-    this.modal.style.top = top + "px"
 
     let input = this.modal.querySelector("input")
     if (input != null) {

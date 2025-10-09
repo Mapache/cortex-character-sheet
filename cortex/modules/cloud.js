@@ -229,7 +229,7 @@ export async function campaigns_menu(e) {
 	}))
 
 	campaignsMenu.modal = menu(entries)
-	campaignsMenu.show(e)
+	campaignsMenu.showAtEvent(e)
 }
 
 export async function characters_menu(e) {
@@ -246,7 +246,7 @@ export async function characters_menu(e) {
 	}
 
 	charactersMenu.modal = menu(entries)
-	charactersMenu.show(e)
+	charactersMenu.showAtEvent(e)
 }
 
 export async function upload_character(e) {

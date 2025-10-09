@@ -109,5 +109,5 @@ function change_image_url(e) {
 		img.setAttribute("data-zoom", 1)
 		img.style.transform = "translate(0, 0) scale(1)"
 	}
-	portraitURLModal.show(e)
+	portraitURLModal.showAtEvent(e)
 }
