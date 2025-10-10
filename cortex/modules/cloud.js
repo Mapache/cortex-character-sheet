@@ -134,7 +134,7 @@ export class Cloud {
 		}
 
 		if (this.currentCampaign === null) {
-			this.currentCampaign = this.defaultCampaign
+			this.switchCampaign(this.defaultCampaign)
 		}
 	}
 
@@ -162,6 +162,7 @@ export class Cloud {
 
 	async switchCampaign(campaign) {
 		this.currentCampaign = campaign
+		document.getElementById("current-campaign").innerText = campaign.name
 		await this.getCharactersForCurrentCampaign()
 	}
 

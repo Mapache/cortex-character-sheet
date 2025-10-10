@@ -1276,6 +1276,15 @@ li:before {
 	animation: iconShimmer 4s infinite linear;
 }
 
+#current-campaign {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 12pt;
+	color: grey;
+	position: absolute;
+	left: 64px;
+	top: 24px;
+}
+
 @keyframes iconShimmer {
 	0% {
 		color: #000;

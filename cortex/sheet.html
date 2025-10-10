@@ -12,7 +12,7 @@
 
 	<!-- Modal Dialogs -->
 	<div id="modal-bg" onclick="close_modal(event)"></div>
-	
+
 	<!-- Toolbar -->
 	<div id="toolbar" class="no-print">
 		<div id="campaigns" title="Campaigns" onclick="campaigns_menu(event)"></div>
@@ -21,13 +21,16 @@
 		<div id="download" title="Download Sheet to File" onclick="download_character(event)"></div>
 		<hr>
 		<div title="Highlight Color">
-			<input id="global-highlight-picker" type="color" value="#C50852"
-				onchange="set_global_highlight_color(event)" oninput="set_global_highlight_color(event)"></input>
+			<input id="global-highlight-picker" type="color" value="#C50852" onchange="set_global_highlight_color(event)"
+				oninput="set_global_highlight_color(event)"></input>
 		</div>
 		<div id="toggle-layout-controls" title="Toggle Layout Controls" onclick="layoutControlsHidden.toggle(event)"></div>
-		<div id="toggle-empty-descriptions" title="Toggle Empty Descriptions" onclick="emptyDescriptionsHidden.toggle(event)"></div>
+		<div id="toggle-empty-descriptions" title="Toggle Empty Descriptions"
+			onclick="emptyDescriptionsHidden.toggle(event)"></div>
 		<hr>
 		<div id="help" title="Help" onclick="helpModal.show()"></div>
+	</div>
+	<div id="current-campaign" class="no-print">
 	</div>
 
 	<!-- Page -->
