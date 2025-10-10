@@ -6,7 +6,7 @@ import { save_character } from "./save.js"
 import { apply_highlight_color } from "./traitGroupStyle.js"
 import { ToggleableStyle } from "./toggleableStyle.js"
 
-// File Section
+// MARK: File Section
 
 function titleCase(string) {
 	return string.replace(
@@ -88,7 +88,7 @@ function download(json) {
 	link.remove()
 }
 
-// Display Section
+// MARK: Display Section
 
 export function set_global_highlight_color(e) {
 	let colorPicker = document.getElementById("global-highlight-picker")
@@ -137,6 +137,6 @@ export const emptyDescriptionsHidden = new ToggleableStyle(
 	`,
 	true)
 
-// Help Section
+// MARK: Help Section
 
 export const helpModal = await Modal.build("help-modal", function () { })

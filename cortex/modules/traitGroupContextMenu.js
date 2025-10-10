@@ -39,6 +39,8 @@ async function close_context_menu() {
   contextMenuModal.hide()
 }
 
+// MARK: Hightlight Color
+
 export async function set_trait_collection_highlight_color(e) {
   let traitGroup = g_context_target.parentElement
   apply_highlight_color(traitGroup, colorPicker.value)
@@ -54,6 +56,8 @@ export async function remove_trait_collection_highlight_color(e) {
   close_context_menu()
 }
 
+// MARK: Data Styles
+
 export async function set_style(e) {
   let elem = g_context_target.parentElement
   let style = e.target.getAttribute("data-style")
@@ -68,6 +72,8 @@ export async function context_menu_remove_item(e) {
 
   close_context_menu()
 }
+
+// MARK: Moving Trait Groups
 
 export async function move_to_top(e) {
   let traitGroup = g_context_target.parentElement
