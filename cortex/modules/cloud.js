@@ -1,6 +1,6 @@
 import { app, analytics, auth, db } from "./firebase.js"
 import { signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js"
-import { doc, collection, addDoc, setDoc, updateDoc, getDoc, getDocs, where } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js"
+import { doc, collection, addDoc, setDoc, updateDoc, getDoc, getDocs, where, documentId } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js"
 
 // MARK: Utilities
 
@@ -224,10 +224,12 @@ export class Cloud {
 
 	async getCampaigns() {
 		const user = await this.requireSignIn()
+		await this.requireUserPermissions()
 
 		const querySnapshot = await getDocs(
 			collection(db, campaignsCollection).withConverter(campaignConverter),
-			where("users." + user.uid, ">", 0))
+			where(documentId(), "in", Object.keys(this.userPermissions.campaigns)))
+
 		this.campaigns = querySnapshot.docs.map((doc) => doc.data())
 		this.campaigns.sort((a, b) => a.name.localeCompare(b.name))
 
