@@ -126,6 +126,7 @@ export class Cloud {
 			collection(db, campaignsCollection).withConverter(campaignConverter),
 			where("users." + user.uid, ">", 0))
 		this.campaigns = querySnapshot.docs.map((doc) => doc.data())
+		this.campaigns.sort((a, b) => a.name.localeCompare(b.name))
 
 		if (this.findDefaultCampaign(user) === null) {
 			this.createDefaultCampaign(user)
