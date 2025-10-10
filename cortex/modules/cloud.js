@@ -1,9 +1,5 @@
 import { app, analytics, auth, db } from "./firebase.js"
-import { load_character } from "./load.js"
-import { menu, menuEntry, menuDivider, menuSubMenu } from "./menu.js"
-import { Modal } from "./modal.js"
-import { save_character } from "./save.js"
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js"
+import { signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js"
 import { doc, collection, addDoc, setDoc, getDocs, where } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js"
 
 const generateHash = (string) => {
@@ -88,7 +84,7 @@ export class Cloud {
 				const errorMessage = error.errorMessage
 				const email = error.customData.email
 				const credential = GoogleAuthProvider.credentialFromError(error)
-				console.log("Sign-in error for ", error.customData.email, error.code, error.message)
+				console.error("Sign-in error for ", error.customData.email, error.code, error.message)
 			})
 	}
 
@@ -101,15 +97,17 @@ export class Cloud {
 
 	findDefaultCampaign(user) {
 		for (const [index, campaign] of this.campaigns.entries()) {
-			if (campaign.name == defaultCampaignName &&
-				campaign.users.length == 1 && campaign.users[user.uid] == Campaign.admin
+			if (campaign.id == user.uid &&
+				campaign.name == defaultCampaignName &&
+				campaign.users[user.uid] == Campaign.admin
 			) {
-				this.defaultCampaign = campaign
 				this.campaigns.splice(index, 1)
-				return
+				this.defaultCampaign = campaign
+				return campaign
 			}
 		}
 		this.defaultCampaign = null
+		return null
 	}
 
 	createDefaultCampaign(user) {
@@ -126,8 +124,7 @@ export class Cloud {
 			where("users." + user.uid, ">", 0))
 		this.campaigns = querySnapshot.docs.map((doc) => doc.data())
 
-		this.findDefaultCampaign(user)
-		if (this.defaultCampaign === null) {
+		if (this.findDefaultCampaign(user) === null) {
 			this.createDefaultCampaign(user)
 			const docRef = await setDoc(doc(db, campaignsCollection, this.defaultCampaign.id).withConverter(campaignConverter), this.defaultCampaign)
 		}
@@ -162,15 +159,12 @@ export class Cloud {
 		}
 	}
 
-	async uploadCharacter() {
+	async uploadCharacter(json) {
 		await this.requireSignIn()
 		await this.requireCurrentCampaign()
 		await this.requireCurrentCharacterSheets()
 
-		let json = save_character()
 		let sheet = new CharacterSheet(json)
-		console.log("sheet = ", sheet)
-		console.log("sheet.id = ", sheet.id)
 
 		// Update currentCharacterSheets
 		for (const [index, characterSheet] of this.currentCharacterSheets.entries()) {
@@ -182,7 +176,6 @@ export class Cloud {
 		// Whether or not we removed an old one with this name, always add the new one
 		this.currentCharacterSheets.push(sheet)
 		this.currentCharacterSheets.sort((a, b) => a.name.localeCompare(b.name))
-		console.log(this.currentCharacterSheets)
 
 		try {
 			await setDoc(doc(db, campaignsCollection, this.currentCampaign.id, charactersCollection, sheet.id).withConverter(characterSheetConverter), sheet)
@@ -194,62 +187,4 @@ export class Cloud {
 
 }
 
-let cloud = new Cloud()
-
-export async function campaigns_menu(e) {
-	await cloud.requireCurrentCampaign()
-
-	const campaignsMenu = new Modal()
-
-	let entries = [
-		menuEntry(defaultCampaignName, function (e) {
-			cloud.currentCampaign = cloud.defaultCampaign
-			campaignsMenu.hide()
-		}),
-		menuDivider()
-	]
-	for (const campaign of cloud.campaigns) {
-		entries.push(menuEntry(campaign.name, function (e) {
-			cloud.currentCampaign = campaign
-			campaignsMenu.hide()
-		}))
-	}
-	if (cloud.campaigns.length > 0) {
-		entries.push(menuDivider())
-	}
-	entries.push(menuEntry("Create New Campaign…", function (e) {
-		// TODO: Create New Campaign
-		campaignsMenu.hide()
-	}))
-
-	campaignsMenu.modal = menu(entries)
-	campaignsMenu.showAtEvent(e)
-}
-
-export async function characters_menu(e) {
-	await cloud.requireCurrentCharacterSheets()
-
-	const charactersMenu = new Modal()
-
-	let entries = []
-	for (const characterSheet of cloud.currentCharacterSheets) {
-		entries.push(menuEntry(titleCase(characterSheet.name), function (e) {
-			load_character(characterSheet.json)
-			charactersMenu.hide()
-		}))
-	}
-
-	charactersMenu.modal = menu(entries)
-	charactersMenu.showAtEvent(e)
-}
-
-export async function upload_character(e) {
-	await cloud.uploadCharacter()
-}
-
-function titleCase(string) {
-	return string.replace(
-		/\w\S*/g,
-		text => text.charAt(0).toUpperCase() + text.substring(1).toLowerCase()
-	)
-}
+export const cloud = new Cloud()

@@ -171,21 +171,3 @@ function save_characterV4() {
 export function save_character() {
   return save_characterV4()
 }
-
-export function download_character(e) {
-  let json = save_character()
-  download(json)
-}
-
-function download(json) {
-  let uri = encodeURI("data:application/json;charset=utf-8," + JSON.stringify(json))
-  uri = uri.replace(/#/g, "%23")
-  let link = document.createElement("a")
-  link.setAttribute("href", uri)
-  let characterName = document.getElementById("character-name").innerText
-  if (characterName == "") characterName = "unnamed"
-  link.setAttribute("download", characterName + ".json")
-  document.body.appendChild(link) // Required for FF
-  link.click()
-  link.remove()
-}

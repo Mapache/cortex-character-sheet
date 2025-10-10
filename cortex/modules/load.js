@@ -93,7 +93,6 @@ async function load_characterV3(json) {
     }
 
     if (element == null) continue
-    //		console.log(element)
 
     if (element.getAttribute("type") == "checkbox") {
       element.checked = value
@@ -182,19 +181,8 @@ async function load_characterV4(json) {
   update_titles(characterName, null)
 }
 
-// Load the static sheet specified by the relative path in the URL Parameter "sheet"
-
-export async function load_default_sheet() {
-  const queryString = window.location.search
-  const urlParams = new URLSearchParams(queryString)
-  const sheetParam = "sheet"
-  if (urlParams.has(sheetParam)) {
-    const sheetPath = urlParams.get(sheetParam)
-    load_character_path("characters/" + sheetPath)
-  }
-}
-
-async function load_character_path(path) {
+// Load the character specified by a URL path
+export async function load_character_path(path) {
   fetch(path)
     .then((response) => response.json())
     .then((json) => load_character(json))

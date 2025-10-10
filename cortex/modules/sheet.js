@@ -1,12 +1,5 @@
 // Umbrella import that puts items into the window namespace for use from HTML attributes
 
-// import { * } from "./characters.js"
-
-import { campaigns_menu, characters_menu, upload_character } from "./cloud.js"
-window.campaigns_menu = campaigns_menu
-window.characters_menu = characters_menu
-window.upload_character = upload_character
-
 import "./dragAndDrop.js"
 
 import { add_page, add_trait_group, add_trait, remove_item } from "./elements.js"
@@ -18,10 +11,11 @@ window.remove_item = remove_item
 import { close_modal } from "./modal.js"
 window.close_modal = close_modal
 
-import { download_character } from "./save.js"
+import { campaigns_menu, characters_menu, upload_character, download_character, set_global_highlight_color, layoutControlsHidden, emptyDescriptionsHidden, helpModal } from "./toolbar.js"
+window.campaigns_menu = campaigns_menu
+window.characters_menu = characters_menu
+window.upload_character = upload_character
 window.download_character = download_character
-
-import { set_global_highlight_color, layoutControlsHidden, emptyDescriptionsHidden, helpModal } from "./toolbar.js"
 window.set_global_highlight_color = set_global_highlight_color
 window.layoutControlsHidden = layoutControlsHidden
 window.emptyDescriptionsHidden = emptyDescriptionsHidden

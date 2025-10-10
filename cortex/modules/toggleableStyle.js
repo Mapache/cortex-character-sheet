@@ -1,3 +1,5 @@
+import { whenInteractive } from "./util.js"
+
 export class ToggleableStyle {
   constructor(controlSelector, enabledControlClass, enabledStyle, disabledStyle, startsEnabled) {
     this.controlSelector = controlSelector
@@ -10,16 +12,9 @@ export class ToggleableStyle {
     this.disabledStyleSheet.innerText = disabledStyle
 
     this.enabled = false
-    if (document.readyState === "loading") {
-      // Need to wait until the DOM is loaded before trying to alter it.
-      document.addEventListener("readystatechange", (event) => {
-        if (event.target.readyState === "interactive") {
-          this.setEnabled(startsEnabled)
-        }
-      })
-    } else {
+    whenInteractive(() => {
       this.setEnabled(startsEnabled)
-    }
+    })
   }
 
   enable() {
