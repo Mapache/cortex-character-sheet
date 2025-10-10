@@ -48,11 +48,6 @@ export async function campaigns_menu(e) {
 	campaignsMenu.showAtEvent(e)
 }
 
-export const campaignNameModal = await Modal.build("campaign-name-modal", function () {
-	let name = campaignNameModal.modal.querySelector("input").value
-	cloud.createNewCampaign(name)
-})
-
 export async function characters_menu(e) {
 	await cloud.requireCurrentCharacterSheets()
 
