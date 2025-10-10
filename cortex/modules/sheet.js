@@ -11,8 +11,9 @@ window.remove_item = remove_item
 import { close_modal } from "./modal.js"
 window.close_modal = close_modal
 
-import { campaigns_menu, characters_menu, upload_character, download_character, set_global_highlight_color, layoutControlsHidden, emptyDescriptionsHidden, helpModal } from "./toolbar.js"
+import { campaigns_menu, campaignNameModal, characters_menu, upload_character, download_character, set_global_highlight_color, layoutControlsHidden, emptyDescriptionsHidden, helpModal } from "./toolbar.js"
 window.campaigns_menu = campaigns_menu
+window.campaignNameModal = campaignNameModal
 window.characters_menu = characters_menu
 window.upload_character = upload_character
 window.download_character = download_character

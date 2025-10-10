@@ -71,6 +71,8 @@ export class Cloud {
 		this.currentCharacterSheets = null
 	}
 
+	// Authentication
+
 	async signIn() {
 		const provider = new GoogleAuthProvider()
 		signInWithPopup(auth, provider)
@@ -95,6 +97,8 @@ export class Cloud {
 		return auth.currentUser
 	}
 
+	// Campaigns
+
 	findDefaultCampaign(user) {
 		for (const [index, campaign] of this.campaigns.entries()) {
 			if (campaign.id == user.uid &&
@@ -111,8 +115,7 @@ export class Cloud {
 	}
 
 	createDefaultCampaign(user) {
-		this.defaultCampaign = new Campaign(defaultCampaignName, null)
-		this.defaultCampaign.id = user.uid
+		this.defaultCampaign = new Campaign(defaultCampaignName, user.uid)
 		this.defaultCampaign.users[user.uid] = Campaign.admin
 	}
 
@@ -132,10 +135,6 @@ export class Cloud {
 		if (this.currentCampaign === null) {
 			this.currentCampaign = this.defaultCampaign
 		}
-
-		console.log("currentCampaign = ", this.currentCampaign)
-		console.log("defaultCampaign = ", this.defaultCampaign)
-		console.log("campaigns = ", this.campaigns)
 	}
 
 	async requireCurrentCampaign() {
@@ -143,6 +142,29 @@ export class Cloud {
 			await this.getCampaigns()
 		}
 	}
+
+	async createNewCampaign(name) {
+		const user = await this.requireSignIn()
+
+		let campaign = new Campaign(name, null)
+		campaign.users[user.uid] = Campaign.admin
+
+		try {
+			const docRef = await addDoc(collection(db, campaignsCollection).withConverter(campaignConverter), campaign)
+			console.log("Campaign written with ID: ", docRef.id)
+			await this.getCampaigns()
+			this.switchCampaign(this.campaigns.filter((campaign) => campaign.id == docRef.id).firstElement)
+		} catch (error) {
+			console.error("Error adding Campaign: ", error)
+		}
+	}
+
+	async switchCampaign(campaign) {
+		this.currentCampaign = campaign
+		await this.getCharactersForCurrentCampaign()
+	}
+
+	// Characters
 
 	async getCharactersForCurrentCampaign() {
 		await this.requireSignIn()
@@ -179,9 +201,9 @@ export class Cloud {
 
 		try {
 			await setDoc(doc(db, campaignsCollection, this.currentCampaign.id, charactersCollection, sheet.id).withConverter(characterSheetConverter), sheet)
-			console.log("Document written with ID: ", sheet.id)
+			console.log("Character Sheet written with ID: ", sheet.id)
 		} catch (error) {
-			console.error("Error adding document: ", error)
+			console.error("Error adding Character Sheet: ", error)
 		}
 	}
 

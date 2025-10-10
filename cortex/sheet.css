@@ -1497,6 +1497,18 @@ li:before {
 	background: var(--highlight)3f;
 }
 
+.context-menu p {
+	display: block;
+	color: black;
+	margin: 4px;
+}
+
+.context-menu input[type="text"] {
+	display: block;
+	width: 90%;
+	margin: 4px auto;
+}
+
 .context-menu.visible {
 	display: block;
 }

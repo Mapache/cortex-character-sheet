@@ -22,14 +22,14 @@ export async function campaigns_menu(e) {
 
 	let entries = [
 		menuEntry(cloud.defaultCampaign.name, function (e) {
-			cloud.currentCampaign = cloud.defaultCampaign
+			cloud.switchCampaign(cloud.defaultCampaign)
 			campaignsMenu.hide()
 		}),
 		menuDivider()
 	]
 	for (const campaign of cloud.campaigns) {
 		entries.push(menuEntry(campaign.name, function (e) {
-			cloud.currentCampaign = campaign
+			cloud.switchCampaign(campaign)
 			campaignsMenu.hide()
 		}))
 	}
@@ -37,13 +37,18 @@ export async function campaigns_menu(e) {
 		entries.push(menuDivider())
 	}
 	entries.push(menuEntry("Create New Campaign…", function (e) {
-		// TODO: Create New Campaign
 		campaignsMenu.hide()
+		campaignNameModal.showAtEvent(e)
 	}))
 
 	campaignsMenu.modal = menu(entries)
 	campaignsMenu.showAtEvent(e)
 }
+
+export const campaignNameModal = await Modal.build("campaign-name-modal", function () {
+	let name = campaignNameModal.modal.querySelector("input").value
+	cloud.createNewCampaign(name)
+})
 
 export async function characters_menu(e) {
 	await cloud.requireCurrentCharacterSheets()
