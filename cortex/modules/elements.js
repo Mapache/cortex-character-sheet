@@ -43,7 +43,9 @@ function add_group(event, newGroup) {
 
 export async function add_page(e) {
   let page = add_group(e, (await Template.page).newInstance())
-  install_title_listeners() // TODO: Switch to install_title_listener(page) after setting up the first page's listener.
+  install_title_listener(page)
+  const characterName = document.querySelector(".title").innerText // Get name from first page
+  page.querySelector(".title").innerText = characterName
 }
 
 export async function add_trait_group(e) {
@@ -59,33 +61,31 @@ export function install_title_listeners() {
   let titles = document.getElementsByClassName("title")
   for (let title of titles) {
     title.addEventListener("input", function () {
-      let character_name = title.innerText
-      update_titles(character_name, title)
+      let characterName = title.innerText
+      update_titles(characterName, title)
     })
   }
 }
 
 function install_title_listener(page) {
-  let title = page.getElementsByClassName("title")
-  for (let title of titles) {
-    title.addEventListener("input", function () {
-      let character_name = title.innerText
-      update_titles(character_name, title)
-    })
-  }
+  let title = page.querySelector(".title")
+  title.addEventListener("input", function () {
+    let characterName = title.innerText
+    update_titles(characterName, title)
+  })
 }
 
-export function update_titles(character_name, excluding_title) {
+export function update_titles(characterName, excludingTitle) {
   let titles = document.getElementsByClassName("title")
   for (let title of titles) {
-    if (title != excluding_title) {
-      title.innerText = character_name
+    if (title != excludingTitle) {
+      title.innerText = characterName
     }
   }
-  if (character_name == "NAME" || character_name.length == 0) {
-    character_name = "Cortex Prime"
+  if (characterName == "NAME" || characterName.length == 0) {
+    characterName = "Cortex Prime"
   }
-  document.title = character_name + " Character Sheet"
+  document.title = characterName + " Character Sheet"
 }
 
 export function remove_item(e) {
