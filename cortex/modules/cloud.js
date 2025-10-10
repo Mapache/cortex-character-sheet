@@ -1,6 +1,6 @@
 import { app, analytics, auth, db } from "./firebase.js"
 import { signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js"
-import { doc, collection, addDoc, setDoc, getDocs, where } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js"
+import { doc, collection, addDoc, setDoc, updateDoc, getDoc, getDocs, where } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js"
 
 // MARK: Utilities
 
@@ -105,7 +105,7 @@ export class UserPermissions {
 	// campaigns maps from Campaign ids to CampaignPermissions UUID access keys
 	constructor(campaigns) {
 		this.campaigns = campaigns
-	}å
+	}
 }
 
 const userPermissionsConverter = {
@@ -125,9 +125,12 @@ const userPermissionsConverter = {
 const defaultCampaignName = "Default"
 const campaignsCollection = "campaigns"
 const charactersCollection = "characters"
+const campaignPermissionsCollection = "campaignPermissions"
+const userPermissionsCollection = "userPermissions"
 
 export class Cloud {
 	constructor() {
+		this.userPermissions = null
 		this.currentCampaign = null
 		this.defaultCampaign = null
 		this.campaigns = []
@@ -160,14 +163,40 @@ export class Cloud {
 		return auth.currentUser
 	}
 
+	async getUserPermissions() {
+		const user = await this.requireSignIn()
+
+		const docSnapshot = await getDoc(doc(db, userPermissionsCollection, user.uid).withConverter(userPermissionsConverter))
+		if (docSnapshot.exists()) {
+			this.userPermissions = docSnapshot.data()
+		} else {
+			this.userPermissions = new UserPermissions({})
+			await setDoc(doc(db, userPermissionsCollection, user.uid).withConverter(userPermissionsConverter), this.userPermissions)
+		}
+	}
+
+	async requireUserPermissions() {
+		if (this.userPermissions === null) {
+			await this.getUserPermissions()
+		}
+	}
+
+	async updateAccessKey(campaignId, key) {
+		const user = await this.requireSignIn()
+		await this.requireUserPermissions()
+
+		this.userPermissions.campaigns[campaignId] = key
+
+		let permission = {}
+		permission["campaigns." + campaignId] = key
+		await updateDoc(doc(db, userPermissionsCollection, user.uid), permission)
+	}
+
 	// MARK: Campaigns
 
 	findDefaultCampaign(user) {
 		for (const [index, campaign] of this.campaigns.entries()) {
-			if (campaign.id == user.uid &&
-				campaign.name == defaultCampaignName &&
-				campaign.users[user.uid] == Campaign.admin
-			) {
+			if (campaign.id == user.uid) {
 				this.campaigns.splice(index, 1)
 				this.defaultCampaign = campaign
 				return campaign
@@ -177,9 +206,20 @@ export class Cloud {
 		return null
 	}
 
-	createDefaultCampaign(user) {
+	async createDefaultCampaign(user) {
 		this.defaultCampaign = new Campaign(defaultCampaignName, user.uid)
 		this.defaultCampaign.users[user.uid] = Campaign.admin
+		const permissions = CampaignPermissions.generate()
+		try {
+			const campaignId = this.defaultCampaign.id
+			await setDoc(doc(db, campaignsCollection, campaignId).withConverter(campaignConverter),
+				this.defaultCampaign)
+			await setDoc(doc(db, campaignPermissionsCollection, campaignId).withConverter(campaignPermissionsConverter),
+				permissions)
+			await this.updateAccessKey(campaignId, permissions.keyFor(Campaign.admin))
+		} catch (error) {
+			console.error("Error adding default Campaign: ", error)
+		}
 	}
 
 	async getCampaigns() {
@@ -192,12 +232,11 @@ export class Cloud {
 		this.campaigns.sort((a, b) => a.name.localeCompare(b.name))
 
 		if (this.findDefaultCampaign(user) === null) {
-			this.createDefaultCampaign(user)
-			const docRef = await setDoc(doc(db, campaignsCollection, this.defaultCampaign.id).withConverter(campaignConverter), this.defaultCampaign)
+			await this.createDefaultCampaign(user)
 		}
 
 		if (this.currentCampaign === null) {
-			this.switchCampaign(this.defaultCampaign)
+			await this.switchCampaign(this.defaultCampaign)
 		}
 	}
 
@@ -212,12 +251,17 @@ export class Cloud {
 
 		let campaign = new Campaign(name, null)
 		campaign.users[user.uid] = Campaign.admin
+		const permissions = CampaignPermissions.generate()
 
 		try {
 			const docRef = await addDoc(collection(db, campaignsCollection).withConverter(campaignConverter), campaign)
-			console.log("Campaign written with ID: ", docRef.id)
+			const campaignId = docRef.id
+			console.log("Campaign written with ID: ", campaignId)
+			await setDoc(doc(db, campaignPermissionsCollection, campaignId).withConverter(campaignPermissionsConverter), permissions)
+			await this.updateAccessKey(campaignId, permissions.keyFor(Campaign.admin))
+
 			await this.getCampaigns()
-			this.switchCampaign(this.campaigns.filter((campaign) => campaign.id == docRef.id)[0])
+			await this.switchCampaign(this.campaigns.filter((campaign) => campaign.id == campaignId)[0])
 		} catch (error) {
 			console.error("Error adding Campaign: ", error)
 		}
