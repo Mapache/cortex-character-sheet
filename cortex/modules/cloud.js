@@ -163,6 +163,8 @@ export class Cloud {
 		return auth.currentUser
 	}
 
+	// MARK: Permissions
+
 	async getUserPermissions() {
 		const user = await this.requireSignIn()
 
@@ -190,6 +192,23 @@ export class Cloud {
 		let permission = {}
 		permission["campaigns." + campaignId] = key
 		await updateDoc(doc(db, userPermissionsCollection, user.uid), permission)
+	}
+
+	async accessKey(campaign, access) {
+		const user = await this.requireSignIn()
+		const campaignId = campaign.id
+		try {
+			const docSnapshot = await getDoc(doc(db, campaignPermissionsCollection, campaignId).withConverter(campaignPermissionsConverter))
+			if (docSnapshot.exists()) {
+				const permissions = docSnapshot.data()
+				return permissions.keyFor(access)
+			} else {
+				console.error("Unable to read access keys for ", campaign.name)
+			}
+		} catch (error) {
+			console.error("Error reading access keys for campaign: ", error)
+		}
+		return null
 	}
 
 	// MARK: Campaigns
