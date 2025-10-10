@@ -1451,6 +1451,7 @@ li:before {
 
 .context-menu li {
 	all: unset;
+	position: relative;
 	display: block;
 	padding: 6px 12px 6px 12px;
 	color: black;

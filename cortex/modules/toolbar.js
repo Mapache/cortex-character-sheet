@@ -1,6 +1,6 @@
 import { cloud } from "./cloud.js"
 import { load_character } from "./load.js"
-import { menu, menuEntry, menuDivider, menuSubMenu } from "./menu.js"
+import { menu, menuEntry, menuDivider, menuSubMenu, menuLabel, menuTextInput } from "./menu.js"
 import { Modal } from "./modal.js"
 import { save_character } from "./save.js"
 import { apply_highlight_color } from "./traitGroupStyle.js"
@@ -36,10 +36,13 @@ export async function campaigns_menu(e) {
 	if (cloud.campaigns.length > 0) {
 		entries.push(menuDivider())
 	}
-	entries.push(menuEntry("Create New Campaign…", function (e) {
-		campaignsMenu.hide()
-		campaignNameModal.showAtEvent(e)
-	}))
+	entries.push(menuSubMenu("Create New Campaign…", [
+		menuLabel("Enter name for new campaign:"),
+		menuTextInput("", (name) => {
+			cloud.createNewCampaign(name)
+			campaignsMenu.hide()
+		})
+	]))
 
 	campaignsMenu.modal = menu(entries)
 	campaignsMenu.showAtEvent(e)

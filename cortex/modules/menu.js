@@ -20,6 +20,27 @@ export function menuDivider() {
   return document.createElement("hr")
 }
 
+export function menuLabel(text) {
+  const p = document.createElement("p")
+  p.appendChild(document.createTextNode(text))
+  return p
+}
+
+export function menuTextInput(placeholder, action) {
+  const input = document.createElement("input")
+  input.setAttribute("type", "text")
+  input.setAttribute("value", placeholder)
+  // input.onchange = (event) => {
+  //   action(input.value)
+  // }
+  input.onkeyup = (event) => {
+    if (event.key == "Enter") {
+      action(input.value)
+    }
+  }
+  return input
+}
+
 export function menuSubMenu(name, entries) {
   const li = document.createElement("li")
   li.appendChild(document.createTextNode(name))

@@ -153,7 +153,7 @@ export class Cloud {
 			const docRef = await addDoc(collection(db, campaignsCollection).withConverter(campaignConverter), campaign)
 			console.log("Campaign written with ID: ", docRef.id)
 			await this.getCampaigns()
-			this.switchCampaign(this.campaigns.filter((campaign) => campaign.id == docRef.id).firstElement)
+			this.switchCampaign(this.campaigns.filter((campaign) => campaign.id == docRef.id)[0])
 		} catch (error) {
 			console.error("Error adding Campaign: ", error)
 		}
