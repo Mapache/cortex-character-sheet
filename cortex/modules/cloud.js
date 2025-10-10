@@ -2,6 +2,8 @@ import { app, analytics, auth, db } from "./firebase.js"
 import { signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js"
 import { doc, collection, addDoc, setDoc, getDocs, where } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js"
 
+// MARK: Utilities
+
 const generateHash = (string) => {
 	let hash = 0
 	for (const char of string) {
@@ -10,6 +12,8 @@ const generateHash = (string) => {
 	}
 	return hash
 }
+
+// MARK: Data Models
 
 export class Campaign {
 	constructor(name, id) {
@@ -59,6 +63,65 @@ const characterSheetConverter = {
 	}
 }
 
+// MARK: Permissions Models
+
+export class CampaignPermissions {
+	// permissions maps from UUID access keys to access levels (admin / editor / reader)
+	constructor(permissions) {
+		this.permissions = permissions
+	}
+
+	keyFor(access) {
+		for (const [key, value] of Object.entries(this.permissions)) {
+			if (value == access) {
+				return key
+			}
+		}
+		return null
+	}
+
+	static generate() {
+		let permissions = {}
+		permissions[crypto.randomUUID()] = Campaign.reader
+		permissions[crypto.randomUUID()] = Campaign.editor
+		permissions[crypto.randomUUID()] = Campaign.admin
+		return new CampaignPermissions(permissions)
+	}
+}
+
+const campaignPermissionsConverter = {
+	toFirestore: (campaignPermissions) => {
+		return {
+			permissions: campaignPermissions.permissions,
+		}
+	},
+	fromFirestore: (snapshot, options) => {
+		const data = snapshot.data(options)
+		return new CampaignPermissions(data.permissions)
+	}
+}
+
+export class UserPermissions {
+	// campaigns maps from Campaign ids to CampaignPermissions UUID access keys
+	constructor(campaigns) {
+		this.campaigns = campaigns
+	}å
+}
+
+const userPermissionsConverter = {
+	toFirestore: (campaignPermissions) => {
+		return {
+			campaigns: campaignPermissions.campaigns,
+		}
+	},
+	fromFirestore: (snapshot, options) => {
+		const data = snapshot.data(options)
+		return new UserPermissions(data.campaigns)
+	}
+}
+
+// MARK: Cloud
+
 const defaultCampaignName = "Default"
 const campaignsCollection = "campaigns"
 const charactersCollection = "characters"
@@ -71,7 +134,7 @@ export class Cloud {
 		this.currentCharacterSheets = null
 	}
 
-	// Authentication
+	// MARK: Authentication
 
 	async signIn() {
 		const provider = new GoogleAuthProvider()
@@ -97,7 +160,7 @@ export class Cloud {
 		return auth.currentUser
 	}
 
-	// Campaigns
+	// MARK: Campaigns
 
 	findDefaultCampaign(user) {
 		for (const [index, campaign] of this.campaigns.entries()) {
@@ -166,7 +229,7 @@ export class Cloud {
 		await this.getCharactersForCurrentCampaign()
 	}
 
-	// Characters
+	// MARK: Characters
 
 	async getCharactersForCurrentCampaign() {
 		await this.requireSignIn()
