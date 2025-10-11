@@ -1,6 +1,6 @@
 import { app, analytics, auth, db } from "./firebase.js"
 import { signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js"
-import { doc, collection, addDoc, setDoc, updateDoc, getDoc, getDocs, where, documentId } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js"
+import { doc, collection, query, addDoc, setDoc, updateDoc, getDoc, getDocs, where, documentId } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js"
 
 // MARK: Utilities
 
@@ -83,9 +83,9 @@ export class CampaignPermissions {
 
 	static generate() {
 		let permissions = {}
-		permissions[Campaign.reader+crypto.randomUUID()] = Campaign.reader
-		permissions[Campaign.editor+crypto.randomUUID()] = Campaign.editor
-		permissions[Campaign.admin+crypto.randomUUID()] = Campaign.admin
+		permissions[Campaign.reader + crypto.randomUUID()] = Campaign.reader
+		permissions[Campaign.editor + crypto.randomUUID()] = Campaign.editor
+		permissions[Campaign.admin + crypto.randomUUID()] = Campaign.admin
 		return new CampaignPermissions(permissions)
 	}
 }
@@ -263,9 +263,10 @@ export class Cloud {
 		const user = await this.requireSignIn()
 		await this.requireUserPermissions()
 
-		const querySnapshot = await getDocs(
+		const q = query(
 			collection(db, campaignsCollection).withConverter(campaignConverter),
 			where(documentId(), "in", Object.keys(this.userPermissions.campaigns)))
+		const querySnapshot = await getDocs(q)
 
 		this.campaigns = querySnapshot.docs.map((doc) => doc.data())
 		this.campaigns.sort((a, b) => a.name.localeCompare(b.name))
@@ -276,6 +277,14 @@ export class Cloud {
 
 		if (this.currentCampaign === null) {
 			await this.switchCampaign(this.defaultCampaign)
+		}
+
+		if (0) {
+			console.log("user.uid = ", user.uid)
+			console.log("this.userPermissions = ", this.userPermissions)
+			console.log("this.defaultCampaign = ", this.defaultCampaign)
+			console.log("this.campaigns = ", this.campaigns)
+			console.log("this.currentCampaign = ", this.currentCampaign)
 		}
 	}
 
