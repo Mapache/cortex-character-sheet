@@ -30,7 +30,8 @@ async function parseShareUrl() {
     const firstHyphen = shareCode.indexOf(shareSeparator)
     const campaignId = shareCode.substring(0, firstHyphen)
     const accessKey = shareCode.substring(firstHyphen + 1)
-    cloud.updateAccessKey(campaignId, accessKey)
+    await cloud.updateAccessKey(campaignId, accessKey)
+    await cloud.switchCampaign(campaignId)
   }
 }
 
