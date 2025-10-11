@@ -9,10 +9,18 @@ export function menu(entries) {
   return div
 }
 
-export function menuEntry(name, action) {
+export function menuEntry(name, action, subMenuEntries) {
   const li = document.createElement("li")
   li.appendChild(document.createTextNode(name))
-  li.onclick = action
+  if (action) {
+    li.onclick = action
+  }
+  if (subMenuEntries) {
+    const arrow = document.createElement("i")
+    arrow.classList.add("fa-angle-right")
+    li.appendChild(arrow)
+    li.appendChild(menu(subMenuEntries))
+  }
   return li
 }
 
@@ -39,14 +47,4 @@ export function menuTextInput(placeholder, action) {
     }
   }
   return input
-}
-
-export function menuSubMenu(name, entries) {
-  const li = document.createElement("li")
-  li.appendChild(document.createTextNode(name))
-  const arrow = document.createElement("i")
-  arrow.classList.add("fa-angle-right")
-  li.appendChild(arrow)
-  li.appendChild(menu(entries))
-  return li
 }

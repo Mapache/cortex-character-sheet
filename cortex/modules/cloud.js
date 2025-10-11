@@ -22,6 +22,7 @@ export class Campaign {
 		this.users = {}
 	}
 
+	static unauthorized = 0
 	static reader = 1
 	static editor = 2
 	static admin = 3
@@ -82,9 +83,9 @@ export class CampaignPermissions {
 
 	static generate() {
 		let permissions = {}
-		permissions[crypto.randomUUID()] = Campaign.reader
-		permissions[crypto.randomUUID()] = Campaign.editor
-		permissions[crypto.randomUUID()] = Campaign.admin
+		permissions[Campaign.reader+crypto.randomUUID()] = Campaign.reader
+		permissions[Campaign.editor+crypto.randomUUID()] = Campaign.editor
+		permissions[Campaign.admin+crypto.randomUUID()] = Campaign.admin
 		return new CampaignPermissions(permissions)
 	}
 }
@@ -181,6 +182,14 @@ export class Cloud {
 		if (this.userPermissions === null) {
 			await this.getUserPermissions()
 		}
+	}
+
+	async accessFor(campaignId) {
+		const key = this.userPermissions.campaigns[campaignId]
+		if (!key) {
+			return Campaign.unauthorized
+		}
+		return parseInt(key[0])
 	}
 
 	async updateAccessKey(campaignId, key) {
