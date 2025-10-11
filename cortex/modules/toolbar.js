@@ -77,6 +77,10 @@ export async function characters_menu(e) {
 		}))
 	}
 
+	if (entries.length == 0) {
+		entries.push(menuLabel("No Characters in Campaign"))
+	}
+
 	charactersMenu.modal = menu(entries)
 	charactersMenu.showAtEvent(e)
 }
