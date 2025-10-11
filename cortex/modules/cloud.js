@@ -142,7 +142,7 @@ export class Cloud {
 
 	async signIn() {
 		const provider = new GoogleAuthProvider()
-		signInWithPopup(auth, provider)
+		await signInWithPopup(auth, provider)
 			.then((result) => {
 				const credential = GoogleAuthProvider.credentialFromResult(result)
 				const token = credential.accessToken
@@ -159,7 +159,7 @@ export class Cloud {
 
 	async requireSignIn() {
 		if (!auth.currentUser) {
-			await signIn()
+			await this.signIn()
 		}
 		return auth.currentUser
 	}
@@ -184,8 +184,12 @@ export class Cloud {
 		}
 	}
 
-	async accessFor(campaignId) {
+	accessFor(campaignId) {
 		const key = this.userPermissions.campaigns[campaignId]
+		return this.accessForKey(key)
+	}
+
+	accessForKey(key) {
 		if (!key) {
 			return Campaign.unauthorized
 		}
@@ -195,6 +199,11 @@ export class Cloud {
 	async updateAccessKey(campaignId, key) {
 		const user = await this.requireSignIn()
 		await this.requireUserPermissions()
+
+		if (this.accessFor(campaignId) > this.accessForKey(key)) {
+			// Don't downgrade access
+			return
+		}
 
 		this.userPermissions.campaigns[campaignId] = key
 

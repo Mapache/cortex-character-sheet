@@ -3,6 +3,7 @@ import { load_character } from "./load.js"
 import { menu, menuEntry, menuDivider, menuLabel, menuTextInput } from "./menu.js"
 import { Modal } from "./modal.js"
 import { save_character } from "./save.js"
+import { copyShareUrl } from "./share.js"
 import { apply_highlight_color } from "./traitGroupStyle.js"
 import { ToggleableStyle } from "./toggleableStyle.js"
 
@@ -13,24 +14,6 @@ function titleCase(string) {
 		/\w\S*/g,
 		text => text.charAt(0).toUpperCase() + text.substring(1).toLowerCase()
 	)
-}
-
-function createShareUrl(campaignId, key) {
-	const windowUrl = window.location.href
-	const baseUrl = windowUrl.split("?")[0]
-	const shareUrl = baseUrl + "?share=" + campaignId + "-" + key
-	return shareUrl
-}
-
-async function copyShareUrl(campaign, access) {
-	try {
-		const key = await cloud.accessKey(campaign, access)
-		const shareUrl = createShareUrl(campaign.id, key)
-		await navigator.clipboard.writeText(shareUrl)
-		console.log('Copied share URL:', shareUrl)
-	} catch (err) {
-		console.error('Failed to copy share URL: ', err)
-	}
 }
 
 // MARK: File Section
@@ -49,7 +32,7 @@ export async function campaigns_menu(e) {
 	]
 	for (const campaign of cloud.campaigns) {
 		let subMenuEntries = null
-		if (await cloud.accessFor(campaign.id) == Campaign.admin) {
+		if (cloud.accessFor(campaign.id) == Campaign.admin) {
 			subMenuEntries = [
 				menuEntry("Share as editable…", async (e) => {
 					await copyShareUrl(campaign, Campaign.editor)

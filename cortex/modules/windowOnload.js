@@ -5,8 +5,8 @@ import { load_character_path } from "./load.js"
 import { download_character } from "./toolbar.js"
 import { whenInteractive } from "./util.js"
 
-whenInteractive(function () {
-  document.addEventListener("keydown", function (e) {
+whenInteractive(() => {
+  document.addEventListener("keydown", (e) => {
     if ((window.navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey) && e.keyCode == 83) {
       e.preventDefault()
       download_character(e)
