@@ -19,7 +19,6 @@ export class Campaign {
 	constructor(name, id) {
 		this.name = name
 		this.id = id
-		this.users = {}
 	}
 
 	static unauthorized = 0
@@ -32,13 +31,11 @@ const campaignConverter = {
 	toFirestore: (campaign) => {
 		return {
 			name: campaign.name,
-			users: campaign.users,
 		}
 	},
 	fromFirestore: (snapshot, options) => {
 		const data = snapshot.data(options)
 		let campaign = new Campaign(data.name, snapshot.id)
-		campaign.users = data.users
 		return campaign
 	}
 }
@@ -245,7 +242,6 @@ export class Cloud {
 
 	async createDefaultCampaign(user) {
 		this.defaultCampaign = new Campaign(defaultCampaignName, user.uid)
-		this.defaultCampaign.users[user.uid] = Campaign.admin
 		const permissions = CampaignPermissions.generate()
 		try {
 			const campaignId = this.defaultCampaign.id
@@ -301,7 +297,6 @@ export class Cloud {
 		const user = await this.requireSignIn()
 
 		let campaign = new Campaign(name, null)
-		campaign.users[user.uid] = Campaign.admin
 		const permissions = CampaignPermissions.generate()
 
 		try {
