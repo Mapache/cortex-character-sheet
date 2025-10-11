@@ -1,0 +1,48 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Deny all unspecified collections
+    match /{document=**} {
+      allow read, write: if false;
+    }
+    
+    function hasUserPermissions() {
+      return exists(/databases/$(database)/documents/userPermissions/$(request.auth.uid))
+    }
+    
+    function userPermissionsData() {
+      return get(/databases/$(database)/documents/userPermissions/$(request.auth.uid)).data
+    }
+    
+    match /campaigns/{campaign} {
+    
+      function campaignPermissionsData() {
+        return get(/databases/$(database)/documents/campaignPermissions/$(campaign)).data
+      }
+      
+      function accessLevel() {
+        return campaignPermissionsData().permissions[userPermissionsData().campaigns[campaign]]
+      }
+    
+      allow create: if request.auth != null && hasUserPermissions();
+      allow read: if request.auth != null && accessLevel() >= 1;
+      allow update, delete: if request.auth != null && accessLevel() >= 3;
+      
+      match /characters/{character} {
+        allow read: if request.auth != null && accessLevel() >= 1;
+        allow write: if request.auth != null && accessLevel() >= 2;
+      }
+    }
+    
+    // Campaign permissions can be created by any user, read only by that campaign's admin, and are immutable.
+    match /campaignPermissions/{campaignPermissions} {
+      allow create: if request.auth != null && hasUserPermissions();
+      allow read: if request.auth != null && resource.data.permissions[userPermissionsData().campaigns[campaignPermissions]] == 3;
+      allow update, delete: if false;
+    }
+    
+    match /userPermissions/{userPermission} {
+    	allow read, write: if request.auth.uid == userPermission;
+    }
+  }
+}
