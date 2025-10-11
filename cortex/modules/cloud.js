@@ -263,13 +263,16 @@ export class Cloud {
 		const user = await this.requireSignIn()
 		await this.requireUserPermissions()
 
-		const q = query(
-			collection(db, campaignsCollection).withConverter(campaignConverter),
-			where(documentId(), "in", Object.keys(this.userPermissions.campaigns)))
-		const querySnapshot = await getDocs(q)
+		const campaignIds = Object.keys(this.userPermissions.campaigns)
+		if (campaignIds.length > 0) {
+			const q = query(
+				collection(db, campaignsCollection).withConverter(campaignConverter),
+				where(documentId(), "in", campaignIds))
+			const querySnapshot = await getDocs(q)
 
-		this.campaigns = querySnapshot.docs.map((doc) => doc.data())
-		this.campaigns.sort((a, b) => a.name.localeCompare(b.name))
+			this.campaigns = querySnapshot.docs.map((doc) => doc.data())
+			this.campaigns.sort((a, b) => a.name.localeCompare(b.name))
+		}
 
 		if (this.findDefaultCampaign(user) === null) {
 			await this.createDefaultCampaign(user)
