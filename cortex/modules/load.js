@@ -27,6 +27,8 @@ export function nuke_character() {
   for (let traitGroup of document.querySelectorAll(".trait-group:not(.template)")) {
     traitGroup.remove()
   }
+  // Reset name.
+  update_titles("NAME", null)
 }
 
 async function get_element_from_path(path) {

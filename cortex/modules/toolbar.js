@@ -1,5 +1,5 @@
 import { Campaign, cloud } from "./cloud.js"
-import { load_character } from "./load.js"
+import { nuke_character, load_character } from "./load.js"
 import { menu, menuEntry, menuDivider, menuLabel, menuTextInput } from "./menu.js"
 import { Modal } from "./modal.js"
 import { save_character } from "./save.js"
@@ -76,10 +76,13 @@ export async function characters_menu(e) {
 			charactersMenu.hide()
 		}))
 	}
-
-	if (entries.length == 0) {
-		entries.push(menuLabel("No Characters in Campaign"))
+	if (entries.length > 0) {
+		entries.push(menuDivider())
 	}
+	entries.push(menuEntry("New Blank Character Sheet", (e) => {
+		nuke_character()
+		charactersMenu.hide()
+	}))
 
 	charactersMenu.modal = menu(entries)
 	charactersMenu.showAtEvent(e)
