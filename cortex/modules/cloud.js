@@ -1,5 +1,5 @@
 import { app, analytics, auth, db } from "./firebase.js"
-import { signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js"
+import { onAuthStateChanged, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js"
 import { doc, collection, query, addDoc, setDoc, updateDoc, getDoc, getDocs, where, documentId } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js"
 
 // MARK: Utilities
@@ -143,14 +143,23 @@ export class Cloud {
 
 	// MARK: Authentication
 
+	async waitForAuthInit() {
+		return new Promise((resolve) => {
+			const unsubscribe = onAuthStateChanged(auth, (user) => {
+				unsubscribe() // Unsubscribe after the first state change
+				resolve(user) // Resolve with the initial user state
+			})
+		})
+	}
+
 	async signIn() {
 		const provider = new GoogleAuthProvider()
-		await signInWithPopup(auth, provider)
+		return await signInWithPopup(auth, provider)
 			.then((result) => {
 				const credential = GoogleAuthProvider.credentialFromResult(result)
 				const token = credential.accessToken
 				const user = result.user
-				// IdP data available using getAdditionalUserInfo(result)
+				return user
 			}).catch((error) => {
 				const errorCode = error.code
 				const errorMessage = error.errorMessage
@@ -161,10 +170,7 @@ export class Cloud {
 	}
 
 	async requireSignIn() {
-		if (!auth.currentUser) {
-			await this.signIn()
-		}
-		return auth.currentUser
+		return (await this.waitForAuthInit()) || (await this.signIn())
 	}
 
 	// MARK: Permissions
