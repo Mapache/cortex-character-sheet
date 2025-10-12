@@ -14,7 +14,8 @@ export function c_to_html(html) {
   html = html.replace(/\bMOTES?\b/ig, "<mote></mote>")
   html = html.replace(/\bHERP\b/ig, "<hero></hero>")
   html = html.replace(/\bHERO ?POINTS?\b/ig, "<hero></hero>")
-  return html
+
+  return html.trim()
 }
 
 export function text_to_html(html) {
@@ -44,7 +45,7 @@ export function text_to_html(html) {
   html = html.replace(/\*\*([^\*]*)\*\*/g, "<b>$1</b>")
   html = html.replace(/\*([^\*]*)\*/g, "<i>$1</i>")
 
-  return html
+  return html.trim()
 }
 
 export function html_to_text(text) {
@@ -64,5 +65,5 @@ export function html_to_text(text) {
   text = text.replace(/&nbsp;/g, " ")
   text = text.replace(/<ref>([^<]*)<\/ref>/g, "[$1]")
 
-  return text
+  return text.trim()
 }

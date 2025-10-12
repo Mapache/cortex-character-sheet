@@ -4,13 +4,15 @@ import { doc, collection, query, addDoc, setDoc, updateDoc, getDoc, getDocs, whe
 
 // MARK: Utilities
 
-const generateHash = (string) => {
+function generateHash(name) {
+	let string = name.trim().toUpperCase()
 	let hash = 0
 	for (const char of string) {
 		hash = (hash << 5) - hash + char.charCodeAt(0)
 		hash |= 0 // Constrain to 32bit integer
 	}
-	return hash
+	// Avoid negative sign by adding 1<<32 (via rollover)
+	return (hash-(1<<31)).toString(36)
 }
 
 // MARK: Data Models
@@ -44,7 +46,7 @@ export class CharacterSheet {
 	constructor(json) {
 		this.json = json
 		this.name = json.characterName
-		this.id = generateHash(json.characterName).toString()
+		this.id = generateHash(json.characterName)
 	}
 }
 
