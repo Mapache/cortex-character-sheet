@@ -347,8 +347,26 @@ export class Cloud {
 		await this.requireSignIn()
 
 		this.currentCampaign = campaign
-		document.getElementById("current-campaign").innerText = campaign.name
+		this.displayCurrentCampaignName()
 		await this.getCharactersForCurrentCampaign()
+	}
+
+	displayCurrentCampaignName() {
+		document.getElementById("current-campaign").innerText = this.currentCampaign.name
+	}
+
+	async renameCampaign(campaign, name) {
+		await this.requireSignIn()
+		await this.requireCampaigns()
+
+		let rename = {
+			name: name
+		}
+		await updateDoc(doc(db, campaignsCollection, campaign.id), rename)
+
+		campaign.name = name
+		this.sortCampaigns()
+		this.displayCurrentCampaignName()
 	}
 
 	// MARK: Characters

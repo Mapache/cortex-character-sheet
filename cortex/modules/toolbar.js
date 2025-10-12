@@ -34,6 +34,12 @@ export async function campaigns_menu(e) {
 		let subMenuEntries = null
 		if (cloud.accessFor(campaign.id) == Campaign.admin) {
 			subMenuEntries = [
+				menuLabel("Rename campaign:"),
+				menuTextInput(campaign.name, (name) => {
+					cloud.renameCampaign(campaign, name)
+					campaignsMenu.hide()
+				}),
+				menuDivider(),
 				menuEntry("Share as editable…", async (e) => {
 					await copyShareUrl(campaign, Campaign.editor)
 					campaignsMenu.hide()

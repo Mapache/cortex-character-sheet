@@ -12,14 +12,24 @@ export function menu(entries) {
 export function menuEntry(name, action, subMenuEntries) {
   const li = document.createElement("li")
   li.appendChild(document.createTextNode(name))
-  if (action) {
-    li.onclick = action
-  }
   if (subMenuEntries) {
+    const subMenu = menu(subMenuEntries)
     const arrow = document.createElement("i")
     arrow.classList.add("fa-angle-right")
     li.appendChild(arrow)
-    li.appendChild(menu(subMenuEntries))
+    li.appendChild(subMenu)
+    if (action) {
+      li.onclick = (e) => {
+        // Do not trigger the menu action when clicking the subMenu
+        if (!subMenu.contains(e.target)) {
+          action(e)
+        }
+      }
+    }
+  } else { // No subMenu
+    if (action) {
+      li.onclick = action
+    }
   }
   return li
 }
