@@ -1,0 +1,329 @@
+{
+  "version": 4,
+  "characterName": "ANNELIE WARNER",
+  "description": "",
+  "traits": [
+    [
+      [
+        [
+          [
+            "DISTINCTIONS",
+            "detailed"
+          ],
+          [
+            [
+              "REPUTATION: JUSTICE",
+              "8 / 4+hero point",
+              "Killer of the undead, wandering from place to place penniless and always willing to punch people in the face."
+            ],
+            [
+              "VIRTUE: ALTRUISTIC",
+              "8",
+              "Activate your Virtue to suffer a Consequence in place of another Hero."
+            ],
+            [
+              "HUBRIS: TRUSTING",
+              "4+hero point",
+              "You receive a hero point when you accept someone’s lies or lopsided deal."
+            ],
+            [
+              "BACKGROUND: PUGILIST",
+              "6",
+              "[Quirk]: Earn a hero point when you drop what you’re holding to fight with fists regardless of your opponent's weapon."
+            ],
+            [
+              "BACKGROUND: HEXE",
+              "6",
+              "[Quirk]: Earn a hero point when you go out of your way to ensure that the dead stay dead."
+            ],
+            [
+              "NATIONALITY: EISEN",
+              "",
+              ""
+            ]
+          ]
+        ],
+        [
+          [
+            "Attributes",
+            "compact"
+          ],
+          [
+            [
+              "BRAWN",
+              "0"
+            ],
+            [
+              "Finesse",
+              "4"
+            ],
+            [
+              "PANACHE",
+              "6"
+            ],
+            [
+              "Resolve",
+              "2"
+            ],
+            [
+              "Wits",
+              "8"
+            ]
+          ]
+        ],
+        [
+          [
+            "Skills",
+            "compact"
+          ],
+          [
+            [
+              "Aim",
+              "4"
+            ],
+            [
+              "Athletics",
+              "8"
+            ],
+            [
+              "Brawl",
+              "0"
+            ],
+            [
+              "Convince",
+              "2"
+            ],
+            [
+              "Empathy",
+              "6"
+            ],
+            [
+              "Hide",
+              "4"
+            ],
+            [
+              "Intimidate",
+              "0"
+            ],
+            [
+              "Notice",
+              "6"
+            ],
+            [
+              "PERFORM",
+              "6"
+            ],
+            [
+              "Ride",
+              "4"
+            ],
+            [
+              "Sailing",
+              "4"
+            ],
+            [
+              "Scholarship",
+              "4"
+            ],
+            [
+              "Tempt",
+              "8"
+            ],
+            [
+              "Theft",
+              "4"
+            ],
+            [
+              "Warfare",
+              "8"
+            ],
+            [
+              "Weaponry",
+              "6"
+            ]
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            "ADVANTAGES",
+            "detailed"
+          ],
+          [
+            [
+              "BOXER",
+              "",
+              "You gain d8 when you use Brawl to punch, kick, headbutt, or otherwise injure another character using nothing but your own body."
+            ],
+            [
+              "STAREDOWN",
+              "",
+              "Spend a hero point to intimidate a character into backing down from a threat, letting you into somewhere he shouldn’t, or otherwise getting out of your way."
+            ],
+            [
+              "CAST IRON STOMACH",
+              "",
+              "Spoiled or raw food never negatively affects you, and you still gain required sustenance from it."
+            ],
+            [
+              "STREETWISE",
+              "",
+              "You can spend a hero point to locate a fixer, an information broker, a black market, or a similar underworld figure."
+            ],
+            [
+              "LARGE",
+              "",
+              "Gain d8 on any Test that is easier due to your size—using Athletics to run at full speed even while carrying another Hero, or looming over someone in order to Intimidate them."
+            ],
+            [
+              "POISON IMMUNITY",
+              "",
+              "Poison never affects you, aside from some potential mild discomfort. If the poison would ordinarily kill you, it might cause you only to vomit instead, but there are no additional effects."
+            ]
+          ]
+        ],
+        [
+          [
+            "LANGUAGES",
+            "detailed"
+          ],
+          [
+            [
+              "GERMAN (NATIVE)",
+              "",
+              ""
+            ],
+            [
+              "LATIN",
+              "",
+              ""
+            ],
+            [
+              "THE LANGUAGE OF WIND",
+              "",
+              ""
+            ]
+          ]
+        ],
+        [
+          [
+            "Consequences",
+            "stress compact"
+          ],
+          [
+            [
+              "Stress",
+              "6"
+            ],
+            [
+              "Wounds",
+              "6"
+            ],
+            [
+              "Corruption",
+              "6"
+            ]
+          ]
+        ]
+      ]
+    ],
+    [
+      [
+        [
+          [
+            "SORCERY: Hexenwerk",
+            "detailed"
+          ],
+          [
+            [
+              "UNGUENTS",
+              "",
+              "Creating an Unguent requires at least an hour and a lab or a kitchen. Spend a hero point, combining the materials to create one Major Unguent and four Minor Unguents (two for each time you have purchased the Sorcery Advantage). These Minor Unguents can be multiple doses of the same Unguent or single doses of different ones.",
+              "",
+              "Once created, an Unguent can be used by anyone. Activating an Unguent during an Action Scene costs an Action.",
+              "",
+              "Unguents are unstable; each Hero can only keep one unused Major Unguent or one unused Minor Unguent at the end of each Episode—all others spoil, melt through their containers, or become otherwise unusable."
+            ]
+          ]
+        ],
+        [
+          [
+            "MAJOR UNGUENTS",
+            "detailed"
+          ],
+          [
+            [
+              "CORPSE TONGUE",
+              "",
+              "[Ingredients:] The severed tongue of a corpse, soaked in nightshade and ground into a paste, rubbed on the hexe’s tongue.",
+              "",
+              "Corpse Tongue allows you to speak with a dead body, receiving messages from it about anything it knew in life. You can ask questions equal to your Resolve die size (d12), and the corpse must answer you honestly. After you ask your last question, you vomit, and the corpse you have been questioning crumbles into dust—you cannot question it further, even if you have an additional dose of Corpse Tongue."
+            ],
+            [
+              "GHOST EYES",
+              "",
+              "[Ingredients:] Eyes carved from the recent dead, mixed with holy water and mandrake, and then smeared across the eyelids.",
+              "",
+              "Ghost Eyes allows you to see—for a single Scene—spirits, ghosts, and other such Monsters that would typically be invisible."
+            ]
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            "MINOR UNGUENTS",
+            "detailed"
+          ],
+          [
+            [
+              "TBD",
+              "",
+              "[Ingredients]: ???",
+              "",
+              "Effects"
+            ],
+            [
+              "TBD",
+              "",
+              "[Ingredients]: ???",
+              "",
+              "Effects"
+            ],
+            [
+              "TBD",
+              "",
+              "[Ingredients]: ???",
+              "",
+              "Effects"
+            ],
+            [
+              "TBD",
+              "",
+              "[Ingredients]: ???",
+              "",
+              "Effects"
+            ]
+          ]
+        ],
+        [
+          [
+            "ASSETS",
+            "detailed"
+          ],
+          [
+            [
+              "SECRET SOCIETY: DIE KREUZRITTER",
+              "6",
+              "Clandestine warriors who battle Monsters and protect others from horrors unleashed by Villains."
+            ]
+          ]
+        ]
+      ]
+    ]
+  ],
+  "highlightColors": {
+    ":root": "#2c1376"
+  }
+}
