@@ -81,10 +81,14 @@ export class CampaignPermissions {
 	}
 
 	static generate() {
+		function generateKey(access) {
+			// First digit encodes access level, then UUID with extraneous hyphens stripped
+			return access + crypto.randomUUID().replace(/-/g, "")
+		}
 		let permissions = {}
-		permissions[Campaign.reader + crypto.randomUUID()] = Campaign.reader
-		permissions[Campaign.editor + crypto.randomUUID()] = Campaign.editor
-		permissions[Campaign.admin + crypto.randomUUID()] = Campaign.admin
+		permissions[generateKey(Campaign.reader)] = Campaign.reader
+		permissions[generateKey(Campaign.editor)] = Campaign.editor
+		permissions[generateKey(Campaign.admin)] = Campaign.admin
 		return new CampaignPermissions(permissions)
 	}
 }
