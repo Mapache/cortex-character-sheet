@@ -1,0 +1,254 @@
+{
+  "version": 4,
+  "characterName": "ELENA",
+  "description": "Character Description",
+  "traits": [
+    [
+      [
+        [
+          [
+            "DISTINCTIONS",
+            "detailed"
+          ],
+          [
+            [
+              "Reputation: {Phrase}",
+              "8 / 4+hero point",
+              "{Elaborate on reputation}"
+            ],
+            [
+              "VIRTUE: ADAPTABLE",
+              "8",
+              "[Coins (for the Ferryman)]: Once per session, activate your Virtue to take your first Action before anyone else in a round."
+            ],
+            [
+              "HUBRIS: Relentless",
+              "4+hero point",
+              "[Coins (for the Ferryman)]: Once per session, you receive a hero point when you refuse to leave well enough alone or quit while you’re ahead, and it gets you into trouble."
+            ],
+            [
+              "BACKGROUND: PERFORMER",
+              "6",
+              "[Quirk]: Earn a hero point when you use your crowd-pleasing skills for something more than making a few coins."
+            ],
+            [
+              "BACKGROUND: DUELIST",
+              "6",
+              "[Quirk]: Earn a hero point when you resort to the edge of your blade to defend a noble ideal."
+            ],
+            [
+              "NATIONALITY: VODACCE",
+              "",
+              ""
+            ]
+          ]
+        ],
+        [
+          [
+            "Attributes",
+            "compact"
+          ],
+          [
+            [
+              "BRAWN",
+              "8"
+            ],
+            [
+              "Panache",
+              "2"
+            ],
+            [
+              "Resolve",
+              "4"
+            ],
+            [
+              "Wits",
+              "6"
+            ],
+            [
+              "FINESSE",
+              "0"
+            ]
+          ]
+        ],
+        [
+          [
+            "Skills",
+            "compact"
+          ],
+          [
+            [
+              "Aim",
+              "4"
+            ],
+            [
+              "Athletics",
+              "0"
+            ],
+            [
+              "Brawl",
+              "4"
+            ],
+            [
+              "Convince",
+              "6"
+            ],
+            [
+              "Empathy",
+              "8"
+            ],
+            [
+              "Hide",
+              "8"
+            ],
+            [
+              "Intimidate",
+              "6"
+            ],
+            [
+              "Notice",
+              "6"
+            ],
+            [
+              "Perform",
+              "0"
+            ],
+            [
+              "Ride",
+              "4"
+            ],
+            [
+              "Sailing",
+              "4"
+            ],
+            [
+              "Scholarship",
+              "4"
+            ],
+            [
+              "Tempt",
+              "6"
+            ],
+            [
+              "Theft",
+              "8"
+            ],
+            [
+              "Warfare",
+              "4"
+            ],
+            [
+              "Weaponry",
+              "2"
+            ]
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            "ADVANTAGES",
+            "detailed"
+          ],
+          [
+            [
+              "VIRTUOSO: SINGING\n",
+              "",
+              "Choose a specific Performance type, such as singing, playing a specific musical instrument, or dancing. You gain d8 when you Perform using that art."
+            ],
+            [
+              "INSPIRE GENEROSITY",
+              "",
+              "Spend a hero point to convince another character to grant you an object you want at no cost. They might give you something they already have or go to some lengths—legal or illegal—to procure the item, whatever is the easiest way for them to get their hands on what you want."
+            ],
+            [
+              "DUELIST ACADEMY",
+              "",
+              "You may choose a Dueling Style. If you purchase this Advantage again, you gain an additional Dueling Style. See the Dueling chapter for more information."
+            ],
+            [
+              "WE'RE NOT SO DIFFERENT…",
+              "",
+              "Spend a hero point to convince a Villain you are on her side. The Villain considers you a trusted ally. As soon as the Villain sees you perform a Heroic action or if you refuse to perform a Villainous action, the illusion is over. You can only use this Advantage on each Villain once. <i>“Fool me once…”</i>"
+            ],
+            [
+              "ABLE DRINKER",
+              "",
+              "Alcohol never adversely affects you, no matter how much you drink."
+            ],
+            [
+              "SEA LEGS",
+              "",
+              "While aboard a ship, treacherous footing never affects you. You gain d8 on any physical Test while aboard a ship at sea—engaging in a sword fight on a pitching ship deck, or climbing through the rigging during a storm."
+            ]
+          ]
+        ],
+        [
+          [
+            "LANGUAGES",
+            "detailed"
+          ],
+          [
+            [
+              "ITALIAN (NATIVE)",
+              "",
+              ""
+            ],
+            [
+              "LATIN",
+              "",
+              ""
+            ]
+          ]
+        ],
+        [
+          [
+            "Consequences",
+            "stress compact"
+          ],
+          [
+            [
+              "Stress",
+              "6"
+            ],
+            [
+              "Wounds",
+              "6"
+            ],
+            [
+              "Corruption",
+              "6"
+            ]
+          ]
+        ]
+      ]
+    ],
+    [
+      [
+        [
+          [
+            "DUELING",
+            "detailed"
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            "ASSETS",
+            "detailed"
+          ],
+          [
+            [
+              "SECRET SOCIETY: {NAME}",
+              "6"
+            ]
+          ]
+        ]
+      ]
+    ]
+  ],
+  "highlightColors": {
+    ":root": "#a5003c"
+  }
+}

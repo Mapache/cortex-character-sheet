@@ -1,0 +1,334 @@
+{
+  "version": 4,
+  "characterName": "ZOLOTAYA VYDRA",
+  "description": "The Golden Otter",
+  "traits": [
+    [
+      [
+        [
+          [
+            "DISTINCTIONS",
+            "detailed"
+          ],
+          [
+            [
+              "REPUTATION",
+              "8 / 4+hero point",
+              "\"No need to thank. You would do the same.\""
+            ],
+            [
+              "VIRTUE: HUMBLE",
+              "8",
+              "- Once per session, activate your Virtue to gain 2 hero point instead of 1 when you activate your Hubris or trigger a Quirk."
+            ],
+            [
+              "HUBRIS: LOYAL",
+              "4+hero point",
+              "- Once per session, you receive a hero point when your Hero goes back for a fallen comrade or refuses to leave a wounded ally."
+            ],
+            [
+              "BACKGROUND: PUGILIST",
+              "6",
+              "[Quirk]: Earn a hero point when you drop what you’re holding to fight with fists regardless of your opponent's weapon."
+            ],
+            [
+              "BACKGROUND: PERFORMER",
+              "6",
+              "[Quirk]: Earn a hero point when your use your crowd-pleasing skills for something more than making a few coins."
+            ],
+            [
+              "NATIONALITY: USSURA (RUSSIA)",
+              "",
+              ""
+            ]
+          ]
+        ],
+        [
+          [
+            "Attributes",
+            "compact"
+          ],
+          [
+            [
+              "BRAWN",
+              "2"
+            ],
+            [
+              "Finesse",
+              "6"
+            ],
+            [
+              "Panache",
+              "4"
+            ],
+            [
+              "Resolve",
+              "0"
+            ],
+            [
+              "Wits",
+              "8"
+            ]
+          ]
+        ],
+        [
+          [
+            "Skills",
+            "compact"
+          ],
+          [
+            [
+              "Aim",
+              "6"
+            ],
+            [
+              "Athletics",
+              "0"
+            ],
+            [
+              "Brawl",
+              "2"
+            ],
+            [
+              "Convince",
+              "8"
+            ],
+            [
+              "Empathy",
+              "0"
+            ],
+            [
+              "Hide",
+              "4"
+            ],
+            [
+              "Intimidate",
+              "8"
+            ],
+            [
+              "Notice",
+              "6"
+            ],
+            [
+              "Perform",
+              "8"
+            ],
+            [
+              "Ride",
+              "4"
+            ],
+            [
+              "Sailing",
+              "4"
+            ],
+            [
+              "Scholarship",
+              "4"
+            ],
+            [
+              "Tempt",
+              "6"
+            ],
+            [
+              "Theft",
+              "6"
+            ],
+            [
+              "Warfare",
+              "4"
+            ],
+            [
+              "Weaponry",
+              "4"
+            ]
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            "ADVANTAGES",
+            "detailed"
+          ],
+          [
+            [
+              "BOXER",
+              "",
+              ""
+            ],
+            [
+              "STAREDOWN",
+              "",
+              ""
+            ],
+            [
+              "VIRTUOSO",
+              "",
+              ""
+            ],
+            [
+              "INSPIRE GENEROSITY",
+              "",
+              ""
+            ],
+            [
+              "EAGLE EYE",
+              "",
+              ""
+            ],
+            [
+              "SEA LEGS",
+              "",
+              ""
+            ],
+            [
+              "SORCERY: MOTHER'S TOUCH",
+              "",
+              "[Restriction:] Kindness",
+              "[Limit:] You must always offer aid to those in need—friends, strangers—no matter how desperate the situation.",
+              "[Penance:] You must aid someone who wronged you."
+            ]
+          ]
+        ],
+        [
+          [
+            "LANGUAGES",
+            "detailed"
+          ],
+          [
+            [
+              "RUSSIAN (NATIVE)",
+              "",
+              ""
+            ],
+            [
+              "LATIN",
+              "",
+              ""
+            ],
+            [
+              "ITALIAN",
+              "",
+              ""
+            ]
+          ]
+        ],
+        [
+          [
+            "ASSETS",
+            "detailed"
+          ],
+          [
+            [
+              "SECRET SOCIETY",
+              "6",
+              "Močiutės Skara, Grandmother's Shawl"
+            ]
+          ]
+        ],
+        [
+          [
+            "Consequences",
+            "stress compact"
+          ],
+          [
+            [
+              "Stress",
+              "6"
+            ],
+            [
+              "Wounds",
+              "6"
+            ],
+            [
+              "Corruption",
+              "6"
+            ],
+            [
+              "New trait",
+              "6"
+            ]
+          ]
+        ]
+      ]
+    ],
+    [
+      [
+        [
+          [
+            "ADVANTAGE DESCRIPTIONS",
+            "detailed"
+          ],
+          [
+            [
+              "BOXER",
+              "",
+              "You gain d8 when you use Brawl to punch, kick, headbutt, or otherwise injure another character using nothing but your own body."
+            ],
+            [
+              "STAREDOWN",
+              "",
+              "Spend a hero point to intimidate a character into backing down from a threat, letting you into somewhere he shouldn’t, or otherwise getting out of your way."
+            ],
+            [
+              "VIRTUOSO",
+              "",
+              "Choose a specific Performance type, such as singing, playing a specific musical instrument, or dancing. You gain d8 when you Perform using that art."
+            ],
+            [
+              "INSPIRE GENEROSITY",
+              "",
+              "Spend a hero point to convince another character to grant you an object you want at no cost. They might give you something they already have or go to some lengths—legal or illegal—to procure the item, whatever is the easiest way for them to get their hands on what you want."
+            ],
+            [
+              "EAGLE EYE",
+              "",
+              "As long as you have a clear line of sight, you can see perfectly out to a distance of one mile. If you use a spyglass you can even pick out fine details, such as the inscription carved into a wedding band. If a Test relies heavily on your keen vision, you gain d8."
+            ],
+            [
+              "SEA LEGS",
+              "",
+              "While aboard a ship, treacherous footing never affects you. You gain d8 on any physical Test while aboard a ship at sea—engaging in a sword fight on a pitching ship deck, or climbing through the rigging during a storm."
+            ]
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            "ADVANTAGE DESCRIPTIONS",
+            "detailed"
+          ],
+          [
+            [
+              "SORCERY: TRANSFORMATION",
+              "",
+              "Once per scene, you make take the form of one of these creatures for the remainder of the scene:",
+              "- Otter",
+              "- Bear",
+              "- Boar",
+              "- Cat",
+              "- Fish",
+              "- Fox",
+              "- Goat",
+              "- Horse",
+              "- Mouse",
+              "- Owl",
+              "- Rabbit",
+              "- Raven",
+              "- Reindeer",
+              "- Snake",
+              "- Turtle",
+              "- Wolf",
+              "",
+              "Your skills, knowledge, and abilities are all retained in your new form—although they may be limited, such as Weaponry being unusable if you cannot hold weapons. If the animal’s form would be particularly advantageous (such as trying to avoid notice while you are in the form of a mouse), you gain d8 d8."
+            ]
+          ]
+        ]
+      ]
+    ]
+  ],
+  "highlightColors": {
+    ":root": "#a5003c"
+  }
+}

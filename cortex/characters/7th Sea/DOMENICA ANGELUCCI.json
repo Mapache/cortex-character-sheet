@@ -1,0 +1,313 @@
+{
+  "version": 4,
+  "characterName": "DOMENICA ANGELUCCI",
+  "description": "Mysterious gambler and sorceress, known for her exploits across the continent.",
+  "traits": [
+    [
+      [
+        [
+          [
+            "DISTINCTIONS",
+            "detailed"
+          ],
+          [
+            [
+              "REPUTATION: MYSTERIOUS SEXY GAMBLER",
+              "8 / 4+hero point",
+              "Domenica is a walking mystery. People obsess over her, but also no one can know her."
+            ],
+            [
+              "VIRTUE: ILLUMINATING",
+              "8",
+              "Activate your Virtue to know whenever any other character lies to you until the end of the Scene."
+            ],
+            [
+              "HUBRIS: STAR CROSSED",
+              "4+hero point",
+              "You receive a hero point when your Hero becomes enamored with someone she really shouldn’t."
+            ],
+            [
+              "SORTE STREGA",
+              "6",
+              "[Quirk]: Earn a hero point when you commit to a dangerous course of action that you believe is destiny."
+            ],
+            [
+              "CRIMINAL",
+              "6",
+              "[Quirk]: Earn a hero point when you break the law in the pursuit of a noble endeavor."
+            ],
+            [
+              "NATIONALITY: ITALIAN",
+              "",
+              ""
+            ]
+          ]
+        ],
+        [
+          [
+            "Attributes",
+            "compact"
+          ],
+          [
+            [
+              "BRAWN",
+              "4"
+            ],
+            [
+              "Finesse",
+              "0"
+            ],
+            [
+              "Panache",
+              "2"
+            ],
+            [
+              "RESOLVE",
+              "6"
+            ],
+            [
+              "Wits",
+              "8"
+            ]
+          ]
+        ],
+        [
+          [
+            "Skills",
+            "compact"
+          ],
+          [
+            [
+              "Aim",
+              "4"
+            ],
+            [
+              "Athletics",
+              "6"
+            ],
+            [
+              "Brawl",
+              "4"
+            ],
+            [
+              "Convince",
+              "2"
+            ],
+            [
+              "Empathy",
+              "6"
+            ],
+            [
+              "Hide",
+              "0"
+            ],
+            [
+              "Intimidate",
+              "6"
+            ],
+            [
+              "Notice",
+              "4"
+            ],
+            [
+              "Perform",
+              "8"
+            ],
+            [
+              "Ride",
+              "6"
+            ],
+            [
+              "Sailing",
+              "4"
+            ],
+            [
+              "Scholarship",
+              "4"
+            ],
+            [
+              "Tempt",
+              "0"
+            ],
+            [
+              "Theft",
+              "8"
+            ],
+            [
+              "Warfare",
+              "4"
+            ],
+            [
+              "Weaponry",
+              "8"
+            ]
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            "ADVANTAGES",
+            "detailed"
+          ],
+          [
+            [
+              "SORCERY: SORTE",
+              "",
+              "See Page 2"
+            ],
+            [
+              "CAMARADERIE",
+              "",
+              "- Whenever you aid an ally, you can provide two dice instead of one.",
+              "- Whenever you create an Asset for another character, step up the die size (the result die if created with an action, or a d10 if created with a hero point)."
+            ],
+            [
+              "STREETWISE",
+              "",
+              "Spend a hero point to locate an underworld figure, like a fixer or fence."
+            ],
+            [
+              "AN HONEST MISUNDERSTANDING",
+              "",
+              "Spend a hero point to redact something you or another Hero just said. Turn it into the kindest compliment."
+            ],
+            [
+              "DISARMING SMILE",
+              "",
+              "Spend a hero point to prevent another character from starting a violent action. They'll still defend themselves, but they won't instigate combat."
+            ],
+            [
+              "TIME SENSE",
+              "",
+              "You always know what time it is. You know how long until the next sunrise or sunset, with a one minute margin of error."
+            ]
+          ]
+        ],
+        [
+          [
+            "LANGUAGES",
+            "detailed"
+          ],
+          [
+            [
+              "ITALIAN (NATIVE)",
+              "",
+              ""
+            ],
+            [
+              "LATIN",
+              "",
+              ""
+            ],
+            [
+              "FRENCH",
+              "",
+              ""
+            ]
+          ]
+        ],
+        [
+          [
+            "ASSETS",
+            "detailed"
+          ],
+          [
+            [
+              "SECRET SOCIETY: SOPHIA’S DAUGHTERS",
+              "6",
+              "A sect of the Rilasciare, these women seek to liberate Fate Witches and undermine the Merchant Princes of Vodacce."
+            ]
+          ]
+        ],
+        [
+          [
+            "Consequences",
+            "stress compact"
+          ],
+          [
+            [
+              "Stress",
+              "6"
+            ],
+            [
+              "Wounds",
+              "6"
+            ],
+            [
+              "Corruption",
+              "6"
+            ]
+          ]
+        ]
+      ]
+    ],
+    [
+      [
+        [
+          [
+            "TESSE",
+            "detailed"
+          ],
+          [
+            [
+              "Tessere",
+              "",
+              "Using a Tessere during an Action Scene, costs an Action, which succeeds automatically. You can never target yourself with any Tessere."
+            ],
+            [
+              "READ",
+              "",
+              "Read is a special Tessere all Streghe learn. Using Read requires no hero point or Lashes. In order to use any other Weave, you must first use Read to see the Arcana surrounding you. Once you use it, you can see all the strands and Arcana for the rest of the Scene. If you cannot see, you cannot use Read."
+            ],
+            [
+              "BLESSING",
+              "",
+              "Take one or more Lashes and kiss a Hero or Villain to give them a Blessing. Choose one:",
+              "- [Minor Blessing] Once this scene, the target may roll your current Lashes as an Asset.",
+              "- [Major Blessing] Spend a hero point. For the rest of this scene, the target may roll your current Lashes as an Asset."
+            ],
+            [
+              "CURSE",
+              "",
+              "Take one or more Lashes and kiss a Hero or Villain to give them a Curse. Choose one:",
+              "- [Minor Curse] Once this scene, your may cause the target to suffer your current Lashes as a Complication."
+            ],
+            [
+              "PULL",
+              "",
+              "Pull a character you can see toward you by grabbing hold of the strands and physically tugging on them. You cannot pull characters through walls or stationary objects, but movable objects will be pushed out of the way.",
+              "- [Minor Pull] Take one Lash to pull one target toward you. The target loses one Action as he falls over. Characters on balconies and banisters may tumble to the ground if pulled toward you. If the target is on the other side of some movable obstruction, or one that is easily broken (such as a table or a window) they take a Wound.",
+              "- [Major Pull] Spend a hero point and take one Lash per target to pull multiple targets toward you. Each target always takes a Wound due to the sheer force of your pull. If they hit an immovable obstruction, they take an additional Wound, and you can spend additional actions and Lashes to keep them pinned."
+            ]
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            "LASHES",
+            "stress"
+          ],
+          [
+            [
+              "Lashes",
+              "6",
+              "When you use any Tessere other than Read, you must take at least one Lash. Track Lashes like any other Consequence, stepping up your Lashes die. Your Lashes magnify the effect of your Tessere, but are a steep cost to pay, and they act as a Complication. Fate is displeased by your meddling, and it always makes sure to take its toll.",
+              "",
+              "Having Fate Lashes is beneficial in that the more Lashes you have, the stronger your magic is, but harmful because getting rid of them becomes more painful.",
+              "",
+              "During a Transition Scene, you can select one option to remove Fate Lashes as follows:",
+              "- [Blood] Take your Lashes as Wounds, then remove all Lashes.",
+              "- [Sweat] Take your Lashes as Stress, then remove one Lash.",
+              "- [Tears] Add your Lashes to the Doom Pool, then remove one Lash."
+            ]
+          ]
+        ]
+      ]
+    ]
+  ],
+  "highlightColors": {
+    ":root": "#a5003c"
+  }
+}
