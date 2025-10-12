@@ -131,7 +131,7 @@ export class Cloud {
 		this.userPermissions = null
 		this.currentCampaign = null
 		this.defaultCampaign = null
-		this.campaigns = []
+		this.campaigns = null
 		this.currentCharacterSheets = null
 	}
 
@@ -240,19 +240,11 @@ export class Cloud {
 		return null
 	}
 
-	async createDefaultCampaign(user) {
-		this.defaultCampaign = new Campaign(defaultCampaignName, user.uid)
-		const permissions = CampaignPermissions.generate()
-		try {
-			const campaignId = this.defaultCampaign.id
-			await setDoc(doc(db, campaignsCollection, campaignId).withConverter(campaignConverter),
-				this.defaultCampaign)
-			await setDoc(doc(db, campaignPermissionsCollection, campaignId).withConverter(campaignPermissionsConverter),
-				permissions)
-			await this.updateAccessKey(campaignId, permissions.keyFor(Campaign.admin))
-		} catch (error) {
-			console.error("Error adding default Campaign: ", error)
-		}
+	async createDefaultCampaign() {
+		const user = await this.requireSignIn()
+		await this.requireUserPermissions()
+
+		this.defaultCampaign = await this.createNewCampaignWithId(defaultCampaignName, user.uid)
 	}
 
 	async getCampaigns() {
@@ -267,11 +259,11 @@ export class Cloud {
 			const querySnapshot = await getDocs(q)
 
 			this.campaigns = querySnapshot.docs.map((doc) => doc.data())
-			this.campaigns.sort((a, b) => a.name.localeCompare(b.name))
+			this.sortCampaigns()
 		}
 
 		if (this.findDefaultCampaign(user) === null) {
-			await this.createDefaultCampaign(user)
+			await this.createDefaultCampaign()
 		}
 
 		if (this.currentCampaign === null) {
@@ -287,6 +279,16 @@ export class Cloud {
 		}
 	}
 
+	sortCampaigns() {
+		this.campaigns.sort((a, b) => a.name.localeCompare(b.name))
+	}
+
+	async requireCampaigns() {
+		if (this.campaigns === null) {
+			await this.getCampaigns()
+		}
+	}
+
 	async requireCurrentCampaign() {
 		if (this.currentCampaign === null) {
 			await this.getCampaigns()
@@ -295,25 +297,49 @@ export class Cloud {
 
 	async createNewCampaign(name) {
 		const user = await this.requireSignIn()
+		await this.requireUserPermissions()
+		await this.requireCampaigns()
 
-		let campaign = new Campaign(name, null)
+		const campaignId = doc(collection(db, campaignsCollection)).id
+		const campaign = await this.createNewCampaignWithId(name, campaignId)
+		this.campaigns.push(campaign)
+		this.sortCampaigns()
+		await this.switchCampaign(campaign)
+	}
+
+	async createNewCampaignWithId(name, campaignId) {
+		const user = await this.requireSignIn()
+		await this.requireUserPermissions()
+
+		let campaign = new Campaign(name, campaignId)
 		const permissions = CampaignPermissions.generate()
 
 		try {
-			const docRef = await addDoc(collection(db, campaignsCollection).withConverter(campaignConverter), campaign)
-			const campaignId = docRef.id
-			console.log("Campaign written with ID: ", campaignId)
-			await setDoc(doc(db, campaignPermissionsCollection, campaignId).withConverter(campaignPermissionsConverter), permissions)
+			// First, grant ourselves the permission, then define the permission, then create the campaign.
 			await this.updateAccessKey(campaignId, permissions.keyFor(Campaign.admin))
-
-			await this.getCampaigns()
-			await this.switchCampaign(this.campaigns.filter((campaign) => campaign.id == campaignId)[0])
+			await setDoc(doc(db, campaignPermissionsCollection, campaignId).withConverter(campaignPermissionsConverter), permissions)
+			await setDoc(doc(db, campaignsCollection, campaignId).withConverter(campaignConverter), campaign)
+			console.log(`Campaign ${name} written with ID ${campaignId} `)
+			return campaign
 		} catch (error) {
-			console.error("Error adding Campaign: ", error)
+			console.error(`Error adding Campaign ${name}: `, error)
 		}
 	}
 
+	async campaignWithId(campaignId) {
+		await this.requireSignIn()
+		await this.requireCampaigns()
+
+		return this.campaigns.filter((campaign) => campaign.id == campaignId)[0]
+	}
+
+	async switchCampaignId(campaignId) {
+		await this.switchCampaign(await this.campaignWithId(campaignId))
+	}
+
 	async switchCampaign(campaign) {
+		await this.requireSignIn()
+
 		this.currentCampaign = campaign
 		document.getElementById("current-campaign").innerText = campaign.name
 		await this.getCharactersForCurrentCampaign()
