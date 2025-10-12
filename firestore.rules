@@ -6,10 +6,6 @@ service cloud.firestore {
       allow read, write: if false;
     }
     
-    function hasUserPermissions() {
-      return exists(/databases/$(database)/documents/userPermissions/$(request.auth.uid))
-    }
-    
     function userPermissionsData() {
       return get(/databases/$(database)/documents/userPermissions/$(request.auth.uid)).data
     }
@@ -24,9 +20,8 @@ service cloud.firestore {
         return campaignPermissionsData().permissions[userPermissionsData().campaigns[campaign]]
       }
     
-      allow create: if request.auth != null && hasUserPermissions();
       allow read: if request.auth != null && accessLevel() >= 1;
-      allow update, delete: if request.auth != null && accessLevel() >= 3;
+      allow create, update, delete: if request.auth != null && accessLevel() >= 3;
       
       match /characters/{character} {
         allow read: if request.auth != null && accessLevel() >= 1;
@@ -36,8 +31,13 @@ service cloud.firestore {
     
     // Campaign permissions can be created by any user, read only by that campaign's admin, and are immutable.
     match /campaignPermissions/{campaignPermissions} {
-      allow create: if request.auth != null && hasUserPermissions();
-      allow read: if request.auth != null && resource.data.permissions[userPermissionsData().campaigns[campaignPermissions]] == 3;
+
+      function accessLevel(source) {
+        return source.data.permissions[userPermissionsData().campaigns[campaignPermissions]]
+      }
+
+      allow create: if request.auth != null && accessLevel(request.resource) == 3;
+      allow read: if request.auth != null && accessLevel(resource) == 3;
       allow update, delete: if false;
     }
     
