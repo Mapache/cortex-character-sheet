@@ -1,4 +1,5 @@
 import { html_to_text } from "./conversion.js"
+import { defaultHighlightColor } from "./traitGroupStyle.js"
 
 function get_path_from_element(elem) {
   let id = elem.id
