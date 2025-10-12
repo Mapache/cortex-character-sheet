@@ -12,7 +12,7 @@ function generateHash(name) {
 		hash |= 0 // Constrain to 32bit integer
 	}
 	// Avoid negative sign by adding 1<<32 (via rollover)
-	return (hash-(1<<31)).toString(36)
+	return (hash - (1 << 31)).toString(36)
 }
 
 // MARK: Data Models
@@ -336,6 +336,9 @@ export class Cloud {
 		await this.requireSignIn()
 		await this.requireCampaigns()
 
+		if (this.defaultCampaign.id == campaignId) {
+			return this.defaultCampaign
+		}
 		return this.campaigns.filter((campaign) => campaign.id == campaignId)[0]
 	}
 
@@ -348,11 +351,16 @@ export class Cloud {
 
 		this.currentCampaign = campaign
 		this.displayCurrentCampaignName()
+		this.updateURLForCurrentCampaign()
 		await this.getCharactersForCurrentCampaign()
 	}
 
 	displayCurrentCampaignName() {
 		document.getElementById("current-campaign").innerText = this.currentCampaign.name
+	}
+
+	updateURLForCurrentCampaign() {
+		window.location.hash = `view=${this.currentCampaign.id}`
 	}
 
 	async renameCampaign(campaign, name) {
@@ -386,6 +394,17 @@ export class Cloud {
 		}
 	}
 
+	async currentCharacterSheetWithId(characterId) {
+		await this.requireCurrentCharacterSheets()
+
+		for (const characterSheet of this.currentCharacterSheets) {
+			if (characterSheet.id == characterId) {
+				return characterSheet
+			}
+		}
+		return null
+	}
+
 	async uploadCharacter(json) {
 		await this.requireSignIn()
 		await this.requireCurrentCampaign()
@@ -406,9 +425,17 @@ export class Cloud {
 
 		try {
 			await setDoc(doc(db, campaignsCollection, this.currentCampaign.id, charactersCollection, sheet.id).withConverter(characterSheetConverter), sheet)
+			this.updateURLForCharacter(sheet)
 			console.log("Character Sheet written with ID: ", sheet.id)
 		} catch (error) {
 			console.error("Error adding Character Sheet: ", error)
+		}
+	}
+
+	updateURLForCharacter(characterSheet) {
+		this.updateURLForCurrentCampaign()
+		if (characterSheet) {
+			window.location.hash += `.${characterSheet.id}`
 		}
 	}
 

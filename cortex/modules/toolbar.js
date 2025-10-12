@@ -79,6 +79,7 @@ export async function characters_menu(e) {
 	for (const characterSheet of cloud.currentCharacterSheets) {
 		entries.push(menuEntry(titleCase(characterSheet.name), (e) => {
 			load_character(characterSheet.json)
+			cloud.updateURLForCharacter(characterSheet)
 			charactersMenu.hide()
 		}))
 	}
@@ -87,6 +88,7 @@ export async function characters_menu(e) {
 	}
 	entries.push(menuEntry("New Blank Character Sheet", (e) => {
 		nuke_character()
+		cloud.updateURLForCharacter(null)
 		charactersMenu.hide()
 	}))
 
