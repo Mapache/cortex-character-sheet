@@ -1,8 +1,6 @@
-.DS_Store
+**/.DS_Store
 .firebaserc
-.firebase/hosting.Y29ydGV4.cache
-cortex/.DS_Store
-cortex/characters/.DS_Store
-cortex/firebase-debug.log
-cortex/firestore-debug.log
+.firebase/hosting.*.cache
+cortex/*-debug.log
 cortex/modules/firebase-config.js
+.vscode/**
