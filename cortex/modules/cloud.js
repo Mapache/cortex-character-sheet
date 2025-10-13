@@ -1,6 +1,6 @@
 import { app, analytics, auth, db } from "./firebase.js"
 import { onAuthStateChanged, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js"
-import { doc, collection, query, addDoc, setDoc, updateDoc, getDoc, getDocs, where, documentId } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js"
+import { doc, collection, query, addDoc, setDoc, updateDoc, getDoc, getDocs, where, documentId, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js"
 
 // MARK: Utilities
 
@@ -43,10 +43,11 @@ const campaignConverter = {
 }
 
 export class CharacterSheet {
-	constructor(json) {
+	constructor(json, saved) {
 		this.json = json
 		this.name = json.characterName
 		this.id = generateHash(json.characterName)
+		this.saved = saved // Expected to be null for client-created objects
 	}
 }
 
@@ -54,12 +55,13 @@ const characterSheetConverter = {
 	toFirestore: (characterSheet) => {
 		return {
 			json: JSON.stringify(characterSheet.json),
-			name: characterSheet.name
+			name: characterSheet.name,
+			saved: serverTimestamp(),
 		}
 	},
 	fromFirestore: (snapshot, options) => {
 		const data = snapshot.data(options)
-		return new CharacterSheet(JSON.parse(data.json))
+		return new CharacterSheet(JSON.parse(data.json), data.saved)
 	}
 }
 
