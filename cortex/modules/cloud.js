@@ -393,6 +393,10 @@ export class Cloud {
 
 		const querySnapshot = await getDocs(collection(db, campaignsCollection, this.currentCampaign.id, charactersCollection).withConverter(characterSheetConverter))
 		this.currentCharacterSheets = querySnapshot.docs.map((doc) => doc.data())
+		this.sortCurrentCharacterSheets()
+	}
+	
+	sortCurrentCharacterSheets() {
 		this.currentCharacterSheets.sort((a, b) => a.name.localeCompare(b.name))
 	}
 
@@ -429,7 +433,7 @@ export class Cloud {
 		}
 		// Whether or not we removed an old one with this name, always add the new one
 		this.currentCharacterSheets.push(sheet)
-		this.currentCharacterSheets.sort((a, b) => a.name.localeCompare(b.name))
+		this.sortCurrentCharacterSheets()
 
 		try {
 			await setDoc(doc(db, campaignsCollection, this.currentCampaign.id, charactersCollection, sheet.id).withConverter(characterSheetConverter), sheet)
