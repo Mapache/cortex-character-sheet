@@ -47,7 +47,7 @@ async function load_default_sheet() {
       if (characterSheet) {
         load_character(characterSheet.json)
         // Restore the character hash wiped out by switching to the campaign
-        window.location.hash = urlHash
+        cloud.updateURLForCharacter(characterSheet)
       }
     }
   }

@@ -43,25 +43,29 @@ const campaignConverter = {
 }
 
 export class CharacterSheet {
-	constructor(json, saved) {
-		this.json = json
-		this.name = json.characterName
-		this.id = generateHash(json.characterName)
+	// Either of json and jsonString can be null and inferred from the other.
+	constructor(json, jsonString, saved) {
+		this.json = json || JSON.parse(jsonString)
+		this.jsonString = jsonString || JSON.stringify(json)
+		this.name = this.json.characterName
+		this.id = generateHash(this.name)
 		this.saved = saved // Expected to be null for client-created objects
+		Object.freeze(this) // Make it immutable
 	}
 }
 
 const characterSheetConverter = {
+	// In Firestore, the json field is actually the json string.
 	toFirestore: (characterSheet) => {
 		return {
-			json: JSON.stringify(characterSheet.json),
+			json: characterSheet.jsonString,
 			name: characterSheet.name,
 			saved: serverTimestamp(),
 		}
 	},
 	fromFirestore: (snapshot, options) => {
 		const data = snapshot.data(options)
-		return new CharacterSheet(JSON.parse(data.json), data.saved)
+		return new CharacterSheet(null, data.json, data.saved)
 	}
 }
 
@@ -395,7 +399,7 @@ export class Cloud {
 		this.currentCharacterSheets = querySnapshot.docs.map((doc) => doc.data())
 		this.sortCurrentCharacterSheets()
 	}
-	
+
 	sortCurrentCharacterSheets() {
 		this.currentCharacterSheets.sort((a, b) => a.name.localeCompare(b.name))
 	}
@@ -427,6 +431,12 @@ export class Cloud {
 		// Update currentCharacterSheets
 		for (const [index, characterSheet] of this.currentCharacterSheets.entries()) {
 			if (characterSheet.name == sheet.name) {
+				if (characterSheet.jsonString == sheet.jsonString) {
+					// No changes, no need to do anything.
+					console.log("Skipping upload for unchanged character sheet", sheet.name)
+					return
+				}
+				// Remove old version
 				this.currentCharacterSheets.splice(index, 1)
 				break
 			}
