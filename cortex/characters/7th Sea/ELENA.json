@@ -37,7 +37,7 @@
               "[Quirk]: Earn a hero point when you resort to the edge of your blade to defend a noble ideal."
             ],
             [
-              "NATIONALITY: VODACCE",
+              "NATIONALITY: ITALIAN",
               "",
               ""
             ]
@@ -54,6 +54,10 @@
               "8"
             ],
             [
+              "FINESSE",
+              "0"
+            ],
+            [
               "Panache",
               "2"
             ],
@@ -64,10 +68,6 @@
             [
               "Wits",
               "6"
-            ],
-            [
-              "FINESSE",
-              "0"
             ]
           ]
         ],
@@ -152,7 +152,7 @@
           ],
           [
             [
-              "VIRTUOSO: SINGING\n",
+              "VIRTUOSO: SINGING",
               "",
               "Choose a specific Performance type, such as singing, playing a specific musical instrument, or dancing. You gain d8 when you Perform using that art."
             ],
@@ -203,7 +203,7 @@
         ],
         [
           [
-            "Consequences",
+            "INJURIES",
             "stress compact"
           ],
           [

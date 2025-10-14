@@ -142,26 +142,6 @@
               "4"
             ]
           ]
-        ],
-        [
-          [
-            "Consequences",
-            "stress compact"
-          ],
-          [
-            [
-              "Stress",
-              "6"
-            ],
-            [
-              "Wounds",
-              "6"
-            ],
-            [
-              "Corruption",
-              "6"
-            ]
-          ]
         ]
       ],
       [
@@ -220,17 +200,17 @@
               ""
             ],
             [
-              "{REQUIRES WITS D8}",
+              "{REQUIRES WITS d8}",
               "",
               ""
             ],
             [
-              "{REQUIRES WITS D10}",
+              "{REQUIRES WITS d10}",
               "",
               ""
             ],
             [
-              "{REQUIRES WITS D12}",
+              "{REQUIRES WITS d12}",
               "",
               ""
             ]
@@ -244,6 +224,26 @@
           [
             [
               "SECRET SOCIETY: {NAME}",
+              "6"
+            ]
+          ]
+        ],
+        [
+          [
+            "INJURIES",
+            "stress compact"
+          ],
+          [
+            [
+              "Stress",
+              "6"
+            ],
+            [
+              "Wounds",
+              "6"
+            ],
+            [
+              "Corruption",
               "6"
             ]
           ]

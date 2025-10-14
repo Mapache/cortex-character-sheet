@@ -1,0 +1,359 @@
+{
+  "version": 4,
+  "characterName": "REMI",
+  "description": "Character Description",
+  "traits": [
+    [
+      [
+        [
+          [
+            "DISTINCTIONS",
+            "detailed"
+          ],
+          [
+            [
+              "REPUTATION: HISTORIAN",
+              "0 / 4+hero point",
+              "Accidental anti-revolutionary who published an inconvenient paper for the French regime"
+            ],
+            [
+              "VIRTUE: ASTUTE",
+              "8",
+              "- Once per session, activate your Virtue after a Villain rolls for an Action. That Action fails."
+            ],
+            [
+              "HUBRIS: INDECISIVE",
+              "4+hero point",
+              "- Once per session, you receive a hero point when your Hero takes an Action to pause in hesitation, doubt, or uncertainty before she makes a move."
+            ],
+            [
+              "BACKGROUND: SORCIER PORTÉ",
+              "6",
+              "[Quirk]: Earn a hero point when you close a <i>Blessure</i> that a Villain ripped open."
+            ],
+            [
+              "BACKGROUND: SCHOLAR",
+              "6",
+              "[Quirk]: Earn a hero point when you put yourself in harm’s way in pursuit of knowledge."
+            ],
+            [
+              "NATIONALITY: FRANÇAISE",
+              "",
+              ""
+            ]
+          ]
+        ],
+        [
+          [
+            "Attributes",
+            "compact"
+          ],
+          [
+            [
+              "BRAWN",
+              "4"
+            ],
+            [
+              "Finesse",
+              "8"
+            ],
+            [
+              "Panache",
+              "6"
+            ],
+            [
+              "Resolve",
+              "0"
+            ],
+            [
+              "Wits",
+              "2"
+            ]
+          ]
+        ],
+        [
+          [
+            "Skills",
+            "compact"
+          ],
+          [
+            [
+              "Aim",
+              "6"
+            ],
+            [
+              "Athletics",
+              "6"
+            ],
+            [
+              "Brawl",
+              "4"
+            ],
+            [
+              "Convince",
+              "8"
+            ],
+            [
+              "Empathy",
+              "0"
+            ],
+            [
+              "Hide",
+              "8"
+            ],
+            [
+              "INTIMIDATE",
+              "4"
+            ],
+            [
+              "Notice",
+              "0"
+            ],
+            [
+              "Perform",
+              "6"
+            ],
+            [
+              "Ride",
+              "6"
+            ],
+            [
+              "Sailing",
+              "4"
+            ],
+            [
+              "Scholarship",
+              "2"
+            ],
+            [
+              "Tempt",
+              "8"
+            ],
+            [
+              "Theft",
+              "4"
+            ],
+            [
+              "Warfare",
+              "4"
+            ],
+            [
+              "Weaponry",
+              "4"
+            ]
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            "ADVANTAGES",
+            "detailed"
+          ],
+          [
+            [
+              "SORCERY: PORTÉ X2",
+              "",
+              "See Page 2"
+            ],
+            [
+              "TIME SENSE",
+              "",
+              "You always know what time it is. You know how long until the next sunrise or sunset, with a one minute margin of error."
+            ],
+            [
+              "REPUTATION",
+              "",
+              "Your reputation is a d10 instead of a d8."
+            ],
+            [
+              "UNIVERSITY",
+              "",
+              "You attended one of Europe's formal universities and are familiar with many academic fields of study such as mathematics, architecture, and astronomy. When you make a Test using Scholarship, Empathy, or Notice, your may reroll one die."
+            ],
+            [
+              "TENURE",
+              "",
+              "You can expect refuge, a place to stay, and hot meals in any university. You also have access to many—but not all—of a university’s libraries simply by requesting it. Finally, you gain d10 on any social Test against characters who are members of an institution of higher learning or who respect such an education."
+            ],
+            [
+              "LINGUIST",
+              "",
+              "You speak, read, and write all European languages. Even the dead ones."
+            ]
+          ]
+        ],
+        [
+          [
+            "LANGUAGES",
+            "detailed"
+          ],
+          [
+            [
+              "FRENCH",
+              "",
+              ""
+            ],
+            [
+              "LATIN",
+              "",
+              ""
+            ],
+            [
+              "ITALIAN",
+              "",
+              ""
+            ],
+            [
+              "{TBD}",
+              "",
+              ""
+            ],
+            [
+              "{TBD}",
+              "",
+              ""
+            ],
+            [
+              "<i>ALL OF THEM</i>",
+              "",
+              ""
+            ]
+          ]
+        ],
+        [
+          [
+            "ASSETS",
+            "detailed"
+          ],
+          [
+            [
+              "SECRET SOCIETY:\nTHE EXPLORER'S SOCIETY",
+              "6",
+              "Scholars and adventurers seeking out the ancient truths in the world by investigating ruins from a race long gone from the face of the world."
+            ]
+          ]
+        ],
+        [
+          [
+            "INJURIES",
+            "stress compact"
+          ],
+          [
+            [
+              "Stress",
+              "6"
+            ],
+            [
+              "Wounds",
+              "6"
+            ],
+            [
+              "Corruption",
+              "6"
+            ]
+          ]
+        ]
+      ]
+    ],
+    [
+      [
+        [
+          [
+            "SORCERY: PORTÉ",
+            "detailed"
+          ],
+          [
+            [
+              "PORTÉ",
+              "",
+              "Porté involves cutting holes in the fabric of the universe. The doorways bleed and scream in horrible, blood-curdling voices and issue forth bone-chilling winds. Fueling the magic requires spilling your own blood.",
+              "",
+              "The deadly and mysterious dimension linking the doorways is called “The Walkway,” and there are <i>things</i> that live there. Do not linger, and never, ever open your eyes there for any reason."
+            ]
+          ]
+        ],
+        [
+          [
+            "BLOOD MARKS",
+            "detailed"
+          ],
+          [
+            [
+              "BLOOD MARKS",
+              "",
+              "Porté's power comes from the blood—literally. To place your Mark upon someone or something, prick your finger, place a drop of your blood upon an object, and concentrate, then spend a hero point. That object is now Marked."
+            ],
+            [
+              "MINOR MARKS",
+              "",
+              "You have 4 Minor Marks which can only be placed on smaller objects, something that can be held in one hand (such as a sword, locket, hat). They allow you to Sense where the object is and to Pull the object to you using Porté."
+            ],
+            [
+              "MAJOR MARKS",
+              "",
+              "You have 2 Major Marks, which can be placed on small or larger objects (such as a boat, wagon, treasure chest), a place, or another person. They allow you to Sense and Walk to the object, place, or person. In addition, you always have free Major Marks on any living direct, one-step blood relatives (sibling, child, or parent)."
+            ],
+            [
+              "MAINTAINING MARKS",
+              "",
+              "Once placed, a Mark remains until something explicitly removes it (such as being intentionally washed away) or the object is destroyed. Incidental contact or washing is not enough to erase a Mark, but if the Mark is discovered, it can be quickly and easily removed.",
+              "",
+              "If you are already at your maximum number of Marks and wish to place a new one, you must sever your connection to an existing one, which takes just a few moments of concentration. Severing a Mark during an Action Scene costs one Action."
+            ]
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            "BLOOD ARTS",
+            "detailed"
+          ],
+          [
+            [
+              "SENSE",
+              "",
+              "You can, with a moment’s concentration, know the general direction and distance to any of your Marks. Doing this during an Action Scene costs one Action.",
+              "",
+              "If you come within approximately 100 feet of any of your Marks, you will immediately know but cannot pinpoint its location any more closely without taking an Action to concentrate."
+            ],
+            [
+              "PORTALS",
+              "",
+              "In order to Pull or Walk to one of your Marks, you must spill your own blood. While creating a Mark requires only a drop (and thus doesn’t cause significant harm), opening a portal is a disturbing, bloody affair which causes you a Wound. If this would cause you to be Taken Out, it happens as soon as you complete your sorcery."
+            ],
+            [
+              "PULL",
+              "",
+              "You can Pull a Minor Mark to yourself. Take a Wound and spend an Action to tear open a plate-sized portal, reach through, and grab hold of the Marked object."
+            ],
+            [
+              "WALK",
+              "",
+              "You can Walk to a Major Mark. Take a Wound and spend an Action to tear open a person-sized portal and step through, appearing through a similar portal standing within 5 feet of your Major Mark. If there is not enough space for you to occupy on the other side, the Walk fails—you must immediately choose another Major Mark to walk to (but do not take another Wound), or become lost in the Place Between Worlds.",
+              "",
+              "You may bring other people with you when you Walk through a portal. This costs hero point for each character you wish to bring along. Of course, the larger the group you try to bring through the Place Between Worlds, the more attention the group will draw."
+            ]
+          ]
+        ],
+        [
+          [
+            "Blessures",
+            "signature-asset"
+          ],
+          [
+            [
+              "Note:",
+              "",
+              "Villainous sorciers can take Corruption instead of Wounds to open bleeding doorways called [Blessures]. They can only be closed from The Walkway side, and require Walking back."
+            ]
+          ]
+        ]
+      ]
+    ]
+  ],
+  "highlightColors": {
+    ":root": "#a5003c"
+  }
+}

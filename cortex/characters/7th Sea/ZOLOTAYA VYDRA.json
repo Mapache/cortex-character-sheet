@@ -12,7 +12,7 @@
           ],
           [
             [
-              "REPUTATION",
+              "REPUTATION: SELFLESS",
               "8 / 4+hero point",
               "\"No need to thank. You would do the same.\""
             ],
@@ -220,15 +220,15 @@
           ],
           [
             [
-              "SECRET SOCIETY",
+              "SECRET SOCIETY:\nMOČIUTĖS SKARA",
               "6",
-              "Močiutės Skara, Grandmother's Shawl"
+              "Rising from the ashes of the War of the Cross, the group known as \"Grandmother’s Shawl\" seeks to end war and bring peace to Europe, once and for all."
             ]
           ]
         ],
         [
           [
-            "Consequences",
+            "INJURIES",
             "stress compact"
           ],
           [
@@ -242,10 +242,6 @@
             ],
             [
               "Corruption",
-              "6"
-            ],
-            [
-              "New trait",
               "6"
             ]
           ]
@@ -271,7 +267,7 @@
               "Spend a hero point to intimidate a character into backing down from a threat, letting you into somewhere he shouldn’t, or otherwise getting out of your way."
             ],
             [
-              "VIRTUOSO",
+              "VIRTUOSO: WRESTLING",
               "",
               "Choose a specific Performance type, such as singing, playing a specific musical instrument, or dancing. You gain d8 when you Perform using that art."
             ],
@@ -321,7 +317,7 @@
               "- Turtle",
               "- Wolf",
               "",
-              "Your skills, knowledge, and abilities are all retained in your new form—although they may be limited, such as Weaponry being unusable if you cannot hold weapons. If the animal’s form would be particularly advantageous (such as trying to avoid notice while you are in the form of a mouse), you gain d8 d8."
+              "Your skills, knowledge, and abilities are all retained in your new form—although they may be limited, such as Weaponry being unusable if you cannot hold weapons. If the animal’s form would be particularly advantageous (such as trying to avoid notice while you are in the form of a mouse), you gain d10."
             ]
           ]
         ]
