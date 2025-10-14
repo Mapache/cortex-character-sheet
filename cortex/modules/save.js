@@ -27,6 +27,10 @@ function get_parent_with_class(element, c) {
   return get_parent_with_class(element.parentElement, c)
 }
 
+// The V3 format inherited from the original project scanned every editable field that was not tagged for exclusion
+// and saved their contents keyed by paths that listed the numerical index of each child relative to its parents.
+// It was intimately tied to the HTML structure of the page, difficult to edit by hand, and a substantial portion of
+// each file was taken up by keypaths. Saving in V3 is no longer supported, but V3 files should be readable.
 function save_characterV3() {
   let json = {}
   let data = {}
@@ -115,6 +119,11 @@ function save_characterV3() {
   return json
 }
 
+// The V4 format extracts the semantic structure of a character and saves it as a few top-level standalone properties
+// and a tree of arrays containing /pages/columns/groups/traits/[title, value, description]. It is designed to be
+// uncoupled from the page's HTML structure allowing for easier changes to either side independently, relatively easy
+// to edit by hand, and more space-efficient than V3 by not requiring keypaths and omitting any elements unchanged
+// from their default values.
 function save_characterV4() {
   let json = {}
   json.version = 4

@@ -76,6 +76,7 @@ async function load_highlight_colors(highlightColors) {
   colorPicker.value = globalHighlightColor
 }
 
+// See notes about file formats in save.js. Loading V3 characters is theoretically supported but not actively tested.
 async function load_characterV3(json) {
   let data = json.data
   for (let path in data) {
@@ -147,6 +148,7 @@ async function load_characterV3(json) {
   update_titles(data["character-name"], null)
 }
 
+// See notes about file formats in save.js.
 async function load_characterV4(json) {
   if (json.version != 4) {
     return
