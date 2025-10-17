@@ -1550,27 +1550,69 @@ li:before {
 
 /* Stress */
 
-.stress h2.trait-name {
-	font-family: 'Alegreya Sans SC', sans-serif;
-	text-transform: unset;
-	font-size: 10pt;
-	color: black;
-	background: white;
-	padding-right: 1mm;
+.stress {
 
-	&:before {
+	.trait-name {
+		font-family: 'Alegreya Sans SC', sans-serif;
+		text-transform: unset;
+		font-size: 10pt;
+		color: black;
+		background: white;
+		padding-right: 1mm;
+
+		&:before {
+			position: absolute;
+			width: 40mm;
+			height: 20mm;
+			color: white;
+			margin-left: 40mm;
+			margin-top: -0.5mm;
+			text-shadow: -0.1mm -0.1mm 0.3mm #000, 0.1mm -0.1mm 0.3mm #000, -0.1mm 0.1mm 0.3mm #000, 0.1mm 0.1mm 0.3mm #000;
+			display: inline;
+			font-family: 'cortex-icons';
+			font-style: normal;
+			font-size: 14pt;
+			/*content: "4 6 8 0 2";*/
+			/* Print Background Fix */
+			-webkit-print-color-adjust: exact;
+			-webkit-filter: opacity(1);
+			print-color-adjust: exact;
+			filter: opacity(1);
+		}
+
+		&:after {
+			border-top: 2px solid var(--highlight);
+			content: '';
+			position: relative;
+			top: -0.6em;
+			width: calc(77.5mm - 100%);
+			left: 100%;
+			display: block;
+			z-index: -10;
+		}
+	}
+
+	.trait-value {
+		float: right;
+		margin-right: 12mm;
+	}
+
+	.trait-value>c {
+		display: none;
+	}
+
+	.track {
 		position: absolute;
 		width: 40mm;
 		height: 20mm;
 		color: white;
-		margin-left: 40mm;
-		margin-top: -0.5mm;
+		margin-left: -26mm;
+		margin-top: 0mm;
 		text-shadow: -0.1mm -0.1mm 0.3mm #000, 0.1mm -0.1mm 0.3mm #000, -0.1mm 0.1mm 0.3mm #000, 0.1mm 0.1mm 0.3mm #000;
 		display: inline;
 		font-family: 'cortex-icons';
 		font-style: normal;
 		font-size: 14pt;
-		content: "4 6 8 0 2";
 		/* Print Background Fix */
 		-webkit-print-color-adjust: exact;
 		-webkit-filter: opacity(1);
@@ -1578,34 +1620,14 @@ li:before {
 		filter: opacity(1);
 	}
 
-	&:after {
-		border-top: 2px solid var(--highlight);
-		content: '';
-		position: relative;
-		top: -0.6em;
-		width: calc(77.5mm - 100%);
-		left: 100%;
+	.trait-description {
 		display: block;
-		z-index: -10;
+		border-top: unset;
+		padding-top: 0;
 	}
 }
 
-.stress h2.trait-value {
-	float: right;
-	margin-right: 12mm;
-}
-
-.stress .trait h2 c {
-	display: none;
-}
-
-.trait-group.stress .trait-description {
-	display: block;
-	border-top: unset;
-	padding-top: 0;
-}
-
-.trait-group.stress.compact>div>.trait:not(.template)+.trait {
+.stress.compact>div>.trait:not(.template)+.trait {
 	margin-top: 2mm;
 }
 

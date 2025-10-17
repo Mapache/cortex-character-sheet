@@ -1,6 +1,6 @@
 import { init_event_handlers } from "./eventHandlers.js"
 import { fetchHtml } from "./fetchHtml.js"
-import { apply_data_style } from "./traitGroupStyle.js"
+import { apply_data_style, apply_trait_group_style_to_trait } from "./traitGroupStyle.js"
 
 class Template {
   constructor(element) {
@@ -54,7 +54,9 @@ export async function add_trait_group(e) {
 }
 
 export async function add_trait(e) {
-  add_group(e, (await Template.trait).newInstance())
+  let trait = add_group(e, (await Template.trait).newInstance())
+  let traitGroup = e.target.parentElement.parentElement
+  apply_trait_group_style_to_trait(traitGroup, trait)
 }
 
 export function install_title_listeners() {
