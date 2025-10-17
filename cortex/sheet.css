@@ -1056,10 +1056,10 @@ li:before {
 	padding: 8px;
 	left: 50%;
 	top: 50%;
-}
 
-#url-modal p {
-	margin: 0;
+	p {
+		margin: 0;
+	}
 }
 
 .template {
@@ -1074,139 +1074,138 @@ li:before {
 	padding: 16pt 24pt 0 24pt;
 	font-family: 'Open Sans', sans-serif;
 	font-size: 8pt;
-}
 
-#help-modal #bottom {
+	#bottom {
+		margin: 16pt 0 4pt 0;
+	}
 
-	margin: 16pt 0 4pt 0;
-}
+	#close {
+		position: relative;
+		bottom: 0;
+		left: 50%;
+		margin-bottom: 8pt;
+	}
 
-#help-modal #close {
-	position: relative;
-	bottom: 0;
-	left: 50%;
-	margin-bottom: 8pt;
-}
+	#close button {
+		border: 0;
+		border-radius: 5px;
+		background: none;
+		font-size: 12pt;
+		cursor: pointer;
+		padding: 6pt 10pt 6pt 10pt;
+		margin: 0;
+		box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+		transform: translate(-50%, 0);
+		transition: color 100ms;
+	}
 
-#help-modal #close button {
-	border: 0;
-	border-radius: 5px;
-	background: none;
-	font-size: 12pt;
-	cursor: pointer;
-	padding: 6pt 10pt 6pt 10pt;
-	margin: 0;
-	box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
-	transform: translate(-50%, 0);
-	transition: color 100ms;
-}
+	#close button:hover {
+		color: var(--highlight);
+		transition: color 100ms;
+	}
 
-#help-modal #close button:hover {
-	color: var(--highlight);
-	transition: color 100ms;
-}
+	#legal {
+		text-align: justify;
+		padding: 12pt 24pt 16pt 24pt;
+	}
 
-#help-modal #legal {
-	text-align: justify;
-	padding: 12pt 24pt 16pt 24pt;
-}
+	#legal a {
+		color: var(--highlight);
+		font-weight: 800;
+		text-decoration: none;
+	}
 
-#help-modal #legal a {
-	color: var(--highlight);
-	font-weight: 800;
-	text-decoration: none;
-}
+	.left {
+		float: left;
+		width: calc(50% - 12pt);
+		text-align: right;
+	}
 
-#help-modal .left {
-	float: left;
-	width: calc(50% - 12pt);
-	text-align: right;
-}
+	.right {
+		float: right;
+		width: calc(50% - 12pt);
+	}
 
-#help-modal .right {
-	float: right;
-	width: calc(50% - 12pt);
-}
+	#top table {
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 12pt;
+		border-collapse: collapse;
+	}
 
-#help-modal #top table {
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: 12pt;
-	border-collapse: collapse;
-}
+	#top table tr {
+		padding: 0;
+	}
 
-#help-modal #top table tr {
-	padding: 0;
-}
+	#top table td {
+		width: 50%;
+	}
 
-#help-modal #top table td {
-	width: 50%;
-}
+	#top table td:nth-child(1) {
+		text-align: right;
+		padding-right: 8pt;
+	}
 
-#help-modal #top table td:nth-child(1) {
-	text-align: right;
-	padding-right: 8pt;
-}
+	#top table td:nth-child(2) {
+		text-align: left;
+		padding-left: 8pt;
+		border-left: 1px solid black;
+	}
 
-#help-modal #top table td:nth-child(2) {
-	text-align: left;
-	padding-left: 8pt;
-	border-left: 1px solid black;
-}
+	#top table td div {
+		text-align: left;
+		float: right;
+	}
 
-#help-modal #top table td div {
-	text-align: left;
-	float: right;
-}
+	.help-block {
+		border-top: 1pt solid black;
+		border-bottom: 1pt solid black;
+	}
 
-#help-modal .help-block {
-	border-top: 1pt solid black;
-	border-bottom: 1pt solid black;
-}
+	table .help-section-header {
+		padding-top: 8pt;
+		text-align: center !important;
+	}
 
-#help-modal table .help-section-header {
-	padding-top: 8pt;
-	text-align: center !important;
-}
+	.add-item {
+		width: 0;
+		left: -14px;
+	}
 
-#help-modal .add-item {
-	width: 0;
-	left: -14px;
-}
+	.add-item:before {
+		font-size: 12pt;
+		opacity: 1;
+		text-shadow: 0 0 5px rgba(0, 0, 0, 0);
+		transform: translate(-100%, -50%);
+		cursor: unset;
+	}
 
-#help-modal .add-item:before {
-	font-size: 12pt;
-	opacity: 1;
-	text-shadow: 0 0 5px rgba(0, 0, 0, 0);
-	transform: translate(-100%, -50%);
-	cursor: unset;
-}
+	.remove-item {
+		width: 0;
+		height: 32px;
+		position: relative;
+		page-break-inside: avoid;
+		break-inside: avoid;
+		font-style: normal;
+	}
 
-#help-modal .remove-item {
-	width: 0;
-	height: 32px;
-	position: relative;
-	page-break-inside: avoid;
-	break-inside: avoid;
-	font-style: normal;
-}
+	.remove-item:before {
+		font-family: 'Font Awesome 7 Free';
+		font-size: 12pt;
+		color: var(--highlight);
+		content: "\f146";
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translate(-100%, -50%);
+		opacity: 1;
+		transition: color 0.1s, opacity 0.1s, text-shadow 0.1s;
+		text-shadow: 0 0 5px rgba(0, 0, 0, 0);
+	}
 
-#help-modal .remove-item:before {
-	font-family: 'Font Awesome 7 Free';
-	font-size: 12pt;
-	color: var(--highlight);
-	content: "\f146";
-	position: absolute;
-	left: 50%;
-	top: 50%;
-	transform: translate(-100%, -50%);
-	opacity: 1;
-	transition: color 0.1s, opacity 0.1s, text-shadow 0.1s;
-	text-shadow: 0 0 5px rgba(0, 0, 0, 0);
-}
-
-#help-modal ul {
-	margin-top: 0;
+	ul {
+		margin-top: 0;
+	}
 }
 
 /* Toolbar */
@@ -1216,73 +1215,72 @@ li:before {
 	border-radius: 5px;
 	border: 1px solid #0007;
 	box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-}
 
-#toolbar div {
-	display: block;
-	margin: 16px 8px 16px 16px;
-	border: 0;
-	background: none;
-	font-family: 'Font Awesome 7 Free';
-	font-style: normal;
-	font-weight: 900;
-	font-size: 32px;
-	cursor: pointer;
-	text-align: center;
-	width: 40px;
-}
+	div {
+		display: block;
+		margin: 16px 8px 16px 16px;
+		border: 0;
+		background: none;
+		font-family: 'Font Awesome 7 Free';
+		font-style: normal;
+		font-weight: 900;
+		font-size: 32px;
+		cursor: pointer;
+		text-align: center;
+		width: 40px;
+	}
 
-#toolbar #reset:before {
-	content: "\f01e";
-}
+	#reset:before {
+		content: "\f01e";
+	}
 
-#toolbar #campaigns:before {
-	content: "\f07b";
-}
+	#campaigns:before {
+		content: "\f07b";
+	}
 
-#toolbar #characters:before {
-	content: "\f007";
-}
+	#characters:before {
+		content: "\f007";
+	}
 
-#toolbar #upload:before {
-	content: "\f0ee";
-}
+	#upload:before {
+		content: "\f0ee";
+	}
 
-#toolbar #download:before {
-	content: "\f019";
-}
+	#download:before {
+		content: "\f019";
+	}
 
-#toolbar #show-global-highlight-menu:before {
-	content: "\f043";
-}
+	#show-global-highlight-menu:before {
+		content: "\f043";
+	}
 
-#toolbar #global-highlight-picker {
-	height: 32px;
-	width: 32px;
-}
+	#global-highlight-picker {
+		height: 32px;
+		width: 32px;
+	}
 
-#toolbar #toggle-layout-controls:not(.controls-hidden):before {
-	content: "\f06e";
-}
+	#toggle-layout-controls:not(.controls-hidden):before {
+		content: "\f06e";
+	}
 
-#toolbar #toggle-layout-controls.controls-hidden:before {
-	content: "\f070";
-}
+	#toggle-layout-controls.controls-hidden:before {
+		content: "\f070";
+	}
 
-#toolbar #toggle-empty-descriptions:not(.descriptions-hidden):before {
-	font-weight: 400;
-	content: "\f075";
+	#toggle-empty-descriptions:not(.descriptions-hidden):before {
+		font-weight: 400;
+		content: "\f075";
 
-	animation: iconShimmer 4s infinite linear;
-}
+		animation: iconShimmer 4s infinite linear;
+	}
 
-#current-campaign {
-	font-family: 'Open Sans', sans-serif;
-	font-size: 12pt;
-	color: grey;
-	position: absolute;
-	left: 64px;
-	top: 24px;
+	#toggle-empty-descriptions.descriptions-hidden:before {
+		content: "\f4b3";
+	}
+
+	#help:before {
+		content: "\f128";
+	}
 }
 
 @keyframes iconShimmer {
@@ -1300,12 +1298,13 @@ li:before {
 	}
 }
 
-#toolbar #toggle-empty-descriptions.descriptions-hidden:before {
-	content: "\f4b3";
-}
-
-#toolbar #help:before {
-	content: "\f128";
+#current-campaign {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 12pt;
+	color: grey;
+	position: absolute;
+	left: 64px;
+	top: 24px;
 }
 
 /* Disclaimer */
@@ -1315,25 +1314,25 @@ li:before {
 	left: 0;
 	bottom: 0;
 	width: calc(50% - 105mm);
-}
 
-#disclaimer #logo {
-	float: left;
-}
+	#logo {
+		float: left;
+	}
 
-#disclaimer #legal {
-	display: none;
-	float: right;
-	font-size: 8pt;
-	margin-top: auto;
-	margin-bottom: 4pt;
-	padding-right: 40pt;
-	color: #333;
-}
+	#legal {
+		display: none;
+		float: right;
+		font-size: 8pt;
+		margin-top: auto;
+		margin-bottom: 4pt;
+		padding-right: 40pt;
+		color: #333;
+	}
 
-#disclaimer #logo img {
-	width: 20%;
-	margin: 8px;
+	#logo img {
+		width: 20%;
+		margin: 8px;
+	}
 }
 
 /* Signature asset */
@@ -1452,80 +1451,80 @@ li:before {
 	font-size: 12pt;
 	cursor: pointer;
 	display: none;
-}
 
-.context-menu ul {
-	all: unset;
-}
+	ul {
+		all: unset;
+	}
 
-.context-menu li {
-	all: unset;
-	position: relative;
-	display: block;
-	padding: 6px 12px 6px 12px;
-	color: black;
-	white-space: nowrap;
-}
+	li {
+		all: unset;
+		position: relative;
+		display: block;
+		padding: 6px 12px 6px 12px;
+		color: black;
+		white-space: nowrap;
+	}
 
-.context-menu li:before {
-	all: unset;
-}
+	li:before {
+		all: unset;
+	}
 
-.context-menu li:hover {
-	background: var(--highlight);
-	color: white;
-}
+	li:hover {
+		background: var(--highlight);
+		color: white;
+	}
 
-.context-menu li>.context-menu {
-	position: absolute;
-	top: -2px;
-	left: 100%;
-	display: none;
-	transform: unset;
-}
+	li>.context-menu {
+		position: absolute;
+		top: -2px;
+		left: 100%;
+		display: none;
+		transform: unset;
+	}
 
-.context-menu li:hover .context-menu {
-	display: block;
-}
+	li:hover .context-menu {
+		display: block;
+	}
 
-.context-menu input[type="radio"] {
-	display: none;
-}
+	input[type="radio"] {
+		display: none;
+	}
 
-.context-menu input[type="radio"]:checked+label {
-	background: var(--highlight);
-	color: white;
-}
+	input[type="radio"]:checked+label {
+		background: var(--highlight);
+		color: white;
+	}
 
-.context-menu label {
-	display: block;
-	color: black;
-	padding: 6px 12px 6px 12px;
-}
+	label {
+		display: block;
+		color: black;
+		padding: 6px 12px 6px 12px;
+	}
 
-.context-menu label:hover {
-	background: var(--highlight)3f;
-}
+	label:hover {
+		background: var(--highlight)3f;
+	}
 
-.context-menu p {
-	display: block;
-	color: black;
-	margin: 4px;
-}
+	p {
+		display: block;
+		color: black;
+		margin: 4px;
+	}
 
-.context-menu input[type="text"] {
-	display: block;
-	width: 90%;
-	margin: 4px auto;
+	input[type="text"] {
+		display: block;
+		width: 90%;
+		margin: 4px auto;
+	}
+
+	#trait-collection-highlight-picker {
+		height: 24px;
+		width: 24px;
+	}
 }
 
 .context-menu.visible {
 	display: block;
-}
-
-.context-menu #trait-collection-highlight-picker {
-	height: 24px;
-	width: 24px;
 }
 
 .fa-angle-right:before {
@@ -1617,11 +1616,6 @@ li:before {
 }
 
 /* Inline */
-
-.inline .trait-description {
-	display: inline;
-	border: none;
-}
 
 .inline .trait-description {
 	display: inline;
