@@ -45,8 +45,48 @@ export function apply_trait_group_style_to_trait(traitGroup, trait) {
 	if (traitGroup.classList.contains("stress")) {
 		let track = document.createElement("div")
 		track.classList.add("track")
-		track.innerHTML = "4 6 8 0 2"
-		trait.querySelector(".trait-value>c").after(track)
+		track.innerHTML = "<span>4</span> <span>6</span> <span>8</span> <span>0</span> <span>2</span>"
+		let c = trait.querySelector(".trait-value>c")
+		c.after(track)
+		update_track_displayed_value(trait)
+		track.addEventListener("click", (e) => {
+			if (e.target.nodeName == "SPAN") {
+				// Clicking the current value clears the stress track
+				let span = e.target
+				let value = span.classList.contains("current") ? "∅" : span.innerText
+				set_track_value(trait, value)
+			}
+		})
+	}
+}
+
+function set_track_value(trait, value) {
+	trait.querySelector(".trait-value>c").innerText = value
+	update_track_displayed_value(trait)
+}
+
+function update_track_displayed_value(trait) {
+	const value = trait.querySelector(".trait-value>c").innerText
+	let nonmatchingState = (value == "∅") ? "empty" : "full"
+	for (let die of trait.querySelector(".track").querySelectorAll("span")) {
+		die.classList.remove("full")
+		die.classList.remove("current")
+		die.classList.remove("empty")
+		if (die.innerText == value) {
+			die.classList.add("current")
+			nonmatchingState = "empty"
+		} else {
+			die.classList.add(nonmatchingState)
+		}
+	}
+}
+
+// Called after programmatically setting the value of traits in a group, such as during loading.
+export function update_trait_group_display(traitGroup) {
+	if (traitGroup.classList.contains("stress")) {
+		for (let trait of traitGroup.querySelectorAll(".trait")) {
+			update_track_displayed_value(trait)
+		}
 	}
 }
 

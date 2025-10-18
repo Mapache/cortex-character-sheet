@@ -52,6 +52,16 @@
 	.no-print {
 		display: none !important;
 	}
+
+	/* Stress tracks always print as empty for pencil-and-paper tracking */
+	.stress .track .full,
+	.stress .track .current,
+	.stress .track .empty {
+		color: white !important;
+		text-shadow: -0.1mm -0.1mm 0.3mm #000, 0.1mm -0.1mm 0.3mm #000, -0.1mm 0.1mm 0.3mm #000, 0.1mm 0.1mm 0.3mm #000 !important;
+		font-size: 14pt !important;
+		margin: 0pt !important;
+	}
 }
 
 /* Colors */
@@ -1560,26 +1570,6 @@ li:before {
 		background: white;
 		padding-right: 1mm;
 
-		&:before {
-			position: absolute;
-			width: 40mm;
-			height: 20mm;
-			color: white;
-			margin-left: 40mm;
-			margin-top: -0.5mm;
-			text-shadow: -0.1mm -0.1mm 0.3mm #000, 0.1mm -0.1mm 0.3mm #000, -0.1mm 0.1mm 0.3mm #000, 0.1mm 0.1mm 0.3mm #000;
-			display: inline;
-			font-family: 'cortex-icons';
-			font-style: normal;
-			font-size: 14pt;
-			/*content: "4 6 8 0 2";*/
-			/* Print Background Fix */
-			-webkit-print-color-adjust: exact;
-			-webkit-filter: opacity(1);
-			print-color-adjust: exact;
-			filter: opacity(1);
-		}
-
 		&:after {
 			border-top: 2px solid var(--highlight);
 			content: '';
@@ -1605,10 +1595,8 @@ li:before {
 		position: absolute;
 		width: 40mm;
 		height: 20mm;
-		color: white;
 		margin-left: -26mm;
 		margin-top: 0mm;
-		text-shadow: -0.1mm -0.1mm 0.3mm #000, 0.1mm -0.1mm 0.3mm #000, -0.1mm 0.1mm 0.3mm #000, 0.1mm 0.1mm 0.3mm #000;
 		display: inline;
 		font-family: 'cortex-icons';
 		font-style: normal;
@@ -1618,6 +1606,23 @@ li:before {
 		-webkit-filter: opacity(1);
 		print-color-adjust: exact;
 		filter: opacity(1);
+	}
+
+	.track .full {
+		color: #ccc;
+		text-shadow: -0.1mm -0.1mm 0.3mm #000, 0.1mm -0.1mm 0.3mm #000, -0.1mm 0.1mm 0.3mm #000, 0.1mm 0.1mm 0.3mm #000;
+	}
+
+	.track .current {
+		color: var(--highlight);
+		text-shadow: -0.1mm -0.1mm 0.3mm #fff, 0.1mm -0.1mm 0.3mm #fff, -0.1mm 0.1mm 0.3mm #fff, 0.1mm 0.1mm 0.3mm #fff;
+		font-size: 16pt;
+		margin: -1pt;
+	}
+
+	.track .empty {
+		color: white;
+		text-shadow: -0.1mm -0.1mm 0.3mm #000, 0.1mm -0.1mm 0.3mm #000, -0.1mm 0.1mm 0.3mm #000, 0.1mm 0.1mm 0.3mm #000;
 	}
 
 	.trait-description {

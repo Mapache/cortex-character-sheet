@@ -1,7 +1,7 @@
 
 import { update_titles } from "./elements.js"
 import { c_to_html, text_to_html } from "./conversion.js"
-import { apply_data_style, apply_highlight_color, defaultHighlightColor } from "./traitGroupStyle.js"
+import { apply_data_style, update_trait_group_display, apply_highlight_color, defaultHighlightColor } from "./traitGroupStyle.js"
 
 export async function load_character(json) {
   nuke_character()
@@ -177,6 +177,7 @@ async function load_characterV4(json) {
             }
           }
         }
+        update_trait_group_display(traitGroup)
       }
     }
   }
