@@ -1,4 +1,5 @@
 import { Campaign, cloud } from "./cloud.js"
+import { formatRelativeTime } from "./formatting.js"
 import { nuke_character, load_character } from "./load.js"
 import { menu, menuEntry, menuDivider, menuLabel, menuTextInput } from "./menu.js"
 import { Modal } from "./modal.js"
@@ -77,11 +78,30 @@ export async function characters_menu(e) {
 
 	let entries = []
 	for (const characterSheet of cloud.currentCharacterSheets) {
+		let rollbackMenuEntry = menuEntry("Load older versions…", async (e) => {
+			// Dynamically expand this submenu
+			rollbackMenuEntry.onclick = null
+			let versions = await cloud.versionsForCharacter(characterSheet)
+			if (versions.length == 0) {
+				rollbackMenuEntry.innerText = "No older versions"
+				return
+			}
+			rollbackMenuEntry.innerText = "Older versions:"
+			let rollbackEntries = versions.map(
+				(version) =>
+					menuEntry(formatRelativeTime(version.saved), (e) => {
+						load_character(version.json)
+						cloud.updateURLForCharacter(version)
+						charactersMenu.hide()
+					})
+			)
+			rollbackMenuEntry.after(...rollbackEntries)
+		})
 		entries.push(menuEntry(titleCase(characterSheet.name), (e) => {
 			load_character(characterSheet.json)
 			cloud.updateURLForCharacter(characterSheet)
 			charactersMenu.hide()
-		}))
+		}, [rollbackMenuEntry]))
 	}
 	if (entries.length > 0) {
 		entries.push(menuDivider())

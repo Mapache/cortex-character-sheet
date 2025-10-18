@@ -1,3 +1,8 @@
+
+/**
+ * @param {[Node]} entries
+ * @returns {Node}
+ */
 export function menu(entries) {
   const div = document.createElement("div")
   div.classList.add("context-menu")
@@ -9,6 +14,12 @@ export function menu(entries) {
   return div
 }
 
+/**
+ * @param {string} name
+ * @param {((event: Event) => void)} action
+ * @param {[Node]} subMenuEntries
+ * @returns {Node}
+ */
 export function menuEntry(name, action, subMenuEntries) {
   const li = document.createElement("li")
   li.appendChild(document.createTextNode(name))

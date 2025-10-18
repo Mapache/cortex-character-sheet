@@ -65,7 +65,7 @@ const characterSheetConverter = {
 	},
 	fromFirestore: (snapshot, options) => {
 		const data = snapshot.data(options)
-		return new CharacterSheet(null, data.json, data.saved)
+		return new CharacterSheet(null, data.json, data.saved.toDate())
 	}
 }
 
@@ -135,6 +135,7 @@ const userPermissionsConverter = {
 const defaultCampaignName = "Default"
 const campaignsCollection = "campaigns"
 const charactersCollection = "characters"
+const characterVersionsCollection = "versions"
 const campaignPermissionsCollection = "campaignPermissions"
 const userPermissionsCollection = "userPermissions"
 
@@ -447,6 +448,7 @@ export class Cloud {
 
 		try {
 			await setDoc(doc(db, campaignsCollection, this.currentCampaign.id, charactersCollection, sheet.id).withConverter(characterSheetConverter), sheet)
+			await addDoc(collection(db, campaignsCollection, this.currentCampaign.id, charactersCollection, sheet.id, characterVersionsCollection).withConverter(characterSheetConverter), sheet)
 			this.updateURLForCharacter(sheet)
 			console.log("Character Sheet written with ID: ", sheet.id)
 		} catch (error) {
@@ -459,6 +461,18 @@ export class Cloud {
 		if (characterSheet) {
 			window.location.hash += `.${characterSheet.id}`
 		}
+	}
+
+	async versionsForCharacter(characterSheet) {
+		// TODO: Caching of some sort, and pruning old versions, or maybe use TTL for that?
+		const querySnapshot = await getDocs(
+			collection(db,
+				campaignsCollection, this.currentCampaign.id,
+				charactersCollection, characterSheet.id,
+				characterVersionsCollection).withConverter(characterSheetConverter))
+		let versions = querySnapshot.docs.map((doc) => doc.data())
+		versions.sort((a, b) => b.saved - a.saved)
+		return versions
 	}
 
 }
