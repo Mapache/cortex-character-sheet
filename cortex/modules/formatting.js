@@ -1,9 +1,11 @@
 export function formatRelativeTime(timestamp) {
+  const locale = "en-US"
+
   const now = new Date()
   const targetDate = new Date(timestamp)
   const millis = targetDate.getTime() - now.getTime()
 
-  const rtf = new Intl.RelativeTimeFormat("en-US", { numeric: "auto", style: "long" })
+  const rtf = new Intl.RelativeTimeFormat(locale, { numeric: "auto", style: "long" })
 
   // Determine the most appropriate unit
   const oneSecond = 1000
@@ -16,15 +18,23 @@ export function formatRelativeTime(timestamp) {
     return rtf.format(Math.round(duration), unit)
   }
 
+  // Omits " ago" for concatenating a more detailed time unit
+  function format1(duration, unit) {
+    return rtf.format(Math.round(duration), unit).split(" ago")[0]
+  }
+
   if (Math.abs(millis) < oneMinute) {
     return format(millis / oneSecond, "second")
   } else if (Math.abs(millis) < oneHour) {
-    return format(millis / oneMinute, "minute") + ", " + format((millis % oneMinute) / oneSecond, "second")
+    return format1(millis / oneMinute, "minute") + ", " + format((millis % oneMinute) / oneSecond, "second")
+  } else if (Math.abs(millis) < oneHour * 3) {
+    return format1(millis / oneHour, "hour") + ", " + format((millis % oneHour) / oneMinute, "minute")
   } else if (Math.abs(millis) < oneDay) {
-    return format(millis / oneHour, "hour") + ", " + format((millis % oneHour) / oneMinute, "minute")
+    const day = (targetDate.getDate() == now.getDate()) ? "Today" : "Yesterday"
+    return day + ", " + targetDate.toLocaleTimeString(locale)
   } else if (Math.abs(millis) < oneWeek) {
-    return format(millis / oneDay, "day") + ", " + format((millis % oneDay) / oneHour, "hour")
+    return targetDate.toLocaleString(locale, { weekday: "long" }) + ", " + targetDate.toLocaleTimeString(locale)
   } else {
-    return targetDate
+    return targetDate.toLocaleString(locale, { dateStyle: "medium", timeStyle: "medium" })
   }
 }
