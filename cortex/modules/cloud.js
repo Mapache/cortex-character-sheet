@@ -1,6 +1,6 @@
 import { app, analytics, auth, db } from "./firebase.js"
 import { onAuthStateChanged, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js"
-import { doc, collection, query, addDoc, setDoc, updateDoc, getDoc, getDocs, where, documentId, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js"
+import { doc, collection, query, orderBy, limit, addDoc, setDoc, updateDoc, getDoc, getDocs, where, documentId, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js"
 
 // MARK: Utilities
 
@@ -465,11 +465,12 @@ export class Cloud {
 
 	async versionsForCharacter(characterSheet) {
 		// TODO: Caching of some sort, and pruning old versions, or maybe use TTL for that?
-		const querySnapshot = await getDocs(
-			collection(db,
-				campaignsCollection, this.currentCampaign.id,
-				charactersCollection, characterSheet.id,
-				characterVersionsCollection).withConverter(characterSheetConverter))
+		const versionsRef = collection(db,
+			campaignsCollection, this.currentCampaign.id,
+			charactersCollection, characterSheet.id,
+			characterVersionsCollection).withConverter(characterSheetConverter)
+		const querySnapshot = await getDocs(query(versionsRef, orderBy("saved", "desc"), limit(6)))
+
 		let versions = querySnapshot.docs.map((doc) => doc.data())
 		versions.sort((a, b) => b.saved - a.saved)
 		return versions
