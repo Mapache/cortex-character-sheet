@@ -409,16 +409,20 @@ export class Cloud {
 		this.unsubscribeCharactersForCurrentCampaign = onSnapshot(q, (snapshot) => {
 			snapshot.docChanges().forEach((change) => {
 				const sheet = change.doc.data()
-				if (change.type === "added") {
-					const source = change.doc.metadata.hasPendingWrites ? "Local" : "Server"
-					console.log(`New character from ${source}: `, sheet)
-					this.addCurrentCharacterSheet(sheet)
-				}
-				if (change.type === "modified") {
-					console.log("Modified character: ", sheet)
-				}
-				if (change.type === "removed") {
-					console.log("Removed character: ", sheet)
+				const source = change.doc.metadata.hasPendingWrites ? "Local" : "Server"
+				switch (change.type) {
+					case "added":
+						console.log(`New character from ${source}: `, sheet)
+						this.addCurrentCharacterSheet(sheet)
+						break
+					case "modified":
+						console.log(`Modified character from ${source}: `, sheet)
+						this.addCurrentCharacterSheet(sheet)
+						break
+					case "removed":
+						console.log(`Removed character from ${source}: `, sheet)
+						delete this.currentCharacterSheets[sheet.id]
+						break
 				}
 			})
 		})
@@ -461,8 +465,6 @@ export class Cloud {
 			console.log("Skipping upload for unchanged character sheet", sheet.name)
 			return
 		}
-		// Whether or not there was an old one with this name, always add the new one
-		this.addCurrentCharacterSheet(sheet)
 
 		try {
 			await setDoc(doc(db, campaignsCollection, this.currentCampaign.id, charactersCollection, sheet.id).withConverter(characterSheetConverter), sheet)
