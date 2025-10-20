@@ -77,7 +77,7 @@ export async function characters_menu(e) {
 	const charactersMenu = new Modal()
 
 	let entries = []
-	for (const characterSheet of cloud.currentCharacterSheets) {
+	for (const characterSheet of await cloud.sortedCurrentCharacterSheets()) {
 		let rollbackMenuEntry = menuEntry("Load older versions…", async (e) => {
 			// Dynamically expand this submenu
 			rollbackMenuEntry.onclick = null

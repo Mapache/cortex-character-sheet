@@ -1,6 +1,6 @@
 import { app, analytics, auth, db } from "./firebase.js"
 import { onAuthStateChanged, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js"
-import { doc, collection, query, orderBy, limit, addDoc, setDoc, updateDoc, getDoc, getDocs, where, documentId, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js"
+import { doc, collection, where, query, orderBy, limit, onSnapshot, addDoc, setDoc, updateDoc, getDoc, getDocs, documentId, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js"
 
 // MARK: Utilities
 
@@ -65,7 +65,7 @@ const characterSheetConverter = {
 	},
 	fromFirestore: (snapshot, options) => {
 		const data = snapshot.data(options)
-		return new CharacterSheet(null, data.json, data.saved.toDate())
+		return new CharacterSheet(null, data.json, data.saved?.toDate())
 	}
 }
 
@@ -392,17 +392,48 @@ export class Cloud {
 
 	// MARK: Characters
 
+	charactersForCurrentCampaignQuery() {
+		return collection(db,
+			campaignsCollection, this.currentCampaign.id,
+			charactersCollection).withConverter(characterSheetConverter)
+	}
+
 	async getCharactersForCurrentCampaign() {
 		await this.requireSignIn()
 		await this.requireCurrentCampaign()
 
-		const querySnapshot = await getDocs(collection(db, campaignsCollection, this.currentCampaign.id, charactersCollection).withConverter(characterSheetConverter))
-		this.currentCharacterSheets = querySnapshot.docs.map((doc) => doc.data())
-		this.sortCurrentCharacterSheets()
+		this.unsubscribeCharactersForCurrentCampaign?.()
+
+		this.currentCharacterSheets = {}
+		const q = this.charactersForCurrentCampaignQuery()
+		this.unsubscribeCharactersForCurrentCampaign = onSnapshot(q, (snapshot) => {
+			snapshot.docChanges().forEach((change) => {
+				const sheet = change.doc.data()
+				if (change.type === "added") {
+					const source = change.doc.metadata.hasPendingWrites ? "Local" : "Server"
+					console.log(`New character from ${source}: `, sheet)
+					this.addCurrentCharacterSheet(sheet)
+				}
+				if (change.type === "modified") {
+					console.log("Modified character: ", sheet)
+				}
+				if (change.type === "removed") {
+					console.log("Removed character: ", sheet)
+				}
+			})
+		})
 	}
 
-	sortCurrentCharacterSheets() {
-		this.currentCharacterSheets.sort((a, b) => a.name.localeCompare(b.name))
+	async sortedCurrentCharacterSheets() {
+		await this.requireCurrentCharacterSheets()
+
+		let sheets = Object.values(this.currentCharacterSheets)
+		sheets.sort((a, b) => a.name.localeCompare(b.name))
+		return sheets
+	}
+
+	addCurrentCharacterSheet(sheet) {
+		this.currentCharacterSheets[sheet.id] = sheet
 	}
 
 	async requireCurrentCharacterSheets() {
@@ -414,12 +445,7 @@ export class Cloud {
 	async currentCharacterSheetWithId(characterId) {
 		await this.requireCurrentCharacterSheets()
 
-		for (const characterSheet of this.currentCharacterSheets) {
-			if (characterSheet.id == characterId) {
-				return characterSheet
-			}
-		}
-		return null
+		return this.currentCharacterSheets[characterId]
 	}
 
 	async uploadCharacter(json) {
@@ -427,24 +453,16 @@ export class Cloud {
 		await this.requireCurrentCampaign()
 		await this.requireCurrentCharacterSheets()
 
-		let sheet = new CharacterSheet(json)
+		const sheet = new CharacterSheet(json)
 
-		// Update currentCharacterSheets
-		for (const [index, characterSheet] of this.currentCharacterSheets.entries()) {
-			if (characterSheet.name == sheet.name) {
-				if (characterSheet.jsonString == sheet.jsonString) {
-					// No changes, no need to do anything.
-					console.log("Skipping upload for unchanged character sheet", sheet.name)
-					return
-				}
-				// Remove old version
-				this.currentCharacterSheets.splice(index, 1)
-				break
-			}
+		// Check if the sheet is unchanged
+		if (this.currentCharacterSheets[sheet.id]?.jsonString == sheet.jsonString) {
+			// No changes, no need to do anything.
+			console.log("Skipping upload for unchanged character sheet", sheet.name)
+			return
 		}
-		// Whether or not we removed an old one with this name, always add the new one
-		this.currentCharacterSheets.push(sheet)
-		this.sortCurrentCharacterSheets()
+		// Whether or not there was an old one with this name, always add the new one
+		this.addCurrentCharacterSheet(sheet)
 
 		try {
 			await setDoc(doc(db, campaignsCollection, this.currentCampaign.id, charactersCollection, sheet.id).withConverter(characterSheetConverter), sheet)
