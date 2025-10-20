@@ -56,7 +56,7 @@ export async function add_trait_group(e) {
 export async function add_trait(e) {
   let trait = add_group(e, (await Template.trait).newInstance())
   let traitGroup = e.target.parentElement.parentElement
-  apply_trait_group_style_to_trait(traitGroup, trait)
+  apply_trait_group_style_to_trait(traitGroup, trait, true)
 }
 
 export function install_title_listeners() {

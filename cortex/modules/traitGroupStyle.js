@@ -41,19 +41,24 @@ function data_style_requires_trait_modification(traitGroup) {
 	return traitGroup.classList.contains("stress")
 }
 
-export function apply_trait_group_style_to_trait(traitGroup, trait) {
+export function apply_trait_group_style_to_trait(traitGroup, trait, applyDefaultValue) {
 	if (traitGroup.classList.contains("stress")) {
 		let track = document.createElement("div")
 		track.classList.add("track")
 		track.innerHTML = "<span>4</span> <span>6</span> <span>8</span> <span>0</span> <span>2</span>"
 		let c = trait.querySelector(".trait-value>c")
 		c.after(track)
-		update_track_displayed_value(trait)
+		const clearValue = "∅"
+		if (applyDefaultValue) {
+			set_track_value(trait, clearValue) // Default to stress tracks being clear instead of d6 like other traits
+		} else {
+			update_track_displayed_value(trait)
+		}
 		track.addEventListener("click", (e) => {
 			if (e.target.nodeName == "SPAN") {
 				// Clicking the current value clears the stress track
 				let span = e.target
-				let value = span.classList.contains("current") ? "∅" : span.innerText
+				let value = span.classList.contains("current") ? clearValue : span.innerText
 				set_track_value(trait, value)
 			}
 		})
