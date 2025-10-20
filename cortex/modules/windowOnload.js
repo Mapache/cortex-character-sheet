@@ -5,7 +5,7 @@ import { init_event_handlers } from "./eventHandlers.js"
 import { auth } from "./firebase.js"
 import { load_character, load_character_path } from "./load.js"
 import { upload_character, download_character } from "./toolbar.js"
-import { whenInteractive } from "./util.js"
+import { whenInteractive, urlHashParams } from "./util.js"
 
 whenInteractive(() => {
   document.addEventListener("keydown", async (e) => {
@@ -21,25 +21,24 @@ whenInteractive(() => {
 
   init_event_handlers(document)
   install_title_listeners()
-  load_default_sheet()
+  loadTemplate()
+  loadView()
 })
 
-async function load_default_sheet() {
-  const urlHash = window.location.hash
-  // Slice off the "#", as URLSearchParams is designed for query strings with an "?"
-  const urlParams = new URLSearchParams(urlHash.slice(1))
-
-  // Load the static sheet at the relative path specified by "template"
+// Load the static sheet at the relative path specified by "template"
+async function loadTemplate() {
   const templateParam = "template"
-  if (urlParams.has(templateParam)) {
-    const templateParam = urlParams.get(templateParam)
-    load_character_path("characters/" + templateParam)
+  if (urlHashParams.has(templateParam)) {
+    const template = urlHashParams.get(templateParam)
+    load_character_path("characters/" + template)
   }
+}
 
-  // Load the campaign or campaign.sheet specified by "view"
+// Load the campaign or campaign.sheet specified by "view"
+async function loadView() {
   const viewParam = "view"
-  if (urlParams.has(viewParam)) {
-    const view = urlParams.get(viewParam)
+  if (urlHashParams.has(viewParam)) {
+    const view = urlHashParams.get(viewParam)
     const [campaignId, characterSheetId] = view.split(".")
     await cloud.switchCampaignId(campaignId)
     if (characterSheetId) {

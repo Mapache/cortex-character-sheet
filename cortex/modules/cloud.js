@@ -1,6 +1,7 @@
 import { app, analytics, auth, db } from "./firebase.js"
 import { onAuthStateChanged, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js"
 import { doc, collection, where, query, orderBy, limit, onSnapshot, addDoc, setDoc, updateDoc, getDoc, getDocs, documentId, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js"
+import { urlHashParams, Deferred } from "./util.js"
 
 // MARK: Utilities
 
@@ -404,6 +405,8 @@ export class Cloud {
 
 		this.unsubscribeCharactersForCurrentCampaign?.()
 
+		const initialLoad = new Deferred()
+
 		this.currentCharacterSheets = {}
 		const q = this.charactersForCurrentCampaignQuery()
 		this.unsubscribeCharactersForCurrentCampaign = onSnapshot(q, (snapshot) => {
@@ -412,20 +415,22 @@ export class Cloud {
 				const source = change.doc.metadata.hasPendingWrites ? "Local" : "Server"
 				switch (change.type) {
 					case "added":
-						console.log(`New character from ${source}: `, sheet)
+						console.debug(`New character from ${source}: `, sheet)
 						this.addCurrentCharacterSheet(sheet)
 						break
 					case "modified":
-						console.log(`Modified character from ${source}: `, sheet)
+						console.debug(`Modified character from ${source}: `, sheet)
 						this.addCurrentCharacterSheet(sheet)
 						break
 					case "removed":
-						console.log(`Removed character from ${source}: `, sheet)
+						console.debug(`Removed character from ${source}: `, sheet)
 						delete this.currentCharacterSheets[sheet.id]
 						break
 				}
 			})
+			initialLoad.resolve()
 		})
+		await initialLoad.promise
 	}
 
 	async sortedCurrentCharacterSheets() {
