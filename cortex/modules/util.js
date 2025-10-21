@@ -22,9 +22,3 @@ export class Deferred {
     })
   }
 }
-
-// Extracts and saves the params in the initial URL hash, before anything modifies it.
-// Modules can import this to ensure it's extracted before modifying window.location.hash
-//
-// Slice off the "#", as URLSearchParams is designed for query strings with an "?"
-export const urlHashParams = new URLSearchParams(window.location.hash.slice(1))

@@ -84,6 +84,10 @@ export function update_titles(characterName, excludingTitle) {
       title.innerText = characterName
     }
   }
+  updateDocumentTitle(characterName)
+}
+
+export function updateDocumentTitle(characterName) {
   if (characterName == "NAME" || characterName.length == 0) {
     characterName = "Cortex Prime"
   }

@@ -1,7 +1,9 @@
 import { app, analytics, auth, db } from "./firebase.js"
 import { onAuthStateChanged, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js"
 import { doc, collection, where, query, orderBy, limit, onSnapshot, addDoc, setDoc, updateDoc, getDoc, getDocs, documentId, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js"
-import { urlHashParams, Deferred } from "./util.js"
+
+import { setUrlHashWithoutHandling } from "./urlHashHandler.js"
+import { Deferred } from "./util.js"
 
 // MARK: Utilities
 
@@ -363,6 +365,10 @@ export class Cloud {
 	async switchCampaign(campaign) {
 		await this.requireSignIn()
 
+		if (this.currentCampaign?.id === campaign.id) {
+			return
+		}
+
 		this.currentCampaign = campaign
 		this.displayCurrentCampaignName()
 		this.updateURLForCurrentCampaign()
@@ -374,7 +380,7 @@ export class Cloud {
 	}
 
 	updateURLForCurrentCampaign() {
-		window.location.hash = `view=${this.currentCampaign.id}`
+		setUrlHashWithoutHandling(`#view=${this.currentCampaign.id}`, "")
 	}
 
 	async renameCampaign(campaign, name) {
@@ -482,9 +488,10 @@ export class Cloud {
 	}
 
 	updateURLForCharacter(characterSheet) {
-		this.updateURLForCurrentCampaign()
 		if (characterSheet) {
-			window.location.hash += `.${characterSheet.id}`
+			setUrlHashWithoutHandling(`#view=${this.currentCampaign.id}.${characterSheet.id}`, characterSheet.name)
+		} else {
+			this.updateURLForCurrentCampaign()
 		}
 	}
 

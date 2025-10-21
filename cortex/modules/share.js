@@ -1,5 +1,5 @@
 import { cloud } from "./cloud.js"
-import { whenInteractive, urlHashParams } from "./util.js"
+import { HashHandler } from "./urlHashHandler.js"
 
 const shareParam = "share"
 const shareSeparator = "-"
@@ -21,15 +21,12 @@ export async function copyShareUrl(campaign, access) {
   }
 }
 
-async function parseShareUrl() {
-  if (urlHashParams.has(shareParam)) {
-    const shareCode = urlHashParams.get(shareParam)
-    const firstHyphen = shareCode.indexOf(shareSeparator)
-    const campaignId = shareCode.substring(0, firstHyphen)
-    const accessKey = shareCode.substring(firstHyphen + 1)
-    await cloud.updateAccessKey(campaignId, accessKey)
-    await cloud.switchCampaignId(campaignId)
-  }
+async function parseShareCode(shareCode) {
+  const firstHyphen = shareCode.indexOf(shareSeparator)
+  const campaignId = shareCode.substring(0, firstHyphen)
+  const accessKey = shareCode.substring(firstHyphen + 1)
+  await cloud.updateAccessKey(campaignId, accessKey)
+  await cloud.switchCampaignId(campaignId)
 }
 
-whenInteractive(parseShareUrl)
+new HashHandler(shareParam, parseShareCode).addListener()
