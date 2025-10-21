@@ -2,6 +2,9 @@ import { app, analytics, auth, db } from "./firebase.js"
 import { onAuthStateChanged, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js"
 import { doc, collection, where, query, orderBy, limit, onSnapshot, addDoc, setDoc, updateDoc, getDoc, getDocs, documentId, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js"
 
+import { load_character } from "./load.js"
+import { characterName, save_character } from "./save.js"
+import { merge } from "./merge.js"
 import { setUrlHashWithoutHandling } from "./urlHashHandler.js"
 import { Deferred } from "./util.js"
 
@@ -426,7 +429,39 @@ export class Cloud {
 						break
 					case "modified":
 						console.debug(`Modified character from ${source}: `, sheet)
-						this.addCurrentCharacterSheet(sheet)
+						if (change.doc.metadata.hasPendingWrites || sheet.name !== characterName()) {
+							// The change is either local or for a different character, so just update normally.
+							this.addCurrentCharacterSheet(sheet)
+							break
+						}
+						// The change is to the currently displayed character, so attempt to merge it.
+						let currentlyEditing = document.activeElement.isContentEditable
+						console.debug(`Change is to displayed character, checking for merge…`)
+						if (currentlyEditing) {
+							console.debug(`Waiting for edits to complete…`)
+							// TODO: Wait until edit is done, then merge.
+						} else {
+							const currentJson = save_character()
+							const currentSheet = new CharacterSheet(currentJson)
+							if (currentSheet.jsonString === sheet.jsonString) {
+								// New sheet matches what is displayed. This is likely the server version of recent local save.
+								console.debug("No changes to character sheet, skipping merge.")
+								this.addCurrentCharacterSheet(sheet)
+								break
+							}
+							const mergedJson = merge(
+								this.currentCharacterSheets[sheet.id]?.json,
+								currentJson,
+								sheet.json)
+							const mergedSheet = new CharacterSheet(mergedJson)
+							if (mergedSheet.jsonString !== currentSheet.jsonString) {
+								console.debug("mergedJson =", mergedJson)
+								load_character(mergedJson)
+							}
+							// Update the local copy to the last saved version.
+							this.addCurrentCharacterSheet(sheet)
+							break
+						}
 						break
 					case "removed":
 						console.debug(`Removed character from ${source}: `, sheet)

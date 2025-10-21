@@ -1,4 +1,4 @@
-import { init_event_handlers } from "./eventHandlers.js"
+import { addEditHandlers } from "./eventHandlers.js"
 import { fetchHtml } from "./fetchHtml.js"
 import { apply_data_style, apply_trait_group_style_to_trait } from "./traitGroupStyle.js"
 
@@ -33,7 +33,7 @@ function add_child(parent, newGroup) {
   let children = parent.children
   let placeholder = children[children.length - 1]
   parent.insertBefore(newGroup, placeholder)
-  init_event_handlers(newGroup)
+  addEditHandlers(newGroup)
   return newGroup
 }
 

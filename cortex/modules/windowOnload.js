@@ -1,7 +1,7 @@
 
 import { cloud } from "./cloud.js"
 import { install_title_listeners } from "./elements.js"
-import { init_event_handlers } from "./eventHandlers.js"
+import { addEditHandlers } from "./eventHandlers.js"
 import { auth } from "./firebase.js"
 import { load_character, load_character_path } from "./load.js"
 import { upload_character, download_character } from "./toolbar.js"
@@ -20,7 +20,7 @@ whenInteractive(() => {
     }
   }, false)
 
-  init_event_handlers(document)
+  addEditHandlers(document)
   install_title_listeners()
 })
 

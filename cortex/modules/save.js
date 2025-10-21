@@ -119,6 +119,10 @@ function save_characterV3() {
   return json
 }
 
+export function characterName() {
+  return html_to_text(document.querySelector("#character-name").innerHTML)
+}
+
 // The V4 format extracts the semantic structure of a character and saves it as a few top-level standalone properties
 // and a tree of arrays containing /pages/columns/groups/traits/[title, value, description]. It is designed to be
 // uncoupled from the page's HTML structure allowing for easier changes to either side independently, relatively easy
@@ -127,7 +131,7 @@ function save_characterV3() {
 function save_characterV4() {
   let json = {}
   json.version = 4
-  json.characterName = html_to_text(document.querySelector("#character-name").innerHTML)
+  json.characterName = characterName()
   json.description = html_to_text(document.querySelector("#description").innerHTML)
 
   let traitsData = []
