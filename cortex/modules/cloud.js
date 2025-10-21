@@ -435,19 +435,15 @@ export class Cloud {
 							break
 						}
 						// The change is to the currently displayed character, so attempt to merge it.
-						let currentlyEditing = document.activeElement.isContentEditable
 						console.debug(`Change is to displayed character, checking for merge…`)
-						if (currentlyEditing) {
-							console.debug(`Waiting for edits to complete…`)
-							// TODO: Wait until edit is done, then merge.
-						} else {
+						const mergeSheets = () => {
 							const currentJson = save_character()
 							const currentSheet = new CharacterSheet(currentJson)
 							if (currentSheet.jsonString === sheet.jsonString) {
 								// New sheet matches what is displayed. This is likely the server version of recent local save.
 								console.debug("No changes to character sheet, skipping merge.")
 								this.addCurrentCharacterSheet(sheet)
-								break
+								return
 							}
 							const mergedJson = merge(
 								this.currentCharacterSheets[sheet.id]?.json,
@@ -455,12 +451,19 @@ export class Cloud {
 								sheet.json)
 							const mergedSheet = new CharacterSheet(mergedJson)
 							if (mergedSheet.jsonString !== currentSheet.jsonString) {
-								console.debug("mergedJson =", mergedJson)
+								console.debug("Merge complete with result", mergedJson)
 								load_character(mergedJson)
 							}
 							// Update the local copy to the last saved version.
 							this.addCurrentCharacterSheet(sheet)
-							break
+						}
+						const currentlyEditing = document.activeElement.isContentEditable
+						if (currentlyEditing) {
+							console.debug(`Waiting for edits to complete…`)
+							// Wait until edit is done, then merge.
+							document.addEventListener("focusout", mergeSheets, { once: true })
+						} else {
+							mergeSheets()
 						}
 						break
 					case "removed":

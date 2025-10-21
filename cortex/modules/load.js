@@ -46,16 +46,16 @@ async function get_element_from_parts(parts) {
       current = current.children[parts[p]]
     }
     if (current == null) {
-      console.log("Failed to find: " + path)
+      console.error("Failed to find: " + path)
     }
     if (current.getAttribute("data-onload") !== null) {
-      // console.log("Creating new element")
+      // console.debug("Creating new element")
       await window[current.getAttribute("data-onload")]({ target: current })
       p = p - 1
       current = current.parentElement
     }
   }
-  // console.log(current)
+  // console.debug(current)
   return current
 }
 
