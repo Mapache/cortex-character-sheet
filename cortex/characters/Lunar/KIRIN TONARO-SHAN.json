@@ -1,340 +1,340 @@
 {
-    "version": 4,
-    "characterName": "KIRIN TONARO-SHAN",
-    "description": "Intense to the point of mania, wants to study and understand everything, but doesn't really get people<div>Not afraid of danger, no good in a fight, but that's what Magma Kraken is for!</div>",
-    "traits": [
+  "version": 4,
+  "characterName": "KIRIN TONARO-SHAN",
+  "description": "Intense to the point of mania, wants to study and understand everything, but doesn't really get people<div>Not afraid of danger, no good in a fight, but that's what Magma Kraken is for!</div>",
+  "traits": [
+    [
+      [
         [
+          [
+            "ANIMA",
+            "stress"
+          ],
+          [
             [
-                [
-                    [
-                        "ANIMA",
-                        "stress"
-                    ],
-                    [
-                        [
-                            "Anima",
-                            "6",
-                            "<i>A sleek rabbit, cunning and calculated</i>",
-                            "- Adds to most actions, complicates stealth.",
-                            "- Step up whenever you spend a mote.",
-                            "- [Flare] Once per scene, you may add d6 to the doom pool to gain a mote and step up your anima."
-                        ]
-                    ]
-                ],
-                [
-                    [
-                        "ABILITIES",
-                        "signature-asset"
-                    ],
-                    [
-                        [
-                            "<i>Pick 2 abilities when rolling.</i>",
-                            "",
-                            ""
-                        ]
-                    ]
-                ],
-                [
-                    [
-                        "BATTLE",
-                        "compact"
-                    ],
-                    [
-                        [
-                            "Archery",
-                            "4"
-                        ],
-                        [
-                            "Athletics",
-                            "6"
-                        ],
-                        [
-                            "Awareness",
-                            "0"
-                        ],
-                        [
-                            "Brawl",
-                            "6"
-                        ],
-                        [
-                            "Dodge",
-                            "0"
-                        ],
-                        [
-                            "Endurance",
-                            "6"
-                        ],
-                        [
-                            "Integrity",
-                            "0"
-                        ],
-                        [
-                            "Melee",
-                            "4"
-                        ],
-                        [
-                            "Thrown",
-                            "4"
-                        ],
-                        [
-                            "War",
-                            "8"
-                        ]
-                    ]
-                ],
-                [
-                    [
-                        "LIFE",
-                        "compact"
-                    ],
-                    [
-                        [
-                            "Craft",
-                            "8"
-                        ],
-                        [
-                            "Larceny",
-                            "8"
-                        ],
-                        [
-                            "Linguistics",
-                            "8"
-                        ],
-                        [
-                            "Performance",
-                            "4"
-                        ],
-                        [
-                            "Presence",
-                            "4"
-                        ],
-                        [
-                            "Ride",
-                            "4"
-                        ],
-                        [
-                            "Sail",
-                            "4"
-                        ],
-                        [
-                            "Socialize",
-                            "6"
-                        ],
-                        [
-                            "Stealth",
-                            "2"
-                        ],
-                        [
-                            "Survival",
-                            "8"
-                        ]
-                    ]
-                ],
-                [
-                    [
-                        "WISDOM",
-                        "compact"
-                    ],
-                    [
-                        [
-                            "Bureaucracy",
-                            "6"
-                        ],
-                        [
-                            "Investigation",
-                            "2"
-                        ],
-                        [
-                            "Lore",
-                            "0"
-                        ],
-                        [
-                            "Medicine",
-                            "6"
-                        ],
-                        [
-                            "Occult",
-                            "2"
-                        ]
-                    ]
-                ],
-                [
-                    [
-                        "STRESS",
-                        "stress compact"
-                    ],
-                    [
-                        [
-                            "Physical",
-                            "6"
-                        ],
-                        [
-                            "Social",
-                            "6"
-                        ],
-                        [
-                            "Mental",
-                            "6"
-                        ]
-                    ]
-                ]
-            ],
-            [
-                [
-                    [
-                        "ESSENCE",
-                        "detailed"
-                    ],
-                    [
-                        [
-                            "Essence",
-                            "0",
-                            "- [No Moon Caste] Spend a mote to double any Wisdom ability or Sorcery for one roll. While your anima banner is visible, step up the effect die for any roll you make including Investigation, Lore, or Medicine.",
-                            "- [The Tell] In all forms, you have long rabbit ears. People will not notice this unless your Anima reaches d8."
-                        ]
-                    ]
-                ],
-                [
-                    [
-                        "DISTINCTIONS",
-                        "detailed"
-                    ],
-                    [
-                        [
-                            "Conniving Sorcerer",
-                            "8 / 4+mote",
-                            "- [Sorcerous Workings]. When you take an action to create an asset with Sorcery, you may add d6 to the doom pool to extend that asset to the end of the Act instead of spending a mote."
-                        ],
-                        [
-                            "KNOWLEDGE IS POWER",
-                            "8 / 4+mote",
-                            ""
-                        ],
-                        [
-                            "PULL THE STRINGS",
-                            "8 / 4+mote",
-                            ""
-                        ]
-                    ]
-                ],
-                [
-                    [
-                        "INTIMACIES",
-                        "detailed"
-                    ],
-                    [
-                        [
-                            "LEAVE NO STONE UNTURNED",
-                            "0",
-                            "Pry the secrets out of everything. Learn all. Understand all. Master all."
-                        ],
-                        [
-                            "DEBTS MUST BE REPAID",
-                            "8",
-                            "There is an order to things, and costs accepted must be fulfilled, whether one owes or is owed."
-                        ],
-                        [
-                            "ROOT FOR THE LITTLE GUY",
-                            "6",
-                            "You love a good underdog, and you love showing up a big bully even more."
-                        ]
-                    ]
-                ],
-                [
-                    [
-                        "LIMIT",
-                        "stress"
-                    ],
-                    [
-                        [
-                            "Limit Break",
-                            "6",
-                            "[Heart of Flint] When the people around me give into their emotions and cause trouble, I feel contempt and do my best to close off my own emotions completely, acting only through cold, remorseless logic."
-                        ]
-                    ]
-                ]
+              "Anima",
+              "∅",
+              "<i>A sleek rabbit, cunning and calculated</i>",
+              "- Adds to most actions, complicates stealth.",
+              "- Step up whenever you spend a mote.",
+              "- [Flare] Once per scene, you may add d6 to the doom pool to gain a mote and step up your anima."
             ]
+          ]
         ],
         [
+          [
+            "ABILITIES",
+            "signature-asset"
+          ],
+          [
             [
-                [
-                    [
-                        "Shapeshifting",
-                        "detailed"
-                    ],
-                    [
-                        [
-                            "Shapeshift",
-                            "8",
-                            "- [Heart's Blood] You can take the form of any beast whose heart you have eaten.",
-                            "- [Finding the Spirit's Shape] Your True Forms are human and rabbit.",
-                            "- [Humble Mouse Form] You can shapeshift into tiny animals, including smaller versions of shapes you know.",
-                            "- [Shape the Once-Living Form] You can easily reshape formerly living materials, like wood, bone, and leather.",
-                            "- [Moonsilver Tattoos] Spend a mote to ignore stress or complications from an attack including the Transmutation power or Wyld-based hazards."
-                        ]
-                    ]
-                ],
-                [
-                    [
-                        "CHARMS",
-                        "detailed"
-                    ],
-                    [
-                        [
-                            "ENHANCED DURABILITY",
-                            "8",
-                            ""
-                        ],
-                        [
-                            "Superhuman SENSES",
-                            "0",
-                            ""
-                        ],
-                        [
-                            "ENHANCED Speed",
-                            "8",
-                            "- [Exhausted] Shutdown any Charms power to gain a mote. Activate a spoiler to recover the power, or recover for free during the next transition scene."
-                        ]
-                    ]
-                ],
-                [
-                    [
-                        "SORCERY",
-                        "detailed"
-                    ],
-                    [
-                        [
-                            "CELESTIAL CIRCLE SORCERY",
-                            "0",
-                            "You can summon demons of the First or Second Circle and perform advanced sorcerous workings.",
-                            "- [Utility Magic] A dice pool containing Sorcery cannot be used to inflict stress."
-                        ]
-                    ]
-                ]
+              "<i>Pick 2 abilities when rolling.</i>",
+              "",
+              ""
+            ]
+          ]
+        ],
+        [
+          [
+            "BATTLE",
+            "compact"
+          ],
+          [
+            [
+              "Archery",
+              "4"
             ],
             [
-                [
-                    [
-                        "PANOPLY",
-                        "detailed"
-                    ],
-                    [
-                        [
-                            "FAMILIAR",
-                            "8",
-                            "- [Silent Death That Strikes From Above At Midnight] An owl with whom you can communicate telepathically"
-                        ],
-                        [
-                            "MAGMA KRAKEN",
-                            "0",
-                            "Whenever you have a problem, you summon the Magma Kraken, and BOOM, right away a different problem!"
-                        ]
-                    ]
-                ]
+              "Athletics",
+              "6"
+            ],
+            [
+              "Awareness",
+              "0"
+            ],
+            [
+              "Brawl",
+              "6"
+            ],
+            [
+              "Dodge",
+              "0"
+            ],
+            [
+              "Endurance",
+              "6"
+            ],
+            [
+              "Integrity",
+              "0"
+            ],
+            [
+              "Melee",
+              "4"
+            ],
+            [
+              "Thrown",
+              "4"
+            ],
+            [
+              "War",
+              "8"
             ]
+          ]
+        ],
+        [
+          [
+            "LIFE",
+            "compact"
+          ],
+          [
+            [
+              "Craft",
+              "8"
+            ],
+            [
+              "Larceny",
+              "8"
+            ],
+            [
+              "Linguistics",
+              "8"
+            ],
+            [
+              "Performance",
+              "4"
+            ],
+            [
+              "Presence",
+              "4"
+            ],
+            [
+              "Ride",
+              "4"
+            ],
+            [
+              "Sail",
+              "4"
+            ],
+            [
+              "Socialize",
+              "6"
+            ],
+            [
+              "Stealth",
+              "2"
+            ],
+            [
+              "Survival",
+              "8"
+            ]
+          ]
+        ],
+        [
+          [
+            "WISDOM",
+            "compact"
+          ],
+          [
+            [
+              "Bureaucracy",
+              "6"
+            ],
+            [
+              "Investigation",
+              "2"
+            ],
+            [
+              "Lore",
+              "0"
+            ],
+            [
+              "Medicine",
+              "6"
+            ],
+            [
+              "Occult",
+              "2"
+            ]
+          ]
+        ],
+        [
+          [
+            "STRESS",
+            "stress compact"
+          ],
+          [
+            [
+              "Physical",
+              "∅"
+            ],
+            [
+              "Social",
+              "∅"
+            ],
+            [
+              "Mental",
+              "∅"
+            ]
+          ]
         ]
+      ],
+      [
+        [
+          [
+            "ESSENCE",
+            "detailed"
+          ],
+          [
+            [
+              "Essence",
+              "0",
+              "- [No Moon Caste] Spend a mote to double any Wisdom ability or Sorcery for one roll. While your anima banner is visible, step up the effect die for any roll you make including Investigation, Lore, or Medicine.",
+              "- [The Tell] In all forms, you have long rabbit ears. People will not notice this unless your Anima reaches d8."
+            ]
+          ]
+        ],
+        [
+          [
+            "DISTINCTIONS",
+            "detailed"
+          ],
+          [
+            [
+              "Conniving Sorcerer",
+              "8 / 4+mote",
+              "- [Sorcerous Workings]. When you take an action to create an asset with Sorcery, you may add d6 to the doom pool to extend that asset to the end of the Act instead of spending a mote."
+            ],
+            [
+              "KNOWLEDGE IS POWER",
+              "8 / 4+mote",
+              ""
+            ],
+            [
+              "PULL THE STRINGS",
+              "8 / 4+mote",
+              ""
+            ]
+          ]
+        ],
+        [
+          [
+            "INTIMACIES",
+            "detailed"
+          ],
+          [
+            [
+              "LEAVE NO STONE UNTURNED",
+              "0",
+              "Pry the secrets out of everything. Learn all. Understand all. Master all."
+            ],
+            [
+              "DEBTS MUST BE REPAID",
+              "8",
+              "There is an order to things, and costs accepted must be fulfilled, whether one owes or is owed."
+            ],
+            [
+              "ROOT FOR THE LITTLE GUY",
+              "6",
+              "You love a good underdog, and you love showing up a big bully even more."
+            ]
+          ]
+        ],
+        [
+          [
+            "LIMIT",
+            "stress"
+          ],
+          [
+            [
+              "Limit Break",
+              "∅",
+              "[Heart of Flint] When the people around me give into their emotions and cause trouble, I feel contempt and do my best to close off my own emotions completely, acting only through cold, remorseless logic."
+            ]
+          ]
+        ]
+      ]
     ],
-    "highlightColors": {
-        ":root": "#878787"
-    }
+    [
+      [
+        [
+          [
+            "Shapeshifting",
+            "detailed"
+          ],
+          [
+            [
+              "Shapeshift",
+              "8",
+              "- [Heart's Blood] You can take the form of any beast whose heart you have eaten.",
+              "- [Finding the Spirit's Shape] Your True Forms are human and rabbit.",
+              "- [Humble Mouse Form] You can shapeshift into tiny animals, including smaller versions of shapes you know.",
+              "- [Shape the Once-Living Form] You can easily reshape formerly living materials, like wood, bone, and leather.",
+              "- [Moonsilver Tattoos] Spend a mote to ignore stress or complications from an attack including the Transmutation power or Wyld-based hazards."
+            ]
+          ]
+        ],
+        [
+          [
+            "CHARMS",
+            "detailed"
+          ],
+          [
+            [
+              "ENHANCED DURABILITY",
+              "8",
+              ""
+            ],
+            [
+              "Superhuman SENSES",
+              "0",
+              ""
+            ],
+            [
+              "ENHANCED Speed",
+              "8",
+              "- [Exhausted] Shutdown any Charms power to gain a mote. Activate a spoiler to recover the power, or recover for free during the next transition scene."
+            ]
+          ]
+        ],
+        [
+          [
+            "SORCERY",
+            "detailed"
+          ],
+          [
+            [
+              "CELESTIAL CIRCLE SORCERY",
+              "0",
+              "You can summon demons of the First or Second Circle and perform advanced sorcerous workings.",
+              "- [Utility Magic] A dice pool containing Sorcery cannot be used to inflict stress."
+            ]
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            "PANOPLY",
+            "detailed"
+          ],
+          [
+            [
+              "FAMILIAR",
+              "8",
+              "- [Silent Death That Strikes From Above At Midnight] An owl with whom you can communicate telepathically"
+            ],
+            [
+              "MAGMA KRAKEN",
+              "0",
+              "Whenever you have a problem, you summon the Magma Kraken, and BOOM, right away a different problem!"
+            ]
+          ]
+        ]
+      ]
+    ]
+  ],
+  "highlightColors": {
+    ":root": "#878787"
+  }
 }

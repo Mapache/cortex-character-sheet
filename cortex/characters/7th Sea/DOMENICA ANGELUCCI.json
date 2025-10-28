@@ -228,15 +228,15 @@
           [
             [
               "Stress",
-              "6"
+              "∅"
             ],
             [
               "Wounds",
-              "6"
+              "∅"
             ],
             [
               "Corruption",
-              "6"
+              "∅"
             ]
           ]
         ]
@@ -292,7 +292,7 @@
           [
             [
               "Lashes",
-              "6",
+              "∅",
               "When you use any Tessere other than Read, you must take at least one Lash. Track Lashes like any other Consequence, stepping up your Lashes die. Your Lashes magnify the effect of your Tessere, but are a steep cost to pay, and they act as a Complication. Fate is displeased by your meddling, and it always makes sure to take its toll.",
               "",
               "Having Fate Lashes is beneficial in that the more Lashes you have, the stronger your magic is, but harmful because getting rid of them becomes more painful.",

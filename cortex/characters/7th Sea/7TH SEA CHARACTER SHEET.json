@@ -13,7 +13,7 @@
           [
             [
               "Reputation: {Phrase}",
-              "8 / 4+mote",
+              "8 / 4+hero point",
               "{Elaborate on reputation}"
             ],
             [
@@ -23,18 +23,18 @@
             ],
             [
               "HUBRIS: {ARCANA}",
-              "4+mote",
-              "- Once per session, you receive a mote when…"
+              "4+hero point",
+              "- Once per session, you receive a hero point when…"
             ],
             [
               "BACKGROUND: {BACKGROUND 1}",
               "6",
-              "[Quirk]: Earn a mote when…"
+              "[Quirk]: Earn a hero point when…"
             ],
             [
               "BACKGROUND: {BACKGROUND 2}",
               "6",
-              "[Quirk]: Earn a mote when…"
+              "[Quirk]: Earn a hero point when…"
             ],
             [
               "NATIONALITY: {NATION}",
@@ -54,7 +54,7 @@
               "4"
             ],
             [
-              "Finesse",
+              "FINESSE",
               "4"
             ],
             [
@@ -236,15 +236,15 @@
           [
             [
               "Stress",
-              "6"
+              "∅"
             ],
             [
               "Wounds",
-              "6"
+              "∅"
             ],
             [
               "Corruption",
-              "6"
+              "∅"
             ]
           ]
         ]

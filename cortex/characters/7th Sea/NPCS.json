@@ -1,0 +1,55 @@
+{
+  "version": 4,
+  "characterName": "NPCS",
+  "description": "",
+  "traits": [
+    [
+      [
+        [
+          [
+            "SAYYIDA AL-HURRA",
+            "detailed",
+            "#009e0b"
+          ],
+          [
+            [
+              "GRIZZLED SEA CAPTAIN",
+              "2",
+              ""
+            ],
+            [
+              "DEPOSED QUEEN",
+              "8",
+              ""
+            ],
+            [
+              "TIRED OF THIS NONSENSE",
+              "0",
+              ""
+            ],
+            [
+              "OLD FRIENDS",
+              "6",
+              ""
+            ],
+            [
+              "OLD ENEMIES",
+              "4",
+              ""
+            ],
+            [
+              "AL-ANDALUSIAN",
+              "",
+              "Muslim.",
+              "Speaks Spanish, Arabic, Italian, Latin, Turkish"
+            ]
+          ]
+        ]
+      ],
+      []
+    ]
+  ],
+  "highlightColors": {
+    ":root": "#C50852"
+  }
+}

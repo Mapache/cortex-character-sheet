@@ -234,15 +234,15 @@
           [
             [
               "Stress",
-              "6"
+              "∅"
             ],
             [
               "Wounds",
-              "6"
+              "∅"
             ],
             [
               "Corruption",
-              "6"
+              "∅"
             ]
           ]
         ]
@@ -318,6 +318,11 @@
               "- Wolf",
               "",
               "Your skills, knowledge, and abilities are all retained in your new form—although they may be limited, such as Weaponry being unusable if you cannot hold weapons. If the animal’s form would be particularly advantageous (such as trying to avoid notice while you are in the form of a mouse), you gain d10."
+            ],
+            [
+              "SORCERY: SEE",
+              "",
+              "Select an animal from your Animal Forms. You perceive the world through all the senses of the nearest animal matching your choice. Although you are using the animal’s senses instead of your own, any Tests you make regarding perception are made using your attributes, not the animal’s. If the animal’s form would be particularly advantageous for such a Test (such as a cat seeing something in the darkness of night) you gain d10."
             ]
           ]
         ]

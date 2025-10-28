@@ -1,367 +1,367 @@
 {
-    "version": 4,
-    "characterName": "COPPER LAUGHTER OF SEVEN RIPPLING SMILES",
-    "description": "A different person every day, wears skins like most people wear clothes, who even are they under all the lies and the acting?  A hedonist who loves pleasure, their schemes eventually explode, but they never met a problem they couldn't run away from…",
-    "traits": [
+  "version": 4,
+  "characterName": "COPPER LAUGHTER OF SEVEN RIPPLING SMILES",
+  "description": "A different person every day, wears skins like most people wear clothes, who even are they under all the lies and the acting?  A hedonist who loves pleasure, their schemes eventually explode, but they never met a problem they couldn't run away from…",
+  "traits": [
+    [
+      [
         [
+          [
+            "ANIMA",
+            "stress"
+          ],
+          [
             [
-                [
-                    [
-                        "ANIMA",
-                        "stress"
-                    ],
-                    [
-                        [
-                            "Anima",
-                            "6",
-                            "<i>An ever-changing cascade of animal forms, each blurring into the next</i>",
-                            "- Adds to most actions, complicates stealth.",
-                            "- Step up whenever you spend a mote.",
-                            "- [Flare] Once per scene, you may add d6 to the doom pool to gain a mote and step up your anima."
-                        ]
-                    ]
-                ],
-                [
-                    [
-                        "ABILITIES",
-                        "signature-asset"
-                    ],
-                    [
-                        [
-                            "<i>Pick 2 abilities when rolling.</i>",
-                            "",
-                            ""
-                        ]
-                    ]
-                ],
-                [
-                    [
-                        "Battle",
-                        "compact"
-                    ],
-                    [
-                        [
-                            "Archery",
-                            "4"
-                        ],
-                        [
-                            "Athletics",
-                            "6"
-                        ],
-                        [
-                            "Awareness",
-                            "8"
-                        ],
-                        [
-                            "Brawl",
-                            "6"
-                        ],
-                        [
-                            "Dodge",
-                            "8"
-                        ],
-                        [
-                            "Endurance",
-                            "6"
-                        ],
-                        [
-                            "Integrity",
-                            "6"
-                        ],
-                        [
-                            "Melee",
-                            "4"
-                        ],
-                        [
-                            "Thrown",
-                            "4"
-                        ],
-                        [
-                            "War",
-                            "4"
-                        ]
-                    ]
-                ],
-                [
-                    [
-                        "LIFE",
-                        "compact"
-                    ],
-                    [
-                        [
-                            "Craft",
-                            "8"
-                        ],
-                        [
-                            "Larceny",
-                            "2"
-                        ],
-                        [
-                            "Linguistics",
-                            "0"
-                        ],
-                        [
-                            "Performance",
-                            "2"
-                        ],
-                        [
-                            "Presence",
-                            "8"
-                        ],
-                        [
-                            "Ride",
-                            "4"
-                        ],
-                        [
-                            "Sail",
-                            "4"
-                        ],
-                        [
-                            "Socialize",
-                            "2"
-                        ],
-                        [
-                            "Stealth",
-                            "0"
-                        ],
-                        [
-                            "Survival",
-                            "6"
-                        ]
-                    ]
-                ],
-                [
-                    [
-                        "WISDOM",
-                        "compact"
-                    ],
-                    [
-                        [
-                            "Bureaucracy",
-                            "0"
-                        ],
-                        [
-                            "Investigation",
-                            "0"
-                        ],
-                        [
-                            "Lore",
-                            "6"
-                        ],
-                        [
-                            "Medicine",
-                            "4"
-                        ],
-                        [
-                            "Occult",
-                            "8"
-                        ]
-                    ]
-                ],
-                [
-                    [
-                        "STRESS",
-                        "stress compact"
-                    ],
-                    [
-                        [
-                            "Physical",
-                            "6"
-                        ],
-                        [
-                            "Social",
-                            "6"
-                        ],
-                        [
-                            "Mental",
-                            "6"
-                        ]
-                    ]
-                ]
-            ],
-            [
-                [
-                    [
-                        "ESSENCE",
-                        "detailed"
-                    ],
-                    [
-                        [
-                            "Essence",
-                            "0",
-                            "- [Casteless] Spend a mote to double your Shapeshift power for one roll. While your anima banner is visible, you may step up your mental stress to keep three dice on a roll including Shapeshift.",
-                            "- [The Tell] In all forms, there's something slightly off about you, but it's hard to describe. People will not notice this unless your Anima reaches d10."
-                        ]
-                    ]
-                ],
-                [
-                    [
-                        "DISTINCTIONS",
-                        "detailed"
-                    ],
-                    [
-                        [
-                            "Whoever You Want To Be",
-                            "8 / 4+mote",
-                            "- [Friends in Low Places] When you spend a mote to create an NPC Extra as an asset, that asset enters play as a d8 rather than a d6."
-                        ],
-                        [
-                            "ATTACHMENTS ARE FOR OTHERS",
-                            "8 / 4+mote",
-                            ""
-                        ],
-                        [
-                            "FLEE THE CONSEQUENCES",
-                            "8 / 4+mote",
-                            ""
-                        ]
-                    ]
-                ],
-                [
-                    [
-                        "INTIMACIES",
-                        "detailed"
-                    ],
-                    [
-                        [
-                            "ME, MYSELF, AND I",
-                            "0",
-                            "You're always looking out for number one. So is everyone else, even if they won't admit it."
-                        ],
-                        [
-                            "HOME IS WHERE YOU BELONG",
-                            "8",
-                            "You want to fit in. You keep thinking you found places you do, but it all blows up in the end."
-                        ],
-                        [
-                            "A GOOD TEA IS SOOTHING",
-                            "6",
-                            "It calms the souls and warms the heart. For a moment, there is kinship even among enemies.",
-                            "It reminds you of a time long ago, before you were you."
-                        ]
-                    ]
-                ],
-                [
-                    [
-                        "LIMIT",
-                        "stress"
-                    ],
-                    [
-                        [
-                            "Limit Break",
-                            "6",
-                            "[Analysis Paralysis] When others turn to me to make a major choice that decides lives and deaths, I feel overwhelmed and become incapable of making any decisions at all."
-                        ]
-                    ]
-                ]
+              "Anima",
+              "∅",
+              "<i>An ever-changing cascade of animal forms, each blurring into the next</i>",
+              "- Adds to most actions, complicates stealth.",
+              "- Step up whenever you spend a mote.",
+              "- [Flare] Once per scene, you may add d6 to the doom pool to gain a mote and step up your anima."
             ]
+          ]
         ],
         [
+          [
+            "ABILITIES",
+            "signature-asset"
+          ],
+          [
             [
-                [
-                    [
-                        "Shapeshifting",
-                        "detailed"
-                    ],
-                    [
-                        [
-                            "SHAPESHIFT",
-                            "0",
-                            "- [Heart's Blood] You can take the form of any beast whose heart you have eaten.",
-                            "- [Prey's Skin Disguise] As an alternative to eating something's heart, you only need to study them closely to mimic their form.",
-                            "- [Finding the Spirit's Shape] Your True Form is human.",
-                            "- [Masking the Brilliant Form] Your Tell is very hard to discern.",
-                            "- [Wondrous Lunar Transformation] You can use your shapeshifting ability on another subject, but it takes a great deal of time and effort.",
-                            "- [Lunacy] When you include Shapeshift in a roll to create an asset or complication, both 1s and 2s count as spoilers. Only 1s are excluded from use as total and effect dice."
-                        ]
-                    ]
-                ],
-                [
-                    [
-                        "CHARMS",
-                        "detailed"
-                    ],
-                    [
-                        [
-                            "Supernatural CHARISMA",
-                            "0",
-                            ""
-                        ],
-                        [
-                            "ENHANCED Reflexes",
-                            "8",
-                            ""
-                        ],
-                        [
-                            "ENHANCED SENSES",
-                            "8",
-                            "- [Exhausted] Shutdown any Charms power to gain a mote. Activate a spoiler to recover the power, or recover for free during the next transition scene."
-                        ]
-                    ]
-                ],
-                [
-                    [
-                        "SORCERY",
-                        "detailed"
-                    ],
-                    [
-                        [
-                            "TERRESTRIAL CIRCLE SORCERY",
-                            "8",
-                            "You can summon demons of the First Circle and perform lesser sorcerous workings.",
-                            "- [Utility Magic] A dice pool containing Sorcery cannot be used to inflict stress."
-                        ]
-                    ]
-                ]
+              "<i>Pick 2 abilities when rolling.</i>",
+              "",
+              ""
+            ]
+          ]
+        ],
+        [
+          [
+            "Battle",
+            "compact"
+          ],
+          [
+            [
+              "Archery",
+              "4"
             ],
             [
-                [
-                    [
-                        "PANOPLY",
-                        "detailed"
-                    ],
-                    [
-                        [
-                            "RESOURCES",
-                            "8",
-                            "You have access to substantial wealth and know how to use it to gain influence."
-                        ],
-                        [
-                            "MANSE",
-                            "6",
-                            "- [Hearthstone of the Dreamwalker] You can enter the dreams of other people in your presence, and attempt to purloin their thoughts and memories, or even plant new ones."
-                        ],
-                        [
-                            "CONNECTIONS",
-                            "6",
-                            "You have friends here and there, mostly among those without much influence."
-                        ],
-                        [
-                            "DEATH OF OBSIDIAN BUTTERFLIES",
-                            "6",
-                            "<i>Ten thousand butterflies made of black volcanic glass with razor-sharp wings</i>",
-                            "- [Widespread] When attacking multiple targets with this spell, for each additional target add a d6 and keep an additional effect die.",
-                            "- [Fragile] Shutdown this power after use. Recover for free during the next transition scene."
-                        ]
-                    ]
-                ],
-                [
-                    [
-                        "MARTIAL ARTS",
-                        "detailed"
-                    ],
-                    [
-                        [
-                            "Ebon Shadow Style",
-                            "6",
-                            "A style spoken of in hushed tones, focusing on speed, striking first, and the manipulation of literal shadows to cloak you or even strike your enemies."
-                        ]
-                    ]
-                ]
+              "Athletics",
+              "6"
+            ],
+            [
+              "Awareness",
+              "8"
+            ],
+            [
+              "Brawl",
+              "6"
+            ],
+            [
+              "Dodge",
+              "8"
+            ],
+            [
+              "Endurance",
+              "6"
+            ],
+            [
+              "Integrity",
+              "6"
+            ],
+            [
+              "Melee",
+              "4"
+            ],
+            [
+              "Thrown",
+              "4"
+            ],
+            [
+              "War",
+              "4"
             ]
+          ]
+        ],
+        [
+          [
+            "LIFE",
+            "compact"
+          ],
+          [
+            [
+              "Craft",
+              "8"
+            ],
+            [
+              "Larceny",
+              "2"
+            ],
+            [
+              "Linguistics",
+              "0"
+            ],
+            [
+              "Performance",
+              "2"
+            ],
+            [
+              "Presence",
+              "8"
+            ],
+            [
+              "Ride",
+              "4"
+            ],
+            [
+              "Sail",
+              "4"
+            ],
+            [
+              "Socialize",
+              "2"
+            ],
+            [
+              "Stealth",
+              "0"
+            ],
+            [
+              "Survival",
+              "6"
+            ]
+          ]
+        ],
+        [
+          [
+            "WISDOM",
+            "compact"
+          ],
+          [
+            [
+              "Bureaucracy",
+              "0"
+            ],
+            [
+              "Investigation",
+              "0"
+            ],
+            [
+              "Lore",
+              "6"
+            ],
+            [
+              "Medicine",
+              "4"
+            ],
+            [
+              "Occult",
+              "8"
+            ]
+          ]
+        ],
+        [
+          [
+            "STRESS",
+            "stress compact"
+          ],
+          [
+            [
+              "Physical",
+              "∅"
+            ],
+            [
+              "Social",
+              "∅"
+            ],
+            [
+              "Mental",
+              "∅"
+            ]
+          ]
         ]
+      ],
+      [
+        [
+          [
+            "ESSENCE",
+            "detailed"
+          ],
+          [
+            [
+              "Essence",
+              "0",
+              "- [Casteless] Spend a mote to double your Shapeshift power for one roll. While your anima banner is visible, you may step up your mental stress to keep three dice on a roll including Shapeshift.",
+              "- [The Tell] In all forms, there's something slightly off about you, but it's hard to describe. People will not notice this unless your Anima reaches d10."
+            ]
+          ]
+        ],
+        [
+          [
+            "DISTINCTIONS",
+            "detailed"
+          ],
+          [
+            [
+              "Whoever You Want To Be",
+              "8 / 4+mote",
+              "- [Friends in Low Places] When you spend a mote to create an NPC Extra as an asset, that asset enters play as a d8 rather than a d6."
+            ],
+            [
+              "ATTACHMENTS ARE FOR OTHERS",
+              "8 / 4+mote",
+              ""
+            ],
+            [
+              "FLEE THE CONSEQUENCES",
+              "8 / 4+mote",
+              ""
+            ]
+          ]
+        ],
+        [
+          [
+            "INTIMACIES",
+            "detailed"
+          ],
+          [
+            [
+              "ME, MYSELF, AND I",
+              "0",
+              "You're always looking out for number one. So is everyone else, even if they won't admit it."
+            ],
+            [
+              "HOME IS WHERE YOU BELONG",
+              "8",
+              "You want to fit in. You keep thinking you found places you do, but it all blows up in the end."
+            ],
+            [
+              "A GOOD TEA IS SOOTHING",
+              "6",
+              "It calms the souls and warms the heart. For a moment, there is kinship even among enemies.",
+              "It reminds you of a time long ago, before you were you."
+            ]
+          ]
+        ],
+        [
+          [
+            "LIMIT",
+            "stress"
+          ],
+          [
+            [
+              "Limit Break",
+              "∅",
+              "[Analysis Paralysis] When others turn to me to make a major choice that decides lives and deaths, I feel overwhelmed and become incapable of making any decisions at all."
+            ]
+          ]
+        ]
+      ]
     ],
-    "highlightColors": {
-        ":root": "#878787"
-    }
+    [
+      [
+        [
+          [
+            "Shapeshifting",
+            "detailed"
+          ],
+          [
+            [
+              "SHAPESHIFT",
+              "0",
+              "- [Heart's Blood] You can take the form of any beast whose heart you have eaten.",
+              "- [Prey's Skin Disguise] As an alternative to eating something's heart, you only need to study them closely to mimic their form.",
+              "- [Finding the Spirit's Shape] Your True Form is human.",
+              "- [Masking the Brilliant Form] Your Tell is very hard to discern.",
+              "- [Wondrous Lunar Transformation] You can use your shapeshifting ability on another subject, but it takes a great deal of time and effort.",
+              "- [Lunacy] When you include Shapeshift in a roll to create an asset or complication, both 1s and 2s count as spoilers. Only 1s are excluded from use as total and effect dice."
+            ]
+          ]
+        ],
+        [
+          [
+            "CHARMS",
+            "detailed"
+          ],
+          [
+            [
+              "Supernatural CHARISMA",
+              "0",
+              ""
+            ],
+            [
+              "ENHANCED Reflexes",
+              "8",
+              ""
+            ],
+            [
+              "ENHANCED SENSES",
+              "8",
+              "- [Exhausted] Shutdown any Charms power to gain a mote. Activate a spoiler to recover the power, or recover for free during the next transition scene."
+            ]
+          ]
+        ],
+        [
+          [
+            "SORCERY",
+            "detailed"
+          ],
+          [
+            [
+              "TERRESTRIAL CIRCLE SORCERY",
+              "8",
+              "You can summon demons of the First Circle and perform lesser sorcerous workings.",
+              "- [Utility Magic] A dice pool containing Sorcery cannot be used to inflict stress."
+            ]
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            "PANOPLY",
+            "detailed"
+          ],
+          [
+            [
+              "RESOURCES",
+              "8",
+              "You have access to substantial wealth and know how to use it to gain influence."
+            ],
+            [
+              "MANSE",
+              "6",
+              "- [Hearthstone of the Dreamwalker] You can enter the dreams of other people in your presence, and attempt to purloin their thoughts and memories, or even plant new ones."
+            ],
+            [
+              "CONNECTIONS",
+              "6",
+              "You have friends here and there, mostly among those without much influence."
+            ],
+            [
+              "DEATH OF OBSIDIAN BUTTERFLIES",
+              "6",
+              "<i>Ten thousand butterflies made of black volcanic glass with razor-sharp wings</i>",
+              "- [Widespread] When attacking multiple targets with this spell, for each additional target add a d6 and keep an additional effect die.",
+              "- [Fragile] Shutdown this power after use. Recover for free during the next transition scene."
+            ]
+          ]
+        ],
+        [
+          [
+            "MARTIAL ARTS",
+            "detailed"
+          ],
+          [
+            [
+              "Ebon Shadow Style",
+              "6",
+              "A style spoken of in hushed tones, focusing on speed, striking first, and the manipulation of literal shadows to cloak you or even strike your enemies."
+            ]
+          ]
+        ]
+      ]
+    ]
+  ],
+  "highlightColors": {
+    ":root": "#878787"
+  }
 }

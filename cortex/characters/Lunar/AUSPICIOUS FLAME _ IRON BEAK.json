@@ -1,368 +1,368 @@
 {
-    "version": 4,
-    "characterName": "AUSPICIOUS FLAME / IRON BEAK",
-    "description": "You were once a smith, turning a blind eye to the source of the profits you made outfitting Lintha pirates, until they kidnapped your children to ensure compliance, and in a moment of rage you Exalted, slaying their emissary with a red-hot blade and turning into a giant seagull to track down their ship and wipe out the abductors. Now you lead a double life as the dread Iron Beak, hunting down bandits and marauders of all sort.",
-    "traits": [
+  "version": 4,
+  "characterName": "AUSPICIOUS FLAME / IRON BEAK",
+  "description": "You were once a smith, turning a blind eye to the source of the profits you made outfitting Lintha pirates, until they kidnapped your children to ensure compliance, and in a moment of rage you Exalted, slaying their emissary with a red-hot blade and turning into a giant seagull to track down their ship and wipe out the abductors. Now you lead a double life as the dread Iron Beak, hunting down bandits and marauders of all sort.",
+  "traits": [
+    [
+      [
         [
+          [
+            "ANIMA",
+            "stress"
+          ],
+          [
             [
-                [
-                    [
-                        "ANIMA",
-                        "stress"
-                    ],
-                    [
-                        [
-                            "Anima",
-                            "6",
-                            "<i>An oversized seagull, imposing, determined, and with clear spite filling its eyes</i>",
-                            "- Adds to most actions, complicates stealth.",
-                            "- Step up whenever you spend a mote.",
-                            "- [Flare] Once per scene, you may add d6 to the doom pool to gain a mote and step up your anima."
-                        ]
-                    ]
-                ],
-                [
-                    [
-                        "ABILITIES",
-                        "signature-asset"
-                    ],
-                    [
-                        [
-                            "<i>Pick 2 abilities when rolling.</i>",
-                            "",
-                            ""
-                        ]
-                    ]
-                ],
-                [
-                    [
-                        "BATTLE",
-                        "compact"
-                    ],
-                    [
-                        [
-                            "ARCHERY",
-                            "4"
-                        ],
-                        [
-                            "Athletics",
-                            "0"
-                        ],
-                        [
-                            "Awareness",
-                            "6"
-                        ],
-                        [
-                            "Brawl",
-                            "2"
-                        ],
-                        [
-                            "Dodge",
-                            "2"
-                        ],
-                        [
-                            "Endurance",
-                            "0"
-                        ],
-                        [
-                            "Integrity",
-                            "8"
-                        ],
-                        [
-                            "MELEE",
-                            "6"
-                        ],
-                        [
-                            "Thrown",
-                            "6"
-                        ],
-                        [
-                            "War",
-                            "4"
-                        ]
-                    ]
-                ],
-                [
-                    [
-                        "LIFE",
-                        "compact"
-                    ],
-                    [
-                        [
-                            "CRAFT",
-                            "2"
-                        ],
-                        [
-                            "Larceny",
-                            "6"
-                        ],
-                        [
-                            "Linguistics",
-                            "4"
-                        ],
-                        [
-                            "Performance",
-                            "4"
-                        ],
-                        [
-                            "Presence",
-                            "4"
-                        ],
-                        [
-                            "Ride",
-                            "4"
-                        ],
-                        [
-                            "Sail",
-                            "0"
-                        ],
-                        [
-                            "Socialize",
-                            "6"
-                        ],
-                        [
-                            "Stealth",
-                            "8"
-                        ],
-                        [
-                            "Survival",
-                            "8"
-                        ]
-                    ]
-                ],
-                [
-                    [
-                        "WISDOM",
-                        "compact"
-                    ],
-                    [
-                        [
-                            "Bureaucracy",
-                            "4"
-                        ],
-                        [
-                            "Investigation",
-                            "6"
-                        ],
-                        [
-                            "Lore",
-                            "8"
-                        ],
-                        [
-                            "Medicine",
-                            "8"
-                        ],
-                        [
-                            "Occult",
-                            "0"
-                        ]
-                    ]
-                ],
-                [
-                    [
-                        "STRESS",
-                        "stress compact"
-                    ],
-                    [
-                        [
-                            "Physical",
-                            "6"
-                        ],
-                        [
-                            "Social",
-                            "6"
-                        ],
-                        [
-                            "Mental",
-                            "6"
-                        ]
-                    ]
-                ]
-            ],
-            [
-                [
-                    [
-                        "ESSENCE",
-                        "detailed"
-                    ],
-                    [
-                        [
-                            "ESSENCE",
-                            "0",
-                            "- [Changing Moon Caste] Spend a mote to double any Life ability for one roll. While your anima banner is visible, step up the effect die for any roll you make including Presence, Socialize, or Stealth.",
-                            "- [The Tell] In all forms, you have nails and teeth made of iron. People will not notice this unless your Anima reaches d6."
-                        ]
-                    ]
-                ],
-                [
-                    [
-                        "DISTINCTIONS",
-                        "detailed"
-                    ],
-                    [
-                        [
-                            "MASTER SMITH",
-                            "8 / 4+mote",
-                            "- [Craftsman Needs No Tools] When you create an asset representing a physical object you made, that asset enters play as a d8 and it automatically lasts for the rest of the act."
-                        ],
-                        [
-                            "RELENTLESS PURSUIT",
-                            "8 / 4+mote",
-                            ""
-                        ],
-                        [
-                            "COMPLICITY REQUIRES ATONEMENT",
-                            "8 / 4+mote",
-                            ""
-                        ]
-                    ]
-                ],
-                [
-                    [
-                        "INTIMACIES",
-                        "detailed"
-                    ],
-                    [
-                        [
-                            "MY CHILDREN",
-                            "0",
-                            "Though fully grown with children of their own, they remain everything to you, and the impetus that drove your Exaltation."
-                        ],
-                        [
-                            "SEA & STEEL",
-                            "8",
-                            "You often don't get people. The depths of the ocean, the cold edge of a blade, the fury of a storm, the fire of a forge, those make sense. They're soothing."
-                        ],
-                        [
-                            "MAKE, DO NOT TAKE",
-                            "8",
-                            "We all bear a responsibility to add to the world, to make and to share with others. Those who only take and do not give are a plague."
-                        ],
-                        [
-                            "IF NOT ME, THEN WHO",
-                            "6",
-                            "Accept accountability. Take action. Do not look to others to solve problems that you see."
-                        ]
-                    ]
-                ],
-                [
-                    [
-                        "LIMIT",
-                        "stress"
-                    ],
-                    [
-                        [
-                            "Limit Break",
-                            "6",
-                            "[Red Rage of Tears] When I see innocents suffering through no fault of their own, I feel furious and destroy those who would torment them."
-                        ]
-                    ]
-                ]
+              "Anima",
+              "∅",
+              "<i>An oversized seagull, imposing, determined, and with clear spite filling its eyes</i>",
+              "- Adds to most actions, complicates stealth.",
+              "- Step up whenever you spend a mote.",
+              "- [Flare] Once per scene, you may add d6 to the doom pool to gain a mote and step up your anima."
             ]
+          ]
         ],
         [
+          [
+            "ABILITIES",
+            "signature-asset"
+          ],
+          [
             [
-                [
-                    [
-                        "Shapeshifting",
-                        "detailed"
-                    ],
-                    [
-                        [
-                            "Shapeshift",
-                            "0",
-                            "- [Heart's Blood] You can take the form of any beast whose heart you have eaten.",
-                            "- [Echoes of the Fallen] You can take the mortal form of any ghost who spends a scene telling you of unfinished business they have with the living or of any hungry ghost whose spirit you devour.",
-                            "- [Finding the Spirit's Shape] Your True Forms are human and seagull.",
-                            "- [Iron Blood Understanding] You can shapeshift into metal as well as flesh. Spend a mote to ignore physical stress not inflicted with a Magical Material.",
-                            "- [Moonsilver Tattoos] Spend a mote to ignore stress or complications from an attack including the Transmutation power or Wyld-based hazards."
-                        ]
-                    ]
-                ],
-                [
-                    [
-                        "CHARMS",
-                        "detailed"
-                    ],
-                    [
-                        [
-                            "ENHANCED DURABILITY",
-                            "8",
-                            ""
-                        ],
-                        [
-                            "ENHANCED SENSES",
-                            "8",
-                            ""
-                        ],
-                        [
-                            "ENHANCED Speed",
-                            "8",
-                            ""
-                        ],
-                        [
-                            "ENHANCED Strength",
-                            "8",
-                            "- [Exhausted] Shutdown any Charms power to gain a mote. Activate a spoiler to recover the power, or recover for free during the next transition scene."
-                        ]
-                    ]
-                ],
-                [
-                    [
-                        "SORCERY",
-                        "detailed"
-                    ],
-                    [
-                        [
-                            "TERRESTRIAL CIRCLE SORCERY",
-                            "8",
-                            "You can summon demons of the First Circle and perform lesser sorcerous workings.",
-                            "- [Utility Magic] A dice pool containing Sorcery cannot be used to inflict stress."
-                        ]
-                    ]
-                ]
+              "<i>Pick 2 abilities when rolling.</i>",
+              "",
+              ""
+            ]
+          ]
+        ],
+        [
+          [
+            "BATTLE",
+            "compact"
+          ],
+          [
+            [
+              "ARCHERY",
+              "4"
             ],
             [
-                [
-                    [
-                        "PANOPLY",
-                        "detailed"
-                    ],
-                    [
-                        [
-                            "CONNECTIONS",
-                            "6",
-                            "You have friends among sailors and soldiers, those who work with the sea or with steel."
-                        ],
-                        [
-                            "Resources",
-                            "6",
-                            "You have a decent amount of wealth built up."
-                        ],
-                        [
-                            "RENOWN",
-                            "6",
-                            "You are developing a reputation within Lunar society."
-                        ]
-                    ]
-                ],
-                [
-                    [
-                        "MARTIAL ARTS",
-                        "detailed"
-                    ],
-                    [
-                        [
-                            "MOLTEN BLADE STYLE",
-                            "8",
-                            "Your own creation, a unique approach relying on the ability to turn parts of your body to metal and back mid-motion in order to deflect blows and strike with terrifying force while remaining agile."
-                        ]
-                    ]
-                ]
+              "Athletics",
+              "0"
+            ],
+            [
+              "Awareness",
+              "6"
+            ],
+            [
+              "Brawl",
+              "2"
+            ],
+            [
+              "Dodge",
+              "2"
+            ],
+            [
+              "Endurance",
+              "0"
+            ],
+            [
+              "Integrity",
+              "8"
+            ],
+            [
+              "MELEE",
+              "6"
+            ],
+            [
+              "Thrown",
+              "6"
+            ],
+            [
+              "War",
+              "4"
             ]
+          ]
+        ],
+        [
+          [
+            "LIFE",
+            "compact"
+          ],
+          [
+            [
+              "CRAFT",
+              "2"
+            ],
+            [
+              "Larceny",
+              "6"
+            ],
+            [
+              "Linguistics",
+              "4"
+            ],
+            [
+              "Performance",
+              "4"
+            ],
+            [
+              "Presence",
+              "4"
+            ],
+            [
+              "Ride",
+              "4"
+            ],
+            [
+              "Sail",
+              "0"
+            ],
+            [
+              "Socialize",
+              "6"
+            ],
+            [
+              "Stealth",
+              "8"
+            ],
+            [
+              "Survival",
+              "8"
+            ]
+          ]
+        ],
+        [
+          [
+            "WISDOM",
+            "compact"
+          ],
+          [
+            [
+              "Bureaucracy",
+              "4"
+            ],
+            [
+              "Investigation",
+              "6"
+            ],
+            [
+              "Lore",
+              "8"
+            ],
+            [
+              "Medicine",
+              "8"
+            ],
+            [
+              "Occult",
+              "0"
+            ]
+          ]
+        ],
+        [
+          [
+            "STRESS",
+            "stress compact"
+          ],
+          [
+            [
+              "Physical",
+              "∅"
+            ],
+            [
+              "Social",
+              "∅"
+            ],
+            [
+              "Mental",
+              "∅"
+            ]
+          ]
         ]
+      ],
+      [
+        [
+          [
+            "ESSENCE",
+            "detailed"
+          ],
+          [
+            [
+              "ESSENCE",
+              "0",
+              "- [Changing Moon Caste] Spend a mote to double any Life ability for one roll. While your anima banner is visible, step up the effect die for any roll you make including Presence, Socialize, or Stealth.",
+              "- [The Tell] In all forms, you have nails and teeth made of iron. People will not notice this unless your Anima reaches d6."
+            ]
+          ]
+        ],
+        [
+          [
+            "DISTINCTIONS",
+            "detailed"
+          ],
+          [
+            [
+              "MASTER SMITH",
+              "8 / 4+mote",
+              "- [Craftsman Needs No Tools] When you create an asset representing a physical object you made, that asset enters play as a d8 and it automatically lasts for the rest of the act."
+            ],
+            [
+              "RELENTLESS PURSUIT",
+              "8 / 4+mote",
+              ""
+            ],
+            [
+              "COMPLICITY REQUIRES ATONEMENT",
+              "8 / 4+mote",
+              ""
+            ]
+          ]
+        ],
+        [
+          [
+            "INTIMACIES",
+            "detailed"
+          ],
+          [
+            [
+              "MY CHILDREN",
+              "0",
+              "Though fully grown with children of their own, they remain everything to you, and the impetus that drove your Exaltation."
+            ],
+            [
+              "SEA &amp; STEEL",
+              "8",
+              "You often don't get people. The depths of the ocean, the cold edge of a blade, the fury of a storm, the fire of a forge, those make sense. They're soothing."
+            ],
+            [
+              "MAKE, DO NOT TAKE",
+              "8",
+              "We all bear a responsibility to add to the world, to make and to share with others. Those who only take and do not give are a plague."
+            ],
+            [
+              "IF NOT ME, THEN WHO",
+              "6",
+              "Accept accountability. Take action. Do not look to others to solve problems that you see."
+            ]
+          ]
+        ],
+        [
+          [
+            "LIMIT",
+            "stress"
+          ],
+          [
+            [
+              "Limit Break",
+              "∅",
+              "[Red Rage of Tears] When I see innocents suffering through no fault of their own, I feel furious and destroy those who would torment them."
+            ]
+          ]
+        ]
+      ]
     ],
-    "highlightColors": {
-        ":root": "#878787"
-    }
+    [
+      [
+        [
+          [
+            "Shapeshifting",
+            "detailed"
+          ],
+          [
+            [
+              "Shapeshift",
+              "0",
+              "- [Heart's Blood] You can take the form of any beast whose heart you have eaten.",
+              "- [Echoes of the Fallen] You can take the mortal form of any ghost who spends a scene telling you of unfinished business they have with the living or of any hungry ghost whose spirit you devour.",
+              "- [Finding the Spirit's Shape] Your True Forms are human and seagull.",
+              "- [Iron Blood Understanding] You can shapeshift into metal as well as flesh. Spend a mote to ignore physical stress not inflicted with a Magical Material.",
+              "- [Moonsilver Tattoos] Spend a mote to ignore stress or complications from an attack including the Transmutation power or Wyld-based hazards."
+            ]
+          ]
+        ],
+        [
+          [
+            "CHARMS",
+            "detailed"
+          ],
+          [
+            [
+              "ENHANCED DURABILITY",
+              "8",
+              ""
+            ],
+            [
+              "ENHANCED SENSES",
+              "8",
+              ""
+            ],
+            [
+              "ENHANCED Speed",
+              "8",
+              ""
+            ],
+            [
+              "ENHANCED Strength",
+              "8",
+              "- [Exhausted] Shutdown any Charms power to gain a mote. Activate a spoiler to recover the power, or recover for free during the next transition scene."
+            ]
+          ]
+        ],
+        [
+          [
+            "SORCERY",
+            "detailed"
+          ],
+          [
+            [
+              "TERRESTRIAL CIRCLE SORCERY",
+              "8",
+              "You can summon demons of the First Circle and perform lesser sorcerous workings.",
+              "- [Utility Magic] A dice pool containing Sorcery cannot be used to inflict stress."
+            ]
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            "PANOPLY",
+            "detailed"
+          ],
+          [
+            [
+              "CONNECTIONS",
+              "6",
+              "You have friends among sailors and soldiers, those who work with the sea or with steel."
+            ],
+            [
+              "Resources",
+              "6",
+              "You have a decent amount of wealth built up."
+            ],
+            [
+              "RENOWN",
+              "6",
+              "You are developing a reputation within Lunar society."
+            ]
+          ]
+        ],
+        [
+          [
+            "MARTIAL ARTS",
+            "detailed"
+          ],
+          [
+            [
+              "MOLTEN BLADE STYLE",
+              "8",
+              "Your own creation, a unique approach relying on the ability to turn parts of your body to metal and back mid-motion in order to deflect blows and strike with terrifying force while remaining agile."
+            ]
+          ]
+        ]
+      ]
+    ]
+  ],
+  "highlightColors": {
+    ":root": "#878787"
+  }
 }

@@ -1,337 +1,337 @@
 {
-    "version": 4,
-    "characterName": "LASSAD THE LUCKY",
-    "description": "A happy-go-lucky rogue and a scoundrel; Loves traveling, sharing a good adventure with companions, then seeing what's over the next horizon; Better lucky than good, never learned to be careful, it always works out",
-    "traits": [
+  "version": 4,
+  "characterName": "LASSAD THE LUCKY",
+  "description": "A happy-go-lucky rogue and a scoundrel; Loves traveling, sharing a good adventure with companions, then seeing what's over the next horizon; Better lucky than good, never learned to be careful, it always works out",
+  "traits": [
+    [
+      [
         [
+          [
+            "ANIMA",
+            "stress"
+          ],
+          [
             [
-                [
-                    [
-                        "ANIMA",
-                        "stress"
-                    ],
-                    [
-                        [
-                            "Anima",
-                            "6",
-                            "<i>A fennec fox, sleek and charming, hinting at speed and danger</i>",
-                            "- Adds to most actions, complicates stealth.",
-                            "- Step up whenever you spend a mote.",
-                            "- [Flare] Once per scene, you may add d6 to the doom pool to gain a mote and step up your anima."
-                        ]
-                    ]
-                ],
-                [
-                    [
-                        "ABILITIES",
-                        "signature-asset"
-                    ],
-                    [
-                        [
-                            "<i>Pick 2 abilities when rolling.</i>",
-                            "",
-                            ""
-                        ]
-                    ]
-                ],
-                [
-                    [
-                        "BATTLE",
-                        "compact"
-                    ],
-                    [
-                        [
-                            "Archery",
-                            "4"
-                        ],
-                        [
-                            "Athletics",
-                            "0"
-                        ],
-                        [
-                            "Awareness",
-                            "4"
-                        ],
-                        [
-                            "Brawl",
-                            "6"
-                        ],
-                        [
-                            "Dodge",
-                            "2"
-                        ],
-                        [
-                            "Endurance",
-                            "6"
-                        ],
-                        [
-                            "Integrity",
-                            "6"
-                        ],
-                        [
-                            "MELEE",
-                            "2"
-                        ],
-                        [
-                            "Thrown",
-                            "8"
-                        ],
-                        [
-                            "War",
-                            "4"
-                        ]
-                    ]
-                ],
-                [
-                    [
-                        "LIFE",
-                        "compact"
-                    ],
-                    [
-                        [
-                            "Craft",
-                            "4"
-                        ],
-                        [
-                            "Larceny",
-                            "2"
-                        ],
-                        [
-                            "Linguistics",
-                            "6"
-                        ],
-                        [
-                            "Performance",
-                            "8"
-                        ],
-                        [
-                            "Presence",
-                            "8"
-                        ],
-                        [
-                            "Ride",
-                            "6"
-                        ],
-                        [
-                            "Sail",
-                            "6"
-                        ],
-                        [
-                            "Socialize",
-                            "0"
-                        ],
-                        [
-                            "Stealth",
-                            "0"
-                        ],
-                        [
-                            "Survival",
-                            "0"
-                        ]
-                    ]
-                ],
-                [
-                    [
-                        "WISDOM",
-                        "compact"
-                    ],
-                    [
-                        [
-                            "Bureaucracy",
-                            "8"
-                        ],
-                        [
-                            "Investigation",
-                            "8"
-                        ],
-                        [
-                            "Lore",
-                            "4"
-                        ],
-                        [
-                            "Medicine",
-                            "4"
-                        ],
-                        [
-                            "Occult",
-                            "4"
-                        ]
-                    ]
-                ],
-                [
-                    [
-                        "STRESS",
-                        "stress compact"
-                    ],
-                    [
-                        [
-                            "Physical",
-                            "6"
-                        ],
-                        [
-                            "Social",
-                            "6"
-                        ],
-                        [
-                            "Mental",
-                            "6"
-                        ]
-                    ]
-                ]
-            ],
-            [
-                [
-                    [
-                        "ESSENCE",
-                        "detailed"
-                    ],
-                    [
-                        [
-                            "Essence",
-                            "0",
-                            "- [Changing Moon Caste] Spend a mote to double any Life ability for one roll. While your anima banner is visible, step up the effect die for any roll you make including Presence, Socialize, or Stealth.",
-                            "- [The Tell] In all forms, you have a fox tail. People will not notice this unless your Anima reaches d6."
-                        ]
-                    ]
-                ],
-                [
-                    [
-                        "DISTINCTIONS",
-                        "detailed"
-                    ],
-                    [
-                        [
-                            "Outrageously Lucky",
-                            "8 / 4+mote",
-                            "- [Just What I Needed] When you create a tactical asset by spending a mote, that asset enters play as a d8 rather than a d6, but it cannot be extended past the end of the scene."
-                        ],
-                        [
-                            "LIFE IS FUN",
-                            "8 / 4+mote",
-                            ""
-                        ],
-                        [
-                            "SEE THE WORLD, ALL OF IT",
-                            "8 / 4+mote",
-                            ""
-                        ]
-                    ]
-                ],
-                [
-                    [
-                        "INTIMACIES",
-                        "detailed"
-                    ],
-                    [
-                        [
-                            "FREEDOM IS JOY",
-                            "0",
-                            "Everyone should get to make the choices they want. Oppression and control are obscene."
-                        ],
-                        [
-                            "COMPANIONS MAKE THE JOURNEY",
-                            "8",
-                            "Just because you can do what you want, doesn't mean you should do it alone."
-                        ],
-                        [
-                            "KARMA LIKES THE HELP",
-                            "6",
-                            "Everyone makes choices. Sometimes the universe needs a little nudge when it comes to the delivering the consequences, good or bad."
-                        ]
-                    ]
-                ],
-                [
-                    [
-                        "LIMIT",
-                        "stress"
-                    ],
-                    [
-                        [
-                            "Limit Break",
-                            "6",
-                            "[Deliberate Cruelty] When the foolishness of others impedes my efforts, I feel frustrated and viciously lash out at my friends and allies."
-                        ]
-                    ]
-                ]
+              "Anima",
+              "∅",
+              "<i>A fennec fox, sleek and charming, hinting at speed and danger</i>",
+              "- Adds to most actions, complicates stealth.",
+              "- Step up whenever you spend a mote.",
+              "- [Flare] Once per scene, you may add d6 to the doom pool to gain a mote and step up your anima."
             ]
+          ]
         ],
         [
+          [
+            "ABILITIES",
+            "signature-asset"
+          ],
+          [
             [
-                [
-                    [
-                        "Shapeshifting",
-                        "detailed"
-                    ],
-                    [
-                        [
-                            "Shapeshift",
-                            "8",
-                            "- [Heart's Blood] You can take the form of any beast whose heart you have eaten.",
-                            "- [First Time's the Charm] The first time you ever lay eyes upon another being, you can immediately copy their shape. This does not add it to your shape library, the form only lasts one scene before starting to go wrong, and you cannot reassume it afterwards without learning it normally. This ability only works on humans and other species for which you already have another example in your shape library.",
-                            "- [Finding the Spirit's Shape] Your True Forms are human, fennec, and fennec-human hybrid.",
-                            "- [Deadly Beast Transformation] When in hybrid fennec-human form, you may include any number of Charms powers in a roll.",
-                            "- [Spitfire] You can make ranged attacks by spitting flaming projectiles. People find this very surprising, but you had to learn to do it after a terrible pun involving \"firefox\".",
-                            "- [Moonsilver Tattoos] Spend a mote to ignore stress or complications from an attack including the Transmutation power or Wyld-based hazards."
-                        ]
-                    ]
-                ],
-                [
-                    [
-                        "CHARMS",
-                        "detailed"
-                    ],
-                    [
-                        [
-                            "ENHANCED CHARISMA",
-                            "8",
-                            ""
-                        ],
-                        [
-                            "ENHANCED Reflexes",
-                            "8",
-                            ""
-                        ],
-                        [
-                            "ENHANCED Speed",
-                            "8",
-                            ""
-                        ],
-                        [
-                            "ENHANCED Strength",
-                            "8",
-                            "- [Exhausted] Shutdown any Charms power to gain a mote. Activate a spoiler to recover the power, or recover for free during the next transition scene."
-                        ]
-                    ]
-                ]
+              "<i>Pick 2 abilities when rolling.</i>",
+              "",
+              ""
+            ]
+          ]
+        ],
+        [
+          [
+            "BATTLE",
+            "compact"
+          ],
+          [
+            [
+              "Archery",
+              "4"
             ],
             [
-                [
-                    [
-                        "PANOPLY",
-                        "detailed"
-                    ],
-                    [
-                        [
-                            "The Flaming Blade",
-                            "8",
-                            "A moonsilver daiklave with swirls of red jade embedded throughout, capable of igniting on command."
-                        ],
-                        [
-                            "CONNECTIONS",
-                            "8",
-                            "You have friends absolutely everywhere."
-                        ],
-                        [
-                            "Luck",
-                            "6",
-                            "You really are just stupidly lucky."
-                        ]
-                    ]
-                ]
+              "Athletics",
+              "0"
+            ],
+            [
+              "Awareness",
+              "4"
+            ],
+            [
+              "Brawl",
+              "6"
+            ],
+            [
+              "Dodge",
+              "2"
+            ],
+            [
+              "Endurance",
+              "6"
+            ],
+            [
+              "Integrity",
+              "6"
+            ],
+            [
+              "MELEE",
+              "2"
+            ],
+            [
+              "Thrown",
+              "8"
+            ],
+            [
+              "War",
+              "4"
             ]
+          ]
+        ],
+        [
+          [
+            "LIFE",
+            "compact"
+          ],
+          [
+            [
+              "Craft",
+              "4"
+            ],
+            [
+              "Larceny",
+              "2"
+            ],
+            [
+              "Linguistics",
+              "6"
+            ],
+            [
+              "Performance",
+              "8"
+            ],
+            [
+              "Presence",
+              "8"
+            ],
+            [
+              "Ride",
+              "6"
+            ],
+            [
+              "Sail",
+              "6"
+            ],
+            [
+              "Socialize",
+              "0"
+            ],
+            [
+              "Stealth",
+              "0"
+            ],
+            [
+              "Survival",
+              "0"
+            ]
+          ]
+        ],
+        [
+          [
+            "WISDOM",
+            "compact"
+          ],
+          [
+            [
+              "Bureaucracy",
+              "8"
+            ],
+            [
+              "Investigation",
+              "8"
+            ],
+            [
+              "Lore",
+              "4"
+            ],
+            [
+              "Medicine",
+              "4"
+            ],
+            [
+              "Occult",
+              "4"
+            ]
+          ]
+        ],
+        [
+          [
+            "STRESS",
+            "stress compact"
+          ],
+          [
+            [
+              "Physical",
+              "∅"
+            ],
+            [
+              "Social",
+              "∅"
+            ],
+            [
+              "Mental",
+              "∅"
+            ]
+          ]
         ]
+      ],
+      [
+        [
+          [
+            "ESSENCE",
+            "detailed"
+          ],
+          [
+            [
+              "Essence",
+              "0",
+              "- [Changing Moon Caste] Spend a mote to double any Life ability for one roll. While your anima banner is visible, step up the effect die for any roll you make including Presence, Socialize, or Stealth.",
+              "- [The Tell] In all forms, you have a fox tail. People will not notice this unless your Anima reaches d6."
+            ]
+          ]
+        ],
+        [
+          [
+            "DISTINCTIONS",
+            "detailed"
+          ],
+          [
+            [
+              "Outrageously Lucky",
+              "8 / 4+mote",
+              "- [Just What I Needed] When you create a tactical asset by spending a mote, that asset enters play as a d8 rather than a d6, but it cannot be extended past the end of the scene."
+            ],
+            [
+              "LIFE IS FUN",
+              "8 / 4+mote",
+              ""
+            ],
+            [
+              "SEE THE WORLD, ALL OF IT",
+              "8 / 4+mote",
+              ""
+            ]
+          ]
+        ],
+        [
+          [
+            "INTIMACIES",
+            "detailed"
+          ],
+          [
+            [
+              "FREEDOM IS JOY",
+              "0",
+              "Everyone should get to make the choices they want. Oppression and control are obscene."
+            ],
+            [
+              "COMPANIONS MAKE THE JOURNEY",
+              "8",
+              "Just because you can do what you want, doesn't mean you should do it alone."
+            ],
+            [
+              "KARMA LIKES THE HELP",
+              "6",
+              "Everyone makes choices. Sometimes the universe needs a little nudge when it comes to the delivering the consequences, good or bad."
+            ]
+          ]
+        ],
+        [
+          [
+            "LIMIT",
+            "stress"
+          ],
+          [
+            [
+              "Limit Break",
+              "∅",
+              "[Deliberate Cruelty] When the foolishness of others impedes my efforts, I feel frustrated and viciously lash out at my friends and allies."
+            ]
+          ]
+        ]
+      ]
     ],
-    "highlightColors": {
-        ":root": "#878787"
-    }
+    [
+      [
+        [
+          [
+            "Shapeshifting",
+            "detailed"
+          ],
+          [
+            [
+              "Shapeshift",
+              "8",
+              "- [Heart's Blood] You can take the form of any beast whose heart you have eaten.",
+              "- [First Time's the Charm] The first time you ever lay eyes upon another being, you can immediately copy their shape. This does not add it to your shape library, the form only lasts one scene before starting to go wrong, and you cannot reassume it afterwards without learning it normally. This ability only works on humans and other species for which you already have another example in your shape library.",
+              "- [Finding the Spirit's Shape] Your True Forms are human, fennec, and fennec-human hybrid.",
+              "- [Deadly Beast Transformation] When in hybrid fennec-human form, you may include any number of Charms powers in a roll.",
+              "- [Spitfire] You can make ranged attacks by spitting flaming projectiles. People find this very surprising, but you had to learn to do it after a terrible pun involving \"firefox\".",
+              "- [Moonsilver Tattoos] Spend a mote to ignore stress or complications from an attack including the Transmutation power or Wyld-based hazards."
+            ]
+          ]
+        ],
+        [
+          [
+            "CHARMS",
+            "detailed"
+          ],
+          [
+            [
+              "ENHANCED CHARISMA",
+              "8",
+              ""
+            ],
+            [
+              "ENHANCED Reflexes",
+              "8",
+              ""
+            ],
+            [
+              "ENHANCED Speed",
+              "8",
+              ""
+            ],
+            [
+              "ENHANCED Strength",
+              "8",
+              "- [Exhausted] Shutdown any Charms power to gain a mote. Activate a spoiler to recover the power, or recover for free during the next transition scene."
+            ]
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            "PANOPLY",
+            "detailed"
+          ],
+          [
+            [
+              "The Flaming Blade",
+              "8",
+              "A moonsilver daiklave with swirls of red jade embedded throughout, capable of igniting on command."
+            ],
+            [
+              "CONNECTIONS",
+              "8",
+              "You have friends absolutely everywhere."
+            ],
+            [
+              "Luck",
+              "6",
+              "You really are just stupidly lucky."
+            ]
+          ]
+        ]
+      ]
+    ]
+  ],
+  "highlightColors": {
+    ":root": "#878787"
+  }
 }

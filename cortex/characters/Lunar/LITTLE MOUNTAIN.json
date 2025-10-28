@@ -1,331 +1,331 @@
 {
-    "version": 4,
-    "characterName": "LITTLE MOUNTAIN",
-    "description": "An impressively craggy tower of a person even in human form, takes up space both physically and socially,<div>Projects strength and charm, and wields both to take power, but uses it responsibly; Leads a mortal cult</div>",
-    "traits": [
+  "version": 4,
+  "characterName": "LITTLE MOUNTAIN",
+  "description": "An impressively craggy tower of a person even in human form, takes up space both physically and socially,<div>Projects strength and charm, and wields both to take power, but uses it responsibly; Leads a mortal cult</div>",
+  "traits": [
+    [
+      [
         [
+          [
+            "ANIMA",
+            "stress"
+          ],
+          [
             [
-                [
-                    [
-                        "ANIMA",
-                        "stress"
-                    ],
-                    [
-                        [
-                            "Anima",
-                            "6",
-                            "<i>An enormous, imposing bear that commands awe and respect</i>",
-                            "- Adds to most actions, complicates stealth.",
-                            "- Step up whenever you spend a mote.",
-                            "- [Flare] Once per scene, you may add d6 to the doom pool to gain a mote and step up your anima."
-                        ]
-                    ]
-                ],
-                [
-                    [
-                        "ABILITIES",
-                        "signature-asset"
-                    ],
-                    [
-                        [
-                            "<i>Pick 2 abilities when rolling.</i>",
-                            "",
-                            ""
-                        ]
-                    ]
-                ],
-                [
-                    [
-                        "BATTLE",
-                        "compact"
-                    ],
-                    [
-                        [
-                            "Archery",
-                            "4"
-                        ],
-                        [
-                            "Athletics",
-                            "2"
-                        ],
-                        [
-                            "Awareness",
-                            "8"
-                        ],
-                        [
-                            "Brawl",
-                            "2"
-                        ],
-                        [
-                            "Dodge",
-                            "8"
-                        ],
-                        [
-                            "Endurance",
-                            "0"
-                        ],
-                        [
-                            "Integrity",
-                            "0"
-                        ],
-                        [
-                            "Melee",
-                            "6"
-                        ],
-                        [
-                            "Thrown",
-                            "6"
-                        ],
-                        [
-                            "War",
-                            "8"
-                        ]
-                    ]
-                ],
-                [
-                    [
-                        "LIFE",
-                        "compact"
-                    ],
-                    [
-                        [
-                            "Craft",
-                            "6"
-                        ],
-                        [
-                            "Larceny",
-                            "4"
-                        ],
-                        [
-                            "Linguistics",
-                            "6"
-                        ],
-                        [
-                            "Performance",
-                            "0"
-                        ],
-                        [
-                            "Presence",
-                            "2"
-                        ],
-                        [
-                            "Ride",
-                            "4"
-                        ],
-                        [
-                            "Sail",
-                            "4"
-                        ],
-                        [
-                            "Socialize",
-                            "8"
-                        ],
-                        [
-                            "Stealth",
-                            "4"
-                        ],
-                        [
-                            "Survival",
-                            "0"
-                        ]
-                    ]
-                ],
-                [
-                    [
-                        "WISDOM",
-                        "compact"
-                    ],
-                    [
-                        [
-                            "Bureaucracy",
-                            "4"
-                        ],
-                        [
-                            "Investigation",
-                            "6"
-                        ],
-                        [
-                            "Lore",
-                            "6"
-                        ],
-                        [
-                            "Medicine",
-                            "8"
-                        ],
-                        [
-                            "Occult",
-                            "4"
-                        ]
-                    ]
-                ],
-                [
-                    [
-                        "STRESS",
-                        "stress compact"
-                    ],
-                    [
-                        [
-                            "Physical",
-                            "6"
-                        ],
-                        [
-                            "Social",
-                            "6"
-                        ],
-                        [
-                            "Mental",
-                            "6"
-                        ]
-                    ]
-                ]
-            ],
-            [
-                [
-                    [
-                        "ESSENCE",
-                        "detailed"
-                    ],
-                    [
-                        [
-                            "Essence",
-                            "0",
-                            "- [Full Moon Caste] Spend a mote to double any Battle ability for one roll. While your anima banner is visible, step up the effect die for any roll you make including Athletics, Dodge, or Endurance.",
-                            "- [The Tell] In all forms, you have vicious bear teeth and are unusually shaggy. People will not notice this unless your Anima reaches d4."
-                        ]
-                    ]
-                ],
-                [
-                    [
-                        "DISTINCTIONS",
-                        "detailed"
-                    ],
-                    [
-                        [
-                            "Cult Leader",
-                            "8 / 4+mote",
-                            "- [Combat Medic] Spend a mote as an action to recover your own or another’s physical stress, or to step down physical trauma."
-                        ],
-                        [
-                            "STRENGTH BRINGS JUSTICE",
-                            "8 / 4+mote",
-                            ""
-                        ],
-                        [
-                            "SHEPHERD THE LOST",
-                            "8 / 4+mote",
-                            ""
-                        ]
-                    ]
-                ],
-                [
-                    [
-                        "INTIMACIES",
-                        "detailed"
-                    ],
-                    [
-                        [
-                            "THE CHILDREN OF THE BEAR",
-                            "0",
-                            "You cherish and care for each of your worshippers, and will protect them from anything."
-                        ],
-                        [
-                            "THE SILVER PACT",
-                            "8",
-                            "As Lunars, the future is ours, if we learn from the lessons of the past."
-                        ],
-                        [
-                            "BREAKING BREAD IS FORGING BONDS",
-                            "6",
-                            "Food is life, and shared food is sacred. To dine with another invokes ancient laws of hospitality and exposes the heart."
-                        ]
-                    ]
-                ],
-                [
-                    [
-                        "LIMIT",
-                        "stress"
-                    ],
-                    [
-                        [
-                            "Limit Break",
-                            "6",
-                            "[Foolhardy Courage] When my courage is insulted or questioned, I feel furious and must prove myself to others at any cost."
-                        ]
-                    ]
-                ]
+              "Anima",
+              "∅",
+              "<i>An enormous, imposing bear that commands awe and respect</i>",
+              "- Adds to most actions, complicates stealth.",
+              "- Step up whenever you spend a mote.",
+              "- [Flare] Once per scene, you may add d6 to the doom pool to gain a mote and step up your anima."
             ]
+          ]
         ],
         [
+          [
+            "ABILITIES",
+            "signature-asset"
+          ],
+          [
             [
-                [
-                    [
-                        "Shapeshifting",
-                        "detailed"
-                    ],
-                    [
-                        [
-                            "Shapeshift",
-                            "8",
-                            "- [Heart's Blood] You can take the form of any beast whose heart you have eaten.",
-                            "- [Finding the Spirit's Shape] Your True Forms are human, bear, and bear-human hybrid.",
-                            "- [Deadly Beast Transformation] When in hybrid bear-human form, you may include any number of Charms powers in a roll.",
-                            "- [Towering Beast Form] You can shapeshift into enormous animals, including larger versions of shapes you know.",
-                            "- [Moonsilver Tattoos] Spend a mote to ignore stress or complications from an attack including the Transmutation power or Wyld-based hazards."
-                        ]
-                    ]
-                ],
-                [
-                    [
-                        "CHARMS",
-                        "detailed"
-                    ],
-                    [
-                        [
-                            "ENHANCED CHARISMA",
-                            "8",
-                            ""
-                        ],
-                        [
-                            "ENHANCED DURABILITY",
-                            "8",
-                            ""
-                        ],
-                        [
-                            "ENHANCED Speed",
-                            "8",
-                            ""
-                        ],
-                        [
-                            "Superhuman Strength",
-                            "0",
-                            "- [Exhausted] Shutdown any Charms power to gain a mote. Activate a spoiler to recover the power, or recover for free during the next transition scene."
-                        ]
-                    ]
-                ]
+              "<i>Pick 2 abilities when rolling.</i>",
+              "",
+              ""
+            ]
+          ]
+        ],
+        [
+          [
+            "BATTLE",
+            "compact"
+          ],
+          [
+            [
+              "Archery",
+              "4"
             ],
             [
-                [
-                    [
-                        "PANOPLY",
-                        "detailed"
-                    ],
-                    [
-                        [
-                            "CULT",
-                            "0",
-                            "You have a wide-ranging cult of followers who worship you and will assist you, and some of them are always at your side."
-                        ],
-                        [
-                            "RENOWN",
-                            "8",
-                            "You have the respect and admiration of Lunar society."
-                        ]
-                    ]
-                ]
+              "Athletics",
+              "2"
+            ],
+            [
+              "Awareness",
+              "8"
+            ],
+            [
+              "Brawl",
+              "2"
+            ],
+            [
+              "Dodge",
+              "8"
+            ],
+            [
+              "Endurance",
+              "0"
+            ],
+            [
+              "Integrity",
+              "0"
+            ],
+            [
+              "Melee",
+              "6"
+            ],
+            [
+              "Thrown",
+              "6"
+            ],
+            [
+              "War",
+              "8"
             ]
+          ]
+        ],
+        [
+          [
+            "LIFE",
+            "compact"
+          ],
+          [
+            [
+              "Craft",
+              "6"
+            ],
+            [
+              "Larceny",
+              "4"
+            ],
+            [
+              "Linguistics",
+              "6"
+            ],
+            [
+              "Performance",
+              "0"
+            ],
+            [
+              "Presence",
+              "2"
+            ],
+            [
+              "Ride",
+              "4"
+            ],
+            [
+              "Sail",
+              "4"
+            ],
+            [
+              "Socialize",
+              "8"
+            ],
+            [
+              "Stealth",
+              "4"
+            ],
+            [
+              "Survival",
+              "0"
+            ]
+          ]
+        ],
+        [
+          [
+            "WISDOM",
+            "compact"
+          ],
+          [
+            [
+              "Bureaucracy",
+              "4"
+            ],
+            [
+              "Investigation",
+              "6"
+            ],
+            [
+              "Lore",
+              "6"
+            ],
+            [
+              "Medicine",
+              "8"
+            ],
+            [
+              "Occult",
+              "4"
+            ]
+          ]
+        ],
+        [
+          [
+            "STRESS",
+            "stress compact"
+          ],
+          [
+            [
+              "Physical",
+              "∅"
+            ],
+            [
+              "Social",
+              "∅"
+            ],
+            [
+              "Mental",
+              "∅"
+            ]
+          ]
         ]
+      ],
+      [
+        [
+          [
+            "ESSENCE",
+            "detailed"
+          ],
+          [
+            [
+              "Essence",
+              "0",
+              "- [Full Moon Caste] Spend a mote to double any Battle ability for one roll. While your anima banner is visible, step up the effect die for any roll you make including Athletics, Dodge, or Endurance.",
+              "- [The Tell] In all forms, you have vicious bear teeth and are unusually shaggy. People will not notice this unless your Anima reaches d4."
+            ]
+          ]
+        ],
+        [
+          [
+            "DISTINCTIONS",
+            "detailed"
+          ],
+          [
+            [
+              "Cult Leader",
+              "8 / 4+mote",
+              "- [Combat Medic] Spend a mote as an action to recover your own or another’s physical stress, or to step down physical trauma."
+            ],
+            [
+              "STRENGTH BRINGS JUSTICE",
+              "8 / 4+mote",
+              ""
+            ],
+            [
+              "SHEPHERD THE LOST",
+              "8 / 4+mote",
+              ""
+            ]
+          ]
+        ],
+        [
+          [
+            "INTIMACIES",
+            "detailed"
+          ],
+          [
+            [
+              "THE CHILDREN OF THE BEAR",
+              "0",
+              "You cherish and care for each of your worshippers, and will protect them from anything."
+            ],
+            [
+              "THE SILVER PACT",
+              "8",
+              "As Lunars, the future is ours, if we learn from the lessons of the past."
+            ],
+            [
+              "BREAKING BREAD IS FORGING BONDS",
+              "6",
+              "Food is life, and shared food is sacred. To dine with another invokes ancient laws of hospitality and exposes the heart."
+            ]
+          ]
+        ],
+        [
+          [
+            "LIMIT",
+            "stress"
+          ],
+          [
+            [
+              "Limit Break",
+              "∅",
+              "[Foolhardy Courage] When my courage is insulted or questioned, I feel furious and must prove myself to others at any cost."
+            ]
+          ]
+        ]
+      ]
     ],
-    "highlightColors": {
-        ":root": "#878787"
-    }
+    [
+      [
+        [
+          [
+            "Shapeshifting",
+            "detailed"
+          ],
+          [
+            [
+              "Shapeshift",
+              "8",
+              "- [Heart's Blood] You can take the form of any beast whose heart you have eaten.",
+              "- [Finding the Spirit's Shape] Your True Forms are human, bear, and bear-human hybrid.",
+              "- [Deadly Beast Transformation] When in hybrid bear-human form, you may include any number of Charms powers in a roll.",
+              "- [Towering Beast Form] You can shapeshift into enormous animals, including larger versions of shapes you know.",
+              "- [Moonsilver Tattoos] Spend a mote to ignore stress or complications from an attack including the Transmutation power or Wyld-based hazards."
+            ]
+          ]
+        ],
+        [
+          [
+            "CHARMS",
+            "detailed"
+          ],
+          [
+            [
+              "ENHANCED CHARISMA",
+              "8",
+              ""
+            ],
+            [
+              "ENHANCED DURABILITY",
+              "8",
+              ""
+            ],
+            [
+              "ENHANCED Speed",
+              "8",
+              ""
+            ],
+            [
+              "Superhuman Strength",
+              "0",
+              "- [Exhausted] Shutdown any Charms power to gain a mote. Activate a spoiler to recover the power, or recover for free during the next transition scene."
+            ]
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            "PANOPLY",
+            "detailed"
+          ],
+          [
+            [
+              "CULT",
+              "0",
+              "You have a wide-ranging cult of followers who worship you and will assist you, and some of them are always at your side."
+            ],
+            [
+              "RENOWN",
+              "8",
+              "You have the respect and admiration of Lunar society."
+            ]
+          ]
+        ]
+      ]
+    ]
+  ],
+  "highlightColors": {
+    ":root": "#878787"
+  }
 }
