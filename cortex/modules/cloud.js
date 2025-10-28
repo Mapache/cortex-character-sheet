@@ -75,6 +75,19 @@ const characterSheetConverter = {
 	}
 }
 
+function expiring(converter) {
+	return {
+		toFirestore: (model) => {
+			let data = converter.toFirestore(model)
+			const futureDate = new Date()
+			futureDate.setDate(futureDate.getDate() + 30) // 30 days in the future
+			data.expiration = futureDate
+			return data
+		},
+		fromFirestore: converter.fromFirestore
+	}
+}
+
 // MARK: Permissions Models
 
 export class CampaignPermissions {
@@ -516,8 +529,15 @@ export class Cloud {
 		}
 
 		try {
-			await setDoc(doc(db, campaignsCollection, this.currentCampaign.id, charactersCollection, sheet.id).withConverter(characterSheetConverter), sheet)
-			await addDoc(collection(db, campaignsCollection, this.currentCampaign.id, charactersCollection, sheet.id, characterVersionsCollection).withConverter(characterSheetConverter), sheet)
+			await setDoc(doc(db,
+				campaignsCollection, this.currentCampaign.id,
+				charactersCollection, sheet.id).withConverter(characterSheetConverter),
+				sheet)
+			await addDoc(collection(db,
+				campaignsCollection, this.currentCampaign.id,
+				charactersCollection, sheet.id,
+				characterVersionsCollection).withConverter(expiring(characterSheetConverter)),
+				sheet)
 			this.updateURLForCharacter(sheet)
 			console.log("Character Sheet written with ID: ", sheet.id)
 		} catch (error) {
