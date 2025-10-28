@@ -5,6 +5,7 @@ import { doc, collection, where, query, orderBy, limit, onSnapshot, addDoc, setD
 import { load_character } from "./load.js"
 import { characterName, save_character } from "./save.js"
 import { merge } from "./merge.js"
+import { ARC4 } from "./random.js"
 import { setUrlHashWithoutHandling } from "./urlHashHandler.js"
 import { Deferred } from "./util.js"
 
@@ -88,6 +89,71 @@ function expiring(converter) {
 	}
 }
 
+export class Message {
+	/**
+	 * @param {string} author (UserId)
+	 * @param {string} text
+	 * @param {[DieRoll]} dice
+	 * @param {Timestamp} saved
+	 * @param {id} id
+	 */
+	constructor(author, text, dice, saved, id) {
+		this.author = author
+		this.text = text
+		this.dice = dice
+		this.saved = saved
+		this.id = id
+	}
+
+	static DieRoll = class {
+		/**
+		 * @param {string} label (UserId)
+		 * @param {number} size
+		 * @param {number} result
+		 */
+		constructor(label, size, result) {
+			this.label = label
+			this.size = size
+			this.result = result
+		}
+	}
+
+	static converter = {
+		toFirestore: (message) => {
+			let unrolledDice = []
+			for (const dieRoll of message.dice) {
+				unrolledDice.push(dieRoll.label)
+				unrolledDice.push(dieRoll.size)
+			}
+			return {
+				author: message.author,
+				text: message.text,
+				dice: unrolledDice,
+				saved: serverTimestamp(),
+			}
+		},
+		fromFirestore: (snapshot, options) => {
+			const data = snapshot.data(options)
+			// Use the time the message was saved as the pseudorandom seed for the dice results.
+			const generator = data.saved ? ARC4.seed(data.saved.nanoseconds) : null
+			let rolledDice = []
+			for (let i = 0; i < data.dice.length; i += 2) {
+				const label = data.dice[i]
+				const size = data.dice[i + 1]
+				const result = generator?.die(size)
+				rolledDice.push(new Message.DieRoll(label, size, result))
+			}
+			return new Message(
+				data.author,
+				data.text,
+				rolledDice,
+				data.saved?.toDate(),
+				snapshot.id)
+		}
+	}
+
+}
+
 // MARK: Permissions Models
 
 export class CampaignPermissions {
@@ -107,7 +173,12 @@ export class CampaignPermissions {
 
 	static generate() {
 		function generateKey(access) {
-			// First digit encodes access level, then UUID with extraneous hyphens stripped
+			// First digit encodes access level, then UUID with extraneous hyphens stripped.
+			//
+			// Note that the first digit is descriptive, not prescriptive; the client uses it to 
+			// know what the intended access for a permission key is without having to query the server, 
+			// but actual access control only depends on the server-side permissions map value, which
+			// can only be read by users who already have admin access to that permissions document.
 			return access + crypto.randomUUID().replace(/-/g, "")
 		}
 		let permissions = {}
@@ -152,11 +223,14 @@ const userPermissionsConverter = {
 // MARK: Cloud
 
 const defaultCampaignName = "Default"
+
 const campaignsCollection = "campaigns"
 const charactersCollection = "characters"
 const characterVersionsCollection = "versions"
+const messagesCollection = "messages"
 const campaignPermissionsCollection = "campaignPermissions"
 const userPermissionsCollection = "userPermissions"
+const userProfilesCollection = "userProfiles"
 
 export class Cloud {
 	constructor() {
@@ -564,6 +638,48 @@ export class Cloud {
 		let versions = querySnapshot.docs.map((doc) => doc.data())
 		versions.sort((a, b) => b.saved - a.saved)
 		return versions
+	}
+
+	// MARK: Messages & Dice Rolls
+
+	async postMessage(message) {
+		await this.requireSignIn()
+		await this.requireCurrentCampaign()
+
+		try {
+			const docRef = await addDoc(collection(db,
+				campaignsCollection, this.currentCampaign.id,
+				messagesCollection).withConverter(Message.converter),
+				message)
+			console.log("Message written with ID: ", docRef.id)
+		} catch (error) {
+			console.error("Error adding Message: ", error)
+		}
+	}
+
+	async fetchMessages() {
+		await this.requireSignIn()
+		await this.requireCurrentCampaign()
+
+		const messagesRef = collection(db,
+			campaignsCollection, this.currentCampaign.id,
+			messagesCollection).withConverter(Message.converter)
+		const querySnapshot = await getDocs(query(messagesRef, orderBy("saved"), limit(25)))
+
+		let messages = querySnapshot.docs.map((doc) => doc.data())
+		//! messages.sort((a, b) => b.saved - a.saved)
+		return messages
+	}
+
+	async testPostMessage() {
+		const user = await this.requireSignIn()
+		const message = new Message(user.uid,
+			`Test Message ${new Date().toLocaleTimeString()}`,
+			[new Message.DieRoll("Mind", 6), new Message.DieRoll("Body", 6), new Message.DieRoll("Soul", 6)])
+		console.log(Message.converter.toFirestore(message))
+		await this.postMessage(message)
+
+		console.log(await this.fetchMessages())
 	}
 
 }
