@@ -34,18 +34,18 @@ export class Campaign {
 	static reader = 1
 	static editor = 2
 	static admin = 3
-}
 
-const campaignConverter = {
-	toFirestore: (campaign) => {
-		return {
-			name: campaign.name,
+	static converter = {
+		toFirestore: (campaign) => {
+			return {
+				name: campaign.name,
+			}
+		},
+		fromFirestore: (snapshot, options) => {
+			const data = snapshot.data(options)
+			let campaign = new Campaign(data.name, snapshot.id)
+			return campaign
 		}
-	},
-	fromFirestore: (snapshot, options) => {
-		const data = snapshot.data(options)
-		let campaign = new Campaign(data.name, snapshot.id)
-		return campaign
 	}
 }
 
@@ -59,23 +59,24 @@ export class CharacterSheet {
 		this.saved = saved // Expected to be null for client-created objects
 		Object.freeze(this) // Make it immutable
 	}
-}
 
-const characterSheetConverter = {
-	// In Firestore, the json field is actually the json string.
-	toFirestore: (characterSheet) => {
-		return {
-			json: characterSheet.jsonString,
-			name: characterSheet.name,
-			saved: serverTimestamp(),
+	static converter = {
+		// In Firestore, the json field is actually the json string.
+		toFirestore: (characterSheet) => {
+			return {
+				json: characterSheet.jsonString,
+				name: characterSheet.name,
+				saved: serverTimestamp(),
+			}
+		},
+		fromFirestore: (snapshot, options) => {
+			const data = snapshot.data(options)
+			return new CharacterSheet(null, data.json, data.saved?.toDate())
 		}
-	},
-	fromFirestore: (snapshot, options) => {
-		const data = snapshot.data(options)
-		return new CharacterSheet(null, data.json, data.saved?.toDate())
 	}
 }
 
+// Wrapper for a converter that adds an expiration date for TTL purposes.
 function expiring(converter) {
 	return {
 		toFirestore: (model) => {
@@ -187,17 +188,17 @@ export class CampaignPermissions {
 		permissions[generateKey(Campaign.admin)] = Campaign.admin
 		return new CampaignPermissions(permissions)
 	}
-}
 
-const campaignPermissionsConverter = {
-	toFirestore: (campaignPermissions) => {
-		return {
-			permissions: campaignPermissions.permissions,
+	static converter = {
+		toFirestore: (campaignPermissions) => {
+			return {
+				permissions: campaignPermissions.permissions,
+			}
+		},
+		fromFirestore: (snapshot, options) => {
+			const data = snapshot.data(options)
+			return new CampaignPermissions(data.permissions)
 		}
-	},
-	fromFirestore: (snapshot, options) => {
-		const data = snapshot.data(options)
-		return new CampaignPermissions(data.permissions)
 	}
 }
 
@@ -206,17 +207,17 @@ export class UserPermissions {
 	constructor(campaigns) {
 		this.campaigns = campaigns
 	}
-}
 
-const userPermissionsConverter = {
-	toFirestore: (campaignPermissions) => {
-		return {
-			campaigns: campaignPermissions.campaigns,
+	static converter = {
+		toFirestore: (campaignPermissions) => {
+			return {
+				campaigns: campaignPermissions.campaigns,
+			}
+		},
+		fromFirestore: (snapshot, options) => {
+			const data = snapshot.data(options)
+			return new UserPermissions(data.campaigns)
 		}
-	},
-	fromFirestore: (snapshot, options) => {
-		const data = snapshot.data(options)
-		return new UserPermissions(data.campaigns)
 	}
 }
 
@@ -278,12 +279,12 @@ export class Cloud {
 	async getUserPermissions() {
 		const user = await this.requireSignIn()
 
-		const docSnapshot = await getDoc(doc(db, userPermissionsCollection, user.uid).withConverter(userPermissionsConverter))
+		const docSnapshot = await getDoc(doc(db, userPermissionsCollection, user.uid).withConverter(UserPermissions.converter))
 		if (docSnapshot.exists()) {
 			this.userPermissions = docSnapshot.data()
 		} else {
 			this.userPermissions = new UserPermissions({})
-			await setDoc(doc(db, userPermissionsCollection, user.uid).withConverter(userPermissionsConverter), this.userPermissions)
+			await setDoc(doc(db, userPermissionsCollection, user.uid).withConverter(UserPermissions.converter), this.userPermissions)
 		}
 	}
 
@@ -325,7 +326,7 @@ export class Cloud {
 		const user = await this.requireSignIn()
 		const campaignId = campaign.id
 		try {
-			const docSnapshot = await getDoc(doc(db, campaignPermissionsCollection, campaignId).withConverter(campaignPermissionsConverter))
+			const docSnapshot = await getDoc(doc(db, campaignPermissionsCollection, campaignId).withConverter(CampaignPermissions.converter))
 			if (docSnapshot.exists()) {
 				const permissions = docSnapshot.data()
 				return permissions.keyFor(access)
@@ -366,7 +367,7 @@ export class Cloud {
 		const campaignIds = Object.keys(this.userPermissions.campaigns)
 		if (campaignIds.length > 0) {
 			const q = query(
-				collection(db, campaignsCollection).withConverter(campaignConverter),
+				collection(db, campaignsCollection).withConverter(Campaign.converter),
 				where(documentId(), "in", campaignIds))
 			const querySnapshot = await getDocs(q)
 
@@ -429,8 +430,8 @@ export class Cloud {
 		try {
 			// First, grant ourselves the permission, then define the permission, then create the campaign.
 			await this.updateAccessKey(campaignId, permissions.keyFor(Campaign.admin))
-			await setDoc(doc(db, campaignPermissionsCollection, campaignId).withConverter(campaignPermissionsConverter), permissions)
-			await setDoc(doc(db, campaignsCollection, campaignId).withConverter(campaignConverter), campaign)
+			await setDoc(doc(db, campaignPermissionsCollection, campaignId).withConverter(CampaignPermissions.converter), permissions)
+			await setDoc(doc(db, campaignsCollection, campaignId).withConverter(Campaign.converter), campaign)
 			console.log(`Campaign ${name} written with ID ${campaignId} `)
 			return campaign
 		} catch (error) {
@@ -492,7 +493,7 @@ export class Cloud {
 	charactersForCurrentCampaignQuery() {
 		return collection(db,
 			campaignsCollection, this.currentCampaign.id,
-			charactersCollection).withConverter(characterSheetConverter)
+			charactersCollection).withConverter(CharacterSheet.converter)
 	}
 
 	async getCharactersForCurrentCampaign() {
@@ -605,12 +606,12 @@ export class Cloud {
 		try {
 			await setDoc(doc(db,
 				campaignsCollection, this.currentCampaign.id,
-				charactersCollection, sheet.id).withConverter(characterSheetConverter),
+				charactersCollection, sheet.id).withConverter(CharacterSheet.converter),
 				sheet)
 			await addDoc(collection(db,
 				campaignsCollection, this.currentCampaign.id,
 				charactersCollection, sheet.id,
-				characterVersionsCollection).withConverter(expiring(characterSheetConverter)),
+				characterVersionsCollection).withConverter(expiring(CharacterSheet.converter)),
 				sheet)
 			this.updateURLForCharacter(sheet)
 			console.log("Character Sheet written with ID: ", sheet.id)
@@ -632,7 +633,7 @@ export class Cloud {
 		const versionsRef = collection(db,
 			campaignsCollection, this.currentCampaign.id,
 			charactersCollection, characterSheet.id,
-			characterVersionsCollection).withConverter(characterSheetConverter)
+			characterVersionsCollection).withConverter(CharacterSheet.converter)
 		const querySnapshot = await getDocs(query(versionsRef, orderBy("saved", "desc"), limit(6)))
 
 		let versions = querySnapshot.docs.map((doc) => doc.data())
