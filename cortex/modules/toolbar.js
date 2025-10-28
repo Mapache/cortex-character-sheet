@@ -1,4 +1,5 @@
-import { Campaign, cloud } from "./cloud.js"
+import { CampaignPermissions, cloud } from "./cloud.js"
+import { Flags } from "./flags.js"
 import { formatRelativeTime } from "./formatting.js"
 import { nuke_character, load_character } from "./load.js"
 import { menu, menuEntry, menuDivider, menuLabel, menuTextInput } from "./menu.js"
@@ -33,7 +34,7 @@ export async function campaigns_menu(e) {
 	]
 	for (const campaign of cloud.campaigns) {
 		let subMenuEntries = null
-		if (cloud.accessFor(campaign.id) == Campaign.admin) {
+		if (cloud.accessFor(campaign.id) == CampaignPermissions.admin) {
 			subMenuEntries = [
 				menuLabel("Rename campaign:"),
 				menuTextInput(campaign.name, (name) => {
@@ -42,11 +43,11 @@ export async function campaigns_menu(e) {
 				}),
 				menuDivider(),
 				menuEntry("Share as editable…", async (e) => {
-					await copyShareUrl(campaign, Campaign.editor)
+					await copyShareUrl(campaign, CampaignPermissions.editor)
 					campaignsMenu.hide()
 				}),
 				menuEntry("Share as read-only…", async (e) => {
-					await copyShareUrl(campaign, Campaign.reader)
+					await copyShareUrl(campaign, CampaignPermissions.reader)
 					campaignsMenu.hide()
 				})
 			]
@@ -191,3 +192,24 @@ export const emptyDescriptionsHidden = new ToggleableStyle(
 // MARK: Help Section
 
 export const helpModal = await Modal.build("help-modal", function () { })
+
+// MARK: Development Section
+
+const developmentHidden = new ToggleableStyle(
+	"#development-hook",
+	"development-hidden",
+	`
+		.development {
+			display: none !important;
+		}
+	`,
+	"",
+	!Flags.development)
+
+export async function developmentHook(e) {
+	if (!Flags.development) {
+		console.error("Attempting to run development code on prod!")
+		return
+	}
+	cloud.testPostMessage()
+}

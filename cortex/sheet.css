@@ -1291,6 +1291,10 @@ li:before {
 	#help:before {
 		content: "\f128";
 	}
+
+	#development-hook:before {
+		content: "\f492";
+	}
 }
 
 @keyframes iconShimmer {

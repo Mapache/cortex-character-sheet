@@ -30,10 +30,7 @@ export class Campaign {
 		this.id = id
 	}
 
-	static unauthorized = 0
-	static reader = 1
-	static editor = 2
-	static admin = 3
+	static defaultName = "Default"
 
 	static converter = {
 		toFirestore: (campaign) => {
@@ -172,6 +169,12 @@ export class CampaignPermissions {
 		return null
 	}
 
+	// Access Levels
+	static unauthorized = 0
+	static reader = 1
+	static editor = 2
+	static admin = 3
+
 	static generate() {
 		function generateKey(access) {
 			// First digit encodes access level, then UUID with extraneous hyphens stripped.
@@ -183,9 +186,9 @@ export class CampaignPermissions {
 			return access + crypto.randomUUID().replace(/-/g, "")
 		}
 		let permissions = {}
-		permissions[generateKey(Campaign.reader)] = Campaign.reader
-		permissions[generateKey(Campaign.editor)] = Campaign.editor
-		permissions[generateKey(Campaign.admin)] = Campaign.admin
+		permissions[generateKey(CampaignPermissions.reader)] = CampaignPermissions.reader
+		permissions[generateKey(CampaignPermissions.editor)] = CampaignPermissions.editor
+		permissions[generateKey(CampaignPermissions.admin)] = CampaignPermissions.admin
 		return new CampaignPermissions(permissions)
 	}
 
@@ -223,15 +226,15 @@ export class UserPermissions {
 
 // MARK: Cloud
 
-const defaultCampaignName = "Default"
-
-const campaignsCollection = "campaigns"
-const charactersCollection = "characters"
-const characterVersionsCollection = "versions"
-const messagesCollection = "messages"
-const campaignPermissionsCollection = "campaignPermissions"
-const userPermissionsCollection = "userPermissions"
-const userProfilesCollection = "userProfiles"
+const collections = {
+	campaigns: "campaigns",
+	characters: "characters",
+	characterVersions: "versions",
+	messages: "messages",
+	campaignPermissions: "campaignPermissions",
+	userPermissions: "userPermissions",
+	userProfiles: "userProfiles",
+}
 
 export class Cloud {
 	constructor() {
@@ -279,12 +282,12 @@ export class Cloud {
 	async getUserPermissions() {
 		const user = await this.requireSignIn()
 
-		const docSnapshot = await getDoc(doc(db, userPermissionsCollection, user.uid).withConverter(UserPermissions.converter))
+		const docSnapshot = await getDoc(doc(db, collections.userPermissions, user.uid).withConverter(UserPermissions.converter))
 		if (docSnapshot.exists()) {
 			this.userPermissions = docSnapshot.data()
 		} else {
 			this.userPermissions = new UserPermissions({})
-			await setDoc(doc(db, userPermissionsCollection, user.uid).withConverter(UserPermissions.converter), this.userPermissions)
+			await setDoc(doc(db, collections.userPermissions, user.uid).withConverter(UserPermissions.converter), this.userPermissions)
 		}
 	}
 
@@ -301,7 +304,7 @@ export class Cloud {
 
 	accessForKey(key) {
 		if (!key) {
-			return Campaign.unauthorized
+			return CampaignPermissions.unauthorized
 		}
 		return parseInt(key[0])
 	}
@@ -319,14 +322,14 @@ export class Cloud {
 
 		let permission = {}
 		permission["campaigns." + campaignId] = key
-		await updateDoc(doc(db, userPermissionsCollection, user.uid), permission)
+		await updateDoc(doc(db, collections.userPermissions, user.uid), permission)
 	}
 
 	async accessKey(campaign, access) {
 		const user = await this.requireSignIn()
 		const campaignId = campaign.id
 		try {
-			const docSnapshot = await getDoc(doc(db, campaignPermissionsCollection, campaignId).withConverter(CampaignPermissions.converter))
+			const docSnapshot = await getDoc(doc(db, collections.campaignPermissions, campaignId).withConverter(CampaignPermissions.converter))
 			if (docSnapshot.exists()) {
 				const permissions = docSnapshot.data()
 				return permissions.keyFor(access)
@@ -357,7 +360,7 @@ export class Cloud {
 		const user = await this.requireSignIn()
 		await this.requireUserPermissions()
 
-		this.defaultCampaign = await this.createNewCampaignWithId(defaultCampaignName, user.uid)
+		this.defaultCampaign = await this.createNewCampaignWithId(Campaign.defaultName, user.uid)
 	}
 
 	async getCampaigns() {
@@ -367,12 +370,14 @@ export class Cloud {
 		const campaignIds = Object.keys(this.userPermissions.campaigns)
 		if (campaignIds.length > 0) {
 			const q = query(
-				collection(db, campaignsCollection).withConverter(Campaign.converter),
+				collection(db, collections.campaigns).withConverter(Campaign.converter),
 				where(documentId(), "in", campaignIds))
 			const querySnapshot = await getDocs(q)
 
 			this.campaigns = querySnapshot.docs.map((doc) => doc.data())
 			this.sortCampaigns()
+		} else {
+			this.campaigns = []
 		}
 
 		if (this.findDefaultCampaign(user) === null) {
@@ -413,7 +418,7 @@ export class Cloud {
 		await this.requireUserPermissions()
 		await this.requireCampaigns()
 
-		const campaignId = doc(collection(db, campaignsCollection)).id
+		const campaignId = doc(collection(db, collections.campaigns)).id
 		const campaign = await this.createNewCampaignWithId(name, campaignId)
 		this.campaigns.push(campaign)
 		this.sortCampaigns()
@@ -429,9 +434,9 @@ export class Cloud {
 
 		try {
 			// First, grant ourselves the permission, then define the permission, then create the campaign.
-			await this.updateAccessKey(campaignId, permissions.keyFor(Campaign.admin))
-			await setDoc(doc(db, campaignPermissionsCollection, campaignId).withConverter(CampaignPermissions.converter), permissions)
-			await setDoc(doc(db, campaignsCollection, campaignId).withConverter(Campaign.converter), campaign)
+			await this.updateAccessKey(campaignId, permissions.keyFor(CampaignPermissions.admin))
+			await setDoc(doc(db, collections.campaignPermissions, campaignId).withConverter(CampaignPermissions.converter), permissions)
+			await setDoc(doc(db, collections.campaigns, campaignId).withConverter(Campaign.converter), campaign)
 			console.log(`Campaign ${name} written with ID ${campaignId} `)
 			return campaign
 		} catch (error) {
@@ -450,11 +455,21 @@ export class Cloud {
 	}
 
 	async switchCampaignId(campaignId) {
-		await this.switchCampaign(await this.campaignWithId(campaignId))
+		const campaign = await this.campaignWithId(campaignId)
+		if (!campaign) {
+			console.error(`Attempting to load nonexistent campaign with id ${campaignId}!`)
+			return
+		}
+		await this.switchCampaign(campaign)
 	}
 
 	async switchCampaign(campaign) {
 		await this.requireSignIn()
+
+		if (!campaign) {
+			console.error("Attempting to load nonexistent campaign!")
+			return
+		}
 
 		if (this.currentCampaign?.id === campaign.id) {
 			return
@@ -481,7 +496,7 @@ export class Cloud {
 		let rename = {
 			name: name
 		}
-		await updateDoc(doc(db, campaignsCollection, campaign.id), rename)
+		await updateDoc(doc(db, collections.campaigns, campaign.id), rename)
 
 		campaign.name = name
 		this.sortCampaigns()
@@ -492,8 +507,8 @@ export class Cloud {
 
 	charactersForCurrentCampaignQuery() {
 		return collection(db,
-			campaignsCollection, this.currentCampaign.id,
-			charactersCollection).withConverter(CharacterSheet.converter)
+			collections.campaigns, this.currentCampaign.id,
+			collections.characters).withConverter(CharacterSheet.converter)
 	}
 
 	async getCharactersForCurrentCampaign() {
@@ -605,13 +620,13 @@ export class Cloud {
 
 		try {
 			await setDoc(doc(db,
-				campaignsCollection, this.currentCampaign.id,
-				charactersCollection, sheet.id).withConverter(CharacterSheet.converter),
+				collections.campaigns, this.currentCampaign.id,
+				collections.characters, sheet.id).withConverter(CharacterSheet.converter),
 				sheet)
 			await addDoc(collection(db,
-				campaignsCollection, this.currentCampaign.id,
-				charactersCollection, sheet.id,
-				characterVersionsCollection).withConverter(expiring(CharacterSheet.converter)),
+				collections.campaigns, this.currentCampaign.id,
+				collections.characters, sheet.id,
+				collections.characterVersions).withConverter(expiring(CharacterSheet.converter)),
 				sheet)
 			this.updateURLForCharacter(sheet)
 			console.log("Character Sheet written with ID: ", sheet.id)
@@ -631,9 +646,9 @@ export class Cloud {
 	async versionsForCharacter(characterSheet) {
 		// TODO: Caching of some sort, and pruning old versions, or maybe use TTL for that?
 		const versionsRef = collection(db,
-			campaignsCollection, this.currentCampaign.id,
-			charactersCollection, characterSheet.id,
-			characterVersionsCollection).withConverter(CharacterSheet.converter)
+			collections.campaigns, this.currentCampaign.id,
+			collections.characters, characterSheet.id,
+			collections.characterVersions).withConverter(CharacterSheet.converter)
 		const querySnapshot = await getDocs(query(versionsRef, orderBy("saved", "desc"), limit(6)))
 
 		let versions = querySnapshot.docs.map((doc) => doc.data())
@@ -649,8 +664,8 @@ export class Cloud {
 
 		try {
 			const docRef = await addDoc(collection(db,
-				campaignsCollection, this.currentCampaign.id,
-				messagesCollection).withConverter(Message.converter),
+				collections.campaigns, this.currentCampaign.id,
+				collections.messages).withConverter(Message.converter),
 				message)
 			console.log("Message written with ID: ", docRef.id)
 		} catch (error) {
@@ -663,8 +678,8 @@ export class Cloud {
 		await this.requireCurrentCampaign()
 
 		const messagesRef = collection(db,
-			campaignsCollection, this.currentCampaign.id,
-			messagesCollection).withConverter(Message.converter)
+			collections.campaigns, this.currentCampaign.id,
+			collections.messages).withConverter(Message.converter)
 		const querySnapshot = await getDocs(query(messagesRef, orderBy("saved"), limit(25)))
 
 		let messages = querySnapshot.docs.map((doc) => doc.data())
