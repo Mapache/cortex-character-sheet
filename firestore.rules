@@ -31,7 +31,7 @@ service cloud.firestore {
       match /messages/{message} {
         allow create: if request.auth != null && accessLevel() >= 2 && request.auth.uid == request.resource.data.author;
         allow read: if request.auth != null && accessLevel() >= 2;
-        allow update: if request.auth != null && accessLevel() >= 2 && request.auth.uid == resource.data.author && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['text']);
+        allow update: if request.auth != null && accessLevel() >= 2 && request.auth.uid == resource.data.author && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['text','diceStatus']);
         allow update, delete: if request.auth != null && accessLevel() >= 3;
       }
     }

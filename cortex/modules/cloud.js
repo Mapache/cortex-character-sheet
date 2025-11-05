@@ -92,13 +92,15 @@ export class Message {
 	 * @param {string} author (UserId)
 	 * @param {string} text
 	 * @param {[DieRoll]} dice
+	 * @param {[DieStatus]} diceStatus: Separate from dice so it's mutable after rolling
 	 * @param {Timestamp} saved
 	 * @param {id} id
 	 */
-	constructor(author, text, dice, saved, id) {
+	constructor(author, text, dice, diceStatus, saved, id) {
 		this.author = author
 		this.text = text
-		this.dice = dice
+		this.dice = dice ?? []
+		this.diceStatus = diceStatus ?? []
 		this.saved = saved
 		this.id = id
 	}
@@ -114,6 +116,19 @@ export class Message {
 			this.size = size
 			this.result = result
 		}
+
+		static unchosen = 0
+		static total = 1
+		static effect = 2
+	}
+
+	addDie(label, size) {
+		if (this.saved) {
+			console.error("Attempting to add dice to saved roll", this)
+			return
+		}
+		this.dice.push(new Message.DieRoll(label, size))
+		this.diceStatus.push(Message.DieRoll.unchosen)
 	}
 
 	static converter = {
@@ -127,6 +142,7 @@ export class Message {
 				author: message.author,
 				text: message.text,
 				dice: unrolledDice,
+				diceStatus: message.diceStatus,
 				saved: serverTimestamp(),
 			}
 		},
@@ -145,6 +161,7 @@ export class Message {
 				data.author,
 				data.text,
 				rolledDice,
+				data.diceStatus,
 				data.saved?.toDate(),
 				snapshot.id)
 		}
@@ -689,9 +706,10 @@ export class Cloud {
 
 	async testPostMessage() {
 		const user = await this.requireSignIn()
-		const message = new Message(user.uid,
-			`Test Message ${new Date().toLocaleTimeString()}`,
-			[new Message.DieRoll("Mind", 6), new Message.DieRoll("Body", 6), new Message.DieRoll("Soul", 6)])
+		const message = new Message(user.uid, `Test Message ${new Date().toLocaleTimeString()}`)
+		message.addDie("Mind", 6)
+		message.addDie("Body", 6)
+		message.addDie("Soul", 6)
 		console.log(Message.converter.toFirestore(message))
 		await this.postMessage(message)
 
