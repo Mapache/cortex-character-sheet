@@ -3,6 +3,7 @@ import { Flags } from "./flags.js"
 import { formatRelativeTime } from "./formatting.js"
 import { nuke_character, load_character } from "./load.js"
 import { menu, menuEntry, menuDivider, menuLabel, menuTextInput } from "./menu.js"
+import { messages } from "./messages.js"
 import { Modal } from "./modal.js"
 import { save_character } from "./save.js"
 import { copyShareUrl } from "./share.js"
@@ -152,6 +153,7 @@ export function set_global_highlight_color(e) {
 export const layoutControlsHidden = new ToggleableStyle(
 	"#toggle-layout-controls",
 	"controls-hidden",
+  "controls-visible",
 	`
 		.pages .no-print {
 			display: none !important;
@@ -164,6 +166,7 @@ export const layoutControlsHidden = new ToggleableStyle(
 export const emptyDescriptionsHidden = new ToggleableStyle(
 	"#toggle-empty-descriptions",
 	"descriptions-hidden",
+  "descriptions-visible",
 	`
 		.trait-description:empty {
 			display: none !important;
@@ -198,6 +201,7 @@ export const helpModal = await Modal.build("help-modal", function () { })
 const developmentHidden = new ToggleableStyle(
 	"#development-hook",
 	"development-hidden",
+	"development-visible",
 	`
 		.development {
 			display: none !important;
@@ -211,5 +215,6 @@ export async function developmentHook(e) {
 		console.error("Attempting to run development code on prod!")
 		return
 	}
-	cloud.testPostMessage()
+	// cloud.testPostMessage()
+	messages.toggle()
 }

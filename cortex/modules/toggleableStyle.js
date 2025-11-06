@@ -1,15 +1,20 @@
 import { whenInteractive } from "./util.js"
 
 export class ToggleableStyle {
-  constructor(controlSelector, enabledControlClass, enabledStyle, disabledStyle, startsEnabled) {
+  constructor(controlSelector, enabledControlClass, disabledControlClass, enabledStyle, disabledStyle, startsEnabled) {
     this.controlSelector = controlSelector
     this.enabledControlClass = enabledControlClass
+    this.disabledControlClass = disabledControlClass
 
-    this.enabledStyleSheet = document.createElement("style")
-    this.enabledStyleSheet.innerText = enabledStyle
+    if (enabledStyle) {
+      this.enabledStyleSheet = document.createElement("style")
+      this.enabledStyleSheet.innerText = enabledStyle
+    }
 
-    this.disabledStyleSheet = document.createElement("style")
-    this.disabledStyleSheet.innerText = disabledStyle
+    if (disabledStyle) {
+      this.disabledStyleSheet = document.createElement("style")
+      this.disabledStyleSheet.innerText = disabledStyle
+    }
 
     this.enabled = false
     whenInteractive(() => {
@@ -19,20 +24,34 @@ export class ToggleableStyle {
 
   enable() {
     this.enabled = true
-    if (this.disabledStyleSheet.parentNode !== null) {
+
+    if (this.disabledStyleSheet && this.disabledStyleSheet.parentNode !== null) {
       document.head.removeChild(this.disabledStyleSheet)
     }
-    document.head.appendChild(this.enabledStyleSheet)
-    document.querySelector(this.controlSelector).classList.add(this.enabledControlClass)
+    if (this.enabledStyleSheet) {
+      document.head.appendChild(this.enabledStyleSheet)
+    }
+
+    for (const control of document.querySelectorAll(this.controlSelector)) {
+      control.classList.remove(this.disabledControlClass)
+      control.classList.add(this.enabledControlClass)
+    }
   }
 
   disable() {
     this.enabled = false
-    if (this.enabledStyleSheet.parentNode !== null) {
+
+    if (this.enabledStyleSheet && this.enabledStyleSheet.parentNode !== null) {
       document.head.removeChild(this.enabledStyleSheet)
     }
-    document.head.appendChild(this.disabledStyleSheet)
-    document.querySelector(this.controlSelector).classList.remove(this.enabledControlClass)
+    if (this.disabledStyleSheet) {
+      document.head.appendChild(this.disabledStyleSheet)
+    }
+
+    for (const control of document.querySelectorAll(this.controlSelector)) {
+      control.classList.remove(this.enabledControlClass)
+      control.classList.add(this.disabledControlClass)
+    }
   }
 
   setEnabled(enabled) {
