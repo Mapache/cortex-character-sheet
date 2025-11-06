@@ -30,11 +30,9 @@ class Messages {
     messagingVisible.enable()
 
     if (!this.messages) {
-      this.messages = await cloud.fetchMessages()
-      console.log(this.messages)
-      for (const message of this.messages) {
-        this.messagesDiv.appendChild(this.htmlForMessage(message))
-      }
+      this.messages = {}
+      this.showMessages(await cloud.fetchMessages())
+      console.log(this.messages) //!
     }
   }
 
@@ -55,14 +53,53 @@ class Messages {
     this.setVisible(!this.visible)
   }
 
-  // MARK: Rendering
+  // MARK: Listeners
 
-  htmlForMessage(message) {
-    const div = document.createElement("li")
-    div.classList.add("message")
-    div.innerText = `${formatRelativeTime(message.saved)} : ${message.text}`
-    return div
+  showMessage(message) {
+    this.showMessages([message])
   }
+
+  showMessages(messages, areOld = false) {
+    console.log("showMessages")
+    console.log(messages) //!
+
+    const newMessages = messages.filter((message) => {
+      let messageIsNew = true
+      if (this.messages[message.id]) {
+        // This is an update to a previously-displayed message
+        messageIsNew = false
+        const oldHtml = document.getElementById(htmlIdForMessage(message))
+        oldHtml.replaceWith(htmlForMessage(message))
+      }
+      // Always store the new message
+      this.messages[message.id] = message
+      return messageIsNew
+    })
+
+    const html = newMessages.map(htmlForMessage)
+    if (areOld) {
+      this.messagesDiv.prepend(...html)
+    } else {
+      this.messagesDiv.append(...html)
+    }
+  }
+
+}
+
+// MARK: Rendering
+
+function htmlIdForMessage(message) {
+  return `message-${message.id}`
+}
+
+function htmlForMessage(message) {
+  console.log("htmlForMessage")
+  console.log(message) //!
+  const html = document.createElement("li")
+  html.id = htmlIdForMessage(message)
+  html.classList.add("message")
+  html.innerText = `${formatRelativeTime(message.saved)} : ${message.text}`
+  return html
 }
 
 export const messages = new Messages()

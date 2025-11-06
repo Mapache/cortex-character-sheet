@@ -704,9 +704,9 @@ export class Cloud {
 		return messages
 	}
 
-	async testPostMessage() {
+	async testPostMessage(text) {
 		const user = await this.requireSignIn()
-		const message = new Message(user.uid, `Test Message ${new Date().toLocaleTimeString()}`)
+		const message = new Message(user.uid, text ?? `Test Message ${new Date().toLocaleTimeString()}`)
 		message.addDie("Mind", 6)
 		message.addDie("Body", 6)
 		message.addDie("Soul", 6)
