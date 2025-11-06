@@ -1316,7 +1316,7 @@ li:before {
 	font-family: 'Open Sans', sans-serif;
 	font-size: 12pt;
 	color: grey;
-	position: absolute;
+	position: fixed;
 	left: 64px;
 	top: 24px;
 }
