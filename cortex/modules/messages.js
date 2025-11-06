@@ -10,35 +10,11 @@ const messagingVisible = new ToggleableStyle(
   "messaging-visible",
   "messaging-hidden",
   `
-		#messaging {
-      position: fixed;
-      left: 60px;
-      margin-top: 10mm;
-      width: 200px;
-      height: 90%;
-
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-
-      border-radius: 5px;
-      border: 1px solid #D3D3D3;
-      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-		}
-
-    #messages {
-      overflow-y: auto;
-    }
-
     #pages {
       margin-left: 220px;
     }
 	`,
-  `
-		#messaging {
-			display: none !important;
-		}
-	`,
+  `	`,
   false)
 
 class Messages {
@@ -82,8 +58,9 @@ class Messages {
   // MARK: Rendering
 
   htmlForMessage(message) {
-    const div = document.createElement("div")
-    div.innerText = message.text
+    const div = document.createElement("li")
+    div.classList.add("message")
+    div.innerText = `${formatRelativeTime(message.saved)} : ${message.text}`
     return div
   }
 }
