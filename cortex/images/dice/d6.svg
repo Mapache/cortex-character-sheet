@@ -1,5 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:serif="http://www.serif.com/" version="1.1" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;" viewBox="77.83 152.38 34.48 34.48">
-    <g transform="matrix(2,0,0,2,-77.826,-152.381)">
-        <path d="M94.064,168.619L78.826,168.619L78.826,153.381L94.064,153.381L94.064,168.619ZM77.826,152.381L77.826,169.619L95.064,169.619L95.064,152.381L77.826,152.381Z" style="fill:rgb(198,7,83);fill-rule:nonzero;"/>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 35 35" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g transform="matrix(2,0,0,2,-155.656,-304.761)">
+        <path d="M94.064,168.619L78.826,168.619L78.826,153.381L94.064,153.381L94.064,168.619ZM77.826,152.381L77.826,169.619L95.064,169.619L95.064,152.381L77.826,152.381Z" style="fill-rule:nonzero;"/>
     </g>
 </svg>

@@ -142,7 +142,9 @@ function htmlForMessage(message) {
     const table = document.createElement("table")
     for (const die of message.dice) {
       const row = document.createElement("tr")
-      row.innerHTML = `<td class="trait"><h2 class="trait-name">${die.label}</h2></td><td><c>${die.size % 10}</c> → <span class="d${die.size}">${die.result}</span></td>`
+      row.innerHTML = 
+        `<td class="trait"><h2 class="trait-name">${die.label}</h2></td>` + 
+        `<td><c>${die.size % 10}</c> → <span class="d${die.size}">${die.result}</span></td>`
       table.appendChild(row)
     }
     html.appendChild(table)
