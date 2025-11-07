@@ -115,9 +115,11 @@ class Messages {
 
   async testPostMessage(text) {
     await cloud.postMessageComponents(text,
-      [["Mind", 6],
-      ["Body", 6],
-      ["Soul", 6]])
+      [["Brawn", 4],
+      ["Finesse", 6],
+      ["Panache", 8],
+      ["Resolve", 10],
+      ["Wits", 12]])
   }
 
 }
@@ -135,6 +137,17 @@ function htmlForMessage(message) {
   html.id = htmlIdForMessage(message)
   html.classList.add("message")
   html.innerText = `${formatAbsoluteTime(message.saved)} : ${message.text}`
+
+  if (message.dice.length > 0) {
+    const table = document.createElement("table")
+    for (const die of message.dice) {
+      const row = document.createElement("tr")
+      row.innerHTML = `<td class="trait"><h2 class="trait-name">${die.label}</h2></td><td><c>${die.size % 10}</c> → <span class="d${die.size}">${die.result}</span></td>`
+      table.appendChild(row)
+    }
+    html.appendChild(table)
+  }
+
   return html
 }
 

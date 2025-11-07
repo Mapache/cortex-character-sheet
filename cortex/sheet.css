@@ -1685,3 +1685,83 @@ li:before {
 #messages {
 	overflow-y: auto;
 }
+
+.d4 {
+	background-image: url(images/dice/d4.svg);
+	background-size: 100% 100%;
+	width: 20px;
+	height: 20px;
+	line-height: 20px;
+	font-size: 14px;
+	display: inline-block;
+	text-align: center;
+	vertical-align: middle;
+	font-family: 'Josefin Sans', sans-serif;
+}
+
+.d6 {
+	background-image: url(images/dice/d6.svg);
+	background-size: 100% 100%;
+	width: 20px;
+	height: 20px;
+	line-height: 20px;
+	font-size: 14px;
+	display: inline-block;
+	text-align: center;
+	vertical-align: middle;
+	font-family: 'Josefin Sans', sans-serif;
+}
+
+.d8 {
+	background-image: url(images/dice/d8.svg);
+	background-size: 100% 100%;
+	width: 20px;
+	height: 20px;
+	line-height: 20px;
+	font-size: 14px;
+	display: inline-block;
+	text-align: center;
+	vertical-align: middle;
+	font-family: 'Josefin Sans', sans-serif;
+}
+/*
+.d8::before {
+  content: "";
+	display: inline-block;
+  position: relative;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+	width: 20px;
+	height: 20px;
+	background-color: green;
+	mask-image: url(images/dice/d8.svg);
+	mask-size: 100% 100%;
+}
+*/
+.d10 {
+	background-image: url(images/dice/d10.svg);
+	background-size: 100% 100%;
+	width: 20px;
+	height: 20px;
+	line-height: 20px;
+	font-size: 14px;
+	display: inline-block;
+	text-align: center;
+	vertical-align: middle;
+	font-family: 'Josefin Sans', sans-serif;
+}
+
+.d12 {
+	background-image: url(images/dice/d12.svg);
+	background-size: 100% 100%;
+	width: 20px;
+	height: 20px;
+	line-height: 20px;
+	font-size: 14px;
+	display: inline-block;
+	text-align: center;
+	vertical-align: middle;
+	font-family: 'Josefin Sans', sans-serif;
+}
