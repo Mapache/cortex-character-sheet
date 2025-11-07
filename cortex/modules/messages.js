@@ -1,6 +1,6 @@
 import { CampaignPermissions, cloud } from "./cloud.js"
 import { Flags } from "./flags.js"
-import { formatRelativeTime } from "./formatting.js"
+import { formatAbsoluteTime } from "./formatting.js"
 import { menu, menuEntry, menuDivider, menuLabel, menuTextInput } from "./menu.js"
 import { Modal } from "./modal.js"
 import { ToggleableStyle } from "./toggleableStyle.js"
@@ -34,7 +34,7 @@ class Messages {
       const messages = await cloud.fetchOlderMessages()
       this.showMessages(messages, true)
       await cloud.subscribeToNewerMessages(this, messages.at(-1)?.saved)
-      
+
       console.log(this.messages) //!
 
       document.getElementById("message-post").onclick = (e) => {
@@ -134,7 +134,7 @@ function htmlForMessage(message) {
   const html = document.createElement("li")
   html.id = htmlIdForMessage(message)
   html.classList.add("message")
-  html.innerText = `${formatRelativeTime(message.saved)} : ${message.text}`
+  html.innerText = `${formatAbsoluteTime(message.saved)} : ${message.text}`
   return html
 }
 
