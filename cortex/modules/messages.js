@@ -31,8 +31,18 @@ class Messages {
 
     if (!this.messages) {
       this.messages = {}
-      this.showMessages(await cloud.fetchMessages())
+      const messages = await cloud.fetchOlderMessages()
+      this.showMessages(messages, true)
+      await cloud.subscribeToNewerMessages(this, messages.at(-1)?.saved)
+      
       console.log(this.messages) //!
+
+      document.getElementById("message-post").onclick = (e) => {
+        const messageText = document.getElementById("message-text")
+        const text = messageText.value
+        this.testPostMessage(text)
+        messageText.value = ""
+      }
     }
   }
 
@@ -51,6 +61,22 @@ class Messages {
 
   toggle() {
     this.setVisible(!this.visible)
+  }
+
+  // Replaces all displayed messages with the currently loaded messages
+  showAllMessages() {
+    let messages = Object.values(this.messages)
+    messages.sort((a, b) => a.saved - b.saved)
+    const htmlMessages = messages.map(htmlForMessage)
+    this.messagesDiv.replaceChildren(...htmlMessages)
+  }
+
+  async showOlderMessages() {
+    if (this.oldestMessageTimestamp) {
+      this.showMessages(await cloud.fetchOlderMessages(this.oldestMessageTimestamp), true)
+    } else {
+      // TODO: Update UI to convey we have run out of older messages
+    }
   }
 
   // MARK: Listeners
@@ -79,9 +105,19 @@ class Messages {
     const html = newMessages.map(htmlForMessage)
     if (areOld) {
       this.messagesDiv.prepend(...html)
+      this.oldestMessageTimestamp = messages[0]?.saved
     } else {
       this.messagesDiv.append(...html)
     }
+  }
+
+  // MARK: Actions
+
+  async testPostMessage(text) {
+    await cloud.postMessageComponents(text,
+      [["Mind", 6],
+      ["Body", 6],
+      ["Soul", 6]])
   }
 
 }

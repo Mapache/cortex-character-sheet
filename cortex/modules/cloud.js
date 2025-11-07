@@ -1,6 +1,6 @@
 import { app, analytics, auth, db } from "./firebase.js"
 import { onAuthStateChanged, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js"
-import { doc, collection, where, query, orderBy, limit, onSnapshot, addDoc, setDoc, updateDoc, getDoc, getDocs, documentId, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js"
+import { doc, collection, where, query, orderBy, startAfter, limit, onSnapshot, addDoc, setDoc, updateDoc, getDoc, getDocs, documentId, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js"
 
 import { load_character } from "./load.js"
 import { characterName, save_character } from "./save.js"
@@ -675,6 +675,20 @@ export class Cloud {
 
 	// MARK: Messages & Dice Rolls
 
+	/**
+	 * @param {string} text
+	 * @param {[[label, size]]} dice
+	 */
+	async postMessageComponents(text, dice) {
+		const user = await cloud.requireSignIn()
+		const message = new Message(user.uid, text)
+		for (const die of dice) {
+			message.addDie(...die)
+		}
+		console.log(Message.converter.toFirestore(message))
+		await this.postMessage(message)
+	}
+
 	async postMessage(message) {
 		await this.requireSignIn()
 		await this.requireCurrentCampaign()
@@ -690,30 +704,57 @@ export class Cloud {
 		}
 	}
 
-	async fetchMessages() {
+	async fetchOlderMessages(endingTimestamp) {
 		await this.requireSignIn()
 		await this.requireCurrentCampaign()
 
 		const messagesRef = collection(db,
 			collections.campaigns, this.currentCampaign.id,
 			collections.messages).withConverter(Message.converter)
-		const querySnapshot = await getDocs(query(messagesRef, orderBy("saved"), limit(25)))
+		const queryRef = endingTimestamp
+			? query(messagesRef, orderBy("saved", "desc"), startAfter(endingTimestamp), limit(25))
+			: query(messagesRef, orderBy("saved", "desc"), limit(25))
+		const querySnapshot = await getDocs(queryRef)
 
 		let messages = querySnapshot.docs.map((doc) => doc.data())
-		//! messages.sort((a, b) => b.saved - a.saved)
+		// The query needs to be descending to fetch newest messages, but order the returned messsages in ascending order.
+		messages.sort((a, b) => a.saved - b.saved)
 		return messages
 	}
 
-	async testPostMessage(text) {
-		const user = await this.requireSignIn()
-		const message = new Message(user.uid, text ?? `Test Message ${new Date().toLocaleTimeString()}`)
-		message.addDie("Mind", 6)
-		message.addDie("Body", 6)
-		message.addDie("Soul", 6)
-		console.log(Message.converter.toFirestore(message))
-		await this.postMessage(message)
+	async subscribeToNewerMessages(messagesHandler, startingTimestamp) {
+		await this.requireSignIn()
+		await this.requireCurrentCampaign()
 
-		console.log(await this.fetchMessages())
+		this.unsubscribeMessagesForCurrentCampaign?.()
+
+		const initialLoad = new Deferred()
+
+		const messagesRef = collection(db,
+			collections.campaigns, this.currentCampaign.id,
+			collections.messages).withConverter(Message.converter)
+		const queryRef = startingTimestamp
+			? query(messagesRef, orderBy("saved"), startAfter(startingTimestamp))
+			: query(messagesRef, orderBy("saved"))
+		this.unsubscribeMessagesForCurrentCampaign = onSnapshot(queryRef, (snapshot) => {
+			snapshot.docChanges().forEach((change) => {
+				const message = change.doc.data()
+				const source = change.doc.metadata.hasPendingWrites ? "Local" : "Server"
+				switch (change.type) {
+					case "added":
+					case "modified":
+						// TODO: Avoid double update from local and server changes.
+						messagesHandler.showMessage(message)
+						break
+					case "removed":
+						console.debug(`Removed message ${source}: `, message)
+						// TODO: Handle message deletion; low-priority as only admins can delete messages entirely.
+						break
+				}
+			})
+			initialLoad.resolve()
+		})
+		await initialLoad.promise
 	}
 
 }
