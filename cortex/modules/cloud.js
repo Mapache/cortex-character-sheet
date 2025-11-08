@@ -260,6 +260,8 @@ export class Cloud {
 		this.defaultCampaign = null
 		this.campaigns = null
 		this.currentCharacterSheets = null
+
+		this.displayNameCache = {}
 	}
 
 	// MARK: Authentication
@@ -269,6 +271,7 @@ export class Cloud {
 			const unsubscribe = onAuthStateChanged(auth, (user) => {
 				unsubscribe() // Unsubscribe after the first state change
 				resolve(user) // Resolve with the initial user state
+				this.updateProfile(user)
 			})
 		})
 	}
@@ -280,6 +283,7 @@ export class Cloud {
 				const credential = GoogleAuthProvider.credentialFromResult(result)
 				const token = credential.accessToken
 				const user = result.user
+				this.updateProfile(user)
 				return user
 			}).catch((error) => {
 				const errorCode = error.code
@@ -292,6 +296,28 @@ export class Cloud {
 
 	async requireSignIn() {
 		return (await this.waitForAuthInit()) || (await this.signIn())
+	}
+
+	// MARK: Profiles
+
+	async updateProfile(user) {
+		if (!user) {
+			return
+		}
+		await setDoc(doc(db, collections.userProfiles, user.uid), {
+			displayName: user.displayName
+		})
+	}
+
+	async displayNameForUserId(uid) {
+		const cachedDisplayName = this.displayNameCache[uid]
+		if (cachedDisplayName) {
+			return cachedDisplayName
+		}
+		const docSnapshot = await getDoc(doc(db, collections.userProfiles, uid))
+		const displayName = docSnapshot.exists() ? docSnapshot.data().displayName : uid
+		this.displayNameCache[uid] = displayName
+		return displayName
 	}
 
 	// MARK: Permissions

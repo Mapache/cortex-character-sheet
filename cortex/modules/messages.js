@@ -73,10 +73,10 @@ class Messages {
   }
 
   // Replaces all displayed messages with the currently loaded messages
-  showAllMessages() {
+  async showAllMessages() {
     let messages = Object.values(this.messages)
     messages.sort((a, b) => a.saved - b.saved)
-    const htmlMessages = messages.map(htmlForMessage)
+    const htmlMessages = await asyncMap(messages, htmlForMessage)
     this.messagesDiv.replaceChildren(...htmlMessages)
   }
 
@@ -176,26 +176,27 @@ class Messages {
     this.showMessages([message])
   }
 
-  showMessages(messages, areOld = false) {
-    const newMessages = messages.filter((message) => {
+  async showMessages(messages, areOld = false) {
+    const newMessages = await asyncFilter(messages, async (message) => {
       let messageIsNew = true
       if (this.messages[message.id]) {
         // This is an update to a previously-displayed message
         messageIsNew = false
         const oldHtml = document.getElementById(htmlIdForMessage(message))
-        oldHtml.replaceWith(htmlForMessage(message))
+        oldHtml.replaceWith(await htmlForMessage(message))
       }
       // Always store the new message
       this.messages[message.id] = message
       return messageIsNew
     })
 
-    const html = newMessages.map(htmlForMessage)
+    const html = await asyncMap(newMessages, htmlForMessage)
     if (areOld) {
       this.messagesDiv.prepend(...html)
       this.oldestMessageTimestamp = messages[0]?.saved
     } else {
       this.messagesDiv.append(...html)
+      this.scrollToBottom()
     }
   }
 
@@ -207,11 +208,13 @@ function htmlIdForMessage(message) {
   return `message-${message.id}`
 }
 
-function htmlForMessage(message) {
+async function htmlForMessage(message) {
   const html = document.createElement("li")
   html.id = htmlIdForMessage(message)
   html.classList.add("message")
-  html.innerText = `${formatAbsoluteTime(message.saved)} : ${message.text}`
+  html.innerHTML =
+    `<span>${formatAbsoluteTime(message.saved)} ${await cloud.displayNameForUserId(message.author)}:</span>` +
+    `<div>${message.text}</div>`
 
   if (message.dice.length > 0) {
     const table = document.createElement("table")
@@ -226,6 +229,21 @@ function htmlForMessage(message) {
   }
 
   return html
+}
+
+// MARK: Utility
+
+async function asyncMap(array, transform) {
+  return await Promise.all(array.map(async (element) => {
+    return await transform(element)
+  }))
+}
+
+async function asyncFilter(array, predicate) {
+  const filterResults = await Promise.all(array.map(async (element) => {
+    return await predicate(element)
+  }))
+  return array.filter((_, index) => filterResults[index])
 }
 
 export const messages = new Messages()

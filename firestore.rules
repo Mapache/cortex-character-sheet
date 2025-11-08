@@ -51,5 +51,10 @@ service cloud.firestore {
     match /userPermissions/{userPermission} {
     	allow read, write: if request.auth.uid == userPermission;
     }
+    
+    match /userProfiles/{userProfile} {
+    	allow read: if request.auth != null;
+    	allow write: if request.auth.uid == userProfile;
+    }
   }
 }
