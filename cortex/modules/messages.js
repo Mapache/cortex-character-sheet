@@ -35,6 +35,7 @@ class Messages {
       const messages = await cloud.fetchOlderMessages()
       this.showMessages(messages, true)
       await cloud.subscribeToNewerMessages(this, messages.at(-1)?.saved)
+      this.scrollToBottom()
 
       document.getElementById("message-post").onclick = (e) => {
         this.postMessage(e)
@@ -62,6 +63,13 @@ class Messages {
 
   toggle() {
     this.setVisible(!this.visible)
+  }
+
+  scrollToBottom() {
+    this.messagesDiv.scrollTo({
+      top: this.messagesDiv.scrollHeight,
+      behavior: "smooth"
+    })
   }
 
   // Replaces all displayed messages with the currently loaded messages
@@ -124,10 +132,7 @@ class Messages {
     }
 
     await cloud.postMessageComponents(text, dice)
-    this.messagesDiv.scrollTo({
-      top: this.messagesDiv.scrollHeight,
-      behavior: "smooth"
-    })
+    this.scrollToBottom()
   }
 
   installDieSizeBlurHandler(node) {
