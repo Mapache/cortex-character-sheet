@@ -36,8 +36,6 @@ class Messages {
       this.showMessages(messages, true)
       await cloud.subscribeToNewerMessages(this, messages.at(-1)?.saved)
 
-      console.log(this.messages) //!
-
       document.getElementById("message-post").onclick = (e) => {
         this.postMessage(e)
       }
@@ -174,9 +172,6 @@ class Messages {
   }
 
   showMessages(messages, areOld = false) {
-    console.log("showMessages")
-    console.log(messages) //!
-
     const newMessages = messages.filter((message) => {
       let messageIsNew = true
       if (this.messages[message.id]) {
@@ -208,8 +203,6 @@ function htmlIdForMessage(message) {
 }
 
 function htmlForMessage(message) {
-  console.log("htmlForMessage")
-  console.log(message) //!
   const html = document.createElement("li")
   html.id = htmlIdForMessage(message)
   html.classList.add("message")
