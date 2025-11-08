@@ -1317,6 +1317,10 @@ li:before {
 	}
 }
 
+.development-hidden {
+	display: none !important;
+}
+
 #current-campaign {
 	font-family: 'Open Sans', sans-serif;
 	font-size: 12pt;

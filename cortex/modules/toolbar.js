@@ -205,7 +205,7 @@ export async function toggleMessaging(e) {
 // MARK: Development Section
 
 const developmentHidden = new ToggleableStyle(
-	"#development-hook",
+	".development",
 	"development-hidden",
 	"development-visible",
 	`
