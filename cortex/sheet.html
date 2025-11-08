@@ -38,7 +38,14 @@
 	<!-- Messaging -->
 	<div id="messaging" class="no-print messaging-hidden">
 		<ul id="messages"></ul>
-		<input id="message-text" type="text" placeholder="Enter message"></input><button type="button" id="message-post">Post</button>
+		<input id="message-text" type="text" placeholder="Enter message"></input>
+		<table id="dice" class="dice-input">
+			<tr id="die-0" class="die-input">
+				<td class="die-input-label"><input type="text" placeholder="Trait name"></input></td>
+				<td class="die-input-size"><h2 class="trait-value"><c contenteditable>∅</c></h2></td>
+			</tr>
+		</table>
+		<button type="button" id="message-post">Post</button>
 	</div>
 
 	<!-- Page -->

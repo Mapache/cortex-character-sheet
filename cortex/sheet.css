@@ -1724,6 +1724,7 @@ li:before {
 	vertical-align: middle;
 	font-family: 'Josefin Sans', sans-serif;
 }
+
 /*
 .d8::before {
   content: "";
@@ -1764,4 +1765,33 @@ li:before {
 	text-align: center;
 	vertical-align: middle;
 	font-family: 'Josefin Sans', sans-serif;
+}
+
+.dice-input {
+	width: 100%;
+}
+
+.die-input {
+	width: 100%;
+}
+
+.die-input-label {
+	width: 80%;
+}
+
+.die-input-size {
+	width: auto;
+	text-align: center;
+	vertical-align: middle;
+
+	h2 {
+		width: 100%;
+		height: 100%;
+
+		c {
+			display: inline-block;
+			width: 100%;
+			height: 100%;
+		}
+	}
 }

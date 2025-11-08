@@ -1,4 +1,5 @@
 import { CampaignPermissions, cloud } from "./cloud.js"
+import { c_to_html } from "./conversion.js"
 import { Flags } from "./flags.js"
 import { formatAbsoluteTime } from "./formatting.js"
 import { menu, menuEntry, menuDivider, menuLabel, menuTextInput } from "./menu.js"
@@ -38,11 +39,13 @@ class Messages {
       console.log(this.messages) //!
 
       document.getElementById("message-post").onclick = (e) => {
-        const messageText = document.getElementById("message-text")
-        const text = messageText.value
-        this.testPostMessage(text)
-        messageText.value = ""
+        this.postMessage(e)
       }
+
+      this.diceTable = document.getElementById("dice")
+      const initialDiceRow = document.getElementById("die-0")
+      this.diceRowTemplate = initialDiceRow.cloneNode(true)
+      this.installDieSizeBlurHandler(initialDiceRow)
     }
   }
 
@@ -79,6 +82,91 @@ class Messages {
     }
   }
 
+  // MARK: Edit Handlers
+
+  async postMessage(e) {
+    const messageText = document.getElementById("message-text")
+    const text = messageText.value
+
+    let dice = []
+    for (const dieInput of document.querySelectorAll(".die-input")) {
+      const label = dieInput.querySelector("input").value
+      let size = null
+      switch (dieInput.querySelector("c").innerText) {
+        case "4":
+          size = 4
+          break
+        case "6":
+          size = 6
+          break
+        case "8":
+          size = 8
+          break
+        case "0":
+          size = 10
+          break
+        case "2":
+          size = 12
+          break
+        default:
+          // Don't push ø sizes, but we'll always have at least one visible.
+          continue
+      }
+      dice.push([label, size])
+    }
+
+    messageText.value = ""
+    for (const dieInput of document.querySelectorAll(".die-input")) {
+      if (dieInput.id == "die-0") {
+        dieInput.querySelector("input").value = ""
+        dieInput.querySelector("c").innerText = "∅"
+      } else {
+        dieInput.remove()
+      }
+    }
+
+    await cloud.postMessageComponents(text, dice)
+    this.messagesDiv.scrollTo({
+      top: this.messagesDiv.scrollHeight,
+      behavior: "smooth"
+    })
+  }
+
+  installDieSizeBlurHandler(node) {
+    node.querySelector("c").addEventListener("blur", (e) => {
+      this.dieSizeBlur(e)
+    })
+  }
+
+  dieSizeBlur(e) {
+    let convertedText = c_to_html(e.target.innerText)
+    switch (convertedText[0]) {
+      case "4":
+      case "6":
+      case "8":
+      case "0":
+      case "2":
+        convertedText = convertedText[0]
+        break
+      default:
+        convertedText = "∅"
+    }
+    e.target.innerHTML = convertedText
+
+    let allDieInputsFull = true
+    for (const dieInput of document.querySelectorAll(".die-input")) {
+      if (dieInput.querySelector("c").innerText === "∅") {
+        allDieInputsFull = false
+      }
+    }
+    if (allDieInputsFull) {
+      const newRow = this.diceRowTemplate.cloneNode(true)
+      newRow.id = `die-${this.diceTable.childElementCount}`
+      this.diceTable.appendChild(newRow)
+      this.installDieSizeBlurHandler(newRow)
+    }
+  }
+
   // MARK: Listeners
 
   showMessage(message) {
@@ -111,17 +199,6 @@ class Messages {
     }
   }
 
-  // MARK: Actions
-
-  async testPostMessage(text) {
-    await cloud.postMessageComponents(text,
-      [["Brawn", 4],
-      ["Finesse", 6],
-      ["Panache", 8],
-      ["Resolve", 10],
-      ["Wits", 12]])
-  }
-
 }
 
 // MARK: Rendering
@@ -142,8 +219,8 @@ function htmlForMessage(message) {
     const table = document.createElement("table")
     for (const die of message.dice) {
       const row = document.createElement("tr")
-      row.innerHTML = 
-        `<td class="trait"><h2 class="trait-name">${die.label}</h2></td>` + 
+      row.innerHTML =
+        `<td class="trait"><h2 class="trait-name">${die.label}</h2></td>` +
         `<td><c>${die.size % 10}</c> → <span class="d${die.size}">${die.result}</span></td>`
       table.appendChild(row)
     }
