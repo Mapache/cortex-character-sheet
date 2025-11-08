@@ -1,3 +1,4 @@
+import { asyncMap, asyncFilter } from "./async.js"
 import { CampaignPermissions, cloud } from "./cloud.js"
 import { c_to_html } from "./conversion.js"
 import { Flags } from "./flags.js"
@@ -229,21 +230,6 @@ async function htmlForMessage(message) {
   }
 
   return html
-}
-
-// MARK: Utility
-
-async function asyncMap(array, transform) {
-  return await Promise.all(array.map(async (element) => {
-    return await transform(element)
-  }))
-}
-
-async function asyncFilter(array, predicate) {
-  const filterResults = await Promise.all(array.map(async (element) => {
-    return await predicate(element)
-  }))
-  return array.filter((_, index) => filterResults[index])
 }
 
 export const messages = new Messages()
