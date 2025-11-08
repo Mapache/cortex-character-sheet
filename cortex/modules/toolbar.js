@@ -38,7 +38,7 @@ export async function campaigns_menu(e) {
 		if (cloud.accessFor(campaign.id) == CampaignPermissions.admin) {
 			subMenuEntries = [
 				menuLabel("Rename campaign:"),
-				menuTextInput(campaign.name, (name) => {
+				menuTextInput("New campaign name", campaign.name, (name) => {
 					cloud.renameCampaign(campaign, name)
 					campaignsMenu.hide()
 				}),
@@ -63,7 +63,7 @@ export async function campaigns_menu(e) {
 	}
 	entries.push(menuEntry("Create New Campaign…", null, [
 		menuLabel("Enter name for new campaign:"),
-		menuTextInput("", (name) => {
+		menuTextInput("New campaign name", "", (name) => {
 			cloud.createNewCampaign(name)
 			campaignsMenu.hide()
 		})

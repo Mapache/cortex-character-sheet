@@ -55,10 +55,11 @@ export function menuLabel(text) {
   return p
 }
 
-export function menuTextInput(placeholder, action) {
+export function menuTextInput(placeholder, value, action) {
   const input = document.createElement("input")
   input.setAttribute("type", "text")
-  input.setAttribute("value", placeholder)
+  input.setAttribute("placeholder", placeholder)
+  input.setAttribute("value", value)
   // input.onchange = (event) => {
   //   action(input.value)
   // }
