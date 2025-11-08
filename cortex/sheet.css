@@ -1292,9 +1292,14 @@ li:before {
 		content: "\f128";
 	}
 
+	#toggle-messaging:before {
+		content: "\f522";
+	}
+
 	#development-hook:before {
 		content: "\f492";
 	}
+
 }
 
 @keyframes iconShimmer {

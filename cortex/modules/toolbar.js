@@ -196,6 +196,12 @@ export const emptyDescriptionsHidden = new ToggleableStyle(
 
 export const helpModal = await Modal.build("help-modal", function () { })
 
+// MARK: Messaging
+
+export async function toggleMessaging(e) {
+	messages.toggle()
+}
+
 // MARK: Development Section
 
 const developmentHidden = new ToggleableStyle(
@@ -215,6 +221,5 @@ export async function developmentHook(e) {
 		console.error("Attempting to run development code on prod!")
 		return
 	}
-	// cloud.testPostMessage()
 	messages.toggle()
 }
