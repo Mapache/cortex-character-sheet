@@ -1667,6 +1667,7 @@ li:before {
 	margin-top: 10mm;
 	width: 200px;
 	height: 90%;
+	max-height: 297.1mm;
 
 	display: flex;
 	flex-direction: column;

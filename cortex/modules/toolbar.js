@@ -192,15 +192,15 @@ export const emptyDescriptionsHidden = new ToggleableStyle(
 	`,
 	true)
 
-// MARK: Help Section
-
-export const helpModal = await Modal.build("help-modal", function () { })
-
 // MARK: Messaging
 
 export async function toggleMessaging(e) {
 	messages.toggle()
 }
+
+// MARK: Help Section
+
+export const helpModal = await Modal.build("help-modal", function () { })
 
 // MARK: Development Section
 
