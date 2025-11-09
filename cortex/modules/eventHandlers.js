@@ -1,5 +1,11 @@
 import { c_to_html, text_to_html, html_to_text } from "./conversion.js"
 
+export let isEditingEnabled = true
+
+export function setEditingEnabled(value) {
+  isEditingEnabled = value
+}
+
 export function addEditHandlers(parent) {
   let editables = parent.querySelectorAll("div[contenteditable], h1[contenteditable], h2[contenteditable]")
   for (let editable of editables) {
@@ -14,28 +20,40 @@ export function addEditHandlers(parent) {
 }
 
 function addEditHandlersToNode(editable) {
-  editable.addEventListener("blur", (event) => {
-    event.target.innerHTML = text_to_html(event.target.innerText)
+  editable.addEventListener("focus", (e) => {
+    if (isEditingEnabled) {
+      e.target.innerText = html_to_text(e.target.innerHTML)
+    } else {
+      e.target.blur()
+    }
   })
-  editable.addEventListener("focus", (event) => {
-    event.target.innerText = html_to_text(event.target.innerHTML)
+  editable.addEventListener("blur", (e) => {
+    if (isEditingEnabled) {
+      e.target.innerHTML = text_to_html(e.target.innerText)
+    }
   })
 
   if (editable.classList.contains("header")) {
-    editable.addEventListener("keydown", (event) => {
-      if (event.key === "Enter") {
-        event.preventDefault()
-        event.target.blur()
+    editable.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault()
+        e.target.blur()
       }
     })
   }
 }
 
 function addEditHandlersToC(c) {
-  c.addEventListener("blur", (event) => {
-    event.target.innerHTML = c_to_html(event.target.innerText)
+  c.addEventListener("focus", (e) => {
+    if (isEditingEnabled) {
+      e.target.innerText = html_to_text(e.target.innerHTML)
+    } else {
+      e.target.blur()
+    }
   })
-  c.addEventListener("focus", (event) => {
-    event.target.innerText = html_to_text(event.target.innerHTML)
+  c.addEventListener("blur", (e) => {
+    if (isEditingEnabled) {
+      e.target.innerHTML = c_to_html(e.target.innerText)
+    }
   })
 }

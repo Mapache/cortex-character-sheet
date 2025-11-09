@@ -1,6 +1,7 @@
 import { asyncMap, asyncFilter } from "./async.js"
 import { CampaignPermissions, cloud } from "./cloud.js"
 import { noDiePlaceholder, c_to_html, html_to_text } from "./conversion.js"
+import { setEditingEnabled } from "./eventHandlers.js"
 import { Flags } from "./flags.js"
 import { formatAbsoluteTime } from "./formatting.js"
 import { menu, menuEntry, menuDivider, menuLabel, menuTextInput } from "./menu.js"
@@ -30,6 +31,7 @@ class Messages {
   async show() {
     this.visible = true
     messagingVisible.enable()
+    setEditingEnabled(false)
 
     if (!this.messages) {
       this.messages = {}
@@ -52,6 +54,7 @@ class Messages {
   hide() {
     this.visible = false
     messagingVisible.disable()
+    setEditingEnabled(true)
   }
 
   setVisible(visible) {
@@ -137,7 +140,6 @@ class Messages {
   }
 
   pageClicked(e) {
-    console.debug("e.target =", e.target)
     if (!this.visible) {
       return
     }
@@ -145,11 +147,11 @@ class Messages {
     let value = null
     if (e.target.nodeName === "C") {
       value = e.target.innerText
-      console.debug("Overriding value =", value)
+      console.debug("Using clicked value =", value)
     }
     const trait = e.target.closest(".trait")
     if (trait) {
-      const label = trait.querySelector(".trait-name").innerText
+      const label = trait.querySelector(".trait-name").innerText.replace(/(\r\n|\n|\r)/gm, " ")
       value = value ?? trait.querySelector(".trait-value c").innerText
 
       let dieInput = this.diceTable.lastElementChild
@@ -167,13 +169,6 @@ class Messages {
         this.addNewDieInputRow()
       }
     }
-
-    // Don't go into editing mode for the clicked node.
-    e.preventDefault()
-    e.stopPropagation()
-    // contenteditable seems to be ignoring the above, so explicitly blur to sort-of achieve the effect.
-    console.debug("document.activeElement =", document.activeElement)
-    document.activeElement.blur()
   }
 
   // MARK: Edit Handlers
