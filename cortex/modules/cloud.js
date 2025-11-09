@@ -179,7 +179,7 @@ export class CampaignPermissions {
 
 	keyFor(access) {
 		for (const [key, value] of Object.entries(this.permissions)) {
-			if (value == access) {
+			if (value === access) {
 				return key
 			}
 		}
@@ -389,7 +389,7 @@ export class Cloud {
 
 	findDefaultCampaign(user) {
 		for (const [index, campaign] of this.campaigns.entries()) {
-			if (campaign.id == user.uid) {
+			if (campaign.id === user.uid) {
 				this.campaigns.splice(index, 1)
 				this.defaultCampaign = campaign
 				return campaign
@@ -491,10 +491,10 @@ export class Cloud {
 		await this.requireSignIn()
 		await this.requireCampaigns()
 
-		if (this.defaultCampaign.id == campaignId) {
+		if (this.defaultCampaign.id === campaignId) {
 			return this.defaultCampaign
 		}
-		return this.campaigns.filter((campaign) => campaign.id == campaignId)[0]
+		return this.campaigns.filter((campaign) => campaign.id === campaignId)[0]
 	}
 
 	async switchCampaignId(campaignId) {
@@ -655,7 +655,7 @@ export class Cloud {
 		const sheet = new CharacterSheet(json)
 
 		// Check if the sheet is unchanged
-		if (this.currentCharacterSheets[sheet.id]?.jsonString == sheet.jsonString) {
+		if (this.currentCharacterSheets[sheet.id]?.jsonString === sheet.jsonString) {
 			// No changes, no need to do anything.
 			console.log("Skipping upload for unchanged character sheet", sheet.name)
 			return

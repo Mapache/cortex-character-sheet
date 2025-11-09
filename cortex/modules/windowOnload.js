@@ -10,7 +10,7 @@ import { whenInteractive } from "./util.js"
 
 whenInteractive(() => {
   document.addEventListener("keydown", async (e) => {
-    if ((window.navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey) && e.keyCode == 83) {
+    if ((window.navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey) && e.keyCode === 83) {
       e.preventDefault()
       if (auth.currentUser) {
         upload_character(e)

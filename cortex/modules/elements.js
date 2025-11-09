@@ -55,7 +55,7 @@ export function remove_last_page(e) {
   const pages = document.getElementById("pages")
   const lastPage = pagePlaceholder.previousElementSibling
   // Minimum pages length is 2, the first page and the page-placeholder.
-  if (pages.children.length > 2 && lastPage.querySelectorAll(".trait-group").length == 0) {
+  if (pages.children.length > 2 && lastPage.querySelectorAll(".trait-group").length === 0) {
     lastPage.remove()
   } else {
     console.error("Attempting to remove non-empty page!")
@@ -68,7 +68,7 @@ export function updatePagePlaceholderControl() {
   const pages = document.getElementById("pages")
   const lastPage = pagePlaceholder.previousElementSibling
   // Minimum pages length is 2, the first page and the page-placeholder.
-  if (pages.children.length > 2 && lastPage.querySelectorAll(".trait-group").length == 0) {
+  if (pages.children.length > 2 && lastPage.querySelectorAll(".trait-group").length === 0) {
     pagePlaceholder.classList.add("remove-last-page")
     pagePlaceholder.onclick = remove_last_page
   } else {
@@ -119,7 +119,7 @@ export function update_titles(characterName, excludingTitle) {
 }
 
 export function updateDocumentTitle(characterName) {
-  if (characterName === "NAME" || characterName.length == 0) {
+  if (characterName === "NAME" || characterName.length === 0) {
     characterName = "Cortex Prime"
   }
   document.title = characterName + " Character Sheet"

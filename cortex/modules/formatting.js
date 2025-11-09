@@ -32,7 +32,7 @@ export function formatRelativeTime(timestamp) {
   } else if (Math.abs(millis) < oneHour * 3) {
     return format1(millis / oneHour, "hour") + ", " + format((millis % oneHour) / oneMinute, "minute")
   } else if (Math.abs(millis) < oneDay) {
-    const day = (targetDate.getDate() == now.getDate()) ? "Today" : "Yesterday"
+    const day = (targetDate.getDate() === now.getDate()) ? "Today" : "Yesterday"
     return day + ", " + targetDate.toLocaleTimeString(locale)
   } else if (Math.abs(millis) < oneWeek) {
     return targetDate.toLocaleString(locale, { weekday: "long" }) + ", " + targetDate.toLocaleTimeString(locale)
@@ -49,7 +49,7 @@ export function formatAbsoluteTime(timestamp) {
   const millis = targetDate.getTime() - now.getTime()
 
   if (Math.abs(millis) < oneDay) {
-    const day = (targetDate.getDate() == now.getDate()) ? "" : "Yesterday "
+    const day = (targetDate.getDate() === now.getDate()) ? "" : "Yesterday "
     return day + targetDate.toLocaleTimeString(locale)
   } else if (Math.abs(millis) < oneWeek) {
     return targetDate.toLocaleString(locale, { weekday: "long" }) + ", " + targetDate.toLocaleTimeString(locale)

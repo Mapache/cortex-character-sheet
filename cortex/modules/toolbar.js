@@ -35,7 +35,7 @@ export async function campaigns_menu(e) {
 	]
 	for (const campaign of cloud.campaigns) {
 		let subMenuEntries = null
-		if (cloud.accessFor(campaign.id) == CampaignPermissions.admin) {
+		if (cloud.accessFor(campaign.id) === CampaignPermissions.admin) {
 			subMenuEntries = [
 				menuLabel("Rename campaign:"),
 				menuTextInput("New campaign name", campaign.name, (name) => {
@@ -84,7 +84,7 @@ export async function characters_menu(e) {
 			// Dynamically expand this submenu
 			rollbackMenuEntry.onclick = null
 			let versions = await cloud.versionsForCharacter(characterSheet)
-			if (versions.length == 0) {
+			if (versions.length === 0) {
 				rollbackMenuEntry.innerText = "No older versions"
 				return
 			}

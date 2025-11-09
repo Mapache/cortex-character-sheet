@@ -5,7 +5,7 @@ function update_attribute_positions() {
 
 	document.getElementById("attribute-curve").style.display = (attributes.length <= 1) ? "none" : "block";
 
-	if (attributes.length == 1) {
+	if (attributes.length === 1) {
 		let a = attributes[0]
 		a.style.left = ((115 + 176) * 0.5 + 3.5) + "mm"
 		a.style.top = "120mm"

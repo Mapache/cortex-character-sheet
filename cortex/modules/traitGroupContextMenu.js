@@ -21,7 +21,7 @@ export async function show_context_menu(e) {
   let found = false
   for (let menuEntry of menuEntries) {
     let menuStyle = menuEntry.getAttribute("data-style")
-    let checked = menuStyle == traitGroupStyle
+    let checked = menuStyle === traitGroupStyle
     menuEntry.checked = checked
     found = found || checked
   }
