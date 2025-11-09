@@ -1191,6 +1191,11 @@ li:before {
 		text-align: center !important;
 	}
 
+	table .help-section {
+		padding-top: 8pt;
+		text-align: start !important;
+	}
+
 	.add-item {
 		width: 0;
 		left: -14px;
@@ -1328,6 +1333,83 @@ li:before {
 	25%,
 	100% {
 		color: #000;
+	}
+}
+
+.icon {
+	font-family: 'Font Awesome 7 Free';
+	font-style: normal;
+	font-weight: 900;
+	font-size: 125%;
+
+	&.plus:before {
+		content: "\f0fe";
+		font-weight: 400;
+	}
+
+	&.minus:before {
+		content: "\f146";
+		font-weight: 400;
+	}
+
+	&.reset:before {
+		content: "\f01e";
+	}
+
+	&.campaigns:before {
+		content: "\f07b";
+	}
+
+	&.characters:before {
+		content: "\f007";
+	}
+
+	&.upload:before {
+		content: "\f0ee";
+	}
+
+	&.download:before {
+		content: "\f019";
+	}
+
+	&.show-global-highlight-menu:before {
+		content: "\f043";
+	}
+
+	&.global-highlight-picker {
+		height: 32px;
+		width: 32px;
+	}
+
+	&.toggle-layout-controls:not(.controls-hidden):before {
+		content: "\f06e";
+	}
+
+	&.toggle-layout-controls.controls-hidden:before {
+		content: "\f070";
+	}
+
+	&.toggle-empty-descriptions:not(.descriptions-hidden):before {
+		font-weight: 400;
+		content: "\f075";
+
+		animation: iconShimmer 4s infinite linear;
+	}
+
+	&.toggle-empty-descriptions.descriptions-hidden:before {
+		content: "\f4b3";
+	}
+
+	&.help:before {
+		content: "\f128";
+	}
+
+	&.toggle-messaging:before {
+		content: "\f522";
+	}
+
+	&.development-hook:before {
+		content: "\f492";
 	}
 }
 
