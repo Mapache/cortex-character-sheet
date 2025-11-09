@@ -1083,10 +1083,35 @@ li:before {
 	width: 500pt;
 	padding: 16pt 24pt 0 24pt;
 	font-family: 'Open Sans', sans-serif;
-	font-size: 8pt;
+	font-size: 10pt;
 
 	#bottom {
 		margin: 16pt 0 4pt 0;
+		display: flex;
+		flex-direction: row;
+
+		#logo {
+			margin: 8px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			img {
+				width: 100%;
+			}
+		}
+
+		#legal {
+			font-size: 8pt;
+			text-align: justify;
+			padding: 12pt;
+
+			a {
+				color: var(--highlight);
+				font-weight: 800;
+				text-decoration: none;
+			}
+		}
 	}
 
 	#close {
@@ -1094,35 +1119,24 @@ li:before {
 		bottom: 0;
 		left: 50%;
 		margin-bottom: 8pt;
-	}
 
-	#close button {
-		border: 0;
-		border-radius: 5px;
-		background: none;
-		font-size: 12pt;
-		cursor: pointer;
-		padding: 6pt 10pt 6pt 10pt;
-		margin: 0;
-		box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
-		transform: translate(-50%, 0);
-		transition: color 100ms;
-	}
+		button {
+			border: 0;
+			border-radius: 5px;
+			background: none;
+			font-size: 12pt;
+			cursor: pointer;
+			padding: 6pt 16pt 6pt 16pt;
+			margin: 0;
+			box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+			transform: translate(-50%, 0);
+			transition: color 100ms;
+		}
 
-	#close button:hover {
-		color: var(--highlight);
-		transition: color 100ms;
-	}
-
-	#legal {
-		text-align: justify;
-		padding: 12pt 24pt 16pt 24pt;
-	}
-
-	#legal a {
-		color: var(--highlight);
-		font-weight: 800;
-		text-decoration: none;
+		button:hover {
+			color: var(--highlight);
+			transition: color 100ms;
+		}
 	}
 
 	.left {
@@ -1328,34 +1342,6 @@ li:before {
 	position: fixed;
 	left: 64px;
 	top: 24px;
-}
-
-/* Disclaimer */
-#disclaimer {
-	display: flex;
-	position: fixed;
-	left: 0;
-	bottom: 0;
-	width: calc(50% - 105mm);
-
-	#logo {
-		float: left;
-	}
-
-	#legal {
-		display: none;
-		float: right;
-		font-size: 8pt;
-		margin-top: auto;
-		margin-bottom: 4pt;
-		padding-right: 40pt;
-		color: #333;
-	}
-
-	#logo img {
-		width: 20%;
-		margin: 8px;
-	}
 }
 
 /* Signature asset */
