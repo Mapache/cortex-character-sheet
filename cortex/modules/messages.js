@@ -143,6 +143,10 @@ class Messages {
     if (!this.visible) {
       return
     }
+    if (e.target.closest(".track")) {
+      // Don't roll track values when the track is clicked, only when the text is clicked.
+      return
+    }
 
     let value = null
     if (e.target.nodeName === "C") {
