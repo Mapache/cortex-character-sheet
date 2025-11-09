@@ -38,7 +38,7 @@ async function get_element_from_path(path) {
 }
 
 async function get_element_from_parts(parts) {
-  let current = (parts[0] == ":root") ? document.querySelector(":root") : document.querySelector("div#" + parts[0])
+  let current = (parts[0] === ":root") ? document.querySelector(":root") : document.querySelector("div#" + parts[0])
   for (let p = 1; p < parts.length; p++) {
     try {
       current = current.querySelector("#" + parts[p])
@@ -67,7 +67,7 @@ async function load_highlight_colors(highlightColors) {
       let highlightColor = highlightColors[path]
       apply_highlight_color(elem, highlightColor)
 
-      if (path == ":root") {
+      if (path === ":root") {
         globalHighlightColor = highlightColor
       }
     }
@@ -82,7 +82,7 @@ async function load_characterV3(json) {
   for (let path in data) {
     let object = null
     let value = null
-    if (typeof (data[path]) == "object") {
+    if (typeof (data[path]) === "object") {
       object = data[path]
       value = object.value
     } else {
@@ -98,13 +98,13 @@ async function load_characterV3(json) {
 
     if (element == null) continue
 
-    if (element.getAttribute("type") == "checkbox") {
+    if (element.getAttribute("type") === "checkbox") {
       element.checked = value
     }
-    else if (element.tagName == "IMG") {
+    else if (element.tagName === "IMG") {
       element.src = value
     }
-    else if (element.tagName == "DIV" || element.tagName == "H1" || element.tagName == "H2" || element.tagName == "C" || element.tagName == "SPAN") {
+    else if (element.tagName === "DIV" || element.tagName === "H1" || element.tagName === "H2" || element.tagName === "C" || element.tagName === "SPAN") {
       element.innerHTML = text_to_html(value)
     }
     else {

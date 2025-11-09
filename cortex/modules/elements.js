@@ -119,7 +119,7 @@ export function update_titles(characterName, excludingTitle) {
 }
 
 export function updateDocumentTitle(characterName) {
-  if (characterName == "NAME" || characterName.length == 0) {
+  if (characterName === "NAME" || characterName.length == 0) {
     characterName = "Cortex Prime"
   }
   document.title = characterName + " Character Sheet"

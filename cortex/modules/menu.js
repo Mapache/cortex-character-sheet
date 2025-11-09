@@ -64,7 +64,7 @@ export function menuTextInput(placeholder, value, action) {
   //   action(input.value)
   // }
   input.onkeyup = (event) => {
-    if (event.key == "Enter") {
+    if (event.key === "Enter") {
       action(input.value)
     }
   }

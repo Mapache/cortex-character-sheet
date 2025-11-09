@@ -53,20 +53,20 @@ function save_characterV3() {
     if (spell_parent !== null) {
       id = path_to(input.parentElement, "spells") + "/" + input.id
     }
-    else if (input.parentElement.id == "talent" || input.parentElement.id == "weapon" || input.parentElement.id == "ability" || input.parentElement.id == "critical-injury") {
+    else if (input.parentElement.id === "talent" || input.parentElement.id === "weapon" || input.parentElement.id === "ability" || input.parentElement.id === "critical-injury") {
       id = input.parentElement.parentElement.id + "/" + Array.prototype.indexOf.call(input.parentElement.parentElement.children, input.parentElement) + "/" + input.id
     }
     if (input.id === "") {
       id = get_path_from_element(input)
     }
 
-    if (input.getAttribute("type") == "checkbox") {
+    if (input.getAttribute("type") === "checkbox") {
       data[id] = input.checked
     }
-    else if (input.tagName == "IMG") {
+    else if (input.tagName === "IMG") {
       data[id] = input.src
     }
-    else if (input.tagName == "DIV" || input.tagName == "H1" || input.tagName == "H2" || input.tagName == "C" || input.tagName == "SPAN") {
+    else if (input.tagName === "DIV" || input.tagName === "H1" || input.tagName === "H2" || input.tagName === "C" || input.tagName === "SPAN") {
       let contents = input.innerHTML
       if (contents != "Trait description.") { // Don't save default trait descriptions.
         data[id] = html_to_text(contents)
@@ -156,7 +156,7 @@ function save_characterV4() {
             let name = html_to_text(trait.querySelector(".trait-name").innerHTML)
             let value = html_to_text(trait.querySelector(".trait-value c").innerHTML)
             let description = html_to_text(trait.querySelector(".trait-description").innerHTML)
-            if (description == "Trait description.") {
+            if (description === "Trait description.") {
               // Don't save default trait descriptions.
               traitGroupColumnData.push([name, value])
             } else {

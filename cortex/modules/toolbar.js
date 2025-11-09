@@ -134,7 +134,7 @@ function download(json) {
 	let link = document.createElement("a")
 	link.setAttribute("href", uri)
 	let characterName = json.characterName
-	if (characterName == "") characterName = "Unnamed Character"
+	if (characterName === "") characterName = "Unnamed Character"
 	link.setAttribute("download", characterName + ".json")
 	document.body.appendChild(link) // Required for FF
 	link.click()

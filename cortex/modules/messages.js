@@ -124,7 +124,7 @@ class Messages {
 
     messageText.value = ""
     for (const dieInput of document.querySelectorAll(".die-input")) {
-      if (dieInput.id == "die-0") {
+      if (dieInput.id === "die-0") {
         dieInput.querySelector("input").value = ""
         dieInput.querySelector("c").innerText = noDiePlaceholder
       } else {

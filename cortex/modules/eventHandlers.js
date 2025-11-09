@@ -23,7 +23,7 @@ function addEditHandlersToNode(editable) {
 
   if (editable.classList.contains("header")) {
     editable.addEventListener("keydown", (event) => {
-      if (event.key == "Enter") {
+      if (event.key === "Enter") {
         event.preventDefault()
         event.target.blur()
       }

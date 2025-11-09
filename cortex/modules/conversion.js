@@ -1,10 +1,10 @@
 export const noDiePlaceholder = "∅"
 
 export function c_to_html(html) {
-  if (html == "-") {
+  if (html === "-") {
     return "–"
   }
-  if (html == "O" || html == "o") {
+  if (html === "O" || html === "o") {
     return noDiePlaceholder
   }
   html = html.replace(/\bd4\b/ig, "4")
