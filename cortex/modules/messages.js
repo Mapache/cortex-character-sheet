@@ -89,7 +89,7 @@ class Messages {
     }
   }
 
-  // MARK: Edit Handlers
+  // MARK: Action Handlers
 
   async postMessage(e) {
     const messageText = document.getElementById("message-text")
@@ -136,6 +136,48 @@ class Messages {
     this.scrollToBottom()
   }
 
+  pageClicked(e) {
+    console.debug("e.target =", e.target)
+    if (!this.visible) {
+      return
+    }
+
+    let value = null
+    if (e.target.nodeName === "C") {
+      value = e.target.innerText
+      console.debug("Overriding value =", value)
+    }
+    const trait = e.target.closest(".trait")
+    if (trait) {
+      const label = trait.querySelector(".trait-name").innerText
+      value = value ?? trait.querySelector(".trait-value c").innerText
+
+      let dieInput = this.diceTable.lastElementChild
+      for (const input of this.diceTable.querySelectorAll("input")) {
+        if (input.value === label) {
+          // The trait is aready included, so overwrite the old die value.
+          dieInput = input.closest(".die-input")
+        }
+      }
+      dieInput.querySelector("input").value = label
+      dieInput.querySelector("c").innerText = this.sanitizeDieSize(value)
+
+      if (this.diceTable.lastElementChild.querySelector("c").innerText !== noDiePlaceholder) {
+        // If we actually filled the last row, instead of updating a previous row, then add a new one.
+        this.addNewDieInputRow()
+      }
+    }
+
+    // Don't go into editing mode for the clicked node.
+    e.preventDefault()
+    e.stopPropagation()
+    // contenteditable seems to be ignoring the above, so explicitly blur to sort-of achieve the effect.
+    console.debug("document.activeElement =", document.activeElement)
+    document.activeElement.blur()
+  }
+
+  // MARK: Edit Handlers
+
   installDieSizeEditHandlers(node) {
     const c = node.querySelector("c")
     c.addEventListener("focus", (e) => {
@@ -153,7 +195,7 @@ class Messages {
       convertedText = ""
     }
     c.innerText = convertedText
-    
+
     const range = document.createRange()
     range.selectNodeContents(c)
     const sel = window.getSelection()
@@ -163,19 +205,7 @@ class Messages {
 
   dieSizeBlur(e) {
     const c = e.target
-    let convertedText = c_to_html(c.innerText)
-    switch (convertedText[0]) {
-      case "4":
-      case "6":
-      case "8":
-      case "0":
-      case "2":
-        convertedText = convertedText[0]
-        break
-      default:
-        convertedText = noDiePlaceholder
-    }
-    c.innerHTML = convertedText
+    c.innerHTML = this.sanitizeDieSize(c.innerText)
 
     let allDieInputsFull = true
     for (const dieInput of document.querySelectorAll(".die-input")) {
@@ -184,15 +214,33 @@ class Messages {
       }
     }
     if (allDieInputsFull) {
-      const newRow = this.diceRowTemplate.cloneNode(true)
-      newRow.id = `die-${this.diceTable.childElementCount}`
-      this.diceTable.appendChild(newRow)
-      this.installDieSizeEditHandlers(newRow)
+      this.addNewDieInputRow()
 
       // If the user tabs out of the the last size field, it'll select the Post button 
       // before the new row is inserted into the DOM, so forcibly select the new label input.
       newRow.querySelector("input").focus()
     }
+  }
+
+  sanitizeDieSize(cText) {
+    let die = c_to_html(cText)[0]
+    switch (die) {
+      case "4":
+      case "6":
+      case "8":
+      case "0":
+      case "2":
+        return die
+      default:
+        return noDiePlaceholder
+    }
+  }
+
+  addNewDieInputRow() {
+    const newRow = this.diceRowTemplate.cloneNode(true)
+    newRow.id = `die-${this.diceTable.childElementCount}`
+    this.diceTable.appendChild(newRow)
+    this.installDieSizeEditHandlers(newRow)
   }
 
   // MARK: Listeners
@@ -255,5 +303,11 @@ async function htmlForMessage(message) {
 
   return html
 }
+
+// MARK: Click-to-Roll
+
+document.getElementById("pages").addEventListener("click", (e) => {
+  messages.pageClicked(e)
+})
 
 export const messages = new Messages()
