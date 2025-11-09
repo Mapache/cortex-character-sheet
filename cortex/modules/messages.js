@@ -24,7 +24,10 @@ const messagingVisible = new ToggleableStyle(
 class Messages {
   constructor() {
     this.messages = null
-    this.messagesDiv = document.querySelector("#messages")
+    this.messagesDiv = document.getElementById("messages")
+    this.messageText = document.getElementById("message-text")
+    this.diceTable = document.getElementById("dice")
+    this.postButton = document.getElementById("message-post")
   }
 
   // MARK: Visibility
@@ -44,11 +47,14 @@ class Messages {
       await cloud.subscribeToNewerMessages(this, messages.at(-1)?.saved)
       this.scrollToBottom()
 
-      document.getElementById("message-post").onclick = (e) => {
+      this.messageText.onblur = (e) => {
+        this.updatePostButton()
+      }
+      this.postButton.onclick = (e) => {
         this.postMessage(e)
       }
+      this.updatePostButton()
 
-      this.diceTable = document.getElementById("dice")
       const initialDiceRow = document.getElementById("die-0")
       this.diceRowTemplate = initialDiceRow.cloneNode(true)
       this.installDieSizeEditHandlers(initialDiceRow)
@@ -100,8 +106,7 @@ class Messages {
   // MARK: Action Handlers
 
   async postMessage(e) {
-    const messageText = document.getElementById("message-text")
-    const text = messageText.value
+    const text = this.messageText.value
 
     let dice = []
     for (const dieInput of document.querySelectorAll(".die-input")) {
@@ -129,8 +134,11 @@ class Messages {
       }
       dice.push([label, size])
     }
+    if (text.length === 0 && dice.length === 0) {
+      return
+    }
 
-    messageText.value = ""
+    this.messageText.value = ""
     for (const dieInput of document.querySelectorAll(".die-input")) {
       if (dieInput.id === "die-0") {
         dieInput.querySelector("input").value = ""
@@ -139,6 +147,7 @@ class Messages {
         dieInput.remove()
       }
     }
+    this.updatePostButton()
 
     await cloud.postMessageComponents(text, dice)
     this.scrollToBottom()
@@ -233,12 +242,12 @@ class Messages {
       }
     }
     if (allDieInputsFull) {
-      this.addNewDieInputRow()
-
       // If the user tabs out of the the last size field, it'll select the Post button 
       // before the new row is inserted into the DOM, so forcibly select the new label input.
-      newRow.querySelector("input").focus()
+      this.addNewDieInputRow().querySelector("input").focus()
     }
+
+    this.updatePostButton()
   }
 
   sanitizeDieSize(cText) {
@@ -260,6 +269,26 @@ class Messages {
     newRow.id = `die-${this.diceTable.childElementCount}`
     this.diceTable.appendChild(newRow)
     this.installDieSizeEditHandlers(newRow)
+    return newRow
+  }
+
+  updatePostButton() {
+    this.postButton.textContent = "Post"
+    this.postButton.disabled = true
+
+    // If there's any dice, enable and set label to Roll.
+    for (const dieInput of document.querySelectorAll(".die-input")) {
+      if (dieInput.querySelector("c").innerText !== noDiePlaceholder) {
+        this.postButton.textContent = "Roll"
+        this.postButton.disabled = false
+        return
+      }
+    }
+
+    // If there's any message, enable.
+    if (this.messageText.value.length > 0) {
+      this.postButton.disabled = false
+    }
   }
 
   // MARK: Listeners
