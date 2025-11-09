@@ -1,9 +1,11 @@
+export const noDiePlaceholder = "∅"
+
 export function c_to_html(html) {
   if (html == "-") {
     return "–"
   }
   if (html == "O" || html == "o") {
-    return "∅"
+    return noDiePlaceholder
   }
   html = html.replace(/\bd4\b/ig, "4")
   html = html.replace(/\bd6\b/ig, "6")

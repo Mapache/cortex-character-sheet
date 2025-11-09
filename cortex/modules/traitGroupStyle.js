@@ -1,3 +1,5 @@
+import { noDiePlaceholder } from "./conversion.js"
+
 function reset_trait_group(traitGroup) {
 	if (data_style_requires_trait_modification(traitGroup)) {
 		for (let trait of traitGroup.querySelectorAll(".trait")) {
@@ -48,14 +50,14 @@ export function apply_trait_group_style_to_trait(traitGroup, trait, applyDefault
 		track.innerHTML = "<span>4</span> <span>6</span> <span>8</span> <span>0</span> <span>2</span>"
 		let c = trait.querySelector(".trait-value>c")
 		c.after(track)
-		const clearValue = "∅"
+		const clearValue = noDiePlaceholder
 		if (applyDefaultValue) {
 			set_track_value(trait, clearValue) // Default to stress tracks being clear instead of d6 like other traits
 		} else {
 			update_track_displayed_value(trait)
 		}
 		track.addEventListener("click", (e) => {
-			if (e.target.nodeName == "SPAN") {
+			if (e.target.nodeName === "SPAN") {
 				// Clicking the current value clears the stress track
 				let span = e.target
 				let value = span.classList.contains("current") ? clearValue : span.innerText
@@ -72,12 +74,12 @@ function set_track_value(trait, value) {
 
 function update_track_displayed_value(trait) {
 	const value = trait.querySelector(".trait-value>c").innerText
-	let nonmatchingState = (value == "∅") ? "empty" : "full"
+	let nonmatchingState = (value === noDiePlaceholder) ? "empty" : "full"
 	for (let die of trait.querySelector(".track").querySelectorAll("span")) {
 		die.classList.remove("full")
 		die.classList.remove("current")
 		die.classList.remove("empty")
-		if (die.innerText == value) {
+		if (die.innerText === value) {
 			die.classList.add("current")
 			nonmatchingState = "empty"
 		} else {
@@ -124,31 +126,31 @@ export function set_trait_group_name(e) {
 
 	const title = e.target.innerText.toLowerCase()
 
-	if (title == "roles") {
+	if (title === "roles") {
 		apply_data_style(traitGroup, "values")
 	}
-	else if (title == "signature asset" || title == "signature assets") {
+	else if (title === "signature asset" || title === "signature assets") {
 		apply_data_style(traitGroup, "signature-asset")
 	}
-	else if (title == "milestones") {
+	else if (title === "milestones") {
 		apply_data_style(traitGroup, "milestones")
 	}
-	else if (title == "values") {
+	else if (title === "values") {
 		apply_data_style(traitGroup, "values")
 	}
-	else if (title == "emotions") {
+	else if (title === "emotions") {
 		apply_data_style(traitGroup, "values")
 	}
-	else if (title == "skills") {
+	else if (title === "skills") {
 		apply_data_style(traitGroup, "values")
 	}
-	else if (title == "specialties") {
+	else if (title === "specialties") {
 		apply_data_style(traitGroup, "values")
 	}
-	else if (title == "resource" || title == "resources") {
+	else if (title === "resource" || title === "resources") {
 		apply_data_style(traitGroup, "resources")
 	}
-	else if (title == "stress") {
+	else if (title === "stress") {
 		apply_data_style(traitGroup, "stress")
 	}
 }

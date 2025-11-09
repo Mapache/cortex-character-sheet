@@ -1,6 +1,6 @@
 import { asyncMap, asyncFilter } from "./async.js"
 import { CampaignPermissions, cloud } from "./cloud.js"
-import { c_to_html } from "./conversion.js"
+import { noDiePlaceholder, c_to_html, html_to_text } from "./conversion.js"
 import { Flags } from "./flags.js"
 import { formatAbsoluteTime } from "./formatting.js"
 import { menu, menuEntry, menuDivider, menuLabel, menuTextInput } from "./menu.js"
@@ -45,7 +45,7 @@ class Messages {
       this.diceTable = document.getElementById("dice")
       const initialDiceRow = document.getElementById("die-0")
       this.diceRowTemplate = initialDiceRow.cloneNode(true)
-      this.installDieSizeBlurHandler(initialDiceRow)
+      this.installDieSizeEditHandlers(initialDiceRow)
     }
   }
 
@@ -126,7 +126,7 @@ class Messages {
     for (const dieInput of document.querySelectorAll(".die-input")) {
       if (dieInput.id == "die-0") {
         dieInput.querySelector("input").value = ""
-        dieInput.querySelector("c").innerText = "∅"
+        dieInput.querySelector("c").innerText = noDiePlaceholder
       } else {
         dieInput.remove()
       }
@@ -136,14 +136,34 @@ class Messages {
     this.scrollToBottom()
   }
 
-  installDieSizeBlurHandler(node) {
-    node.querySelector("c").addEventListener("blur", (e) => {
+  installDieSizeEditHandlers(node) {
+    const c = node.querySelector("c")
+    c.addEventListener("focus", (e) => {
+      this.dieSizeFocus(e)
+    })
+    c.addEventListener("blur", (e) => {
       this.dieSizeBlur(e)
     })
   }
 
+  dieSizeFocus(e) {
+    const c = e.target
+    let convertedText = html_to_text(c.innerHTML)
+    if (convertedText === noDiePlaceholder) {
+      convertedText = ""
+    }
+    c.innerText = convertedText
+    
+    const range = document.createRange()
+    range.selectNodeContents(c)
+    const sel = window.getSelection()
+    sel.removeAllRanges()
+    sel.addRange(range)
+  }
+
   dieSizeBlur(e) {
-    let convertedText = c_to_html(e.target.innerText)
+    const c = e.target
+    let convertedText = c_to_html(c.innerText)
     switch (convertedText[0]) {
       case "4":
       case "6":
@@ -153,13 +173,13 @@ class Messages {
         convertedText = convertedText[0]
         break
       default:
-        convertedText = "∅"
+        convertedText = noDiePlaceholder
     }
-    e.target.innerHTML = convertedText
+    c.innerHTML = convertedText
 
     let allDieInputsFull = true
     for (const dieInput of document.querySelectorAll(".die-input")) {
-      if (dieInput.querySelector("c").innerText === "∅") {
+      if (dieInput.querySelector("c").innerText === noDiePlaceholder) {
         allDieInputsFull = false
       }
     }
@@ -167,7 +187,11 @@ class Messages {
       const newRow = this.diceRowTemplate.cloneNode(true)
       newRow.id = `die-${this.diceTable.childElementCount}`
       this.diceTable.appendChild(newRow)
-      this.installDieSizeBlurHandler(newRow)
+      this.installDieSizeEditHandlers(newRow)
+
+      // If the user tabs out of the the last size field, it'll select the Post button 
+      // before the new row is inserted into the DOM, so forcibly select the new label input.
+      newRow.querySelector("input").focus()
     }
   }
 
