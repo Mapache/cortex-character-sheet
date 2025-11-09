@@ -68,7 +68,7 @@ export async function set_style(e) {
 
 export async function context_menu_remove_item(e) {
   let item = g_context_target.parentElement
-  item.parentElement.removeChild(item)
+  item.remove()
 
   close_context_menu()
 }

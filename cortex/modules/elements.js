@@ -96,5 +96,5 @@ export function updateDocumentTitle(characterName) {
 
 export function remove_item(e) {
   let item = e.target.parentElement
-  item.parentElement.removeChild(item)
+  item.remove()
 }
