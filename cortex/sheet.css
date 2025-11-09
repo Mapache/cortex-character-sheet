@@ -149,6 +149,10 @@ div {
 	break-after: avoid-column;
 }
 
+.trait-header {
+	display: inline-block;
+}
+
 h2 {
 	font-family: 'Josefin Sans', sans-serif;
 	break-inside: avoid-column;
@@ -1649,6 +1653,9 @@ li:before {
 /* Stress */
 
 .stress {
+	.trait-header {
+		width: 100%;
+	}
 
 	.trait-name {
 		font-family: 'Alegreya Sans SC', sans-serif;
@@ -1672,7 +1679,7 @@ li:before {
 
 	.trait-value {
 		float: right;
-		margin-right: 12mm;
+		margin-right: 3mm;
 	}
 
 	.trait-value>c {
@@ -1680,12 +1687,11 @@ li:before {
 	}
 
 	.track {
-		position: absolute;
-		width: 40mm;
-		height: 20mm;
-		margin-left: -26mm;
+		position: relative;
+		margin-left: auto;
+		margin-right: 0mm;
 		margin-top: 0mm;
-		display: inline;
+		display: inline-block;
 		font-family: 'cortex-icons';
 		font-style: normal;
 		font-size: 14pt;
@@ -1697,11 +1703,13 @@ li:before {
 	}
 
 	.track .full {
+		display: inline-block;
 		color: #ccc;
 		text-shadow: -0.1mm -0.1mm 0.3mm #000, 0.1mm -0.1mm 0.3mm #000, -0.1mm 0.1mm 0.3mm #000, 0.1mm 0.1mm 0.3mm #000;
 	}
 
 	.track .current {
+		display: inline-block;
 		color: var(--highlight);
 		text-shadow: -0.1mm -0.1mm 0.3mm #fff, 0.1mm -0.1mm 0.3mm #fff, -0.1mm 0.1mm 0.3mm #fff, 0.1mm 0.1mm 0.3mm #fff;
 		font-size: 16pt;
@@ -1709,6 +1717,7 @@ li:before {
 	}
 
 	.track .empty {
+		display: inline-block;
 		color: white;
 		text-shadow: -0.1mm -0.1mm 0.3mm #000, 0.1mm -0.1mm 0.3mm #000, -0.1mm 0.1mm 0.3mm #000, 0.1mm 0.1mm 0.3mm #000;
 	}

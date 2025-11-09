@@ -168,6 +168,21 @@ class Messages {
         // If we actually filled the last row, instead of updating a previous row, then add a new one.
         this.addNewDieInputRow()
       }
+
+      const animationTarget = e.target.closest(".trait-description")
+        // User clicked in the description, so animate the whole trait.
+        ? trait
+        // Only animate the header row.
+        : trait.querySelector(".trait-header")
+      animationTarget.animate(
+        [
+          { outline: "2pt solid rgba(100%, 100%, 100%, 0)" },
+          { outline: "2pt solid var(--highlight)" },
+          { outline: "2pt solid rgba(100%, 100%, 100%, 0)" },
+        ], {
+        duration: 200,
+        iterations: 1
+      })
     }
   }
 
