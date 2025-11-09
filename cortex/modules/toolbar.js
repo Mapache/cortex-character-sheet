@@ -9,6 +9,7 @@ import { save_character } from "./save.js"
 import { copyShareUrl } from "./share.js"
 import { apply_highlight_color } from "./traitGroupStyle.js"
 import { ToggleableStyle } from "./toggleableStyle.js"
+import { layoutControlsHidden, emptyDescriptionsHidden } from "./toggleableStyles.js"
 
 // MARK: Utilities
 
@@ -149,48 +150,7 @@ export function set_global_highlight_color(e) {
 	apply_highlight_color(root, colorPicker.value)
 }
 
-// Show layout controls by default
-export const layoutControlsHidden = new ToggleableStyle(
-	"#toggle-layout-controls",
-	"controls-hidden",
-  "controls-visible",
-	`
-		.pages .no-print {
-			display: none !important;
-		}
-	`,
-	"",
-	false)
-
-// Hide empty trait descriptions by default
-export const emptyDescriptionsHidden = new ToggleableStyle(
-	"#toggle-empty-descriptions",
-	"descriptions-hidden",
-  "descriptions-visible",
-	`
-		.trait-description:empty {
-			display: none !important;
-		}
-		.trait-description:empty:focus {
-			display: inline !important;
-		}
-	`,
-	`
-		.trait-description:empty {
-			background: linear-gradient(-45deg, #eee 40%, #fafafa 50%, #eee 60%);
-			background-size: 300%;
-			animation: shimmer 4s infinite linear;
-		}
-		@keyframes shimmer {
-			0% {
-				background-position-x: 100%;
-			}
-			25%, 100% {
-				background-position-x: 0%;
-			}
-		}
-	`,
-	true)
+export { layoutControlsHidden, emptyDescriptionsHidden }
 
 // MARK: Messaging
 

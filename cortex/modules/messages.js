@@ -7,6 +7,7 @@ import { formatAbsoluteTime } from "./formatting.js"
 import { menu, menuEntry, menuDivider, menuLabel, menuTextInput } from "./menu.js"
 import { Modal } from "./modal.js"
 import { ToggleableStyle } from "./toggleableStyle.js"
+import { layoutControlsHidden, emptyDescriptionsHidden } from "./toggleableStyles.js"
 
 const messagingVisible = new ToggleableStyle(
   "#messaging",
@@ -31,6 +32,9 @@ class Messages {
   async show() {
     this.visible = true
     messagingVisible.enable()
+    this.werelayoutControlsHidden = layoutControlsHidden.enabled
+    layoutControlsHidden.enable()
+    emptyDescriptionsHidden.enable()
     setEditingEnabled(false)
 
     if (!this.messages) {
@@ -54,6 +58,7 @@ class Messages {
   hide() {
     this.visible = false
     messagingVisible.disable()
+    layoutControlsHidden.setEnabled(this.werelayoutControlsHidden)
     setEditingEnabled(true)
   }
 
