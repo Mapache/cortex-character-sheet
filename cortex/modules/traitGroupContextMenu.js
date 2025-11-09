@@ -1,3 +1,4 @@
+import { updatePagePlaceholderControl } from "./elements.js"
 import { Modal } from "./modal.js"
 import { apply_data_style, apply_highlight_color, defaultHighlightColor } from "./traitGroupStyle.js"
 
@@ -71,6 +72,9 @@ export async function context_menu_remove_item(e) {
   item.remove()
 
   close_context_menu()
+
+  // This could have been the last trait group on the last page.
+  updatePagePlaceholderControl()
 }
 
 // MARK: Moving Trait Groups
@@ -135,6 +139,9 @@ export async function move_to_next_page(e) {
   }
 
   close_context_menu()
+
+  // This could now be the first trait group on the last page.
+  updatePagePlaceholderControl()
 }
 
 export async function move_to_previous_page(e) {
@@ -148,6 +155,9 @@ export async function move_to_previous_page(e) {
   }
 
   close_context_menu()
+
+  // This could have been the last trait group on the last page.
+  updatePagePlaceholderControl()
 }
 
 function add_trait_group_to_column_bottom(traitGroup, column) {

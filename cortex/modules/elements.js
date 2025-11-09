@@ -46,11 +46,42 @@ export async function add_page(e) {
   install_title_listener(page)
   const characterName = document.querySelector(".title").innerText // Get name from first page
   page.querySelector(".title").innerText = characterName
+
+  updatePagePlaceholderControl()
+}
+
+export function remove_last_page(e) {
+  const pagePlaceholder = document.getElementById("page-placeholder")
+  const pages = document.getElementById("pages")
+  const lastPage = pagePlaceholder.previousElementSibling
+  // Minimum pages length is 2, the first page and the page-placeholder.
+  if (pages.children.length > 2 && lastPage.querySelectorAll(".trait-group").length == 0) {
+    lastPage.remove()
+  } else {
+    console.error("Attempting to remove non-empty page!")
+  }
+  updatePagePlaceholderControl()
+}
+
+export function updatePagePlaceholderControl() {
+  const pagePlaceholder = document.getElementById("page-placeholder")
+  const pages = document.getElementById("pages")
+  const lastPage = pagePlaceholder.previousElementSibling
+  // Minimum pages length is 2, the first page and the page-placeholder.
+  if (pages.children.length > 2 && lastPage.querySelectorAll(".trait-group").length == 0) {
+    pagePlaceholder.classList.add("remove-last-page")
+    pagePlaceholder.onclick = remove_last_page
+  } else {
+    pagePlaceholder.classList.remove("remove-last-page")
+    pagePlaceholder.onclick = add_page
+  }
 }
 
 export async function add_trait_group(e) {
   let traitGroup = add_group(e, (await Template.traitGroup).newInstance())
   apply_data_style(traitGroup, "detailed")
+
+  updatePagePlaceholderControl()
 }
 
 export async function add_trait(e) {

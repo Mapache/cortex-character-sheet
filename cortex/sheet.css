@@ -405,7 +405,6 @@ ref {
 	font-family: 'Font Awesome 7 Free';
 	font-size: 32px;
 	color: var(--highlight);
-	content: "\f0fe";
 	left: 50%;
 	top: 50%;
 	transform: translate(-50%, -50%);
@@ -413,6 +412,14 @@ ref {
 	transition: color 0.1s, opacity 0.1s, text-shadow 0.1s;
 	cursor: pointer;
 	text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.add-item:not(.remove-last-page):before {
+	content: "\f0fe";
+}
+
+.add-item.remove-last-page:before {
+	content: "\f146";
 }
 
 .add-item:hover:before {
