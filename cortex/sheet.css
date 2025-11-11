@@ -702,7 +702,6 @@ ref {
 }
 
 #attributes div c {
-
 	font-size: 20pt;
 	display: block;
 }
@@ -1899,7 +1898,8 @@ li:before {
 		box-shadow: 0 0 8px 4px rgba(100%, 100%, 100%, 0);
 	}
 
-	25%, 75% {
+	25%,
+	75% {
 		box-shadow: 0 0 8px 4px var(--highlight);
 	}
 

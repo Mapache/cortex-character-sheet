@@ -69,3 +69,71 @@ export function html_to_text(text) {
 
   return text.trim()
 }
+
+export function html_to_editable(text) {
+  // text = text.replace(/<br>/g, "\n")
+  text = text.replace(/<ul>/g, "")
+  text = text.replace(/<\/ul>/g, "")
+  text = text.replace(/<li>/g, "- ")
+  text = text.replace(/<\/li>/g, "<br>")
+  text = text.replace(/&nbsp;/g, " ")
+  text = text.replace(/<ref>([^<]*)<\/ref>/g, "[$1]")
+
+  return text.trim()
+}
+
+export function editable_to_html(html) {
+  // Spurious tags from pasting
+  html = html.replace(/<div([^>]*)>/g, "\n")
+  html = html.replace(/<\/div>/g, "")
+  html = html.replace(/<p( [^>]*)?>/g, "\n\n")
+  html = html.replace(/<\/p>/g, "")
+  html = html.replace(/<span([^>]*)>/g, "")
+  html = html.replace(/<\/span>/g, "")
+  html = html.replace(/<font([^>]*)>/g, "")
+  html = html.replace(/<\/font>/g, "")
+
+  html = html.replace(/\n/g, "<br>")
+
+  // List Items
+  if (html.search(/(^|<br>)-/m) != -1) {
+    html = html.replace(/(^|<br>)- *(.*?)($|(?=<br>))/m, "$1<ul><li>$2</li>")
+    html = html.replace(/(^|<br>)- *(.*?)($|(?=<br>))/gm, "<li>$2</li>")
+    html = html.replace(/<\/li>($|<br>)/gm, "</li></ul>")
+  }
+
+  // Fix custom elements that incorrectly contain trailing text.
+  html = html.replace(/<c>([46802]?)(.*?)<\/c>/ig, "<c>$1</c>$2")
+  html = html.replace(/<c><\/c>/ig, "")
+  html = html.replace(/<pp>(.+?)<\/pp>/ig, "<pp></pp>$1")
+  html = html.replace(/<mote>(.+?)<\/mote>/ig, "<mote></mote>$1")
+  html = html.replace(/<hero>(.+?)<\/hero>/ig, "<hero></hero>$1")
+
+  // Dice
+  html = html.replace(/\bd4\b/ig, "<c>4</c>")
+  html = html.replace(/\bd6\b/ig, "<c>6</c>")
+  html = html.replace(/\bd8\b/ig, "<c>8</c>")
+  html = html.replace(/\bd10\b/ig, "<c>0</c>")
+  html = html.replace(/\bd12\b/ig, "<c>2</c>")
+
+  // Power Point variants
+  html = html.replace(/\bPP\b(?!>)/ig, "<pp></pp>")
+  html = html.replace(/\bMOTES?\b/ig, "<mote></mote>")
+  html = html.replace(/\bHERP\b/ig, "<hero></hero>")
+  html = html.replace(/\bHERO ?POINTS?\b/ig, "<hero></hero>")
+
+  html = html.replace(/<\/li><br>/g, "</li>")
+  html = html.replace(/<\/ul><br>/g, "</ul>")
+  html = html.replace(/&nbsp;/g, " ")
+
+  // Styling
+  html = html.replace(/\[([^\[\]]*)]/g, "<ref>$1</ref>")
+  html = html.replace(/\*\*\*([^\*]*)\*\*\*/g, "<b><i>$1</i></b>")
+  html = html.replace(/\*\*([^\*]*)\*\*/g, "<b>$1</b>")
+  html = html.replace(/\*([^\*]*)\*/g, "<i>$1</i>")
+
+  // Trailing Line Break
+  html = html.replace(/<br>$/g, "")
+
+  return html.trim()
+}
