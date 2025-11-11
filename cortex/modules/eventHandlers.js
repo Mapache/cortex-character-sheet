@@ -13,10 +13,10 @@ export function addEditHandlers(parent) {
     addEditHandlersToNode(editable)
   }
 
-  // C elements get limited conversion; we don't want to add nested C elements.
-  let cs = parent.querySelectorAll("c[contenteditable]")
-  for (let c of cs) {
-    addEditHandlersToC(c)
+  // D elements get limited conversion; we don't want to add nested D elements.
+  let cs = parent.querySelectorAll("d[contenteditable]")
+  for (let d of cs) {
+    addEditHandlersToD(d)
   }
 }
 
@@ -71,15 +71,15 @@ function insertLineBreakManual() {
   selection.addRange(range)
 }
 
-function addEditHandlersToC(c) {
-  c.addEventListener("focus", (e) => {
+function addEditHandlersToD(d) {
+  d.addEventListener("focus", (e) => {
     if (isEditingEnabled) {
       e.target.innerText = html_to_text(e.target.innerHTML)
     } else {
       e.target.blur()
     }
   })
-  c.addEventListener("blur", (e) => {
+  d.addEventListener("blur", (e) => {
     if (isEditingEnabled) {
       e.target.innerHTML = c_to_html(e.target.innerText)
     }

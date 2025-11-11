@@ -48,8 +48,8 @@ export function apply_trait_group_style_to_trait(traitGroup, trait, applyDefault
 		let track = document.createElement("div")
 		track.classList.add("track")
 		track.innerHTML = "<span>4</span> <span>6</span> <span>8</span> <span>0</span> <span>2</span>"
-		let c = trait.querySelector(".trait-value>c")
-		c.after(track)
+		let d = trait.querySelector(".trait-value>d")
+		d.after(track)
 		const clearValue = noDiePlaceholder
 		if (applyDefaultValue) {
 			set_track_value(trait, clearValue) // Default to stress tracks being clear instead of d6 like other traits
@@ -68,12 +68,12 @@ export function apply_trait_group_style_to_trait(traitGroup, trait, applyDefault
 }
 
 function set_track_value(trait, value) {
-	trait.querySelector(".trait-value>c").innerText = value
+	trait.querySelector(".trait-value>d").innerText = value
 	update_track_displayed_value(trait)
 }
 
 function update_track_displayed_value(trait) {
-	const value = trait.querySelector(".trait-value>c").innerText
+	const value = trait.querySelector(".trait-value>d").innerText
 	let nonmatchingState = (value === noDiePlaceholder) ? "empty" : "full"
 	for (let die of trait.querySelector(".track").querySelectorAll("span")) {
 		die.classList.remove("full")

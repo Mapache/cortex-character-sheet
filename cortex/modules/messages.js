@@ -112,7 +112,7 @@ class Messages {
     for (const dieInput of document.querySelectorAll(".die-input")) {
       const label = dieInput.querySelector("input").value
       let size = null
-      switch (dieInput.querySelector("c").innerText) {
+      switch (dieInput.querySelector("d").innerText) {
         case "4":
           size = 4
           break
@@ -142,7 +142,7 @@ class Messages {
     for (const dieInput of document.querySelectorAll(".die-input")) {
       if (dieInput.id === "die-0") {
         dieInput.querySelector("input").value = ""
-        dieInput.querySelector("c").innerText = noDiePlaceholder
+        dieInput.querySelector("d").innerText = noDiePlaceholder
       } else {
         dieInput.remove()
       }
@@ -163,14 +163,23 @@ class Messages {
     }
 
     let value = null
-    if (e.target.nodeName === "C") {
+    if (e.target.nodeName === "D") {
+      const selection = getSelection()
+      // console.log("selection =", selection)
+      // console.log("selection.focusNode =", selection.focusNode)
+      // console.log("selection.focusNode.data =", selection.focusNode?.data)
+      const charClicked = selection.focusNode?.data?.[selection.focusOffset]
+      if (charClicked) {
+        console.log("Character clicked =", charClicked)
+      }
+
       value = e.target.innerText
       console.debug("Using clicked value =", value)
     }
     const trait = e.target.closest(".trait")
     if (trait) {
       const label = trait.querySelector(".trait-name").innerText.replace(/(\r\n|\n|\r)/gm, " ")
-      value = value ?? trait.querySelector(".trait-value c").innerText
+      value = value ?? trait.querySelector(".trait-value d").innerText
 
       let dieInput = this.diceTable.lastElementChild
       for (const input of this.diceTable.querySelectorAll("input")) {
@@ -180,9 +189,9 @@ class Messages {
         }
       }
       dieInput.querySelector("input").value = label
-      dieInput.querySelector("c").innerText = this.sanitizeDieSize(value)
+      dieInput.querySelector("d").innerText = this.sanitizeDieSize(value)
 
-      if (this.diceTable.lastElementChild.querySelector("c").innerText !== noDiePlaceholder) {
+      if (this.diceTable.lastElementChild.querySelector("d").innerText !== noDiePlaceholder) {
         // If we actually filled the last row, instead of updating a previous row, then add a new one.
         this.addNewDieInputRow()
       }
@@ -204,37 +213,37 @@ class Messages {
   // MARK: Edit Handlers
 
   installDieSizeEditHandlers(node) {
-    const c = node.querySelector("c")
-    c.addEventListener("focus", (e) => {
+    const d = node.querySelector("d")
+    d.addEventListener("focus", (e) => {
       this.dieSizeFocus(e)
     })
-    c.addEventListener("blur", (e) => {
+    d.addEventListener("blur", (e) => {
       this.dieSizeBlur(e)
     })
   }
 
   dieSizeFocus(e) {
-    const c = e.target
-    let convertedText = html_to_text(c.innerHTML)
+    const d = e.target
+    let convertedText = html_to_text(d.innerHTML)
     if (convertedText === noDiePlaceholder) {
       convertedText = ""
     }
-    c.innerText = convertedText
+    d.innerText = convertedText
 
     const range = document.createRange()
-    range.selectNodeContents(c)
+    range.selectNodeContents(d)
     const sel = window.getSelection()
     sel.removeAllRanges()
     sel.addRange(range)
   }
 
   dieSizeBlur(e) {
-    const c = e.target
-    c.innerHTML = this.sanitizeDieSize(c.innerText)
+    const d = e.target
+    d.innerHTML = this.sanitizeDieSize(d.innerText)
 
     let allDieInputsFull = true
     for (const dieInput of document.querySelectorAll(".die-input")) {
-      if (dieInput.querySelector("c").innerText === noDiePlaceholder) {
+      if (dieInput.querySelector("d").innerText === noDiePlaceholder) {
         allDieInputsFull = false
       }
     }
@@ -275,7 +284,7 @@ class Messages {
 
     // If there's any dice, enable and set label to Roll.
     for (const dieInput of document.querySelectorAll(".die-input")) {
-      if (dieInput.querySelector("c").innerText !== noDiePlaceholder) {
+      if (dieInput.querySelector("d").innerText !== noDiePlaceholder) {
         this.postButton.textContent = "Roll"
         this.postButton.disabled = false
         return
@@ -340,7 +349,7 @@ async function htmlForMessage(message) {
       const row = document.createElement("tr")
       row.innerHTML =
         `<td class="trait"><h2 class="trait-name">${die.label}</h2></td>` +
-        `<td><c>${die.size % 10}</c> → <span class="d${die.size}">${die.result}</span></td>`
+        `<td><d>${die.size % 10}</d> → <span class="d${die.size}">${die.result}</span></td>`
       table.appendChild(row)
     }
     html.appendChild(table)

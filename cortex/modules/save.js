@@ -15,16 +15,16 @@ function get_path_from_element(elem) {
   return id + path
 }
 
-function get_parent_with_class(element, c) {
+function get_parent_with_class(element, d) {
   if (element === null) {
     return null;
   }
 
-  if (element.classList.contains(c)) {
+  if (element.classList.contains(d)) {
     return element;
   }
 
-  return get_parent_with_class(element.parentElement, c)
+  return get_parent_with_class(element.parentElement, d)
 }
 
 // The V3 format inherited from the original project scanned every editable field that was not tagged for exclusion
@@ -35,7 +35,7 @@ function save_characterV3() {
   let json = {}
   let data = {}
   json.version = 3;
-  inputs = document.querySelectorAll("input, textarea, img, div[contenteditable], h1[contenteditable], h2[contenteditable], c[contenteditable], span[contenteditable]")
+  inputs = document.querySelectorAll("input, textarea, img, div[contenteditable], h1[contenteditable], h2[contenteditable], d[contenteditable], span[contenteditable]")
   for (let input of inputs) {
     if (input.classList.contains("non-serialized") || input.classList.contains("no-print") || input.classList.contains("template")) {
       continue
@@ -66,7 +66,7 @@ function save_characterV3() {
     else if (input.tagName === "IMG") {
       data[id] = input.src
     }
-    else if (input.tagName === "DIV" || input.tagName === "H1" || input.tagName === "H2" || input.tagName === "C" || input.tagName === "SPAN") {
+    else if (input.tagName === "DIV" || input.tagName === "H1" || input.tagName === "H2" || input.tagName === "D" || input.tagName === "SPAN") {
       let contents = input.innerHTML
       if (contents != "Trait description.") { // Don't save default trait descriptions.
         data[id] = html_to_text(contents)
@@ -154,7 +154,7 @@ function save_characterV4() {
           let traitGroupColumnData = []
           for (let trait of traitGroupColumn.querySelectorAll(".trait")) {
             let name = html_to_text(trait.querySelector(".trait-name").innerHTML)
-            let value = html_to_text(trait.querySelector(".trait-value c").innerHTML)
+            let value = html_to_text(trait.querySelector(".trait-value d").innerHTML)
             let description = html_to_text(trait.querySelector(".trait-description").innerHTML)
             if (description === "Trait description.") {
               // Don't save default trait descriptions.

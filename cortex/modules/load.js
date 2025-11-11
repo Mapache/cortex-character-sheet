@@ -104,7 +104,7 @@ async function load_characterV3(json) {
     else if (element.tagName === "IMG") {
       element.src = value
     }
-    else if (element.tagName === "DIV" || element.tagName === "H1" || element.tagName === "H2" || element.tagName === "C" || element.tagName === "SPAN") {
+    else if (element.tagName === "DIV" || element.tagName === "H1" || element.tagName === "H2" || element.tagName === "D" || element.tagName === "SPAN") {
       element.innerHTML = text_to_html(value)
     }
     else {
@@ -170,7 +170,7 @@ async function load_characterV4(json) {
             let trait = await get_element_from_parts(["pages", pageIndex, columnIndex + 1, traitGroupIndex, traitGroupColumnIndex + 2, traitIndex])
             let [name, value] = traitData
             trait.querySelector(".trait-name").innerHTML = text_to_html(name)
-            trait.querySelector(".trait-value c").innerHTML = c_to_html(value)
+            trait.querySelector(".trait-value d").innerHTML = c_to_html(value)
             if (traitData.length > 2) {
               let description = traitData.slice(2).join("\n")
               trait.querySelector(".trait-description").innerHTML = text_to_html(description)

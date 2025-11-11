@@ -28,11 +28,11 @@ export function text_to_html(html) {
     html = html.substring(0, index) + "</ul>" + html.substring(index)
   }
 
-  html = html.replace(/\bd4\b/ig, "<c>4</c>")
-  html = html.replace(/\bd6\b/ig, "<c>6</c>")
-  html = html.replace(/\bd8\b/ig, "<c>8</c>")
-  html = html.replace(/\bd10\b/ig, "<c>0</c>")
-  html = html.replace(/\bd12\b/ig, "<c>2</c>")
+  html = html.replace(/\bd4\b/ig, "<d>4</d>")
+  html = html.replace(/\bd6\b/ig, "<d>6</d>")
+  html = html.replace(/\bd8\b/ig, "<d>8</d>")
+  html = html.replace(/\bd10\b/ig, "<d>0</d>")
+  html = html.replace(/\bd12\b/ig, "<d>2</d>")
   html = html.replace(/\bPP\b/ig, "<pp></pp>")
   html = html.replace(/\bMOTES?\b/ig, "<mote></mote>")
   html = html.replace(/\bHERP\b/ig, "<hero></hero>")
@@ -51,11 +51,11 @@ export function text_to_html(html) {
 }
 
 export function html_to_text(text) {
-  text = text.replace(/<c>4<\/c>/g, "d4")
-  text = text.replace(/<c>6<\/c>/g, "d6")
-  text = text.replace(/<c>8<\/c>/g, "d8")
-  text = text.replace(/<c>0<\/c>/g, "d10")
-  text = text.replace(/<c>2<\/c>/g, "d12")
+  text = text.replace(/<d>4<\/d>/g, "d4")
+  text = text.replace(/<d>6<\/d>/g, "d6")
+  text = text.replace(/<d>8<\/d>/g, "d8")
+  text = text.replace(/<d>0<\/d>/g, "d10")
+  text = text.replace(/<d>2<\/d>/g, "d12")
   text = text.replace(/<pp><\/pp>/g, "PP")
   text = text.replace(/<mote><\/mote>/g, "mote")
   text = text.replace(/<hero><\/hero>/g, "hero point")
@@ -103,18 +103,18 @@ export function editable_to_html(html) {
   }
 
   // Fix custom elements that incorrectly contain trailing text.
-  html = html.replace(/<c>([46802]?)(.*?)<\/c>/ig, "<c>$1</c>$2")
-  html = html.replace(/<c><\/c>/ig, "")
+  html = html.replace(/<d>([46802]?)(.*?)<\/d>/ig, "<d>$1</d>$2")
+  html = html.replace(/<d><\/d>/ig, "")
   html = html.replace(/<pp>(.+?)<\/pp>/ig, "<pp></pp>$1")
   html = html.replace(/<mote>(.+?)<\/mote>/ig, "<mote></mote>$1")
   html = html.replace(/<hero>(.+?)<\/hero>/ig, "<hero></hero>$1")
 
   // Dice
-  html = html.replace(/\bd4\b/ig, "<c>4</c>")
-  html = html.replace(/\bd6\b/ig, "<c>6</c>")
-  html = html.replace(/\bd8\b/ig, "<c>8</c>")
-  html = html.replace(/\bd10\b/ig, "<c>0</c>")
-  html = html.replace(/\bd12\b/ig, "<c>2</c>")
+  html = html.replace(/\bd4\b/ig, "<d>4</d>")
+  html = html.replace(/\bd6\b/ig, "<d>6</d>")
+  html = html.replace(/\bd8\b/ig, "<d>8</d>")
+  html = html.replace(/\bd10\b/ig, "<d>0</d>")
+  html = html.replace(/\bd12\b/ig, "<d>2</d>")
 
   // Power Point variants
   html = html.replace(/\bPP\b(?!>)/ig, "<pp></pp>")
