@@ -1,4 +1,4 @@
-import { c_to_html, text_to_html, html_to_text, html_to_editable, editable_to_html } from "./conversion.js"
+import { dice_to_html, text_to_html, html_to_text, html_to_editable, editable_to_html } from "./conversion.js"
 import { Flags } from "./flags.js"
 
 export let isEditingEnabled = true
@@ -8,15 +8,14 @@ export function setEditingEnabled(value) {
 }
 
 export function addEditHandlers(parent) {
-  let editables = parent.querySelectorAll("div[contenteditable], h1[contenteditable], h2[contenteditable]")
-  for (let editable of editables) {
-    addEditHandlersToNode(editable)
-  }
-
-  // D elements get limited conversion; we don't want to add nested D elements.
-  let cs = parent.querySelectorAll("d[contenteditable]")
-  for (let d of cs) {
-    addEditHandlersToD(d)
+  const editables = parent.querySelectorAll("div[contenteditable], h1[contenteditable], h2[contenteditable]")
+  for (const editable of editables) {
+    if (editable.classList.contains("trait-value")) {
+      // Dice field elements get special conversion that limits HTML elements but aggressively seeks out dice-like values.
+      addEditHandlersToDiceField(editable)
+    } else {
+      addEditHandlersToNode(editable)
+    }
   }
 }
 
@@ -25,6 +24,7 @@ function addEditHandlersToNode(editable) {
     if (isEditingEnabled) {
       if (Flags.useEditableHTML) {
         e.target.innerHTML = html_to_editable(e.target.innerHTML)
+        moveCaretToEndOf(e.target)
       } else {
         e.target.innerText = html_to_text(e.target.innerHTML)
       }
@@ -71,17 +71,49 @@ function insertLineBreakManual() {
   selection.addRange(range)
 }
 
-function addEditHandlersToD(d) {
-  d.addEventListener("focus", (e) => {
+function addEditHandlersToDiceField(diceField) {
+  diceField.addEventListener("focus", (e) => {
     if (isEditingEnabled) {
-      e.target.innerText = html_to_text(e.target.innerHTML)
+      // Don't need to do any conversion; okay to edit as HTML.
+      moveCaretToEndOf(e.target)
     } else {
       e.target.blur()
     }
   })
-  d.addEventListener("blur", (e) => {
+  diceField.addEventListener("blur", (e) => {
     if (isEditingEnabled) {
-      e.target.innerHTML = c_to_html(e.target.innerText)
+      e.target.innerHTML = dice_to_html(e.target.innerHTML)
     }
   })
+
+  diceField.addEventListener("keyup", (e) => {
+    switch (e.key) {
+      case "2":
+      case "4":
+      case "6":
+      case "8":
+      case "0":
+        // Instantly convert dice
+        const diceField = e.target
+        diceField.innerHTML = dice_to_html(diceField.innerHTML)
+        moveCaretToEndOf(diceField)
+    }
+  })
+}
+
+export function moveCaretToEndOf(editable) {
+  const range = document.createRange()
+  range.selectNodeContents(editable)
+  range.collapse(false)
+  const selection = window.getSelection()
+  selection.removeAllRanges()
+  selection.addRange(range)
+}
+
+export function selectAllTextOf(editable) {
+  const range = document.createRange()
+  range.selectNodeContents(editable)
+  const selection = window.getSelection()
+  selection.removeAllRanges()
+  selection.addRange(range)
 }

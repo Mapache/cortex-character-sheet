@@ -1,7 +1,7 @@
 import { asyncMap, asyncFilter } from "./async.js"
 import { CampaignPermissions, cloud } from "./cloud.js"
 import { noDiePlaceholder, c_to_html, html_to_text } from "./conversion.js"
-import { setEditingEnabled } from "./eventHandlers.js"
+import { setEditingEnabled, selectAllTextOf } from "./eventHandlers.js"
 import { Flags } from "./flags.js"
 import { formatAbsoluteTime } from "./formatting.js"
 import { menu, menuEntry, menuDivider, menuLabel, menuTextInput } from "./menu.js"
@@ -179,7 +179,7 @@ class Messages {
     const trait = e.target.closest(".trait")
     if (trait) {
       const label = trait.querySelector(".trait-name").innerText.replace(/(\r\n|\n|\r)/gm, " ")
-      value = value ?? trait.querySelector(".trait-value d").innerText
+      value = value ?? trait.querySelector(".trait-value d")?.innerText ?? noDiePlaceholder
 
       let dieInput = this.diceTable.lastElementChild
       for (const input of this.diceTable.querySelectorAll("input")) {
@@ -230,11 +230,7 @@ class Messages {
     }
     d.innerText = convertedText
 
-    const range = document.createRange()
-    range.selectNodeContents(d)
-    const sel = window.getSelection()
-    sel.removeAllRanges()
-    sel.addRange(range)
+    selectAllTextOf(d)
   }
 
   dieSizeBlur(e) {

@@ -1677,48 +1677,51 @@ li:before {
 	}
 
 	.trait-value {
-		float: right;
-		margin-right: 3mm;
-	}
-
-	.trait-value>d {
 		display: none;
 	}
 
 	.track {
-		position: relative;
-		margin-left: auto;
-		margin-right: 0mm;
-		margin-top: 0mm;
-		display: inline-block;
-		font-family: 'cortex-icons';
-		font-style: normal;
-		font-size: 14pt;
+		float: right;
+		width: 130px;
+		margin-left: 0mm;
+		margin-right: 2mm;
+		margin-top: -0.5pt;
+
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-end;
+
 		/* Print Background Fix */
 		-webkit-print-color-adjust: exact;
 		-webkit-filter: opacity(1);
 		print-color-adjust: exact;
 		filter: opacity(1);
-	}
 
-	.track .full {
-		display: inline-block;
-		color: #ccc;
-		text-shadow: -0.1mm -0.1mm 0.3mm #000, 0.1mm -0.1mm 0.3mm #000, -0.1mm 0.1mm 0.3mm #000, 0.1mm 0.1mm 0.3mm #000;
-	}
+		d {
+			display: inline-block;
+			height: 22px;
+			width: 26px;
+			font-size: 14pt;
+			line-height: unset;
+			text-align: center;
 
-	.track .current {
-		display: inline-block;
-		color: var(--highlight);
-		text-shadow: -0.1mm -0.1mm 0.3mm #fff, 0.1mm -0.1mm 0.3mm #fff, -0.1mm 0.1mm 0.3mm #fff, 0.1mm 0.1mm 0.3mm #fff;
-		font-size: 16pt;
-		margin: -1pt;
-	}
+			&.full {
+				color: #ccc;
+				text-shadow: -0.1mm -0.1mm 0.3mm #000, 0.1mm -0.1mm 0.3mm #000, -0.1mm 0.1mm 0.3mm #000, 0.1mm 0.1mm 0.3mm #000;
+			}
 
-	.track .empty {
-		display: inline-block;
-		color: white;
-		text-shadow: -0.1mm -0.1mm 0.3mm #000, 0.1mm -0.1mm 0.3mm #000, -0.1mm 0.1mm 0.3mm #000, 0.1mm 0.1mm 0.3mm #000;
+			&.current {
+				color: var(--highlight);
+				text-shadow: -0.1mm -0.1mm 0.3mm #fff, 0.1mm -0.1mm 0.3mm #fff, -0.1mm 0.1mm 0.3mm #fff, 0.1mm 0.1mm 0.3mm #fff;
+				font-size: 16pt;
+				margin-top: -1pt;
+			}
+
+			&.empty {
+				color: white;
+				text-shadow: -0.1mm -0.1mm 0.3mm #000, 0.1mm -0.1mm 0.3mm #000, -0.1mm 0.1mm 0.3mm #000, 0.1mm 0.1mm 0.3mm #000;
+			}
+		}
 	}
 
 	.trait-description {

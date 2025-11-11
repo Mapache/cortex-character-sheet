@@ -20,6 +20,51 @@ export function c_to_html(html) {
   return html.trim()
 }
 
+export function dice_to_html(html) {
+  if (html === "-") {
+    return "–"
+  }
+  if (html === "O" || html === "o") {
+    return noDiePlaceholder
+  }
+
+  // Spurious tags from pasting
+  html = html.replace(/<div([^>]*)>/g, " ")
+  html = html.replace(/<\/div>/g, "")
+  html = html.replace(/<p( [^>]*)?>/g, " ")
+  html = html.replace(/<\/p>/g, "")
+  html = html.replace(/<span([^>]*)>/g, "")
+  html = html.replace(/<\/span>/g, "")
+  html = html.replace(/<font([^>]*)>/g, "")
+  html = html.replace(/<\/font>/g, "")
+
+  html = html.replace(/<br>$/g, " ")
+  html = html.replace(/\n/g, " ")
+  html = html.replace(/&nbsp;/g, " ")
+
+  // Fix custom elements that incorrectly contain trailing text.
+  html = html.replace(/<d>([46802]?)(.*?)<\/d>/ig, "<d>$1</d>$2")
+  html = html.replace(/<d><\/d>/ig, "")
+  html = html.replace(/<pp>(.+?)<\/pp>/ig, "<pp></pp>$1")
+  html = html.replace(/<mote>(.+?)<\/mote>/ig, "<mote></mote>$1")
+  html = html.replace(/<hero>(.+?)<\/hero>/ig, "<hero></hero>$1")
+
+  // Aggressively convert dice
+  html = html.replace(/\bd?4\b(?!<)/ig, "<d>4</d>")
+  html = html.replace(/\bd?6\b(?!<)/ig, "<d>6</d>")
+  html = html.replace(/\bd?8\b(?!<)/ig, "<d>8</d>")
+  html = html.replace(/\bd?1?0\b(?!<)/ig, "<d>0</d>")
+  html = html.replace(/\bd?1?2\b(?!<)/ig, "<d>2</d>")
+
+  // Power Point variants
+  html = html.replace(/\bPP\b(?!>)/ig, "<pp></pp>")
+  html = html.replace(/\bMOTES?\b(?!>)/ig, "<mote></mote>")
+  html = html.replace(/\bHERP\b/ig, "<hero></hero>")
+  html = html.replace(/\bHERO ?POINTS?\b/ig, "<hero></hero>")
+
+  return html.trim()
+}
+
 export function text_to_html(html) {
   if (html.search(/^-/m) != -1) {
     html = html.replace(/^- *(.*)$/m, "<ul><li>$1</li>")
@@ -118,10 +163,11 @@ export function editable_to_html(html) {
 
   // Power Point variants
   html = html.replace(/\bPP\b(?!>)/ig, "<pp></pp>")
-  html = html.replace(/\bMOTES?\b/ig, "<mote></mote>")
+  html = html.replace(/\bMOTES?\b(?!>)/ig, "<mote></mote>")
   html = html.replace(/\bHERP\b/ig, "<hero></hero>")
   html = html.replace(/\bHERO ?POINTS?\b/ig, "<hero></hero>")
 
+  // List item junk (May no longer be necessary?)
   html = html.replace(/<\/li><br>/g, "</li>")
   html = html.replace(/<\/ul><br>/g, "</ul>")
   html = html.replace(/&nbsp;/g, " ")

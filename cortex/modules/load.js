@@ -1,6 +1,6 @@
 
 import { updateTitles } from "./elements.js"
-import { c_to_html, text_to_html } from "./conversion.js"
+import { dice_to_html, text_to_html } from "./conversion.js"
 import { apply_data_style, update_trait_group_display, apply_highlight_color, defaultHighlightColor } from "./traitGroupStyle.js"
 
 export async function load_character(json) {
@@ -170,7 +170,7 @@ async function load_characterV4(json) {
             let trait = await get_element_from_parts(["pages", pageIndex, columnIndex + 1, traitGroupIndex, traitGroupColumnIndex + 2, traitIndex])
             let [name, value] = traitData
             trait.querySelector(".trait-name").innerHTML = text_to_html(name)
-            trait.querySelector(".trait-value d").innerHTML = c_to_html(value)
+            trait.querySelector(".trait-value").innerHTML = dice_to_html(value)
             if (traitData.length > 2) {
               let description = traitData.slice(2).join("\n")
               trait.querySelector(".trait-description").innerHTML = text_to_html(description)

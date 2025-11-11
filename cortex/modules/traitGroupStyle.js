@@ -47,9 +47,8 @@ export function apply_trait_group_style_to_trait(traitGroup, trait, applyDefault
 	if (traitGroup.classList.contains("stress")) {
 		let track = document.createElement("div")
 		track.classList.add("track")
-		track.innerHTML = "<span>4</span> <span>6</span> <span>8</span> <span>0</span> <span>2</span>"
-		let d = trait.querySelector(".trait-value>d")
-		d.after(track)
+		track.innerHTML = "<d>4</d> <d>6</d> <d>8</d> <d>0</d> <d>2</d>"
+		trait.querySelector(".trait-value").after(track)
 		const clearValue = noDiePlaceholder
 		if (applyDefaultValue) {
 			set_track_value(trait, clearValue) // Default to stress tracks being clear instead of d6 like other traits
@@ -57,10 +56,10 @@ export function apply_trait_group_style_to_trait(traitGroup, trait, applyDefault
 			update_track_displayed_value(trait)
 		}
 		track.addEventListener("click", (e) => {
-			if (e.target.nodeName === "SPAN") {
+			if (e.target.nodeName === "D") {
 				// Clicking the current value clears the stress track
-				let span = e.target
-				let value = span.classList.contains("current") ? clearValue : span.innerText
+				let d = e.target
+				let value = d.classList.contains("current") ? clearValue : d.innerText
 				set_track_value(trait, value)
 			}
 		})
@@ -68,14 +67,17 @@ export function apply_trait_group_style_to_trait(traitGroup, trait, applyDefault
 }
 
 function set_track_value(trait, value) {
-	trait.querySelector(".trait-value>d").innerText = value
+	if (value !== noDiePlaceholder) {
+		value = `<d>${value}</d>`
+	}
+	trait.querySelector(".trait-value").innerHTML = value
 	update_track_displayed_value(trait)
 }
 
 function update_track_displayed_value(trait) {
-	const value = trait.querySelector(".trait-value>d").innerText
+	const value = trait.querySelector(".trait-value d")?.innerText ?? noDiePlaceholder
 	let nonmatchingState = (value === noDiePlaceholder) ? "empty" : "full"
-	for (let die of trait.querySelector(".track").querySelectorAll("span")) {
+	for (let die of trait.querySelector(".track").querySelectorAll("d")) {
 		die.classList.remove("full")
 		die.classList.remove("current")
 		die.classList.remove("empty")

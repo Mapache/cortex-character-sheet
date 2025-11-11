@@ -15,18 +15,6 @@ function get_path_from_element(elem) {
   return id + path
 }
 
-function get_parent_with_class(element, d) {
-  if (element === null) {
-    return null;
-  }
-
-  if (element.classList.contains(d)) {
-    return element;
-  }
-
-  return get_parent_with_class(element.parentElement, d)
-}
-
 // The V3 format inherited from the original project scanned every editable field that was not tagged for exclusion
 // and saved their contents keyed by paths that listed the numerical index of each child relative to its parents.
 // It was intimately tied to the HTML structure of the page, difficult to edit by hand, and a substantial portion of
@@ -40,13 +28,13 @@ function save_characterV3() {
     if (input.classList.contains("non-serialized") || input.classList.contains("no-print") || input.classList.contains("template")) {
       continue
     }
-    let non_serialized_parent = get_parent_with_class(input.parentElement, "non-serialized") || get_parent_with_class(input.parentElement, "no-print") || get_parent_with_class(input.parentElement, "template")
+    let non_serialized_parent = input.parentElement.closest("non-serialized") || input.parentElement.closest("no-print") || input.parentElement.closest("template")
     if (non_serialized_parent) {
       continue
     }
 
     let id = input.id
-    let spell_parent = get_parent_with_class(input.parentElement, "spell")
+    let spell_parent = input.parentElement.closest("spell")
     if (spell_parent && spell_parent.classList.contains("template")) {
       continue
     }
@@ -154,7 +142,7 @@ function save_characterV4() {
           let traitGroupColumnData = []
           for (let trait of traitGroupColumn.querySelectorAll(".trait")) {
             let name = html_to_text(trait.querySelector(".trait-name").innerHTML)
-            let value = html_to_text(trait.querySelector(".trait-value d").innerHTML)
+            let value = html_to_text(trait.querySelector(".trait-value").innerHTML)
             let description = html_to_text(trait.querySelector(".trait-description").innerHTML)
             if (description === "Trait description.") {
               // Don't save default trait descriptions.
