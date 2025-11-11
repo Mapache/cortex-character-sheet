@@ -2,6 +2,8 @@ import { addEditHandlers } from "./eventHandlers.js"
 import { fetchHtml } from "./fetchHtml.js"
 import { apply_data_style, apply_trait_group_style_to_trait } from "./traitGroupStyle.js"
 
+// MARK: Template
+
 class Template {
   constructor(element) {
     this.element = element
@@ -22,32 +24,46 @@ class Template {
 
 }
 
-function new_group(className) {
-  let template = document.querySelector("." + className + ".template")
-  let newGroup = template.cloneNode(true)
-  newGroup.classList.remove("template")
-  return newGroup
-}
+// MARK: Add Elements
 
-function add_child(parent, newGroup) {
+function addChild(parent, newElement) {
   let children = parent.children
   let placeholder = children[children.length - 1]
-  parent.insertBefore(newGroup, placeholder)
-  addEditHandlers(newGroup)
-  return newGroup
+  parent.insertBefore(newElement, placeholder)
+  addEditHandlers(newElement)
+  return newElement
 }
 
-function add_group(event, newGroup) {
-  return add_child(event.target.parentElement, newGroup)
+function addElement(event, newElement) {
+  return addChild(event.target.parentElement, newElement)
 }
 
 export async function add_page(e) {
-  let page = add_group(e, (await Template.page).newInstance())
-  install_title_listener(page)
-  const characterName = document.querySelector(".title").innerText // Get name from first page
-  page.querySelector(".title").innerText = characterName
+  let page = addElement(e, (await Template.page).newInstance())
+  page.querySelector(".title").innerText = currentCharacterName()
+  installTitleListeners(page)
 
   updatePagePlaceholderControl()
+}
+
+export async function add_trait_group(e) {
+  let traitGroup = addElement(e, (await Template.traitGroup).newInstance())
+  apply_data_style(traitGroup, "detailed")
+
+  updatePagePlaceholderControl()
+}
+
+export async function add_trait(e) {
+  let trait = addElement(e, (await Template.trait).newInstance())
+  let traitGroup = e.target.parentElement.parentElement
+  apply_trait_group_style_to_trait(traitGroup, trait, true)
+}
+
+// MARK: Remove Elements
+
+export function remove_item(e) {
+  let item = e.target.parentElement
+  item.remove()
 }
 
 export function remove_last_page(e) {
@@ -77,41 +93,22 @@ export function updatePagePlaceholderControl() {
   }
 }
 
-export async function add_trait_group(e) {
-  let traitGroup = add_group(e, (await Template.traitGroup).newInstance())
-  apply_data_style(traitGroup, "detailed")
+// MARK: Title Listeners
 
-  updatePagePlaceholderControl()
-}
-
-export async function add_trait(e) {
-  let trait = add_group(e, (await Template.trait).newInstance())
-  let traitGroup = e.target.parentElement.parentElement
-  apply_trait_group_style_to_trait(traitGroup, trait, true)
-}
-
-export function install_title_listeners() {
-  let titles = document.getElementsByClassName("title")
-  for (let title of titles) {
+export function installTitleListeners(parent) {
+  const titles = parent.querySelectorAll(".title")
+  for (const title of titles) {
     title.addEventListener("input", function () {
-      let characterName = title.innerText
-      update_titles(characterName, title)
+      const characterName = title.innerText
+      updateTitles(characterName, title)
     })
   }
 }
 
-function install_title_listener(page) {
-  let title = page.querySelector(".title")
-  title.addEventListener("input", function () {
-    let characterName = title.innerText
-    update_titles(characterName, title)
-  })
-}
-
-export function update_titles(characterName, excludingTitle) {
-  let titles = document.getElementsByClassName("title")
+export function updateTitles(characterName, excludingTitle) {
+  let titles = document.querySelectorAll(".title")
   for (let title of titles) {
-    if (title != excludingTitle) {
+    if (title !== excludingTitle) {
       title.innerText = characterName
     }
   }
@@ -125,7 +122,6 @@ export function updateDocumentTitle(characterName) {
   document.title = characterName + " Character Sheet"
 }
 
-export function remove_item(e) {
-  let item = e.target.parentElement
-  item.remove()
+export function currentCharacterName() {
+	return document.querySelector(".title").innerText // Get name from first page
 }

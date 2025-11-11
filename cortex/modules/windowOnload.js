@@ -1,6 +1,6 @@
 
 import { cloud } from "./cloud.js"
-import { install_title_listeners } from "./elements.js"
+import { installTitleListeners } from "./elements.js"
 import { addEditHandlers } from "./eventHandlers.js"
 import { auth } from "./firebase.js"
 import { load_character, load_character_path } from "./load.js"
@@ -21,7 +21,7 @@ whenInteractive(() => {
   }, false)
 
   addEditHandlers(document)
-  install_title_listeners()
+  installTitleListeners(document)
 })
 
 // Load the static sheet at the relative path specified by "template"

@@ -3,14 +3,14 @@ import { Modal } from "./modal.js"
 function update_attribute_positions() {
 	let attributes = document.querySelectorAll(".attribute:not(.template)")
 
-	document.getElementById("attribute-curve").style.display = (attributes.length <= 1) ? "none" : "block";
+	document.getElementById("attribute-curve").style.display = (attributes.length <= 1) ? "none" : "block"
 
 	if (attributes.length === 1) {
 		let a = attributes[0]
 		a.style.left = ((115 + 176) * 0.5 + 3.5) + "mm"
 		a.style.top = "120mm"
-		a.classList.remove("vertical");
-		a.parentElement.classList.remove("vertical");
+		a.classList.remove("vertical")
+		a.parentElement.classList.remove("vertical")
 		return
 	}
 
@@ -18,18 +18,18 @@ function update_attribute_positions() {
 		let a = attributes[i]
 		let alpha = i / (attributes.length - 1)
 
-		let left = 115;
-		let right = 176;
-		let height = 10;
-		let top = 107.5;
+		let left = 115
+		let right = 176
+		let height = 10
+		let top = 107.5
 
 		if (attributes.length > 5) {
-			a.classList.add("vertical");
-			a.parentElement.classList.add("vertical");
+			a.classList.add("vertical")
+			a.parentElement.classList.add("vertical")
 		}
 		else {
-			a.classList.remove("vertical");
-			a.parentElement.classList.remove("vertical");
+			a.classList.remove("vertical")
+			a.parentElement.classList.remove("vertical")
 		}
 
 		let x = (right - left) * alpha + left + 3.5
@@ -41,7 +41,7 @@ function update_attribute_positions() {
 }
 
 function add_attribute(e) {
-	add_group(e, "attribute")
+	addChild(e, "attribute")
 	update_attribute_positions()
 }
 
@@ -50,7 +50,7 @@ function remove_attribute(e) {
 	update_attribute_positions()
 }
 
-g_dragging = false;
+g_dragging = false
 g_drag_x = 0
 g_drag_y = 0
 function start_drag(e) {
@@ -96,7 +96,7 @@ function drag_move(e) {
 	}
 }
 
-const portraitURLModal = await Modal.build("url-modal", function () {})
+const portraitURLModal = await Modal.build("url-modal", () => { })
 
 function change_image_url(e) {
 	let url = document.querySelector("#url-modal input")

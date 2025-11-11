@@ -1,5 +1,5 @@
 
-import { update_titles } from "./elements.js"
+import { updateTitles } from "./elements.js"
 import { c_to_html, text_to_html } from "./conversion.js"
 import { apply_data_style, update_trait_group_display, apply_highlight_color, defaultHighlightColor } from "./traitGroupStyle.js"
 
@@ -28,7 +28,7 @@ export function nuke_character() {
     traitGroup.remove()
   }
   // Reset name & description.
-  update_titles("NAME", null)
+  updateTitles("NAME")
   document.querySelector("#description").innerHTML = "Description"
 }
 
@@ -145,7 +145,7 @@ async function load_characterV3(json) {
 
   await load_highlight_colors(json.highlightColors)
 
-  update_titles(data["character-name"], null)
+  updateTitles(data["character-name"])
 }
 
 // See notes about file formats in save.js.
@@ -184,7 +184,7 @@ async function load_characterV4(json) {
 
   await load_highlight_colors(json.highlightColors)
 
-  update_titles(characterName, null)
+  updateTitles(characterName)
 }
 
 // Load the character specified by a URL path

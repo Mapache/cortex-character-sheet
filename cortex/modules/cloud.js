@@ -2,6 +2,7 @@ import { app, analytics, auth, db } from "./firebase.js"
 import { onAuthStateChanged, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js"
 import { doc, collection, where, query, orderBy, startAfter, limit, onSnapshot, addDoc, setDoc, updateDoc, getDoc, getDocs, documentId, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js"
 
+import { currentCharacterName } from "./elements.js"
 import { load_character } from "./load.js"
 import { characterName, save_character } from "./save.js"
 import { merge } from "./merge.js"
@@ -90,14 +91,16 @@ function expiring(converter) {
 export class Message {
 	/**
 	 * @param {string} author (UserId)
+	 * @param {string} characterName
 	 * @param {string} text
 	 * @param {[DieRoll]} dice
 	 * @param {[DieStatus]} diceStatus: Separate from dice so it's mutable after rolling
 	 * @param {Timestamp} saved
 	 * @param {id} id
 	 */
-	constructor(author, text, dice, diceStatus, saved, id) {
+	constructor(author, characterName, text, dice, diceStatus, saved, id) {
 		this.author = author
+		this.characterName = characterName
 		this.text = text
 		this.dice = dice ?? []
 		this.diceStatus = diceStatus ?? []
@@ -159,6 +162,7 @@ export class Message {
 			}
 			return new Message(
 				data.author,
+				data.characterName,
 				data.text,
 				rolledDice,
 				data.diceStatus,
@@ -707,7 +711,7 @@ export class Cloud {
 	 */
 	async postMessageComponents(text, dice) {
 		const user = await cloud.requireSignIn()
-		const message = new Message(user.uid, text)
+		const message = new Message(user.uid, currentCharacterName(), text)
 		for (const die of dice) {
 			message.addDie(...die)
 		}
