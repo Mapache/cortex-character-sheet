@@ -201,6 +201,8 @@ class Messages {
         duration: 200,
         iterations: 1
       })
+
+      this.updatePostButton()
     }
   }
 
