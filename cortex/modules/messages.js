@@ -198,7 +198,7 @@ class Messages {
           { outline: "2pt solid var(--highlight)" },
           { outline: "2pt solid rgba(100%, 100%, 100%, 0)" },
         ], {
-        duration: 200,
+        duration: 150,
         iterations: 1
       })
 
