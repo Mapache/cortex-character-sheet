@@ -24,10 +24,10 @@ function addEditHandlersToNode(editable) {
     if (isEditingEnabled) {
       if (Flags.useEditableHTML) {
         e.target.innerHTML = html_to_editable(e.target.innerHTML)
-        moveCaretToEndOf(e.target)
       } else {
         e.target.innerText = html_to_text(e.target.innerHTML)
       }
+      moveCaretToEndOf(e.target)
     } else {
       e.target.blur()
     }
