@@ -1889,3 +1889,21 @@ li:before {
 		}
 	}
 }
+
+.flash {
+	animation: flash 150ms linear;
+}
+
+@keyframes flash {
+	0% {
+		box-shadow: 0 0 8px 4px rgba(100%, 100%, 100%, 0);
+	}
+
+	25%, 75% {
+		box-shadow: 0 0 8px 4px var(--highlight);
+	}
+
+	100% {
+		box-shadow: 0 0 8px 4px rgba(100%, 100%, 100%, 0);
+	}
+}

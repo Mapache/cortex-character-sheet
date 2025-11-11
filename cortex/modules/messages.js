@@ -192,15 +192,10 @@ class Messages {
         ? trait
         // Only animate the header row.
         : trait.querySelector(".trait-header")
-      animationTarget.animate(
-        [
-          { outline: "2pt solid rgba(100%, 100%, 100%, 0)" },
-          { outline: "2pt solid var(--highlight)" },
-          { outline: "2pt solid rgba(100%, 100%, 100%, 0)" },
-        ], {
-        duration: 150,
-        iterations: 1
-      })
+      for (const target of [animationTarget, dieInput]) {
+        target.classList.add("flash")
+        target.addEventListener("animationend", () => target.classList.remove("flash"), { once: true })
+      }
 
       this.updatePostButton()
     }
