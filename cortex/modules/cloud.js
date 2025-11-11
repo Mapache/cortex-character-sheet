@@ -436,11 +436,11 @@ export class Cloud {
 		}
 
 		if (0) {
-			console.log("user.uid = ", user.uid)
-			console.log("this.userPermissions = ", this.userPermissions)
-			console.log("this.defaultCampaign = ", this.defaultCampaign)
-			console.log("this.campaigns = ", this.campaigns)
-			console.log("this.currentCampaign = ", this.currentCampaign)
+			console.debug("user.uid = ", user.uid)
+			console.debug("this.userPermissions = ", this.userPermissions)
+			console.debug("this.defaultCampaign = ", this.defaultCampaign)
+			console.debug("this.campaigns = ", this.campaigns)
+			console.debug("this.currentCampaign = ", this.currentCampaign)
 		}
 	}
 
@@ -484,7 +484,7 @@ export class Cloud {
 			await this.updateAccessKey(campaignId, permissions.keyFor(CampaignPermissions.admin))
 			await setDoc(doc(db, collections.campaignPermissions, campaignId).withConverter(CampaignPermissions.converter), permissions)
 			await setDoc(doc(db, collections.campaigns, campaignId).withConverter(Campaign.converter), campaign)
-			console.log(`Campaign ${name} written with ID ${campaignId} `)
+			console.debug(`Campaign ${name} written with ID ${campaignId} `)
 			return campaign
 		} catch (error) {
 			console.error(`Error adding Campaign ${name}: `, error)
@@ -661,7 +661,7 @@ export class Cloud {
 		// Check if the sheet is unchanged
 		if (this.currentCharacterSheets[sheet.id]?.jsonString === sheet.jsonString) {
 			// No changes, no need to do anything.
-			console.log("Skipping upload for unchanged character sheet", sheet.name)
+			console.debug("Skipping upload for unchanged character sheet", sheet.name)
 			return
 		}
 
@@ -676,7 +676,7 @@ export class Cloud {
 				collections.characterVersions).withConverter(expiring(CharacterSheet.converter)),
 				sheet)
 			this.updateURLForCharacter(sheet)
-			console.log("Character Sheet written with ID: ", sheet.id)
+			console.debug("Character Sheet written with ID: ", sheet.id)
 		} catch (error) {
 			console.error("Error adding Character Sheet: ", error)
 		}
@@ -715,7 +715,6 @@ export class Cloud {
 		for (const die of dice) {
 			message.addDie(...die)
 		}
-		console.log(Message.converter.toFirestore(message))
 		await this.postMessage(message)
 	}
 
@@ -728,7 +727,7 @@ export class Cloud {
 				collections.campaigns, this.currentCampaign.id,
 				collections.messages).withConverter(Message.converter),
 				message)
-			console.log("Message written with ID: ", docRef.id)
+			console.debug("Message written with ID: ", docRef.id)
 		} catch (error) {
 			console.error("Error adding Message: ", error)
 		}
