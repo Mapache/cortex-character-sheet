@@ -324,7 +324,7 @@ async function htmlForMessage(message) {
   html.id = htmlIdForMessage(message)
   html.classList.add("message")
   html.innerHTML =
-    `<span>${formatAbsoluteTime(message.saved)} ${await cloud.displayNameForUserId(message.author)}:</span>` +
+    `<span>${formatAbsoluteTime(message.saved)} ${await cloud.displayNameForUserId(message.author)} as ${message.characterName}:</span>` +
     `<div>${message.text}</div>`
 
   if (message.dice.length > 0) {

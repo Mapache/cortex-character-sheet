@@ -143,6 +143,7 @@ export class Message {
 			}
 			return {
 				author: message.author,
+				characterName: message.characterName,
 				text: message.text,
 				dice: unrolledDice,
 				diceStatus: message.diceStatus,
