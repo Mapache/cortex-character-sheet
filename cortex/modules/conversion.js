@@ -1,6 +1,6 @@
 export const noDiePlaceholder = "∅"
 
-export function c_to_html(html) {
+export function dText_to_html(html) {
   if (html === "-") {
     return "–"
   }

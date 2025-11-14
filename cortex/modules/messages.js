@@ -1,6 +1,6 @@
 import { asyncMap, asyncFilter } from "./async.js"
 import { CampaignPermissions, cloud } from "./cloud.js"
-import { noDiePlaceholder, c_to_html, html_to_text } from "./conversion.js"
+import { noDiePlaceholder, dText_to_html, html_to_text } from "./conversion.js"
 import { setEditingEnabled, selectAllTextOf } from "./eventHandlers.js"
 import { Flags } from "./flags.js"
 import { formatAbsoluteTime } from "./formatting.js"
@@ -162,24 +162,11 @@ class Messages {
       return
     }
 
-    let value = null
-    if (e.target.nodeName === "D") {
-      const selection = getSelection()
-      // console.log("selection =", selection)
-      // console.log("selection.focusNode =", selection.focusNode)
-      // console.log("selection.focusNode.data =", selection.focusNode?.data)
-      const charClicked = selection.focusNode?.data?.[selection.focusOffset]
-      if (charClicked) {
-        console.log("Character clicked =", charClicked)
-      }
-
-      value = e.target.innerText
-      console.debug("Using clicked value =", value)
-    }
     const trait = e.target.closest(".trait")
     if (trait) {
       const label = trait.querySelector(".trait-name").innerText.replace(/(\r\n|\n|\r)/gm, " ")
-      value = value ?? trait.querySelector(".trait-value d")?.innerText ?? noDiePlaceholder
+      const d = (e.target.nodeName === "D") ? e.target : trait.querySelector(".trait-value d")
+      const value = d?.innerText ?? noDiePlaceholder
 
       let dieInput = this.diceTable.lastElementChild
       for (const input of this.diceTable.querySelectorAll("input")) {
@@ -201,6 +188,7 @@ class Messages {
         ? trait
         // Only animate the header row.
         : trait.querySelector(".trait-header")
+      // Animate a flash around both the clicked target and the modified die input row.
       for (const target of [animationTarget, dieInput]) {
         target.classList.add("flash")
         target.addEventListener("animationend", () => target.classList.remove("flash"), { once: true })
@@ -252,8 +240,8 @@ class Messages {
     this.updatePostButton()
   }
 
-  sanitizeDieSize(cText) {
-    let die = c_to_html(cText)[0]
+  sanitizeDieSize(dText) {
+    let die = dText_to_html(dText)[0]
     switch (die) {
       case "4":
       case "6":
