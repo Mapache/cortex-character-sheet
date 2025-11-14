@@ -1761,11 +1761,15 @@ li:before {
 	display: none !important;
 }
 
+:root {
+	--messaging-width: 240px;
+}
+
 #messaging {
 	position: fixed;
 	left: 64px;
 	margin-top: 10mm;
-	width: 200px;
+	width: var(--messaging-width);
 	height: 90%;
 	max-height: 297.1mm;
 
@@ -1782,87 +1786,6 @@ li:before {
 	overflow-y: auto;
 }
 
-.d4 {
-	background-image: url(images/dice/d4.svg);
-	background-size: 100% 100%;
-	width: 20px;
-	height: 20px;
-	line-height: 20px;
-	font-size: 14px;
-	display: inline-block;
-	text-align: center;
-	vertical-align: middle;
-	font-family: 'Josefin Sans', sans-serif;
-}
-
-.d6 {
-	background-image: url(images/dice/d6.svg);
-	background-size: 100% 100%;
-	width: 20px;
-	height: 20px;
-	line-height: 20px;
-	font-size: 14px;
-	display: inline-block;
-	text-align: center;
-	vertical-align: middle;
-	font-family: 'Josefin Sans', sans-serif;
-}
-
-.d8 {
-	background-image: url(images/dice/d8.svg);
-	background-size: 100% 100%;
-	width: 20px;
-	height: 20px;
-	line-height: 20px;
-	font-size: 14px;
-	display: inline-block;
-	text-align: center;
-	vertical-align: middle;
-	font-family: 'Josefin Sans', sans-serif;
-}
-
-/*
-.d8::before {
-  content: "";
-	display: inline-block;
-  position: relative;
-  z-index: -1;
-  top: 0;
-  left: 0;
-  right: 0;
-	width: 20px;
-	height: 20px;
-	background-color: green;
-	mask-image: url(images/dice/d8.svg);
-	mask-size: 100% 100%;
-}
-*/
-.d10 {
-	background-image: url(images/dice/d10.svg);
-	background-size: 100% 100%;
-	width: 20px;
-	height: 20px;
-	line-height: 20px;
-	font-size: 14px;
-	display: inline-block;
-	text-align: center;
-	vertical-align: middle;
-	font-family: 'Josefin Sans', sans-serif;
-}
-
-.d12 {
-	background-image: url(images/dice/d12.svg);
-	background-size: 100% 100%;
-	width: 20px;
-	height: 20px;
-	line-height: 20px;
-	font-size: 14px;
-	display: inline-block;
-	text-align: center;
-	vertical-align: middle;
-	font-family: 'Josefin Sans', sans-serif;
-}
-
 .dice-input {
 	width: 100%;
 }
@@ -1872,17 +1795,24 @@ li:before {
 }
 
 .die-input-label {
-	width: 80%;
+	width: 190px;
+	padding: 0px;
+
+	input {
+		width: 100%;
+	}
 }
 
 .die-input-size {
-	width: auto;
+	width: 40px;
+	padding: 0px;
 	text-align: center;
 	vertical-align: middle;
 
 	h2 {
 		width: 100%;
 		height: 100%;
+		margin: auto;
 
 		d {
 			display: inline-block;
@@ -1910,3 +1840,79 @@ li:before {
 		box-shadow: 0 0 8px 4px rgba(100%, 100%, 100%, 0);
 	}
 }
+
+.roll {
+	width: 100%;
+
+	.trait {
+		text-align: right;
+	}
+
+	.die-result {
+		width: 70px;
+		text-align: center;
+
+		d {
+			width: 20px;
+			height: 20px;
+			line-height: 20px;
+			font-size: 22px;
+			display: inline-block;
+			text-align: center;
+			vertical-align: middle;
+			margin-top: -7px;
+		}
+
+		span {
+			background-size: 100% 100%;
+			width: 20px;
+			height: 20px;
+			line-height: 20px;
+			font-size: 14px;
+			padding-top: 2px;
+			display: inline-block;
+			text-align: center;
+			vertical-align: middle;
+			font-family: 'Josefin Sans', sans-serif;
+
+			&.d4 {
+				background-image: url(images/dice/d4.svg);
+				padding-top: 0px;
+				padding-bottom: 2px;
+			}
+
+			&.d6 {
+				background-image: url(images/dice/d6.svg);
+			}
+
+			&.d8 {
+				background-image: url(images/dice/d8.svg);
+			}
+
+			&.d10 {
+				background-image: url(images/dice/d10.svg);
+			}
+
+			&.d12 {
+				background-image: url(images/dice/d12.svg);
+			}
+		}
+	}
+}
+
+/*
+.d8::before {
+  content: "";
+	display: inline-block;
+  position: relative;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+	width: 20px;
+	height: 20px;
+	background-color: green;
+	mask-image: url(images/dice/d8.svg);
+	mask-size: 100% 100%;
+}
+*/

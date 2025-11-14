@@ -15,7 +15,7 @@ const messagingVisible = new ToggleableStyle(
   "messaging-hidden",
   `
     #pages {
-      margin-left: 220px;
+      margin-left: calc(var(--messaging-width) + 20px);
     }
 	`,
   `	`,
@@ -329,11 +329,12 @@ async function htmlForMessage(message) {
 
   if (message.dice.length > 0) {
     const table = document.createElement("table")
+    table.classList.add("roll")
     for (const die of message.dice) {
       const row = document.createElement("tr")
       row.innerHTML =
         `<td class="trait"><h2 class="trait-name">${die.label}</h2></td>` +
-        `<td><d>${die.size % 10}</d> → <span class="d${die.size}">${die.result}</span></td>`
+        `<td class="die-result"><d>${die.size % 10}</d> → <span class="d${die.size}">${die.result}</span></td>`
       table.appendChild(row)
     }
     html.appendChild(table)
