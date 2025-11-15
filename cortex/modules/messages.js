@@ -1,11 +1,10 @@
 import { asyncMap, asyncFilter } from "./async.js"
-import { CampaignPermissions, cloud } from "./cloud.js"
+import { CampaignPermissions, Message, cloud } from "./cloud.js"
 import { noDiePlaceholder, dText_to_html, html_to_text } from "./conversion.js"
 import { setEditingEnabled, selectAllTextOf } from "./eventHandlers.js"
 import { Flags } from "./flags.js"
 import { titleCase, formatAbsoluteTime } from "./formatting.js"
 import { menu, menuEntry, menuDivider, menuLabel, menuTextInput } from "./menu.js"
-import { Modal } from "./modal.js"
 import { ToggleableStyle } from "./toggleableStyle.js"
 import { layoutControlsHidden, emptyDescriptionsHidden } from "./toggleableStyles.js"
 
@@ -340,7 +339,34 @@ async function htmlForMessage(message) {
       table.appendChild(row)
     }
     html.appendChild(table)
+
+    function appendOutcomes(outcomes, areSuggestions) {
+      const table = document.createElement("table")
+      table.classList.add("dice-outcome")
+      if (areSuggestions) {
+        table.classList.add("suggestion")
+      }
+      for (const statuses of outcomes) {
+        const [totalDice, effectDice] = message.diceForStatuses(statuses)
+        const total = totalDice.reduce((sum, die) => sum + die.result, 0)
+        const row = document.createElement("tr")
+        row.innerHTML =
+          `<td class="dice-total"><h2>${totalDice.map((die) => die.result).join("+")} = ${total}</h2></td>` +
+          `<td class="dice-effect">${effectDice.map((die) => `<d>${die.size % 10}</d>`).join("")}</td>`
+        table.appendChild(row)
+      }
+      html.appendChild(table)
+    }
+
+    if (message.diceStatus?.includes(Message.DieRoll.total) || message.diceStatus?.includes(Message.DieRoll.effect)) {
+      appendOutcomes([message.diceStatus], false)
+    } else {
+      // console.debug(message.dice.map((roll) => `${roll.result}/${roll.size}`))
+      // console.debug(message.choose())
+      appendOutcomes(message.choose(), true)
+    }
   }
+
 
   return html
 }

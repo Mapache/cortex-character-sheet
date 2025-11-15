@@ -9,6 +9,7 @@ import { characterName, save_character } from "./save.js"
 import { merge } from "./merge.js"
 import { ARC4 } from "./random.js"
 import { setUrlHashWithoutHandling } from "./urlHashHandler.js"
+import { noDiePlaceholder } from "./conversion.js"
 
 
 // MARK: Utilities
@@ -176,6 +177,28 @@ export class Message {
 		}
 
 		return diceStatusSuggestions
+	}
+
+	diceForStatuses(statuses) {
+		const totalDice = []
+		const effectDice = []
+		for (const [index, status] of statuses.entries()) {
+			switch (status) {
+				case Message.DieRoll.total:
+					totalDice.push(this.dice[index])
+					break
+				case Message.DieRoll.effect:
+					effectDice.push(this.dice[index])
+					break
+			}
+		}
+		if (totalDice.length === 0) {
+			totalDice.push(new Message.DieRoll("None", noDiePlaceholder, 0))
+		}
+		if (effectDice.length === 0) {
+			effectDice.push(new Message.DieRoll("Default", 4, noDiePlaceholder))
+		}
+		return [totalDice, effectDice]
 	}
 
 	static converter = {
