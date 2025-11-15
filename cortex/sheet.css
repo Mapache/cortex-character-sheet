@@ -1908,6 +1908,14 @@ li:before {
 			}
 		}
 	}
+
+	.hitch {
+
+		.die-size d,
+		.die-result {
+			color: #999;
+		}
+	}
 }
 
 /*

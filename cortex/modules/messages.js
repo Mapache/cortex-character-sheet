@@ -333,6 +333,9 @@ async function htmlForMessage(message) {
     table.classList.add("roll")
     for (const die of message.dice) {
       const row = document.createElement("tr")
+      if (die.result === 1) {
+        row.classList.add("hitch")
+      }
       row.innerHTML =
         `<td class="trait"><h2 class="trait-name">${die.label}</h2></td>` +
         `<td class="die-size"><d>${die.size % 10}</d></td>` +
