@@ -335,7 +335,9 @@ async function htmlForMessage(message) {
       const row = document.createElement("tr")
       row.innerHTML =
         `<td class="trait"><h2 class="trait-name">${die.label}</h2></td>` +
-        `<td class="die-result"><d>${die.size % 10}</d> → <span class="d${die.size}">${die.result}</span></td>`
+        `<td class="die-size"><d>${die.size % 10}</d></td>` +
+        `<td class="die-arrow">→</td>` +
+        `<td class="die-result"><span class="d${die.size}">${die.result ?? "?"}</span></td>`
       table.appendChild(row)
     }
     html.appendChild(table)
@@ -351,7 +353,8 @@ async function htmlForMessage(message) {
         const total = totalDice.reduce((sum, die) => sum + die.result, 0)
         const row = document.createElement("tr")
         row.innerHTML =
-          `<td class="dice-total"><h2>${totalDice.map((die) => die.result).join("+")} = ${total}</h2></td>` +
+          `<td class="dice-total-contributions"><h2>${totalDice.map((die) => die.result).join("+")} =</h2></td>` +
+          `<td class="dice-total-sum"><h2>${total}</h2></td>` +
           `<td class="dice-effect">${effectDice.map((die) => `<d>${die.size % 10}</d>`).join("")}</td>`
         table.appendChild(row)
       }

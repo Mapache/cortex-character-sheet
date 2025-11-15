@@ -1848,8 +1848,8 @@ li:before {
 		text-align: right;
 	}
 
-	.die-result {
-		width: 70px;
+	.die-size {
+		width: 20px;
 		text-align: center;
 
 		d {
@@ -1862,6 +1862,16 @@ li:before {
 			vertical-align: middle;
 			margin-top: -7px;
 		}
+	}
+
+	.die-arrow {
+		width: 20px;
+		text-align: center;
+	}
+
+	.die-result {
+		width: 20px;
+		text-align: center;
 
 		span {
 			background-size: 100% 100%;
@@ -1916,3 +1926,55 @@ li:before {
 	mask-size: 100% 100%;
 }
 */
+
+.dice-outcome {
+	width: 100%;
+	border-top: 0.5pt solid var(--highlight);
+
+	.dice-total-contributions {
+		text-align: right;
+
+		h2 {
+			margin-top: 2px;
+			font-size: 18px;
+			line-height: unset;
+		}
+	}
+
+	.dice-total-equals {
+		text-align: center;
+
+		h2 {
+			margin-top: 2px;
+			font-size: 18px;
+			line-height: unset;
+		}
+	}
+
+	.dice-total-sum {
+		width: 20px;
+		text-align: center;
+
+		h2 {
+			margin-top: 2px;
+			font-size: 24px;
+			line-height: unset;
+		}
+	}
+
+	.dice-effect {
+		width: 68px;
+		text-align: left;
+
+		d {
+			width: 20px;
+			height: 20px;
+			line-height: 20px;
+			font-size: 22px;
+			display: inline-block;
+			text-align: center;
+			vertical-align: middle;
+			margin-top: -7px;
+		}
+	}
+}
