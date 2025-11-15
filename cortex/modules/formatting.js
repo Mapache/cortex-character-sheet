@@ -1,3 +1,13 @@
+// MARK: Strings
+
+export function titleCase(string) {
+  return string.replace(
+    /\w\S*/g,
+    text => text.charAt(0).toUpperCase() + text.substring(1).toLowerCase()
+  )
+}
+
+// MARK: Timestamps
 
 // Determine the most appropriate unit
 const oneSecond = 1000

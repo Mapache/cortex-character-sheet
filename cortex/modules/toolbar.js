@@ -1,6 +1,6 @@
 import { CampaignPermissions, cloud } from "./cloud.js"
 import { Flags } from "./flags.js"
-import { formatRelativeTime } from "./formatting.js"
+import { titleCase, formatRelativeTime } from "./formatting.js"
 import { nuke_character, load_character } from "./load.js"
 import { menu, menuEntry, menuDivider, menuLabel, menuTextInput } from "./menu.js"
 import { messages } from "./messages.js"
@@ -10,15 +10,6 @@ import { copyShareUrl } from "./share.js"
 import { apply_highlight_color } from "./traitGroupStyle.js"
 import { ToggleableStyle } from "./toggleableStyle.js"
 import { layoutControlsHidden, emptyDescriptionsHidden } from "./toggleableStyles.js"
-
-// MARK: Utilities
-
-function titleCase(string) {
-	return string.replace(
-		/\w\S*/g,
-		text => text.charAt(0).toUpperCase() + text.substring(1).toLowerCase()
-	)
-}
 
 // MARK: File Section
 
