@@ -1,9 +1,12 @@
 // MARK: Strings
 
 export function titleCase(string) {
+  if (!string) {
+    return string
+  }
   return string.replace(
-    /\w\S*/g,
-    text => text.charAt(0).toUpperCase() + text.substring(1).toLowerCase()
+    /(GM|PC|NPC|\S)(\S*)/ig,
+    (match, head, tail) => head.toUpperCase() + tail.toLowerCase()
   )
 }
 

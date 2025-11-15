@@ -3,7 +3,7 @@ import { CampaignPermissions, cloud } from "./cloud.js"
 import { noDiePlaceholder, dText_to_html, html_to_text } from "./conversion.js"
 import { setEditingEnabled, selectAllTextOf } from "./eventHandlers.js"
 import { Flags } from "./flags.js"
-import { formatAbsoluteTime } from "./formatting.js"
+import { titleCase, formatAbsoluteTime } from "./formatting.js"
 import { menu, menuEntry, menuDivider, menuLabel, menuTextInput } from "./menu.js"
 import { Modal } from "./modal.js"
 import { ToggleableStyle } from "./toggleableStyle.js"
@@ -324,7 +324,9 @@ async function htmlForMessage(message) {
   html.id = htmlIdForMessage(message)
   html.classList.add("message")
   html.innerHTML =
-    `<span>${formatAbsoluteTime(message.saved)} ${await cloud.displayNameForUserId(message.author)} as ${message.characterName}:</span>` +
+    `<span>${formatAbsoluteTime(message.saved)}
+      ${await cloud.displayNameForUserId(message.author)} as
+      ${titleCase(message.characterName)}:</span>` +
     `<div>${message.text}</div>`
 
   if (message.dice.length > 0) {
