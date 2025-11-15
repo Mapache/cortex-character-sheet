@@ -373,7 +373,7 @@ async function htmlForMessage(message) {
         }
         updateStatusClass()
         html.querySelector(".dice-outcome").replaceWith(htmlForOutcomes(message, updateStatusClasses))
-        // TODO: Push status to server after a delay.
+        startStatusPushTimer()
       }
 
       row.querySelector(".die-size").onclick = (e) => {
@@ -381,6 +381,18 @@ async function htmlForMessage(message) {
       }
       row.querySelector(".die-result").onclick = (e) => {
         toggleStatus(Message.DieRoll.total)
+      }
+
+      // For batching up a series of dice clicks to reduce writes at the server end.
+      let pushTimerId = null
+      function startStatusPushTimer() {
+        if (pushTimerId) {
+          clearTimeout(pushTimerId)
+        }
+        pushTimerId = setTimeout(() => {
+          cloud.updateMessageDiceStatus(message.id, message.diceStatus)
+          pushTimerId = null
+        }, 5000)
       }
     }
     html.appendChild(table)
@@ -427,8 +439,11 @@ function htmlForOutcomes(message, updateStatusClasses) {
         }
         row.classList.remove("shimmer")
         row.style.animationDelay = `0s`
-        animateFlash(row, () => table.replaceWith(htmlForOutcomes(message, updateStatusClasses)))
-        cloud.updateMessageDiceStatus(message.id, diceStatus)
+        animateFlash(row, () => {
+          table.replaceWith(htmlForOutcomes(message, updateStatusClasses))
+          // Wait until after animation to avoid local change detection overwriting us mid-flash.
+          cloud.updateMessageDiceStatus(message.id, diceStatus)
+        })
       }
     }
   }
