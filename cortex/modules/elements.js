@@ -98,9 +98,14 @@ export function updatePagePlaceholderControl() {
 export function installTitleListeners(parent) {
   const titles = parent.querySelectorAll(".title")
   for (const title of titles) {
-    title.addEventListener("input", function () {
+    title.addEventListener("input", (e) => {
+      // Update every other title in sync.
       const characterName = title.innerText
       updateTitles(characterName, title)
+    })
+    title.addEventListener("blur", (e) => {
+      // Strip extraneous formatting from the edited title.
+      title.innerText = title.innerText
     })
   }
 }
