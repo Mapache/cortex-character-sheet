@@ -132,7 +132,50 @@ export class Message {
 			return
 		}
 		this.dice.push(new Message.DieRoll(label, size))
-		this.diceStatus.push(Message.DieRoll.unchosen)
+		// this.diceStatus.push(Message.DieRoll.unchosen)
+	}
+
+	choose(totalDiceCount = 2, effectDiceCount = 1) {
+		let dice = Array.from(this.dice.entries()) // [[index, roll]]
+		// Drop hitches (1)
+		dice = dice.filter(([index, roll]) => roll.result > 1)
+		// Sort by decreasing result, with increasing size as tiebreaker
+		const diceByTotal = dice.toSorted(
+			([indexA, rollA], [indexB, rollB]) =>
+				(rollB.result - rollA.result) * 100 + (rollA.size - rollB.size))
+		// Sort by decreasing size, with increasing result as tiebreaker
+		const diceByEffect = dice.toSorted(
+			([indexA, rollA], [indexB, rollB]) =>
+				(rollB.size - rollA.size) * 100 + (rollA.result - rollB.result))
+
+		function choose(statuses, count, sortedDice, status) {
+			if (count <= 0) {
+				return
+			}
+			let chosen = 0
+			for (const [index, roll] of sortedDice) {
+				if (statuses[index] == undefined) {
+					statuses[index] = status
+					if (++chosen === count) {
+						break
+					}
+				}
+			}
+		}
+
+		// Try possibilities from prioritizing highest total to prioritizing highest effect
+		let diceStatusSuggestions = []
+		for (let totalPriority = totalDiceCount; totalPriority >= 0; --totalPriority) {
+			const diceStatus = []
+			choose(diceStatus, totalPriority, diceByTotal, Message.DieRoll.total)
+			choose(diceStatus, Math.min(effectDiceCount, dice.length - totalDiceCount), diceByEffect, Message.DieRoll.effect)
+			choose(diceStatus, totalDiceCount - totalPriority, diceByTotal, Message.DieRoll.total)
+			if (JSON.stringify(diceStatus) !== JSON.stringify(diceStatusSuggestions.at(-1))) {
+				diceStatusSuggestions.push(diceStatus)
+			}
+		}
+
+		return diceStatusSuggestions
 	}
 
 	static converter = {
