@@ -32,13 +32,5 @@ export const emptyDescriptionsHidden = new ToggleableStyle(
       background-size: 300%;
       animation: shimmer 4s infinite linear;
     }
-    @keyframes shimmer {
-      0% {
-        background-position-x: 100%;
-      }
-      25%, 100% {
-        background-position-x: 0%;
-      }
-    }
   `,
   true)

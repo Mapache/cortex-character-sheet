@@ -2056,3 +2056,20 @@ li:before {
 		}
 	}
 }
+
+.shimmer {
+	background: linear-gradient(-45deg, #fff 40%, #f8f8f8 50%, #fff 60%);
+	background-size: 300%;
+	animation: shimmer 4s infinite linear;
+}
+
+@keyframes shimmer {
+	0% {
+		background-position-x: 100%;
+	}
+
+	25%,
+	100% {
+		background-position-x: 0%;
+	}
+}

@@ -136,7 +136,7 @@ export class Message {
 		this.diceStatus.push(Message.DieRoll.unchosen)
 	}
 
-	choose(totalDiceCount = 2, effectDiceCount = 1) {
+	diceStatusSuggestions(totalDiceCount = 2, effectDiceCount = 1) {
 		const dice = Array.from(this.dice.entries()) // [[index, roll]]
 		// Drop hitches (1)
 		const validDice = dice.filter(([index, roll]) => roll.result > 1)

@@ -330,65 +330,109 @@ async function htmlForMessage(message) {
   if (message.dice.length > 0) {
     const table = document.createElement("table")
     table.classList.add("roll")
+    const updateStatusClasses = []
     for (const [index, die] of message.dice.entries()) {
       const row = document.createElement("tr")
       if (die.result === 1) {
         row.classList.add("hitch")
       }
-      const status = message.diceStatus[index]
-      switch (status) {
-        case Message.DieRoll.total:
-          row.classList.add("total")
-          break
-        case Message.DieRoll.effect:
-          row.classList.add("effect")
-          break
+
+      function updateStatusClass() {
+        switch (message.diceStatus[index]) {
+          case Message.DieRoll.total:
+            row.classList.add("total")
+            row.classList.remove("effect")
+            break
+          case Message.DieRoll.effect:
+            row.classList.add("effect")
+            row.classList.remove("total")
+            break
+          default:
+            row.classList.remove("total")
+            row.classList.remove("effect")
+        }
       }
+      updateStatusClasses.push(updateStatusClass)
+
       row.innerHTML =
         `<td class="trait"><h2 class="trait-name">${die.label}</h2></td>` +
         `<td class="die-size"><d>${die.size % 10}</d></td>` +
         `<td class="die-arrow">→</td>` +
         `<td class="die-result"><span class="die-frame d${die.size}"><span class="die-value">${die.result ?? "?"}</span></span></td>`
       table.appendChild(row)
+      updateStatusClass()
+
+      function toggleStatus(status) {
+        if (die.result === 1) {
+          return
+        }
+        if (message.diceStatus[index] === status) {
+          message.diceStatus[index] = Message.DieRoll.unchosen
+        } else {
+          message.diceStatus[index] = status
+        }
+        updateStatusClass()
+        html.querySelector(".dice-outcome").replaceWith(htmlForOutcomes(message, updateStatusClasses))
+        // TODO: Push status to server after a delay.
+      }
+
+      row.querySelector(".die-size").onclick = (e) => {
+        toggleStatus(Message.DieRoll.effect)
+      }
+      row.querySelector(".die-result").onclick = (e) => {
+        toggleStatus(Message.DieRoll.total)
+      }
     }
     html.appendChild(table)
+    html.appendChild(htmlForOutcomes(message, updateStatusClasses))
 
-    function appendOutcomes(outcomes, areSuggestions) {
-      const table = document.createElement("table")
-      table.classList.add("dice-outcome")
-      if (areSuggestions) {
-        table.classList.add("suggestion")
-      }
-      for (const diceStatus of outcomes) {
-        const [totalDice, effectDice] = message.diceForStatus(diceStatus)
-        const total = totalDice.reduce((sum, die) => sum + die.result, 0)
-        const row = document.createElement("tr")
-        row.innerHTML =
-          `<td class="dice-total-contributions"><h2>${totalDice.map((die) => die.result).join("+")} =</h2></td>` +
-          `<td class="dice-total-sum"><h2>${total}</h2></td>` +
-          `<td class="dice-effect">${effectDice.map((die) => `<d>${die.size % 10}</d>`).join("")}</td>`
-        table.appendChild(row)
-        if (areSuggestions) {
-          row.onclick = (e) => {
-            animateFlash(row)
-            cloud.updateMessageDiceStatus(message.id, diceStatus)
-          }
-        }
-      }
-      html.appendChild(table)
-    }
-
-    if (message.diceStatus?.includes(Message.DieRoll.total) || message.diceStatus?.includes(Message.DieRoll.effect)) {
-      appendOutcomes([message.diceStatus], false)
-    } else {
-      // console.debug(message.dice.map((roll) => `${roll.result}/${roll.size}`))
-      // console.debug(message.choose())
-      appendOutcomes(message.choose(), true)
-    }
+    // console.debug(message.dice.map((roll) => `${roll.result}/${roll.size}`))
+    // console.debug(message.diceStatusSuggestions())
   }
 
-
   return html
+}
+
+function htmlForOutcomes(message, updateStatusClasses) {
+  const areAnyDiceSelected = (
+    message.diceStatus?.includes(Message.DieRoll.total) ||
+    message.diceStatus?.includes(Message.DieRoll.effect)
+  )
+  const outcomes = areAnyDiceSelected ? [message.diceStatus] : message.diceStatusSuggestions()
+  const areSuggestions = !areAnyDiceSelected
+
+  const table = document.createElement("table")
+  table.classList.add("dice-outcome")
+  if (areSuggestions) {
+    table.classList.add("suggestion")
+  }
+  for (const [index, diceStatus] of outcomes.entries()) {
+    const [totalDice, effectDice] = message.diceForStatus(diceStatus)
+    const total = totalDice.reduce((sum, die) => sum + die.result, 0)
+    const row = document.createElement("tr")
+    if (areSuggestions) {
+      row.classList.add("shimmer")
+      row.style.animationDelay = `${index % 4}s`
+    }
+    row.innerHTML =
+      `<td class="dice-total-contributions"><h2>${totalDice.map((die) => die.result).join("+")} =</h2></td>` +
+      `<td class="dice-total-sum"><h2>${total}</h2></td>` +
+      `<td class="dice-effect">${effectDice.map((die) => `<d>${die.size % 10}</d>`).join("")}</td>`
+    table.appendChild(row)
+    if (areSuggestions) {
+      row.onclick = (e) => {
+        message.diceStatus = diceStatus
+        for (const updateStatusClass of updateStatusClasses) {
+          updateStatusClass()
+        }
+        row.classList.remove("shimmer")
+        row.style.animationDelay = `0s`
+        animateFlash(row, () => table.replaceWith(htmlForOutcomes(message, updateStatusClasses)))
+        cloud.updateMessageDiceStatus(message.id, diceStatus)
+      }
+    }
+  }
+  return table
 }
 
 // MARK: Click-to-Roll
@@ -397,9 +441,16 @@ document.getElementById("pages").addEventListener("click", (e) => {
   messages.pageClicked(e)
 })
 
-function animateFlash(node) {
+function animateFlash(node, then) {
   node.classList.add("flash")
-  node.addEventListener("animationend", () => node.classList.remove("flash"), { once: true })
+  node.addEventListener("animationend",
+    () => {
+      node.classList.remove("flash")
+      if (then) {
+        then()
+      }
+    },
+    { once: true })
 }
 
 export const messages = new Messages()
