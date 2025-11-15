@@ -189,8 +189,7 @@ class Messages {
         : trait.querySelector(".trait-header")
       // Animate a flash around both the clicked target and the modified die input row.
       for (const target of [animationTarget, dieInput]) {
-        target.classList.add("flash")
-        target.addEventListener("animationend", () => target.classList.remove("flash"), { once: true })
+        animateFlash(target)
       }
 
       this.updatePostButton()
@@ -331,16 +330,25 @@ async function htmlForMessage(message) {
   if (message.dice.length > 0) {
     const table = document.createElement("table")
     table.classList.add("roll")
-    for (const die of message.dice) {
+    for (const [index, die] of message.dice.entries()) {
       const row = document.createElement("tr")
       if (die.result === 1) {
         row.classList.add("hitch")
+      }
+      const status = message.diceStatus[index]
+      switch (status) {
+        case Message.DieRoll.total:
+          row.classList.add("total")
+          break
+        case Message.DieRoll.effect:
+          row.classList.add("effect")
+          break
       }
       row.innerHTML =
         `<td class="trait"><h2 class="trait-name">${die.label}</h2></td>` +
         `<td class="die-size"><d>${die.size % 10}</d></td>` +
         `<td class="die-arrow">→</td>` +
-        `<td class="die-result"><span class="d${die.size}">${die.result ?? "?"}</span></td>`
+        `<td class="die-result"><span class="die-frame d${die.size}"><span class="die-value">${die.result ?? "?"}</span></span></td>`
       table.appendChild(row)
     }
     html.appendChild(table)
@@ -351,8 +359,8 @@ async function htmlForMessage(message) {
       if (areSuggestions) {
         table.classList.add("suggestion")
       }
-      for (const statuses of outcomes) {
-        const [totalDice, effectDice] = message.diceForStatuses(statuses)
+      for (const diceStatus of outcomes) {
+        const [totalDice, effectDice] = message.diceForStatus(diceStatus)
         const total = totalDice.reduce((sum, die) => sum + die.result, 0)
         const row = document.createElement("tr")
         row.innerHTML =
@@ -360,6 +368,12 @@ async function htmlForMessage(message) {
           `<td class="dice-total-sum"><h2>${total}</h2></td>` +
           `<td class="dice-effect">${effectDice.map((die) => `<d>${die.size % 10}</d>`).join("")}</td>`
         table.appendChild(row)
+        if (areSuggestions) {
+          row.onclick = (e) => {
+            animateFlash(row)
+            cloud.updateMessageDiceStatus(message.id, diceStatus)
+          }
+        }
       }
       html.appendChild(table)
     }
@@ -382,5 +396,10 @@ async function htmlForMessage(message) {
 document.getElementById("pages").addEventListener("click", (e) => {
   messages.pageClicked(e)
 })
+
+function animateFlash(node) {
+  node.classList.add("flash")
+  node.addEventListener("animationend", () => node.classList.remove("flash"), { once: true })
+}
 
 export const messages = new Messages()

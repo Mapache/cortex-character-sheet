@@ -133,30 +133,30 @@ export class Message {
 			return
 		}
 		this.dice.push(new Message.DieRoll(label, size))
-		// this.diceStatus.push(Message.DieRoll.unchosen)
+		this.diceStatus.push(Message.DieRoll.unchosen)
 	}
 
 	choose(totalDiceCount = 2, effectDiceCount = 1) {
-		let dice = Array.from(this.dice.entries()) // [[index, roll]]
+		const dice = Array.from(this.dice.entries()) // [[index, roll]]
 		// Drop hitches (1)
-		dice = dice.filter(([index, roll]) => roll.result > 1)
+		const validDice = dice.filter(([index, roll]) => roll.result > 1)
 		// Sort by decreasing result, with increasing size as tiebreaker
-		const diceByTotal = dice.toSorted(
+		const diceByTotal = validDice.toSorted(
 			([indexA, rollA], [indexB, rollB]) =>
 				(rollB.result - rollA.result) * 100 + (rollA.size - rollB.size))
 		// Sort by decreasing size, with increasing result as tiebreaker
-		const diceByEffect = dice.toSorted(
+		const diceByEffect = validDice.toSorted(
 			([indexA, rollA], [indexB, rollB]) =>
 				(rollB.size - rollA.size) * 100 + (rollA.result - rollB.result))
 
-		function choose(statuses, count, sortedDice, status) {
+		function choose(diceStatus, count, sortedDice, status) {
 			if (count <= 0) {
 				return
 			}
 			let chosen = 0
 			for (const [index, roll] of sortedDice) {
-				if (statuses[index] == undefined) {
-					statuses[index] = status
+				if (diceStatus[index] === Message.DieRoll.unchosen) {
+					diceStatus[index] = status
 					if (++chosen === count) {
 						break
 					}
@@ -164,12 +164,19 @@ export class Message {
 			}
 		}
 
+		if (0) {
+			console.debug(dice.map(([index, roll]) => `${roll.result}/${roll.size}`))
+			console.debug(validDice.map(([index, roll]) => `${roll.result}/${roll.size}`))
+			console.debug(diceByTotal.map(([index, roll]) => `${roll.result}/${roll.size}`))
+			console.debug(diceByEffect.map(([index, roll]) => `${roll.result}/${roll.size}`))
+		}
+
 		// Try possibilities from prioritizing highest total to prioritizing highest effect
 		let diceStatusSuggestions = []
 		for (let totalPriority = totalDiceCount; totalPriority >= 0; --totalPriority) {
-			const diceStatus = []
+			const diceStatus = new Array(dice.length).fill(Message.DieRoll.unchosen)
 			choose(diceStatus, totalPriority, diceByTotal, Message.DieRoll.total)
-			choose(diceStatus, Math.min(effectDiceCount, dice.length - totalDiceCount), diceByEffect, Message.DieRoll.effect)
+			choose(diceStatus, Math.min(effectDiceCount, validDice.length - totalDiceCount), diceByEffect, Message.DieRoll.effect)
 			choose(diceStatus, totalDiceCount - totalPriority, diceByTotal, Message.DieRoll.total)
 			if (JSON.stringify(diceStatus) !== JSON.stringify(diceStatusSuggestions.at(-1))) {
 				diceStatusSuggestions.push(diceStatus)
@@ -179,10 +186,10 @@ export class Message {
 		return diceStatusSuggestions
 	}
 
-	diceForStatuses(statuses) {
+	diceForStatus(diceStatus) {
 		const totalDice = []
 		const effectDice = []
-		for (const [index, status] of statuses.entries()) {
+		for (const [index, status] of diceStatus.entries()) {
 			switch (status) {
 				case Message.DieRoll.total:
 					totalDice.push(this.dice[index])
@@ -799,6 +806,28 @@ export class Cloud {
 		} catch (error) {
 			console.error("Error adding Message: ", error)
 		}
+	}
+
+	async updateMessage(messageId, update) {
+		await this.requireSignIn()
+		await this.requireCurrentCampaign()
+		console.debug(update)
+		try {
+			await updateDoc(doc(db,
+				collections.campaigns, this.currentCampaign.id,
+				collections.messages, messageId),
+				update)
+		} catch (error) {
+			console.error("Error updating Message: ", error)
+		}
+	}
+
+	async updateMessageText(messageId, text) {
+		await this.updateMessage(messageId, { text: text })
+	}
+
+	async updateMessageDiceStatus(messageId, diceStatus) {
+		await this.updateMessage(messageId, { diceStatus: diceStatus })
 	}
 
 	async fetchOlderMessages(endingTimestamp) {

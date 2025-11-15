@@ -1853,7 +1853,7 @@ li:before {
 		text-align: center;
 
 		d {
-			width: 20px;
+			width: 26px;
 			height: 20px;
 			line-height: 20px;
 			font-size: 22px;
@@ -1861,6 +1861,8 @@ li:before {
 			text-align: center;
 			vertical-align: middle;
 			margin-top: -7px;
+			margin-left: -3px;
+			margin-right: -3px;
 		}
 	}
 
@@ -1873,38 +1875,60 @@ li:before {
 		width: 20px;
 		text-align: center;
 
-		span {
+		.die-frame {
 			background-size: 100% 100%;
+			display: inline-block;
 			width: 20px;
 			height: 20px;
 			line-height: 20px;
 			font-size: 14px;
 			padding-top: 2px;
-			display: inline-block;
 			text-align: center;
 			vertical-align: middle;
-			font-family: 'Josefin Sans', sans-serif;
 
-			&.d4 {
-				background-image: url(images/dice/d4.svg);
-				padding-top: 0px;
-				padding-bottom: 2px;
+			.die-value {
+				display: inline-block;
+				width: 20px;
+				height: 20px;
+				text-align: center;
+				vertical-align: middle;
+				font-family: 'Josefin Sans', sans-serif;
 			}
 
-			&.d6 {
-				background-image: url(images/dice/d6.svg);
+			&::before {
+				content: "";
+				display: inline-block;
+				position: relative;
+				z-index: -1;
+				top: 0;
+				left: 0;
+				right: 0;
+				width: 20px;
+				height: 20px;
+				margin: -15px -20px -5px 0px;
+				background-color: black;
+				mask-size: 100% 100%;
 			}
 
-			&.d8 {
-				background-image: url(images/dice/d8.svg);
+			&.d4::before {
+				margin: -13px -20px -7px 0px;
+				mask-image: url(images/dice/d4.svg);
 			}
 
-			&.d10 {
-				background-image: url(images/dice/d10.svg);
+			&.d6::before {
+				mask-image: url(images/dice/d6.svg);
 			}
 
-			&.d12 {
-				background-image: url(images/dice/d12.svg);
+			&.d8::before {
+				mask-image: url(images/dice/d8.svg);
+			}
+
+			&.d10::before {
+				mask-image: url(images/dice/d10.svg);
+			}
+
+			&.d12::before {
+				mask-image: url(images/dice/d12.svg);
 			}
 		}
 	}
@@ -1915,11 +1939,56 @@ li:before {
 		.die-result {
 			color: #999;
 		}
+
+		.die-frame::before {
+			background-color: #999;
+		}
+	}
+
+	.total {
+
+		.die-result {
+			color: var(--highlight);
+		}
+
+		.die-frame {
+			&::before {
+				background-color: var(--highlight);
+			}
+
+			&.d4::before {
+				mask-image: url(images/dice-tinted/d4.svg);
+			}
+
+			&.d6::before {
+				mask-image: url(images/dice-tinted/d6.svg);
+			}
+
+			&.d8::before {
+				mask-image: url(images/dice-tinted/d8.svg);
+			}
+
+			&.d10::before {
+				mask-image: url(images/dice-tinted/d10.svg);
+			}
+
+			&.d12::before {
+				mask-image: url(images/dice-tinted/d12.svg);
+			}
+		}
+	}
+
+	.effect {
+
+		.die-size d {
+			color: #000;
+		}
+
 	}
 }
 
 /*
-.d8::before {
+&::before {
   content: "";
 	display: inline-block;
   position: relative;
@@ -1971,7 +2040,7 @@ li:before {
 	}
 
 	.dice-effect {
-		width: 68px;
+		width: 71px;
 		text-align: left;
 
 		d {
@@ -1983,6 +2052,7 @@ li:before {
 			text-align: center;
 			vertical-align: middle;
 			margin-top: -7px;
+			color: #000;
 		}
 	}
 }
