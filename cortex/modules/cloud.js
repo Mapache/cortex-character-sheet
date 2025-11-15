@@ -2,13 +2,14 @@ import { app, analytics, auth, db } from "./firebase.js"
 import { onAuthStateChanged, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js"
 import { doc, collection, where, query, orderBy, startAfter, limit, onSnapshot, addDoc, setDoc, updateDoc, getDoc, getDocs, documentId, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js"
 
+import { Deferred } from "./defer.js"
 import { currentCharacterName } from "./elements.js"
 import { load_character } from "./load.js"
 import { characterName, save_character } from "./save.js"
 import { merge } from "./merge.js"
 import { ARC4 } from "./random.js"
 import { setUrlHashWithoutHandling } from "./urlHashHandler.js"
-import { Deferred } from "./util.js"
+
 
 // MARK: Utilities
 

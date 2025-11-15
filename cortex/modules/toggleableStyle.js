@@ -1,4 +1,4 @@
-import { whenInteractive } from "./util.js"
+import { whenInteractive } from "./defer.js"
 
 export class ToggleableStyle {
   constructor(controlSelector, enabledControlClass, disabledControlClass, enabledStyle, disabledStyle, startsEnabled) {

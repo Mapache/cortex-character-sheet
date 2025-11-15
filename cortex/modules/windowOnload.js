@@ -1,12 +1,12 @@
 
 import { cloud } from "./cloud.js"
+import { whenInteractive } from "./defer.js"
 import { installTitleListeners } from "./elements.js"
 import { addEditHandlers } from "./eventHandlers.js"
 import { auth } from "./firebase.js"
 import { load_character, load_character_path } from "./load.js"
-import { upload_character, download_character } from "./toolbar.js"
+import { download_character, upload_character } from "./toolbar.js"
 import { HashHandler } from "./urlHashHandler.js"
-import { whenInteractive } from "./util.js"
 
 whenInteractive(() => {
   document.addEventListener("keydown", async (e) => {
