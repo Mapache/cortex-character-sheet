@@ -830,6 +830,7 @@ export class Cloud {
 		await this.updateMessage(messageId, { diceStatus: diceStatus })
 	}
 
+	static messageBatchSize = 25
 	async fetchOlderMessages(endingTimestamp) {
 		await this.requireSignIn()
 		await this.requireCurrentCampaign()
@@ -838,8 +839,8 @@ export class Cloud {
 			collections.campaigns, this.currentCampaign.id,
 			collections.messages).withConverter(Message.converter)
 		const queryRef = endingTimestamp
-			? query(messagesRef, orderBy("saved", "desc"), startAfter(endingTimestamp), limit(25))
-			: query(messagesRef, orderBy("saved", "desc"), limit(25))
+			? query(messagesRef, orderBy("saved", "desc"), startAfter(endingTimestamp), limit(Cloud.messageBatchSize))
+			: query(messagesRef, orderBy("saved", "desc"), limit(Cloud.messageBatchSize))
 		const querySnapshot = await getDocs(queryRef)
 
 		let messages = querySnapshot.docs.map((doc) => doc.data())

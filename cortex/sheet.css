@@ -1421,6 +1421,11 @@ li:before {
 	&.development-hook:before {
 		content: "\f492";
 	}
+
+	&.older:before  {
+		font-weight: 400;
+		content: "\f017";
+	}
 }
 
 .development-hidden {
@@ -1784,6 +1789,11 @@ li:before {
 
 #messages {
 	overflow-y: auto;
+}
+
+#fetch-older {
+	width: 100%;
+	text-align: center;
 }
 
 .dice-input {

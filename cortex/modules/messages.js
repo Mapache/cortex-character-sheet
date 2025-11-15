@@ -1,5 +1,5 @@
 import { asyncMap, asyncFilter } from "./async.js"
-import { CampaignPermissions, Message, cloud } from "./cloud.js"
+import { CampaignPermissions, Message, Cloud, cloud } from "./cloud.js"
 import { noDiePlaceholder, dText_to_html, html_to_text } from "./conversion.js"
 import { setEditingEnabled, selectAllTextOf } from "./eventHandlers.js"
 import { Flags } from "./flags.js"
@@ -24,6 +24,7 @@ class Messages {
   constructor() {
     this.messages = null
     this.messagesDiv = document.getElementById("messages")
+    this.fetchOlder = document.getElementById("fetch-older")
     this.messageText = document.getElementById("message-text")
     this.diceTable = document.getElementById("dice")
     this.postButton = document.getElementById("message-post")
@@ -45,6 +46,10 @@ class Messages {
       this.showMessages(messages, true)
       await cloud.subscribeToNewerMessages(this, messages.at(-1)?.saved)
       this.scrollToBottom()
+
+      this.fetchOlder.onclick = async (e) => {
+        this.showOlderMessages()
+      }
 
       this.messageText.onblur = (e) => {
         this.updatePostButton()
@@ -98,7 +103,7 @@ class Messages {
     if (this.oldestMessageTimestamp) {
       this.showMessages(await cloud.fetchOlderMessages(this.oldestMessageTimestamp), true)
     } else {
-      // TODO: Update UI to convey we have run out of older messages
+      // UI should already be updated by showMessages() to convey we have run out of older messages.
     }
   }
 
@@ -301,8 +306,11 @@ class Messages {
 
     const html = await asyncMap(newMessages, htmlForMessage)
     if (areOld) {
-      this.messagesDiv.prepend(...html)
+      this.fetchOlder.after(...html)
       this.oldestMessageTimestamp = messages[0]?.saved
+      if (messages.length < Cloud.messageBatchSize) {
+        this.fetchOlder.style.display = "none"
+      }
     } else {
       this.messagesDiv.append(...html)
       this.scrollToBottom()
