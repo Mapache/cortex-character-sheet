@@ -958,52 +958,48 @@ ref {
 	left: 75%;
 }
 
+.trait {
+	ul {
+		list-style: none;
+		margin-top: 0;
+		margin-left: 0;
+		padding-left: 0;
+		margin-bottom: 0;
+	}
+
+	li {
+		padding-left: 1.6em;
+		text-indent: -1.6em;
+		margin-top: -1.5pt;
+		font-style: normal;
+		margin-right: 0;
+	}
+
+	li+li {
+		padding-top: 1pt;
+	}
+
+	ul+h2 {
+		padding-top: 1pt;
+	}
+
+	#text+ul {
+		margin-top: 0;
+	}
+
+	li:before {
+		font-family: 'Josefin Sans', sans-serif;
+		content: "\25cf";
+		font-size: 14pt;
+		color: var(--highlight);
+		padding-right: 0.3em;
+		position: relative;
+		top: 1pt;
+		left: -1pt;
+	}
+}
+
 /* Milestones */
-/*.trait*/
-ul {
-	list-style: none;
-	margin-top: 0;
-	margin-left: 0;
-	padding-left: 0;
-	margin-bottom: 0;
-}
-
-/*.trait*/
-li {
-	padding-left: 1.6em;
-	text-indent: -1.6em;
-	margin-top: -1.5pt;
-	font-style: normal;
-	margin-right: 0;
-}
-
-/*.trait*/
-li+li {
-	padding-top: 1pt;
-}
-
-/*.trait*/
-ul+h2 {
-	padding-top: 1pt;
-}
-
-/*.trait*/
-#text+ul {
-	margin-top: 0;
-}
-
-/*.trait*/
-li:before {
-	font-family: 'Josefin Sans', sans-serif;
-	content: "\25cf";
-	font-size: 14pt;
-	color: var(--highlight);
-	padding-right: 0.3em;
-	position: relative;
-	top: 1pt;
-	left: -1pt;
-}
-
 .milestones .trait h2 d {
 	display: none;
 }
@@ -1422,7 +1418,7 @@ li:before {
 		content: "\f492";
 	}
 
-	&.older:before  {
+	&.older:before {
 		font-weight: 400;
 		content: "\f017";
 	}
@@ -1785,14 +1781,61 @@ li:before {
 	border-radius: 5px;
 	border: 1px solid #D3D3D3;
 	box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+
+	font-family: 'Open Sans', sans-serif;
+	font-size: 10pt;
 }
 
 #messages {
 	overflow-y: auto;
+	list-style: none;
+	margin-top: 0;
+	margin-left: 0;
+	margin-bottom: 0;
+	padding-left: 0;
+
+	li.message {
+		padding-left: 1.6em;
+		margin: 0.8em 0em;
+
+		&:before {
+			font-family: 'Josefin Sans', sans-serif;
+			content: "\25cf";
+			font-size: 14pt;
+			color: var(--highlight);
+			position: relative;
+			top: -1pt;
+			left: -0.9em;
+			width: 0px;
+			float: left;
+		}
+
+		.message-header {
+			display: block;
+			font-style: normal;
+			width: 100%;
+
+			.message-author {
+				font-weight: 500;
+			}
+
+			.message-character {
+				display: inline-block;
+				font-style: italic;
+				width: 210px;
+				text-align: right;
+			}
+		}
+
+		.message-text {
+			margin-left: -0.6em;
+		}
+	}
 }
 
 #fetch-older {
 	width: 100%;
+	margin: 0.8em 0em;
 	text-align: center;
 }
 
