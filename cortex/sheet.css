@@ -1422,6 +1422,10 @@ ref {
 		font-weight: 400;
 		content: "\f017";
 	}
+
+	&.trash:before {
+		content: "\f1f8";
+	}
 }
 
 .development-hidden {
@@ -1784,7 +1788,24 @@ ref {
 
 	font-family: 'Open Sans', sans-serif;
 	font-size: 10pt;
+
+	#message-post {
+		width: 200px;
+	}
+
+	.trash {
+		display: inline-block;
+		width: 40px;
+		text-align: center;
+		vertical-align: bottom;
+		padding-bottom: 3px;
+
+		&.disabled {
+			color: #999;
+		}
+	}
 }
+
 
 #messages {
 	overflow-y: auto;
@@ -1852,7 +1873,7 @@ ref {
 	padding: 0px;
 
 	input {
-		width: 100%;
+		width: 190px;
 	}
 }
 
@@ -2047,23 +2068,6 @@ ref {
 
 	}
 }
-
-/*
-&::before {
-  content: "";
-	display: inline-block;
-  position: relative;
-  z-index: -1;
-  top: 0;
-  left: 0;
-  right: 0;
-	width: 20px;
-	height: 20px;
-	background-color: green;
-	mask-image: url(images/dice/d8.svg);
-	mask-size: 100% 100%;
-}
-*/
 
 .dice-outcome {
 	width: 100%;

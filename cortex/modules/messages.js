@@ -28,6 +28,7 @@ class Messages {
     this.messageText = document.getElementById("message-text")
     this.diceTable = document.getElementById("dice")
     this.postButton = document.getElementById("message-post")
+    this.trashButton = document.getElementById("message-clear")
   }
 
   // MARK: Visibility
@@ -56,6 +57,11 @@ class Messages {
       }
       this.postButton.onclick = (e) => {
         this.postMessage(e)
+      }
+      this.trashButton.onclick = (e) => {
+        if (!this.trashButton.classList.contains("disabled")) {
+          this.clearDiceInputs()
+        }
       }
       this.updatePostButton()
 
@@ -143,6 +149,13 @@ class Messages {
     }
 
     this.messageText.value = ""
+    this.clearDiceInputs()
+
+    await cloud.postMessageComponents(text, dice)
+    this.scrollToBottom()
+  }
+
+  clearDiceInputs() {
     for (const dieInput of document.querySelectorAll(".die-input")) {
       if (dieInput.id === "die-0") {
         dieInput.querySelector("input").value = ""
@@ -152,9 +165,6 @@ class Messages {
       }
     }
     this.updatePostButton()
-
-    await cloud.postMessageComponents(text, dice)
-    this.scrollToBottom()
   }
 
   pageClicked(e) {
@@ -210,6 +220,18 @@ class Messages {
     })
     d.addEventListener("blur", (e) => {
       this.dieSizeBlur(e)
+    })
+    d.addEventListener("keyup", (e) => {
+      switch (e.key) {
+        case "2":
+        case "4":
+        case "6":
+        case "8":
+        case "0":
+          // Instantly convert dice
+          d.innerText = e.key
+          selectAllTextOf(d)
+      }
     })
   }
 
@@ -268,12 +290,14 @@ class Messages {
   updatePostButton() {
     this.postButton.textContent = "Post"
     this.postButton.disabled = true
+    this.trashButton.classList.add("disabled")
 
     // If there's any dice, enable and set label to Roll.
     for (const dieInput of document.querySelectorAll(".die-input")) {
       if (dieInput.querySelector("d").innerText !== noDiePlaceholder) {
         this.postButton.textContent = "Roll"
         this.postButton.disabled = false
+        this.trashButton.classList.remove("disabled")
         return
       }
     }
