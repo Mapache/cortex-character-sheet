@@ -1441,6 +1441,39 @@ ref {
 	top: 24px;
 }
 
+#account {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 12pt;
+	color: grey;
+	position: fixed;
+	right: 12px;
+	top: 12px;
+
+	#displayName {
+		display: inline-block;
+		vertical-align: middle;
+	}
+
+	#displayEmoji {
+		all: initial;
+		font-family: 'Open Sans', sans-serif;
+		font-style: normal;
+		font-weight: 700;
+
+		display: inline-block;
+		text-align: center;
+		vertical-align: middle;
+		width: 1.5em;
+		height: 1.5em;
+		font-size: 24pt;
+		line-height: 1.1em;
+		border-radius: 50%;
+
+		background: var(--aura);
+		border: 1pt solid var(--highlight);
+	}
+}
+
 /* Signature asset */
 .signature-asset {
 	border: 1pt solid var(--highlight);

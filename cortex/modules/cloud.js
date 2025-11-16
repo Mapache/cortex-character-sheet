@@ -390,10 +390,23 @@ export class Cloud {
 		} else {
 			this.userProfile = {
 				displayName: user.displayName,
+				displayEmoji: "",
 				campaignDisplayNames: {}
 			}
 			await setDoc(docRef, this.userProfile)
 		}
+		document.getElementById("displayName").innerText = this.userProfile.displayName ?? "Click to set Display Name"
+		document.getElementById("displayEmoji").innerText = this.userProfile.displayEmoji ?? ""
+	}
+
+	async saveUserProfile() {
+		const user = await this.requireSignIn()
+		if (!this.userProfile) {
+			console.error("User profile is undefined!")
+			return
+		}
+		const docRef = doc(db, collections.userProfiles, user.uid)
+		await setDoc(docRef, this.userProfile)
 	}
 
 	async displayNameForUserId(uid) {
