@@ -811,7 +811,7 @@ export class Cloud {
 	async updateMessage(messageId, update) {
 		await this.requireSignIn()
 		await this.requireCurrentCampaign()
-		console.debug(update)
+
 		try {
 			await updateDoc(doc(db,
 				collections.campaigns, this.currentCampaign.id,

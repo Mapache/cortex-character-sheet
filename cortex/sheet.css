@@ -1994,6 +1994,14 @@ li:before {
 			color: #000;
 		}
 
+		.die-result {
+			color: #666;
+		}
+
+		.die-frame::before {
+			background-color: #666;
+		}
+
 	}
 }
 
