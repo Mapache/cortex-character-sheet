@@ -183,14 +183,18 @@ class Messages {
       const value = d?.innerText ?? noDiePlaceholder
 
       let dieInput = this.diceTable.lastElementChild
-      for (const input of this.diceTable.querySelectorAll("input")) {
-        if (input.value === label) {
-          // The trait is aready included, so overwrite the old die value.
-          dieInput = input.closest(".die-input")
+      if (!e.altKey) {
+        // Alt-click allows duplicating rows.
+        for (const input of this.diceTable.querySelectorAll("input")) {
+          if (input.value === label) {
+            // The trait is aready included, so overwrite the old die value.
+            dieInput = input.closest(".die-input")
+          }
         }
       }
-      dieInput.querySelector("input").value = label
-      dieInput.querySelector("d").innerText = this.sanitizeDieSize(value)
+      // Shift-click deletes existing matching rows.
+      dieInput.querySelector("input").value = (e.shiftKey) ? "" : label
+      dieInput.querySelector("d").innerText = (e.shiftKey) ? noDiePlaceholder : this.sanitizeDieSize(value)
 
       if (this.diceTable.lastElementChild.querySelector("d").innerText !== noDiePlaceholder) {
         // If we actually filled the last row, instead of updating a previous row, then add a new one.
