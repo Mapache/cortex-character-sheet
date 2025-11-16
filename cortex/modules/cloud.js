@@ -350,7 +350,7 @@ export class Cloud {
 			const unsubscribe = onAuthStateChanged(auth, (user) => {
 				unsubscribe() // Unsubscribe after the first state change
 				resolve(user) // Resolve with the initial user state
-				this.updateProfile(user)
+				this.getUserProfile(user)
 			})
 		})
 	}
@@ -362,7 +362,7 @@ export class Cloud {
 				const credential = GoogleAuthProvider.credentialFromResult(result)
 				const token = credential.accessToken
 				const user = result.user
-				this.updateProfile(user)
+				this.getUserProfile(user)
 				return user
 			}).catch((error) => {
 				const errorCode = error.code
@@ -379,13 +379,21 @@ export class Cloud {
 
 	// MARK: Profiles
 
-	async updateProfile(user) {
-		if (!user) {
+	async getUserProfile(user) {
+		if (!user || this.userProfile) {
 			return
 		}
-		await setDoc(doc(db, collections.userProfiles, user.uid), {
-			displayName: user.displayName
-		})
+		const docRef = doc(db, collections.userProfiles, user.uid)
+		const docSnapshot = await getDoc(docRef)
+		if (docSnapshot.exists()) {
+			this.userProfile = docSnapshot.data()
+		} else {
+			this.userProfile = {
+				displayName: user.displayName,
+				campaignDisplayNames: {}
+			}
+			await setDoc(docRef, this.userProfile)
+		}
 	}
 
 	async displayNameForUserId(uid) {
@@ -404,12 +412,13 @@ export class Cloud {
 	async getUserPermissions() {
 		const user = await this.requireSignIn()
 
-		const docSnapshot = await getDoc(doc(db, collections.userPermissions, user.uid).withConverter(UserPermissions.converter))
+		const docRef = doc(db, collections.userPermissions, user.uid).withConverter(UserPermissions.converter)
+		const docSnapshot = await getDoc(docRef)
 		if (docSnapshot.exists()) {
 			this.userPermissions = docSnapshot.data()
 		} else {
 			this.userPermissions = new UserPermissions({})
-			await setDoc(doc(db, collections.userPermissions, user.uid).withConverter(UserPermissions.converter), this.userPermissions)
+			await setDoc(docRef, this.userPermissions)
 		}
 	}
 
