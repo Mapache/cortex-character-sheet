@@ -897,7 +897,7 @@ export class Cloud {
 		await this.updateMessage(messageId, { diceStatus: diceStatus })
 	}
 
-	static messageBatchSize = 25
+	static messageBatchSize = 10
 	async fetchOlderMessages(endingTimestamp) {
 		await this.requireSignIn()
 		await this.requireCurrentCampaign()

@@ -44,7 +44,8 @@ class Messages {
 
     if (!this.messages) {
       this.messages = {}
-      const messages = await cloud.fetchOlderMessages()
+      const recentTimestamp = new Date(new Date().getTime() - 15 * 60 * 1000)
+      const messages = await cloud.fetchOlderMessages(recentTimestamp)
       this.showMessages(messages, true)
       await cloud.subscribeToNewerMessages(this, messages.at(-1)?.saved)
       this.scrollToBottom()
