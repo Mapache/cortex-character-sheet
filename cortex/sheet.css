@@ -1487,6 +1487,7 @@ ref {
 
 	#sign-out {
 		visibility: hidden;
+		transition-property: visibility;
 		transition-delay: 1.0s;
 
 		position: absolute;
@@ -1498,8 +1499,15 @@ ref {
 		font-size: 8pt;
 		color: black;
 		background: #eee;
+		box-sizing: border-box;
 		border: 0.5pt solid black;
 		border-radius: 4px;
+
+		&:hover {
+			background: #ddd;
+			border: 1.0pt solid black;
+			padding: 1.5px 0px;
+		}
 	}
 
 	&:hover {
