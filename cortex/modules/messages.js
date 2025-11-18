@@ -360,9 +360,16 @@ async function htmlForMessage(message) {
   html.id = htmlIdForMessage(message)
   html.classList.add("message")
   html.innerHTML =
-    `<div class="message-header"><ref>${formatAbsoluteTime(message.saved)}</ref>
-      <span class="message-author">${await cloud.displayEmojiForUserId(message.author)} ${await cloud.displayNameForUserId(message.author)}</span>
-      <span class="message-character">as ${titleCase(message.characterName) ?? "Unknown"}</span>:</div>` +
+    `<div class="message-header">
+      <span class="message-icon">${await cloud.displayEmojiForUserId(message.author)}</span>
+      <div class="message-header-info">
+        <span class="message-time"><ref>${formatAbsoluteTime(message.saved)}</ref></span>
+        <div class="message-names">
+          <span class="message-author">${await cloud.displayNameForUserId(message.author)}</span>&nbsp;
+          <span class="message-character">as ${titleCase(message.characterName) ?? "Unknown"}</span>:&nbsp;
+        </div>
+      </div>
+    </div>` +
     `<div class="message-text">${message.text}</div>`
   if (auth.currentUser.uid === message.author) {
     html.querySelector(".message-author").classList.add("self-author")
