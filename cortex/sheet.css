@@ -1844,6 +1844,7 @@ ref {
 
 #messages {
 	overflow-y: auto;
+	scrollbar-width: thin;
 	list-style: none;
 	margin-top: 0;
 	margin-left: 0;
