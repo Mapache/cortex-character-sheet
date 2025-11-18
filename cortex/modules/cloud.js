@@ -1,5 +1,5 @@
 import { app, analytics, auth, db } from "./firebase.js"
-import { onAuthStateChanged, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js"
+import { onAuthStateChanged, signInWithPopup, signOut, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js"
 import { doc, collection, where, query, orderBy, startAfter, limit, onSnapshot, addDoc, setDoc, updateDoc, getDoc, getDocs, documentId, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js"
 
 import { Deferred } from "./defer.js"
@@ -407,6 +407,21 @@ export class Cloud {
 
 	async requireSignIn() {
 		return (await this.waitForAuthInit()) || (await this.signIn())
+	}
+
+	async signOut() {
+		signOut(auth).then(() => {
+			this.userPermissions = null
+			this.currentCampaign = null
+			this.defaultCampaign = null
+			this.campaigns = null
+			this.currentCharacterSheets = null
+
+			this.userProfile = null
+			this.userProfileHandler?.(this.userProfile)
+		}).catch((error) => {
+			console.error("Sign-out error for ", error.customData.email, error.code, error.message)
+		})
 	}
 
 	// MARK: Profiles

@@ -21,26 +21,33 @@ class Account {
     this.accountDiv = document.getElementById("account")
     this.displayNameDiv = document.getElementById("display-name")
     this.displayEmojiDiv = document.getElementById("display-emoji")
+    this.displayEmojiFrameDiv = document.getElementById("display-emoji-frame")
 
     cloud.subscribeToUserProfile(async (userProfile) => {
-      this.userProfileUpdated(userProfile)
+      this.userProfileUpdated()
     })
+
+    this.installEditHandlers()
   }
 
-  async sanitizeUserProfile() {
+  async sanitizeUserProfile(needsSaving = false) {
     const userProfile = cloud.userProfile
     if (!userProfile) {
       console.error("Attempting to sanitize nonexistent user profile!")
       return
     }
-    let needsSaving = false
-    if (!userProfile.displayName) {
+    if (!userProfile.displayName || userProfile.displayName === "") {
       const user = await cloud.requireSignIn()
       userProfile.displayName = user.displayName
       needsSaving = true
     }
-    if (!userProfile.displayEmoji) {
+    if (!userProfile.displayEmoji || userProfile.displayEmoji === "") {
       userProfile.displayEmoji = randomNatureEmoji()
+      needsSaving = true
+    }
+    const firstCharacter = [...userProfile.displayEmoji][0]
+    if (userProfile.displayEmoji !== firstCharacter) {
+      userProfile.displayEmoji = firstCharacter
       needsSaving = true
     }
     for (const [campaignId, displayName] of Object.entries(userProfile.campaignDisplayNames)) {
@@ -62,12 +69,25 @@ class Account {
   // MARK: Edit Handlers
 
   installEditHandlers() {
+    this.displayNameDiv.addEventListener("click", (e) => {
+      if (cloud.userProfile) {
+        this.displayNameDiv.contentEditable = true
+        this.displayNameDiv.focus()
+        selectAllTextOf(this.displayNameDiv)
+      } else {
+        cloud.signIn()
+      }
+    })
     this.displayNameDiv.addEventListener("focus", (e) => {
-      //!
+      // Nothing to do
     })
     this.displayNameDiv.addEventListener("blur", async (e) => {
-      cloud.userProfile.displayName = this.displayNameDiv.innerText
-      cloud.saveUserProfile()
+      this.displayNameDiv.contentEditable = false
+      const newDisplayName = this.displayNameDiv.innerText.trim()
+      if (cloud.userProfile.displayName !== newDisplayName) {
+        cloud.userProfile.displayName = newDisplayName
+        this.userProfileUpdated(true)
+      }
     })
     this.displayNameDiv.addEventListener("keydown", (e) => {
       if (e.key === "Enter") {
@@ -76,12 +96,25 @@ class Account {
       }
     })
 
+    this.displayEmojiFrameDiv.addEventListener("click", (e) => {
+      if (cloud.userProfile) {
+        this.displayEmojiDiv.contentEditable = true
+        this.displayEmojiDiv.focus()
+        selectAllTextOf(this.displayEmojiDiv)
+      } else {
+        cloud.signIn()
+      }
+    })
     this.displayEmojiDiv.addEventListener("focus", (e) => {
-      //!
+      // Nothing to do
     })
     this.displayEmojiDiv.addEventListener("blur", async (e) => {
-      cloud.userProfile.displayEmoji = this.displayNameDiv.innerText
-      cloud.saveUserProfile()
+      this.displayEmojiDiv.contentEditable = false
+      const newDisplayEmoji = this.displayEmojiDiv.innerText.trim()
+      if (cloud.userProfile.displayEmoji !== newDisplayEmoji) {
+        cloud.userProfile.displayEmoji = newDisplayEmoji
+        this.userProfileUpdated(true)
+      }
     })
     this.displayEmojiDiv.addEventListener("keydown", (e) => {
       if (e.key === "Enter") {
@@ -93,9 +126,9 @@ class Account {
 
   // MARK: Listeners
 
-  async userProfileUpdated() {
+  async userProfileUpdated(needsSaving = false) {
     if (cloud.userProfile) {
-      this.sanitizeUserProfile()
+      this.sanitizeUserProfile(needsSaving)
       this.displayNameDiv.innerText = cloud.userProfile.displayName ?? "Click to set Display Name"
       this.displayEmojiDiv.innerText = cloud.userProfile.displayEmoji ?? "👤"
     } else {
