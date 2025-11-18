@@ -363,9 +363,9 @@ async function htmlForMessage(message) {
       <span class="message-author">${await cloud.displayNameForUserId(message.author)}</span>
       <span class="message-character">as ${titleCase(message.characterName) ?? "Unknown"}</span>:</div>` +
     `<div class="message-text">${message.text}</div>`
-    if (auth.currentUser.uid === message.author) {
-      html.querySelector(".message-author").classList.add("self-author")
-    }
+  if (auth.currentUser.uid === message.author) {
+    html.querySelector(".message-author").classList.add("self-author")
+  }
 
   if (message.dice.length > 0) {
     const table = document.createElement("table")
