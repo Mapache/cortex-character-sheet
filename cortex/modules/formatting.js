@@ -19,7 +19,13 @@ const oneHour = 60 * oneMinute
 const oneDay = 24 * oneHour
 const oneWeek = 7 * oneDay
 
+const pendingTimestamp = "Pending"
+
 export function formatRelativeTime(timestamp) {
+  if (!timestamp) {
+    return pendingTimestamp
+  }
+
   const locale = "en-US"
 
   const now = new Date()
@@ -55,6 +61,10 @@ export function formatRelativeTime(timestamp) {
 }
 
 export function formatAbsoluteTime(timestamp) {
+  if (!timestamp) {
+    return pendingTimestamp
+  }
+
   const locale = "en-US"
 
   const now = new Date()

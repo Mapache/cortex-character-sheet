@@ -1875,6 +1875,10 @@ ref {
 				font-weight: 500;
 			}
 
+			.self-author {
+				color: var(--highlight);
+			}
+
 			.message-character {
 				display: inline-block;
 				font-style: italic;

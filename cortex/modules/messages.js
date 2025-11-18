@@ -2,6 +2,7 @@ import { asyncMap, asyncFilter } from "./async.js"
 import { CampaignPermissions, Message, Cloud, cloud } from "./cloud.js"
 import { noDiePlaceholder, dText_to_html, html_to_text } from "./conversion.js"
 import { setEditingEnabled, selectAllTextOf } from "./eventHandlers.js"
+import { auth } from "./firebase.js"
 import { Flags } from "./flags.js"
 import { titleCase, formatAbsoluteTime } from "./formatting.js"
 import { menu, menuEntry, menuDivider, menuLabel, menuTextInput } from "./menu.js"
@@ -362,6 +363,9 @@ async function htmlForMessage(message) {
       <span class="message-author">${await cloud.displayNameForUserId(message.author)}</span>
       <span class="message-character">as ${titleCase(message.characterName) ?? "Unknown"}</span>:</div>` +
     `<div class="message-text">${message.text}</div>`
+    if (auth.currentUser.uid === message.author) {
+      html.querySelector(".message-author").classList.add("self-author")
+    }
 
   if (message.dice.length > 0) {
     const table = document.createElement("table")
