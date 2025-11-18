@@ -1,6 +1,6 @@
 import { noDiePlaceholder } from "./conversion.js"
 
-function reset_trait_group(traitGroup) {
+function resetTraitGroup(traitGroup) {
 	if (data_style_requires_trait_modification(traitGroup)) {
 		for (let trait of traitGroup.querySelectorAll(".trait")) {
 			remove_trait_group_style_from_trait(traitGroup, trait)
@@ -24,7 +24,7 @@ function reset_trait_group(traitGroup) {
 }
 
 export function apply_data_style(traitGroup, style) {
-	reset_trait_group(traitGroup)
+	resetTraitGroup(traitGroup)
 	if (style != null) {
 		traitGroup.setAttribute("data-style", style)
 		for (let sub_style of style.split(" ")) {
@@ -118,41 +118,40 @@ export function apply_highlight_color(elem, color) {
 
 export const defaultHighlightColor = "#C50852"
 
-export function set_trait_group_name(e) {
-	const traitGroup = e.target.parentElement
+export function inferTraitGroupStyle(e) {
+	const header = e.target
+	const traitGroup = header.parentElement
 	if (traitGroup.getAttribute("data-style") != null) {
 		return
 	}
 
-	reset_trait_group(e.target.parentElement)
+	resetTraitGroup(traitGroup)
 
-	const title = e.target.innerText.toLowerCase()
-
-	if (title === "roles") {
-		apply_data_style(traitGroup, "values")
-	}
-	else if (title === "signature asset" || title === "signature assets") {
-		apply_data_style(traitGroup, "signature-asset")
-	}
-	else if (title === "milestones") {
-		apply_data_style(traitGroup, "milestones")
-	}
-	else if (title === "values") {
-		apply_data_style(traitGroup, "values")
-	}
-	else if (title === "emotions") {
-		apply_data_style(traitGroup, "values")
-	}
-	else if (title === "skills") {
-		apply_data_style(traitGroup, "values")
-	}
-	else if (title === "specialties") {
-		apply_data_style(traitGroup, "values")
-	}
-	else if (title === "resource" || title === "resources") {
-		apply_data_style(traitGroup, "resources")
-	}
-	else if (title === "stress") {
-		apply_data_style(traitGroup, "stress")
+	switch (header.innerText.toLowerCase()) {
+		case "values":
+		case "emotions":
+		case "roles":
+		case "skills":
+		case "specialties":
+			apply_data_style(traitGroup, "values")
+			break
+		case "asset":
+		case "assets":
+		case "signature asset":
+		case "signature assets":
+			apply_data_style(traitGroup, "signature-asset")
+			break
+		case "milestones":
+			apply_data_style(traitGroup, "milestones")
+			break
+		case "resource":
+		case "resources":
+			apply_data_style(traitGroup, "resources")
+			break
+		case "stress":
+		case "complication":
+		case "complications":
+			apply_data_style(traitGroup, "stress")
+			break
 	}
 }
