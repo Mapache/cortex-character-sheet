@@ -21,20 +21,45 @@ const messagingVisible = new ToggleableStyle(
   `	`,
   false)
 
-class Messages {
-  constructor() {
+export class Messages {
+  static messagesByCampaignId = {}
+  static messagesForCampaignId(campaignId) {
+    if (!campaignId) {
+      console.log("Attempting to get messages controller for nonexistent campaign!")
+      return null
+    }
+    let messages = Messages.messagesByCampaignId[campaignId]
+    if (!messages) {
+      messages = new Messages(campaignId)
+      Messages.messagesByCampaignId[campaignId] = messages
+    }
+    return messages
+  }
+  static messagesForCurrentCampaign() {
+    return Messages.messagesForCampaignId(cloud.currentCampaign.id)
+  }
+
+  constructor(campaignId) {
+    this.campaignId = campaignId
     this.messages = null
+    this.messagesContainerDiv = document.getElementById("messages-container")
     this.messagesDiv = document.getElementById("messages")
     this.fetchOlder = document.getElementById("fetch-older")
     this.messageText = document.getElementById("message-text")
     this.diceTable = document.getElementById("dice")
+    this.initialDiceRow = document.getElementById("die-0")
+    this.diceRowTemplate = this.initialDiceRow.cloneNode(true)
     this.postButton = document.getElementById("message-post")
     this.trashButton = document.getElementById("message-clear")
+    this.handlersAreInstalled = false
   }
 
   // MARK: Visibility
 
   async show() {
+    if (this.visible) {
+      return
+    }
     this.visible = true
     messagingVisible.enable()
     this.werelayoutControlsHidden = layoutControlsHidden.enabled
@@ -43,12 +68,18 @@ class Messages {
     setEditingEnabled(false)
 
     if (!this.messages) {
+      this.active = true
       this.messages = {}
+      this.showAllMessages() // Reset any messages shown from another Campaign
       const recentTimestamp = new Date(new Date().getTime() - 15 * 60 * 1000)
       const messages = await cloud.fetchOlderMessages(recentTimestamp)
       this.showMessages(messages, true)
       await cloud.subscribeToNewerMessages(this, messages.at(-1)?.saved)
       this.scrollToBottom()
+    }
+
+    if (!this.handlersAreInstalled) {
+      this.handlersAreInstalled = true
 
       this.fetchOlder.onclick = async (e) => {
         this.showOlderMessages()
@@ -67,13 +98,14 @@ class Messages {
       }
       this.updatePostButton()
 
-      const initialDiceRow = document.getElementById("die-0")
-      this.diceRowTemplate = initialDiceRow.cloneNode(true)
-      this.installDieSizeEditHandlers(initialDiceRow)
+      this.installDieSizeEditHandlers(this.initialDiceRow)
     }
   }
 
   hide() {
+    if (!this.visible) {
+      return
+    }
     this.visible = false
     messagingVisible.disable()
     layoutControlsHidden.setEnabled(this.werelayoutControlsHidden)
@@ -93,8 +125,8 @@ class Messages {
   }
 
   scrollToBottom() {
-    this.messagesDiv.scrollTo({
-      top: this.messagesDiv.scrollHeight,
+    this.messagesContainerDiv.scrollTo({
+      top: this.messagesContainerDiv.scrollHeight,
       behavior: "smooth"
     })
   }
@@ -105,19 +137,46 @@ class Messages {
     messages.sort((a, b) => a.saved - b.saved)
     const htmlMessages = await asyncMap(messages, htmlForMessage)
     this.messagesDiv.replaceChildren(...htmlMessages)
+    this.scrollToBottom()
   }
 
   async showOlderMessages() {
     if (this.oldestMessageTimestamp) {
       this.showMessages(await cloud.fetchOlderMessages(this.oldestMessageTimestamp), true)
     } else {
-      // UI should already be updated by showMessages() to convey we have run out of older messages.
+      // UI should already be updated by showMessages() to convey we have run out of older messages,
+      // but fix it if got overwritten.
+      this.updateFetchOlderMessagesButton()
+    }
+  }
+
+  updateFetchOlderMessagesButton() {
+    // When we ran out of old messages to fetch, the oldestMessageTimestamp is null.
+    this.fetchOlder.style.display = (this.oldestMessageTimestamp) ? "" : "none"
+  }
+
+  async inactivate() {
+    this.wasVisible = this.visible
+    this.hide()
+    this.active = false
+  }
+
+  async activate() {
+    this.updateFetchOlderMessagesButton()
+    this.showAllMessages()
+    this.active = true
+    this.handlersAreInstalled = false
+    if (this.wasVisible) {
+      this.show()
     }
   }
 
   // MARK: Action Handlers
 
   async postMessage(e) {
+    if (!this.active) {
+      return
+    }
     const text = this.messageText.value
 
     let dice = []
@@ -221,13 +280,13 @@ class Messages {
 
   installDieSizeEditHandlers(node) {
     const d = node.querySelector("d")
-    d.addEventListener("focus", (e) => {
+    d.onfocus = (e) => {
       this.dieSizeFocus(e)
-    })
-    d.addEventListener("blur", (e) => {
+    }
+    d.onblur = (e) => {
       this.dieSizeBlur(e)
-    })
-    d.addEventListener("keyup", (e) => {
+    }
+    d.onkeyup = (e) => {
       switch (e.key) {
         case "2":
         case "4":
@@ -238,7 +297,7 @@ class Messages {
           d.innerText = e.key
           selectAllTextOf(d)
       }
-    })
+    }
   }
 
   dieSizeFocus(e) {
@@ -326,24 +385,29 @@ class Messages {
       if (this.messages[message.id]) {
         // This is an update to a previously-displayed message
         messageIsNew = false
-        const oldHtml = document.getElementById(htmlIdForMessage(message))
-        oldHtml.replaceWith(await htmlForMessage(message))
+        if (this.active) {
+          const oldHtml = document.getElementById(htmlIdForMessage(message))
+          oldHtml.replaceWith(await htmlForMessage(message))
+        }
       }
       // Always store the new message
       this.messages[message.id] = message
       return messageIsNew
     })
 
-    const html = await asyncMap(newMessages, htmlForMessage)
-    if (areOld) {
-      this.fetchOlder.after(...html)
-      this.oldestMessageTimestamp = messages[0]?.saved
-      if (messages.length < Cloud.messageBatchSize) {
-        this.fetchOlder.style.display = "none"
+    if (this.active) {
+      const html = await asyncMap(newMessages, htmlForMessage)
+      if (areOld) {
+        this.messagesDiv.prepend(...html)
+        this.oldestMessageTimestamp = messages[0]?.saved
+        if (messages.length < Cloud.messageBatchSize) {
+          this.oldestMessageTimestamp = null
+        }
+        this.updateFetchOlderMessagesButton()
+      } else {
+        this.messagesDiv.append(...html)
+        this.scrollToBottom()
       }
-    } else {
-      this.messagesDiv.append(...html)
-      this.scrollToBottom()
     }
   }
 
@@ -501,7 +565,7 @@ function htmlForOutcomes(message, updateStatusClasses) {
 // MARK: Click-to-Roll
 
 document.getElementById("pages").addEventListener("click", (e) => {
-  messages.pageClicked(e)
+  Messages.messagesForCurrentCampaign().pageClicked(e)
 })
 
 function animateFlash(node, then) {
@@ -515,5 +579,3 @@ function animateFlash(node, then) {
     },
     { once: true })
 }
-
-export const messages = new Messages()

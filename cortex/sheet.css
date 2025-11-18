@@ -1883,15 +1883,17 @@ ref {
 	}
 }
 
-
-#messages {
+#messages-container {
 	overflow-y: auto;
 	scrollbar-width: thin;
+	margin: 0;
+	padding: 0;
+}
+
+#messages {
 	list-style: none;
-	margin-top: 0;
-	margin-left: 0;
-	margin-bottom: 0;
-	padding-left: 0;
+	margin: 0;
+	padding: 0;
 
 	li.message {
 		padding-left: 1.6em;

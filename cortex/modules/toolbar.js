@@ -3,7 +3,7 @@ import { Flags } from "./flags.js"
 import { titleCase, formatRelativeTime } from "./formatting.js"
 import { nuke_character, load_character } from "./load.js"
 import { menu, menuEntry, menuDivider, menuLabel, menuTextInput } from "./menu.js"
-import { messages } from "./messages.js"
+import { Messages } from "./messages.js"
 import { Modal } from "./modal.js"
 import { save_character } from "./save.js"
 import { copyShareUrl } from "./share.js"
@@ -146,7 +146,7 @@ export { layoutControlsHidden, emptyDescriptionsHidden }
 // MARK: Messaging
 
 export async function toggleMessaging(e) {
-	messages.toggle()
+	Messages.messagesForCurrentCampaign().toggle()
 }
 
 // MARK: Help Section
@@ -172,5 +172,5 @@ export async function developmentHook(e) {
 		console.error("Attempting to run development code on prod!")
 		return
 	}
-	messages.toggle()
+	// Do something developmental.
 }

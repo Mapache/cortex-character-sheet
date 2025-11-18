@@ -373,6 +373,9 @@ export class Cloud {
 		this.currentCharacterSheets = null
 
 		this.userProfileCache = {}
+
+		this.messagesHandlerForCampaignId = {}
+		this.unsubscribeMessagesForCampaignId = {}
 	}
 
 	// MARK: Authentication
@@ -682,11 +685,16 @@ export class Cloud {
 		if (this.currentCampaign?.id === campaign.id) {
 			return
 		}
+		if (this.currentCampaign?.id) {
+			this.messagesHandlerForCampaignId[this.currentCampaign.id]?.inactivate()
+		}
 
 		this.currentCampaign = campaign
 		this.displayCurrentCampaignName()
 		this.updateURLForCurrentCampaign()
 		await this.getCharactersForCurrentCampaign()
+
+		this.messagesHandlerForCampaignId[this.currentCampaign.id]?.activate()
 	}
 
 	displayCurrentCampaignName() {
@@ -939,7 +947,7 @@ export class Cloud {
 		await this.requireSignIn()
 		await this.requireCurrentCampaign()
 
-		this.unsubscribeMessagesForCurrentCampaign?.()
+		this.unsubscribeMessagesForCampaignId[this.currentCampaign.id]?.()
 
 		const initialLoad = new Deferred()
 
@@ -949,7 +957,8 @@ export class Cloud {
 		const queryRef = startingTimestamp
 			? query(messagesRef, orderBy("saved"), startAfter(startingTimestamp))
 			: query(messagesRef, orderBy("saved"))
-		this.unsubscribeMessagesForCurrentCampaign = onSnapshot(queryRef, (snapshot) => {
+		this.messagesHandlerForCampaignId[this.currentCampaign.id] = messagesHandler
+		this.unsubscribeMessagesForCampaignId[this.currentCampaign.id] = onSnapshot(queryRef, (snapshot) => {
 			snapshot.docChanges().forEach((change) => {
 				const message = change.doc.data()
 				const source = change.doc.metadata.hasPendingWrites ? "Local" : "Server"
