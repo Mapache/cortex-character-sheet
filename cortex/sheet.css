@@ -1453,6 +1453,11 @@ ref {
 		display: inline-block;
 		vertical-align: middle;
 		padding-bottom: 4px;
+		border-radius: 4px;
+
+		&:hover {
+			box-shadow: 0 0 4px 2px var(--highlight);
+		}
 	}
 
 	#display-emoji-frame {
@@ -1474,6 +1479,10 @@ ref {
 		border-radius: 50%;
 		border: 1pt solid var(--highlight);
 		background: var(--aura);
+
+		&:hover {
+			box-shadow: 0 0 4px 2px var(--highlight);
+		}
 	}
 }
 
@@ -1938,6 +1947,7 @@ ref {
 }
 
 .flash {
+	border-radius: 4px;
 	animation: flash 150ms linear;
 }
 
