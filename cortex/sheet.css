@@ -1449,12 +1449,13 @@ ref {
 	right: 8px;
 	top: 8px;
 
-	#displayName {
+	#display-name {
 		display: inline-block;
 		vertical-align: middle;
+		padding-bottom: 4px;
 	}
 
-	#displayEmojiFrame {
+	#display-emoji-frame {
 		all: initial;
 		font-family: 'Open Sans', sans-serif;
 		font-style: normal;

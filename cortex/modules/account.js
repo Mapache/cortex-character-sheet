@@ -19,8 +19,8 @@ const editingAccount = new ToggleableStyle(
 class Account {
   constructor() {
     this.accountDiv = document.getElementById("account")
-    this.displayNameDiv = document.getElementById("displayName")
-    this.displayEmojiDiv = document.getElementById("displayEmoji")
+    this.displayNameDiv = document.getElementById("display-name")
+    this.displayEmojiDiv = document.getElementById("display-emoji")
 
     cloud.subscribeToUserProfile(async (userProfile) => {
       this.userProfileUpdated(userProfile)
