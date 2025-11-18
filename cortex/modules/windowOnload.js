@@ -9,6 +9,12 @@ import { download_character, upload_character } from "./toolbar.js"
 import { HashHandler } from "./urlHashHandler.js"
 
 whenInteractive(() => {
+  installSaveHandler()
+  addEditHandlers(document)
+  installTitleListeners(document)
+})
+
+function installSaveHandler() {
   document.addEventListener("keydown", async (e) => {
     if ((window.navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey) && e.keyCode === 83) {
       e.preventDefault()
@@ -19,10 +25,7 @@ whenInteractive(() => {
       }
     }
   }, false)
-
-  addEditHandlers(document)
-  installTitleListeners(document)
-})
+}
 
 // Load the static sheet at the relative path specified by "template"
 new HashHandler("template", (template) => {
