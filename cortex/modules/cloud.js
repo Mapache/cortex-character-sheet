@@ -25,7 +25,35 @@ function generateHash(name) {
 	return (hash - (1 << 31)).toString(36)
 }
 
-// MARK: Data Models
+// MARK: User Models
+
+export class UserProfile {
+	constructor(displayName, displayEmoji, campaignDisplayNames) {
+		this.displayName = displayName
+		this.displayEmoji = displayEmoji ?? ""
+		this.campaignDisplayNames = campaignDisplayNames ?? {}
+	}
+
+	static converter = {
+		toFirestore: (userProfile) => {
+			return {
+				displayName: userProfile.displayName,
+				displayEmoji: userProfile.displayEmoji,
+				campaignDisplayNames: userProfile.campaignDisplayNames,
+			}
+		},
+		fromFirestore: (snapshot, options) => {
+			const data = snapshot.data(options)
+			return new UserProfile(
+				data.displayName,
+				data.displayEmoji,
+				data.campaignDisplayNames,
+			)
+		}
+	}
+}
+
+// MARK: Character Models
 
 export class Campaign {
 	constructor(name, id) {
@@ -89,6 +117,8 @@ function expiring(converter) {
 		fromFirestore: converter.fromFirestore
 	}
 }
+
+// MARK: Messages Models
 
 export class Message {
 	/**
@@ -320,7 +350,7 @@ export class UserPermissions {
 	}
 }
 
-// MARK: Cloud
+// MARK: Collections
 
 const collections = {
 	campaigns: "campaigns",
@@ -332,6 +362,8 @@ const collections = {
 	userProfiles: "userProfiles",
 }
 
+// MARK: Cloud
+
 export class Cloud {
 	constructor() {
 		this.userPermissions = null
@@ -340,7 +372,7 @@ export class Cloud {
 		this.campaigns = null
 		this.currentCharacterSheets = null
 
-		this.displayNameCache = {}
+		this.userProfileCache = {}
 	}
 
 	// MARK: Authentication
@@ -379,24 +411,29 @@ export class Cloud {
 
 	// MARK: Profiles
 
+	subscribeToUserProfile(userProfileHandler) {
+		this.userProfileHandler = userProfileHandler
+	}
+
 	async getUserProfile(user) {
 		if (!user || this.userProfile) {
-			return
+			return this.userProfile
 		}
-		const docRef = doc(db, collections.userProfiles, user.uid)
+		const docRef = doc(db, collections.userProfiles, user.uid).withConverter(UserProfile.converter)
 		const docSnapshot = await getDoc(docRef)
 		if (docSnapshot.exists()) {
 			this.userProfile = docSnapshot.data()
 		} else {
-			this.userProfile = {
-				displayName: user.displayName,
-				displayEmoji: "",
-				campaignDisplayNames: {}
-			}
+			this.userProfile = new UserProfile(user.displayName)
+			// Save the default profile so other users can see the displayName.
 			await setDoc(docRef, this.userProfile)
 		}
-		document.getElementById("displayName").innerText = this.userProfile.displayName ?? "Click to set Display Name"
-		document.getElementById("displayEmoji").innerText = this.userProfile.displayEmoji ?? ""
+		// Update the local cache
+		this.userProfileCache[user.uid] = this.userProfile
+
+		this.userProfileHandler?.(this.userProfile)
+
+		return this.userProfile
 	}
 
 	async saveUserProfile() {
@@ -405,19 +442,27 @@ export class Cloud {
 			console.error("User profile is undefined!")
 			return
 		}
-		const docRef = doc(db, collections.userProfiles, user.uid)
+		// Update the local cache
+		this.userProfileCache[user.uid] = this.userProfile
+		// Save it to the server
+		const docRef = doc(db, collections.userProfiles, user.uid).withConverter(UserProfile.converter)
 		await setDoc(docRef, this.userProfile)
 	}
 
-	async displayNameForUserId(uid) {
-		const cachedDisplayName = this.displayNameCache[uid]
-		if (cachedDisplayName) {
-			return cachedDisplayName
+	async userProfileForUserId(uid) {
+		let userProfile = this.userProfileCache[uid]
+		if (!userProfile) {
+			const docSnapshot = await getDoc(doc(db, collections.userProfiles, uid).withConverter(UserProfile.converter))
+			if (docSnapshot.exists()) {
+				userProfile = docSnapshot.data()
+				this.userProfileCache[uid] = userProfile
+			}
 		}
-		const docSnapshot = await getDoc(doc(db, collections.userProfiles, uid))
-		const displayName = docSnapshot.exists() ? docSnapshot.data().displayName : uid
-		this.displayNameCache[uid] = displayName
-		return displayName
+		return userProfile
+	}
+
+	async displayNameForUserId(uid) {
+		return (await this.userProfileForUserId(uid))?.displayName ?? uid
 	}
 
 	// MARK: Permissions

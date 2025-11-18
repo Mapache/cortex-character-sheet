@@ -1446,8 +1446,8 @@ ref {
 	font-size: 12pt;
 	color: grey;
 	position: fixed;
-	right: 12px;
-	top: 12px;
+	right: 8px;
+	top: 8px;
 
 	#displayName {
 		display: inline-block;

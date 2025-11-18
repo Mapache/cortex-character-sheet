@@ -1,4 +1,6 @@
-// Umbrella import that puts items into the window namespace for use from HTML attributes
+// Umbrella import that bootstraps top-level controllers and puts items into the window namespace for use from HTML attributes
+
+import "./account.js"
 
 import "./dragAndDrop.js"
 
@@ -37,7 +39,7 @@ window.move_to_other_column = move_to_other_column
 window.move_to_next_page = move_to_next_page
 window.move_to_previous_page = move_to_previous_page
 
-import { set_trait_group_name } from "./traitGroupStyle.js"
-window.set_trait_group_name = set_trait_group_name
+import { inferTraitGroupStyle } from "./traitGroupStyle.js"
+window.inferTraitGroupStyle = inferTraitGroupStyle
 
 import "./windowOnload.js"
