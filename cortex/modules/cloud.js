@@ -480,6 +480,10 @@ export class Cloud {
 		return (await this.userProfileForUserId(uid))?.displayName ?? uid
 	}
 
+	async displayEmojiForUserId(uid) {
+		return (await this.userProfileForUserId(uid))?.displayEmoji ?? ""
+	}
+
 	// MARK: Permissions
 
 	async getUserPermissions() {

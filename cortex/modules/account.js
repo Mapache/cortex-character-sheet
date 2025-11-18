@@ -53,7 +53,8 @@ class Account {
       userProfile.displayEmoji = randomNatureEmoji()
       needsSaving = true
     }
-    const firstCharacter = [...userProfile.displayEmoji][0]
+    const segmenter = new Intl.Segmenter("en")
+    const firstCharacter = Array.from(segmenter.segment(userProfile.displayEmoji))[0].segment
     if (userProfile.displayEmoji !== firstCharacter) {
       userProfile.displayEmoji = firstCharacter
       needsSaving = true
@@ -151,8 +152,9 @@ class Account {
 
 const natureEmoji = "🐵🐒🦍🦧🐶🐕🐩🐺🦊🦝🐱🐈🦁🐯🐅🐆🐴🫎🫏🐎🦄🦓🦌🦬🐮🐂🐃🐄🐷🐖🐗🐏🐑🐐🐪🐫🦙🦒🐘🦣🦏🦛🐭🐁🐀🐹🐰🐇🐿️🦫🦔🦇🐻🐨🐼🦥🦦🦨🦘🦡🦃🐔🐓🐣🐤🐥🐦🐧🕊️🦅🦆🦢🦉🦤🪶🦩🦚🦜🪿🐸🐊🐢🦎🐍🐲🐉🦕🦖🐳🐋🐬🦭🐟🐠🐡🦈🐙🐚🪸🪼🦀🦞🦐🦑🐌🦋🐛🐜🐝🪲🐞🦗🪳🕷️🦂🦟🪰🪱🦠💐🌸💮🪷🏵️🌹🥀🌺🌻🌼🌷🪻🌱🪴🌲🌳🪾🌴🌵🌾🌿☘️🍀🍁🍂🍃🍄"
 function randomNatureEmoji() {
-  const natureEmojiArray = [...natureEmoji]
-  return natureEmojiArray[natureEmojiArray.length * Math.random() | 0]
+  const segmenter = new Intl.Segmenter("en")
+  const natureEmojiArray = Array.from(segmenter.segment(natureEmoji))
+  return natureEmojiArray[natureEmojiArray.length * Math.random() | 0].segment
 }
 
 export const account = new Account()

@@ -361,7 +361,7 @@ async function htmlForMessage(message) {
   html.classList.add("message")
   html.innerHTML =
     `<div class="message-header"><ref>${formatAbsoluteTime(message.saved)}</ref>
-      <span class="message-author">${await cloud.displayNameForUserId(message.author)}</span>
+      <span class="message-author">${await cloud.displayEmojiForUserId(message.author)} ${await cloud.displayNameForUserId(message.author)}</span>
       <span class="message-character">as ${titleCase(message.characterName) ?? "Unknown"}</span>:</div>` +
     `<div class="message-text">${message.text}</div>`
   if (auth.currentUser.uid === message.author) {
