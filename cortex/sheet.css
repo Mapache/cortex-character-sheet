@@ -1484,6 +1484,30 @@ ref {
 			box-shadow: 0 0 4px 2px var(--highlight);
 		}
 	}
+
+	#sign-out {
+		visibility: hidden;
+		transition-delay: 1.0s;
+
+		position: absolute;
+		right: 0px;
+		width: 48px;
+		margin: 4px 1px;
+		padding: 2px 0px;
+		text-align: center;
+		font-size: 8pt;
+		color: black;
+		background: #eee;
+		border: 0.5pt solid black;
+		border-radius: 4px;
+	}
+
+	&:hover {
+		#sign-out {
+			visibility: visible;
+			transition-delay: 0s;
+		}
+	}
 }
 
 /* Signature asset */

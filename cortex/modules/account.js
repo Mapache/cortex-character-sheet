@@ -1,20 +1,17 @@
-import { asyncMap, asyncFilter } from "./async.js"
-import { UserProfile, cloud } from "./cloud.js"
-import { noDiePlaceholder, dText_to_html, html_to_text } from "./conversion.js"
-import { setEditingEnabled, selectAllTextOf } from "./eventHandlers.js"
-import { Flags } from "./flags.js"
-import { titleCase, formatAbsoluteTime } from "./formatting.js"
-import { menu, menuEntry, menuDivider, menuLabel, menuTextInput } from "./menu.js"
+import { cloud } from "./cloud.js"
+import { whenInteractive } from "./defer.js"
+import { selectAllTextOf } from "./eventHandlers.js"
 import { ToggleableStyle } from "./toggleableStyle.js"
-import { layoutControlsHidden, emptyDescriptionsHidden } from "./toggleableStyles.js"
 
-const editingAccount = new ToggleableStyle(
-  "#account",
-  "account-editing",
-  "account-static",
-  ``,
-  ``,
-  false)
+if (0) {
+  const editingAccount = new ToggleableStyle(
+    "#account",
+    "account-editing",
+    "account-static",
+    ``,
+    ``,
+    false)
+}
 
 class Account {
   constructor() {
@@ -22,12 +19,23 @@ class Account {
     this.displayNameDiv = document.getElementById("display-name")
     this.displayEmojiDiv = document.getElementById("display-emoji")
     this.displayEmojiFrameDiv = document.getElementById("display-emoji-frame")
+    this.signOutDiv = document.getElementById("sign-out")
 
-    cloud.subscribeToUserProfile(async (userProfile) => {
-      this.userProfileUpdated()
+    whenInteractive((e) => {
+      this.installEditHandlers()
+
+      this.signOutDiv.addEventListener("click", (e) => {
+        if (cloud.userProfile) {
+          cloud.signOut()
+        } else {
+          cloud.signIn()
+        }
+      })
+
+      cloud.subscribeToUserProfile(async (userProfile) => {
+        this.userProfileUpdated()
+      })
     })
-
-    this.installEditHandlers()
   }
 
   async sanitizeUserProfile(needsSaving = false) {
@@ -131,9 +139,11 @@ class Account {
       this.sanitizeUserProfile(needsSaving)
       this.displayNameDiv.innerText = cloud.userProfile.displayName ?? "Click to set Display Name"
       this.displayEmojiDiv.innerText = cloud.userProfile.displayEmoji ?? "👤"
+      this.signOutDiv.innerText = "Sign Out"
     } else {
       this.displayNameDiv.innerText = "Not Signed In"
       this.displayEmojiDiv.innerText = "👤"
+      this.signOutDiv.innerText = "Sign In"
     }
   }
 
