@@ -22,9 +22,36 @@ class Account {
     this.displayNameDiv = document.getElementById("displayName")
     this.displayEmojiDiv = document.getElementById("displayEmoji")
 
-    cloud.subscribeToUserProfile((userProfile) => {
+    cloud.subscribeToUserProfile(async (userProfile) => {
       this.userProfileUpdated(userProfile)
     })
+  }
+
+  async sanitizeUserProfile() {
+    const userProfile = cloud.userProfile
+    if (!userProfile) {
+      console.error("Attempting to sanitize nonexistent user profile!")
+      return
+    }
+    let needsSaving = false
+    if (!userProfile.displayName) {
+      const user = await cloud.requireSignIn()
+      userProfile.displayName = user.displayName
+      needsSaving = true
+    }
+    if (!userProfile.displayEmoji) {
+      userProfile.displayEmoji = randomNatureEmoji()
+      needsSaving = true
+    }
+    for (const [campaignId, displayName] of Object.entries(userProfile.campaignDisplayNames)) {
+      if (!displayName) {
+        delete userProfile.campaignDisplayNames[campaignId]
+        needsSaving = true
+      }
+    }
+    if (needsSaving) {
+      cloud.saveUserProfile()
+    }
   }
 
   // MARK: Action Handlers
@@ -66,17 +93,14 @@ class Account {
 
   // MARK: Listeners
 
-  userProfileUpdated(userProfile) {
-    if (userProfile) {
-      if (!userProfile.displayEmoji) {
-        userProfile.displayEmoji = randomNatureEmoji()
-        cloud.saveUserProfile()
-      }
-      this.displayNameDiv.innerText = userProfile.displayName ?? "Click to set Display Name"
-      this.displayEmojiDiv.innerText = userProfile.displayEmoji ?? "👤"
+  async userProfileUpdated() {
+    if (cloud.userProfile) {
+      this.sanitizeUserProfile()
+      this.displayNameDiv.innerText = cloud.userProfile.displayName ?? "Click to set Display Name"
+      this.displayEmojiDiv.innerText = cloud.userProfile.displayEmoji ?? "👤"
     } else {
-      this.displayNameDiv.innerText = userProfile.displayName ?? "Not Signed In"
-      this.displayEmojiDiv.innerText = userProfile.displayEmoji ?? "👤"
+      this.displayNameDiv.innerText = "Not Signed In"
+      this.displayEmojiDiv.innerText = "👤"
     }
   }
 
