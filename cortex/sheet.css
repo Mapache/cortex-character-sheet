@@ -1246,64 +1246,19 @@ ref {
 		width: 40px;
 	}
 
-	#reset:before {
-		content: "\f01e";
-	}
-
-	#campaigns:before {
-		content: "\f07b";
-	}
-
-	#characters:before {
-		content: "\f007";
-	}
-
-	#upload:before {
-		content: "\f0ee";
-	}
-
-	#download:before {
-		content: "\f019";
-	}
-
-	#show-global-highlight-menu:before {
-		content: "\f043";
+	.icon {
+		display: block;
+		margin: 16px 8px 16px 16px;
+		border: 0;
+		background: none;
+		font-size: 32px;
+		text-align: center;
+		width: 40px;
 	}
 
 	#global-highlight-picker {
 		height: 32px;
 		width: 32px;
-	}
-
-	#toggle-layout-controls:not(.controls-hidden):before {
-		content: "\f06e";
-	}
-
-	#toggle-layout-controls.controls-hidden:before {
-		content: "\f070";
-	}
-
-	#toggle-empty-descriptions:not(.descriptions-hidden):before {
-		font-weight: 400;
-		content: "\f075";
-
-		animation: iconShimmer 4s infinite linear;
-	}
-
-	#toggle-empty-descriptions.descriptions-hidden:before {
-		content: "\f4b3";
-	}
-
-	#help:before {
-		content: "\f128";
-	}
-
-	#toggle-messaging:before {
-		content: "\f522";
-	}
-
-	#development-hook:before {
-		content: "\f492";
 	}
 
 }
@@ -1328,6 +1283,19 @@ ref {
 	font-style: normal;
 	font-weight: 900;
 	font-size: 125%;
+	color: #000;
+
+	&.disabled {
+		color: #999;
+	}
+
+	&:not(.disabled) {
+		cursor: pointer;
+
+		&:hover {
+			text-shadow: -0.3mm -0.3mm 0.5mm var(--aura), 0.3mm -0.3mm 0.5mm var(--aura), -0.3mm 0.3mm 0.5mm var(--aura), 0.3mm 0.3mm 0.5mm var(--aura);
+		}
+	}
 
 	&.plus:before {
 		content: "\f0fe";
@@ -1859,10 +1827,6 @@ ref {
 		text-align: center;
 		vertical-align: bottom;
 		padding-bottom: 3px;
-
-		&.disabled {
-			color: #999;
-		}
 	}
 }
 

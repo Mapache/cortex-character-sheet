@@ -2,7 +2,7 @@ import { ToggleableStyle } from "./toggleableStyle.js"
 
 // Show layout controls by default
 export const layoutControlsHidden = new ToggleableStyle(
-  "#toggle-layout-controls",
+  ".toggle-layout-controls",
   "controls-hidden",
   "controls-visible",
   `
@@ -15,7 +15,7 @@ export const layoutControlsHidden = new ToggleableStyle(
 
 // Hide empty trait descriptions by default
 export const emptyDescriptionsHidden = new ToggleableStyle(
-  "#toggle-empty-descriptions",
+  ".toggle-empty-descriptions",
   "descriptions-hidden",
   "descriptions-visible",
   `
