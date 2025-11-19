@@ -414,16 +414,28 @@ export class Cloud {
 
 	async signOut() {
 		signOut(auth).then(() => {
+			if (this.currentCampaign?.id) {
+				this.messagesHandlerForCampaignId[this.currentCampaign.id]?.inactivate()
+			}
+			this.messagesHandlerForCampaignId = {}
+			for (const unsubscribe of Object.values(this.unsubscribeMessagesForCampaignId)) {
+				unsubscribe()
+			}
+			this.unsubscribeMessagesForCampaignId = {}
+
 			this.userPermissions = null
 			this.currentCampaign = null
 			this.defaultCampaign = null
 			this.campaigns = null
 			this.currentCharacterSheets = null
 
+			this.displayCurrentCampaignName()
+			this.updateURLForCurrentCampaign()
+
 			this.userProfile = null
 			this.userProfileHandler?.(this.userProfile)
 		}).catch((error) => {
-			console.error("Sign-out error for ", error.customData.email, error.code, error.message)
+			console.error("Sign-out error", error)
 		})
 	}
 
@@ -698,11 +710,15 @@ export class Cloud {
 	}
 
 	displayCurrentCampaignName() {
-		document.getElementById("current-campaign").innerText = this.currentCampaign.name
+		document.getElementById("current-campaign").innerText = this.currentCampaign?.name ?? ""
 	}
 
 	updateURLForCurrentCampaign() {
-		setUrlHashWithoutHandling(`#view=${this.currentCampaign.id}`, "")
+		if (this.currentCampaign) {
+			setUrlHashWithoutHandling(`#view=${this.currentCampaign.id}`, "")
+		} else {
+			setUrlHashWithoutHandling(`#`, "")
+		}
 	}
 
 	async renameCampaign(campaign, name) {
@@ -918,6 +934,10 @@ export class Cloud {
 
 	async updateMessageText(messageId, text) {
 		await this.updateMessage(messageId, { text: text })
+	}
+
+	async updateMessageCharacterName(messageId, characterName) {
+		await this.updateMessage(messageId, { characterName: characterName })
 	}
 
 	async updateMessageDiceStatus(messageId, diceStatus) {

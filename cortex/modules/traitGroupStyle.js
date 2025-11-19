@@ -106,13 +106,14 @@ export function remove_trait_group_style_from_trait(traitGroup, trait) {
 }
 
 export function apply_highlight_color(elem, color) {
-	if (color == null) {
-		elem.removeAttribute("highlight-color")
-		elem.style.removeProperty("--highlight")
-	} else {
+	if (color) {
 		elem.setAttribute("highlight-color", color)
 		elem.style.setProperty("--highlight", color)
 		elem.style.setProperty("--aura", color + "20") // RGB + A
+	} else {
+		elem.removeAttribute("highlight-color")
+		elem.style.removeProperty("--highlight")
+		elem.style.removeProperty("--aura")
 	}
 }
 

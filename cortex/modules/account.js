@@ -24,11 +24,12 @@ class Account {
     whenInteractive((e) => {
       this.installEditHandlers()
 
-      this.signOutDiv.addEventListener("click", (e) => {
+      this.signOutDiv.addEventListener("click", async (e) => {
         if (cloud.userProfile) {
           cloud.signOut()
         } else {
-          cloud.signIn()
+          await cloud.signIn()
+          await cloud.requireCurrentCampaign()
         }
       })
 
@@ -82,7 +83,10 @@ class Account {
       if (cloud.userProfile) {
         return true
       } else {
-        cloud.signIn()
+        (async () => {
+          await cloud.signIn()
+          await cloud.requireCurrentCampaign()
+        })()
         return false
       }
     }

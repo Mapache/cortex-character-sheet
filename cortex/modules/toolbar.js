@@ -146,7 +146,7 @@ export { layoutControlsHidden, emptyDescriptionsHidden }
 // MARK: Messaging
 
 export async function toggleMessaging(e) {
-	Messages.messagesForCurrentCampaign().toggle()
+	Messages.messagesForCurrentCampaign()?.toggle()
 }
 
 // MARK: Help Section

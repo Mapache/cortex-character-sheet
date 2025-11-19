@@ -1,7 +1,7 @@
 import { asyncMap, asyncFilter } from "./async.js"
 import { CampaignPermissions, Message, Cloud, cloud } from "./cloud.js"
 import { noDiePlaceholder, dText_to_html, html_to_text } from "./conversion.js"
-import { setEditingEnabled, selectAllTextOf } from "./eventHandlers.js"
+import { setEditingEnabled, selectAllTextOf, addClickToEditHandlersToTextNode } from "./eventHandlers.js"
 import { auth } from "./firebase.js"
 import { Flags } from "./flags.js"
 import { titleCase, formatAbsoluteTime } from "./formatting.js"
@@ -36,7 +36,7 @@ export class Messages {
     return messages
   }
   static messagesForCurrentCampaign() {
-    return Messages.messagesForCampaignId(cloud.currentCampaign.id)
+    return Messages.messagesForCampaignId(cloud.currentCampaign?.id)
   }
 
   constructor(campaignId) {
@@ -430,13 +430,27 @@ async function htmlForMessage(message) {
         <span class="message-time"><ref>${formatAbsoluteTime(message.saved)}</ref></span>
         <div class="message-names">
           <span class="message-author">${await cloud.displayNameForUserId(message.author)}</span>&nbsp;
-          <span class="message-character">as ${titleCase(message.characterName) ?? "Unknown"}</span>:&nbsp;
+          <span class="message-character">as <span class="message-character-name">${titleCase(message.characterName) ?? "Unknown"}</span></span>:&nbsp;
         </div>
       </div>
     </div>` +
     `<div class="message-text">${message.text}</div>`
   if (auth.currentUser.uid === message.author) {
     html.querySelector(".message-author").classList.add("self-author")
+    addClickToEditHandlersToTextNode(
+      html.querySelector(".message-text"),
+      null,
+      true,
+      (text) => cloud.updateMessageText(message.id, text)
+    )
+  }
+  if (auth.currentUser.uid === message.author /*|| cloud.accessFor(this.campaignId) === CampaignPermissions.admin*/) {
+    addClickToEditHandlersToTextNode(
+      html.querySelector(".message-character-name"),
+      html.querySelector(".message-character"),
+      true,
+      (text) => cloud.updateMessageCharacterName(message.id, text)
+    )
   }
 
   if (message.dice.length > 0) {

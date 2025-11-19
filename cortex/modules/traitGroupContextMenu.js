@@ -51,8 +51,7 @@ export async function set_trait_collection_highlight_color(e) {
 
 export async function remove_trait_collection_highlight_color(e) {
   let traitGroup = g_context_target.parentElement
-  traitGroup.removeAttribute("highlight-color")
-  traitGroup.style.removeProperty("--highlight")
+  apply_highlight_color(traitGroup, null)
 
   close_context_menu()
 }
