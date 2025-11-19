@@ -1612,6 +1612,7 @@ ref {
 	background: white;
 	border-radius: 5px;
 	z-index: 20;
+	font-family: 'Open Sans', sans-serif;
 	font-size: 12pt;
 	cursor: pointer;
 	display: none;
@@ -1655,8 +1656,7 @@ ref {
 	}
 
 	input[type="radio"]:checked+label {
-		background: var(--highlight);
-		color: white;
+		background: var(--aura);
 	}
 
 	label {
@@ -1665,8 +1665,10 @@ ref {
 		padding: 6px 12px 6px 12px;
 	}
 
-	label:hover {
-		background: var(--highlight)3f;
+	label:hover,
+	input[type="radio"]:checked+label:hover {
+		background: var(--highlight);
+		color: white;
 	}
 
 	p {
