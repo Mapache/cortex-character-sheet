@@ -100,6 +100,44 @@ function addEditHandlersToDiceField(diceField) {
     }
   })
 }
+/**
+ * @param {Node} node
+ * @param {null | Node} clickTarget
+ * @param {true | (() => boolean)} shouldAllowEditing
+ * @param {null | (() => void)} editingDisallowedAction
+ * @param {((text) => void)} editingCompleteAction
+ * @returns {void}
+ */
+export function addClickToEditHandlersToTextNode(
+  node,
+  clickTarget,
+  shouldAllowEditing,
+  editingDisallowedAction,
+  editingCompleteAction
+) {
+  (clickTarget ?? node).addEventListener("click", (e) => {
+    if (shouldAllowEditing === true || shouldAllowEditing()) {
+      node.contentEditable = true
+      node.focus()
+    } else {
+      editingDisallowedAction?.()
+    }
+  })
+  node.addEventListener("focus", (e) => {
+    selectAllTextOf(node)
+  })
+  node.addEventListener("blur", async (e) => {
+    node.contentEditable = false
+    editingCompleteAction(node.innerText.trim())
+  })
+  // Enter finishes editing.
+  node.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault()
+      e.target.blur()
+    }
+  })
+}
 
 export function moveCaretToEndOf(editable) {
   const range = document.createRange()

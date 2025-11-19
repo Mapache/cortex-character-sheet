@@ -1,6 +1,6 @@
 import { cloud } from "./cloud.js"
 import { whenInteractive } from "./defer.js"
-import { selectAllTextOf } from "./eventHandlers.js"
+import { addClickToEditHandlersToTextNode } from "./eventHandlers.js"
 import { ToggleableStyle } from "./toggleableStyle.js"
 
 if (0) {
@@ -78,59 +78,30 @@ class Account {
   // MARK: Edit Handlers
 
   installEditHandlers() {
-    this.displayNameDiv.addEventListener("click", (e) => {
-      if (cloud.userProfile) {
-        this.displayNameDiv.contentEditable = true
-        this.displayNameDiv.focus()
-        selectAllTextOf(this.displayNameDiv)
-      } else {
-        cloud.signIn()
+    addClickToEditHandlersToTextNode(
+      this.displayNameDiv,
+      null,
+      () => cloud.userProfile,
+      () => cloud.signIn(),
+      (newDisplayName) => {
+        if (cloud.userProfile.displayName !== newDisplayName) {
+          cloud.userProfile.displayName = newDisplayName
+          this.userProfileUpdated(true)
+        }
       }
-    })
-    this.displayNameDiv.addEventListener("focus", (e) => {
-      // Nothing to do
-    })
-    this.displayNameDiv.addEventListener("blur", async (e) => {
-      this.displayNameDiv.contentEditable = false
-      const newDisplayName = this.displayNameDiv.innerText.trim()
-      if (cloud.userProfile.displayName !== newDisplayName) {
-        cloud.userProfile.displayName = newDisplayName
-        this.userProfileUpdated(true)
+    )
+    addClickToEditHandlersToTextNode(
+      this.displayEmojiDiv,
+      this.displayEmojiFrameDiv,
+      () => cloud.userProfile,
+      () => cloud.signIn(),
+      (newDisplayEmoji) => {
+        if (cloud.userProfile.displayEmoji !== newDisplayEmoji) {
+          cloud.userProfile.displayEmoji = newDisplayEmoji
+          this.userProfileUpdated(true)
+        }
       }
-    })
-    this.displayNameDiv.addEventListener("keydown", (e) => {
-      if (e.key === "Enter") {
-        e.preventDefault()
-        e.target.blur()
-      }
-    })
-
-    this.displayEmojiFrameDiv.addEventListener("click", (e) => {
-      if (cloud.userProfile) {
-        this.displayEmojiDiv.contentEditable = true
-        this.displayEmojiDiv.focus()
-        selectAllTextOf(this.displayEmojiDiv)
-      } else {
-        cloud.signIn()
-      }
-    })
-    this.displayEmojiDiv.addEventListener("focus", (e) => {
-      // Nothing to do
-    })
-    this.displayEmojiDiv.addEventListener("blur", async (e) => {
-      this.displayEmojiDiv.contentEditable = false
-      const newDisplayEmoji = this.displayEmojiDiv.innerText.trim()
-      if (cloud.userProfile.displayEmoji !== newDisplayEmoji) {
-        cloud.userProfile.displayEmoji = newDisplayEmoji
-        this.userProfileUpdated(true)
-      }
-    })
-    this.displayEmojiDiv.addEventListener("keydown", (e) => {
-      if (e.key === "Enter") {
-        e.preventDefault()
-        e.target.blur()
-      }
-    })
+    )
   }
 
   // MARK: Listeners
