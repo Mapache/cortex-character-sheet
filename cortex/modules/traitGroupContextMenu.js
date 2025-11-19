@@ -2,7 +2,7 @@ import { updatePagePlaceholderControl } from "./elements.js"
 import { Modal } from "./modal.js"
 import { apply_data_style, apply_highlight_color, defaultHighlightColor } from "./traitGroupStyle.js"
 
-const contextMenuModal = await Modal.build("context-menu", function () { })
+const contextMenuModal = await Modal.build("context-menu")
 const contextMenu = contextMenuModal.modal
 const colorPicker = contextMenu.querySelector("#trait-collection-highlight-picker")
 

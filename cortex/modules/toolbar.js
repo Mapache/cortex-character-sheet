@@ -151,7 +151,7 @@ export async function toggleMessaging(e) {
 
 // MARK: Help Section
 
-export const helpModal = await Modal.build("help-modal", function () { })
+export const helpModal = await Modal.build("help-modal")
 
 // MARK: Development Section
 
@@ -165,7 +165,7 @@ const developmentHidden = new ToggleableStyle(
 		}
 	`,
 	"",
-	!Flags.development)
+	!Flags.development || !Flags.useDevelopmentHook)
 
 export async function developmentHook(e) {
 	if (!Flags.development) {

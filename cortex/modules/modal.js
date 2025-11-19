@@ -43,13 +43,10 @@ export class Modal {
     currentModal = this
 
     showModalBackground()
-    modalBackground.insertAdjacentElement("afterend", this.modal)
+    modalBackground.after(this.modal)
     this.modal.style.display = "block"
 
-    let input = this.modal.querySelector("input")
-    if (input != null) {
-      input.select()
-    }
+    this.modal.querySelector("input")?.select()
   }
 
   hide() {
@@ -58,8 +55,6 @@ export class Modal {
 
     hideModalBackground()
 
-    if (this.callback != null) {
-      this.callback()
-    }
+    this.callback?.()
   }
 }
