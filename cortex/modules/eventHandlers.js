@@ -112,15 +112,12 @@ export function addClickToEditHandlersToTextNode(
   node,
   clickTarget,
   shouldAllowEditing,
-  editingDisallowedAction,
   editingCompleteAction
 ) {
   (clickTarget ?? node).addEventListener("click", (e) => {
     if (shouldAllowEditing === true || shouldAllowEditing()) {
       node.contentEditable = true
       node.focus()
-    } else {
-      editingDisallowedAction?.()
     }
   })
   node.addEventListener("focus", (e) => {

@@ -78,11 +78,18 @@ class Account {
   // MARK: Edit Handlers
 
   installEditHandlers() {
+    const shouldAllowEditing = () => {
+      if (cloud.userProfile) {
+        return true
+      } else {
+        cloud.signIn()
+        return false
+      }
+    }
     addClickToEditHandlersToTextNode(
       this.displayNameDiv,
       null,
-      () => cloud.userProfile,
-      () => cloud.signIn(),
+      shouldAllowEditing,
       (newDisplayName) => {
         if (cloud.userProfile.displayName !== newDisplayName) {
           cloud.userProfile.displayName = newDisplayName
@@ -93,8 +100,7 @@ class Account {
     addClickToEditHandlersToTextNode(
       this.displayEmojiDiv,
       this.displayEmojiFrameDiv,
-      () => cloud.userProfile,
-      () => cloud.signIn(),
+      shouldAllowEditing,
       (newDisplayEmoji) => {
         if (cloud.userProfile.displayEmoji !== newDisplayEmoji) {
           cloud.userProfile.displayEmoji = newDisplayEmoji
