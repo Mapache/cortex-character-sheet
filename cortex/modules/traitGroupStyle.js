@@ -119,6 +119,23 @@ export function apply_highlight_color(elem, color) {
 
 export const defaultHighlightColor = "#C50852"
 
+export const globalHighlightColorPicker = (() => {
+	let picker = document.createElement("input")
+	picker.id = "global-highlight-picker"
+	picker.title = "Highlight Color"
+	picker.type = "color"
+	picker.value = defaultHighlightColor
+
+	function setGlobalHighlightColor(e) {
+		const root = document.querySelector(":root")
+		apply_highlight_color(root, picker.value)
+	}
+	picker.onchange = setGlobalHighlightColor
+	picker.oninput = setGlobalHighlightColor
+
+	return picker
+})()
+
 export function inferTraitGroupStyle(e) {
 	const header = e.target
 	const traitGroup = header.parentElement

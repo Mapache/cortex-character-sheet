@@ -14,28 +14,8 @@
 	<div id="modal-bg" onclick="close_modal(event)"></div>
 
 	<!-- Toolbar -->
-	<div id="toolbar" class="no-print">
-		<i class="icon campaigns" title="Campaigns" onclick="campaigns_menu(event)"></i>
-		<i class="icon characters" title="Characters" onclick="characters_menu(event)"></i>
-		<i class="icon upload" title="Save Sheet to Cloud" onclick="upload_character(event)"></i>
-		<i class="icon download" title="Download Sheet to File" onclick="download_character(event)"></i>
-		<hr>
-		<div title="Highlight Color">
-			<input id="global-highlight-picker" type="color" value="#C50852" onchange="set_global_highlight_color(event)"
-				oninput="set_global_highlight_color(event)"></input>
-		</div>
-		<i class="icon toggle-layout-controls" title="Toggle Layout Controls" onclick="layoutControlsHidden.toggle(event)"></i>
-		<i class="icon toggle-empty-descriptions" title="Toggle Empty Descriptions"
-			onclick="emptyDescriptionsHidden.toggle(event)"></i>
-		<hr>
-		<i class="icon toggle-messaging" title="Messages & Dice Rolls" onclick="toggleMessaging(event)"></i>
-		<hr>
-		<i class="icon help" title="Help" onclick="helpModal.show()"></i>
-		<hr class="development development-hidden">
-		<i class="development development-hidden icon development-hook" title="Development Hook" onclick="developmentHook(event)"></i>
-	</div>
-	<div id="current-campaign" class="no-print">
-	</div>
+	<div id="toolbar" class="no-print"></div>
+	<div id="current-campaign" class="no-print"></div>
 	
 	<!-- Account -->
 	<div id="account" class="no-print">

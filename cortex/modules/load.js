@@ -1,7 +1,7 @@
 
 import { updateTitles } from "./elements.js"
 import { dice_to_html, text_to_html } from "./conversion.js"
-import { apply_data_style, update_trait_group_display, apply_highlight_color, defaultHighlightColor } from "./traitGroupStyle.js"
+import { apply_data_style, update_trait_group_display, apply_highlight_color, defaultHighlightColor, globalHighlightColorPicker } from "./traitGroupStyle.js"
 
 export async function load_character(json) {
   nuke_character()
@@ -72,8 +72,7 @@ async function load_highlight_colors(highlightColors) {
       }
     }
   }
-  let colorPicker = document.getElementById("global-highlight-picker")
-  colorPicker.value = globalHighlightColor
+  globalHighlightColorPicker.value = globalHighlightColor
 }
 
 // See notes about file formats in save.js. Loading V3 characters is theoretically supported but not actively tested.

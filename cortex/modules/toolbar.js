@@ -1,19 +1,72 @@
 import { CampaignPermissions, cloud } from "./cloud.js"
+import { whenInteractive } from "./defer.js"
 import { Flags } from "./flags.js"
-import { titleCase, formatRelativeTime } from "./formatting.js"
-import { nuke_character, load_character } from "./load.js"
-import { menu, menuEntry, menuDivider, menuLabel, menuTextInput } from "./menu.js"
+import { formatRelativeTime, titleCase } from "./formatting.js"
+import { load_character, nuke_character } from "./load.js"
+import { menu, menuDivider, menuEntry, menuLabel, menuTextInput } from "./menu.js"
 import { Messages } from "./messages.js"
 import { Modal } from "./modal.js"
 import { save_character } from "./save.js"
 import { copyShareUrl } from "./share.js"
-import { apply_highlight_color } from "./traitGroupStyle.js"
 import { ToggleableStyle } from "./toggleableStyle.js"
-import { layoutControlsHidden, emptyDescriptionsHidden } from "./toggleableStyles.js"
+import { emptyDescriptionsHidden, layoutControlsHidden } from "./toggleableStyles.js"
+import { globalHighlightColorPicker } from "./traitGroupStyle.js"
+
+// MARK: Tool
+
+class Tool {
+	/**
+	 * @param {string} icon - Icon class 
+	 * @param {string} tip - Help string
+	 * @param {(event) => void} action 
+	 * @param {boolean} [enabled=true]
+	 * @param {Node} [customNode=null]
+	 */
+	constructor(icon, tip, action, enabled = true, customNode = null) {
+		this.icon = icon
+		this.tip = tip
+		this.action = action
+
+		this.enabled = enabled
+		this.node = customNode ?? (() => {
+			const node = document.createElement("i")
+			node.classList.add("icon", this.icon)
+			node.title = this.tip
+			node.onclick = this.action
+			return node
+		})()
+	}
+
+	static custom(node, enabled = true) {
+		return new Tool(null, null, null, enabled, node)
+	}
+
+	enable() {
+		this.enabled = true
+		this.node.classList.remove("disabled")
+	}
+
+	disable() {
+		this.enabled = false
+		this.node.classList.add("disabled")
+	}
+
+	setEnabled(enabled) {
+		if (enabled) {
+			this.enable()
+		} else {
+			this.disable()
+		}
+	}
+
+	toggle() {
+		this.setEnabled(!this.enabled)
+	}
+}
 
 // MARK: File Section
 
-export async function campaigns_menu(e) {
+export const campaigns = new Tool("campaigns", "Campaigns", async (e) => {
 	await cloud.requireCurrentCampaign()
 
 	const campaignsMenu = new Modal()
@@ -63,9 +116,9 @@ export async function campaigns_menu(e) {
 
 	campaignsMenu.modal = menu(entries)
 	campaignsMenu.showAtEvent(e)
-}
+})
 
-export async function characters_menu(e) {
+export const characters = new Tool("characters", "Characters", async (e) => {
 	await cloud.requireCurrentCharacterSheets()
 
 	const charactersMenu = new Modal()
@@ -108,17 +161,17 @@ export async function characters_menu(e) {
 
 	charactersMenu.modal = menu(entries)
 	charactersMenu.showAtEvent(e)
-}
+})
 
-export async function upload_character(e) {
+export const uploadCharacter = new Tool("upload", "Save Sheet to Cloud", async (e) => {
 	let json = save_character()
 	await cloud.uploadCharacter(json)
-}
+})
 
-export function download_character(e) {
+export const downloadCharacter = new Tool("download", "Download Sheet to File", async (e) => {
 	let json = save_character()
 	download(json)
-}
+})
 
 function download(json) {
 	let uri = encodeURI("data:application/json;charset=utf-8," + JSON.stringify(json))
@@ -135,23 +188,28 @@ function download(json) {
 
 // MARK: Display Section
 
-export function set_global_highlight_color(e) {
-	let colorPicker = document.getElementById("global-highlight-picker")
-	let root = document.querySelector(":root")
-	apply_highlight_color(root, colorPicker.value)
-}
+export const globalHighlightColor = Tool.custom(globalHighlightColorPicker)
 
-export { layoutControlsHidden, emptyDescriptionsHidden }
+export const toggleLayoutControlsHidden = new Tool("toggle-layout-controls", "Toggle Layout Controls", async (e) => {
+	layoutControlsHidden.toggle(e)
+})
+
+export const toggleEmptyDescriptionsHidden = new Tool("toggle-empty-descriptions", "Toggle Empty Descriptions", async (e) => {
+	emptyDescriptionsHidden.toggle(e)
+})
 
 // MARK: Messaging
 
-export async function toggleMessaging(e) {
+export const toggleMessaging = new Tool("toggle-messaging", "Messages & Dice Rolls", async (e) => {
 	Messages.messagesForCurrentCampaign()?.toggle()
-}
+})
 
 // MARK: Help Section
 
 export const helpModal = await Modal.build("help-modal")
+export const toggleHelp = new Tool("help", "Help", async (e) => {
+	helpModal.show()
+})
 
 // MARK: Development Section
 
@@ -167,10 +225,58 @@ const developmentHidden = new ToggleableStyle(
 	"",
 	!Flags.development || !Flags.useDevelopmentHook)
 
-export async function developmentHook(e) {
+export const developmentHook = new Tool("development-hook", "Development Hook", async (e) => {
 	if (!Flags.development) {
 		console.error("Attempting to run development code on prod!")
 		return
 	}
 	// Do something developmental.
-}
+})
+
+// MARK: Toolbar
+
+const prodToolbarSections = [
+	[
+		campaigns,
+		characters,
+		uploadCharacter,
+		downloadCharacter,
+	],
+	[
+		globalHighlightColor,
+		toggleLayoutControlsHidden,
+		toggleEmptyDescriptionsHidden,
+	],
+	[
+		toggleMessaging,
+	],
+	[
+		toggleHelp,
+	],
+]
+const devToolbarSection =
+	[
+		developmentHook,
+	]
+const toolbarSections = (Flags.development && Flags.useDevelopmentHook)
+	? prodToolbarSections.concat([devToolbarSection])
+	: prodToolbarSections
+const toolbarNodes = (() => {
+	let nodes = []
+	for (const section of toolbarSections) {
+		for (const tool of section) {
+			nodes.push(tool.node)
+		}
+		nodes.push(document.createElement("hr"))
+	}
+	return nodes.slice(0, -1)
+})()
+
+whenInteractive(() => {
+	const toolbar = document.getElementById("toolbar")
+	toolbar.replaceChildren(...toolbarNodes)
+	// The ToggleableStyles will have been created before the tools that need to reference them,
+	// so correctly apply the initial style to the tools.
+	layoutControlsHidden.applyControlClass()
+	emptyDescriptionsHidden.applyControlClass()
+})

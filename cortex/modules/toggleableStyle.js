@@ -66,4 +66,18 @@ export class ToggleableStyle {
     this.setEnabled(!this.enabled)
   }
 
+  // Reapplies the class for the current status to all currently existing matching controls,
+  // for use when the control in question is dynamically created.
+  applyControlClass() {
+    for (const control of document.querySelectorAll(this.controlSelector)) {
+      if (this.enabled) {
+        control.classList.remove(this.disabledControlClass)
+        control.classList.add(this.enabledControlClass)
+      } else {
+        control.classList.remove(this.enabledControlClass)
+        control.classList.add(this.disabledControlClass)
+      }
+    }
+  }
+
 }
