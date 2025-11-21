@@ -11,7 +11,6 @@ import { ARC4 } from "./random.js"
 import { setUrlHashWithoutHandling } from "./urlHashHandler.js"
 import { noDiePlaceholder } from "./conversion.js"
 
-
 // MARK: Utilities
 
 function generateHash(name) {
@@ -366,6 +365,7 @@ const collections = {
 
 export class Cloud {
 	constructor() {
+		this.user = null
 		this.userPermissions = null
 		this.currentCampaign = null
 		this.defaultCampaign = null
@@ -376,6 +376,8 @@ export class Cloud {
 
 		this.messagesHandlerForCampaignId = {}
 		this.unsubscribeMessagesForCampaignId = {}
+
+		this.events = new EventTarget()
 	}
 
 	// MARK: Authentication
@@ -385,6 +387,7 @@ export class Cloud {
 			const unsubscribe = onAuthStateChanged(auth, (user) => {
 				unsubscribe() // Unsubscribe after the first state change
 				resolve(user) // Resolve with the initial user state
+				this.user = user
 				this.getUserProfile(user)
 			})
 		})
@@ -397,6 +400,7 @@ export class Cloud {
 				const credential = GoogleAuthProvider.credentialFromResult(result)
 				const token = credential.accessToken
 				const user = result.user
+				this.user = user
 				this.getUserProfile(user)
 				return user
 			}).catch((error) => {
@@ -423,13 +427,14 @@ export class Cloud {
 			}
 			this.unsubscribeMessagesForCampaignId = {}
 
+			this.user = null
 			this.userPermissions = null
 			this.currentCampaign = null
 			this.defaultCampaign = null
 			this.campaigns = null
 			this.currentCharacterSheets = null
 
-			this.displayCurrentCampaignName()
+			this.didSwitchCampaign()
 			this.updateURLForCurrentCampaign()
 
 			this.userProfile = null
@@ -521,6 +526,9 @@ export class Cloud {
 	}
 
 	accessFor(campaignId) {
+		if (!campaignId) {
+			return CampaignPermissions.unauthorized
+		}
 		const key = this.userPermissions.campaigns[campaignId]
 		return this.accessForKey(key)
 	}
@@ -702,15 +710,21 @@ export class Cloud {
 		}
 
 		this.currentCampaign = campaign
-		this.displayCurrentCampaignName()
+		this.didSwitchCampaign()
 		this.updateURLForCurrentCampaign()
 		await this.getCharactersForCurrentCampaign()
 
 		this.messagesHandlerForCampaignId[this.currentCampaign.id]?.activate()
 	}
 
-	displayCurrentCampaignName() {
-		document.getElementById("current-campaign").innerText = this.currentCampaign?.name ?? ""
+	didSwitchCampaign(nameOnly = false) {
+		this.events.dispatchEvent(new CustomEvent("campaignSwitched", {
+			detail: {
+				user: this.user,
+				campaign: this.currentCampaign,
+				nameOnly: nameOnly,
+			},
+		}))
 	}
 
 	updateURLForCurrentCampaign() {
@@ -731,8 +745,8 @@ export class Cloud {
 		await updateDoc(doc(db, collections.campaigns, campaign.id), rename)
 
 		campaign.name = name
+		this.didSwitchCampaign(true)
 		this.sortCampaigns()
-		this.displayCurrentCampaignName()
 	}
 
 	// MARK: Characters

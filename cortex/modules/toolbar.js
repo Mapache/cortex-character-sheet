@@ -34,7 +34,7 @@ class Tool {
 			node.title = this.tip
 			node.onclick = (e) => {
 				if (this.enabled) {
-					this.action()
+					this.action(e)
 				}
 			}
 			return node
@@ -283,4 +283,48 @@ whenInteractive(() => {
 	// so correctly apply the initial style to the tools.
 	layoutControlsHidden.applyControlClass()
 	emptyDescriptionsHidden.applyControlClass()
+
+	didSwitchCampaign(cloud.currentCampaign)
+	cloud.events.addEventListener("campaignSwitched", (e) => {
+		if (e.detail.nameOnly) {
+			displayCampaignName(e.detail.campaign)
+		} else {
+			didSwitchCampaign(e.detail.campaign)
+		}
+	})
 })
+
+export function displayCampaignName(campaign) {
+	document.getElementById("current-campaign").innerText = campaign?.name ?? ""
+}
+
+export function didSwitchCampaign(campaign) {
+	if (cloud.user) {
+		campaigns.enable()
+	} else {
+		campaigns.disable()
+	}
+	displayCampaignName(campaign)
+	switch (cloud.accessFor(campaign?.id)) {
+		case CampaignPermissions.unauthorized:
+			characters.disable()
+			uploadCharacter.disable()
+			toggleMessaging.disable()
+			break
+		case CampaignPermissions.reader:
+			characters.enable()
+			uploadCharacter.disable()
+			toggleMessaging.disable()
+			break
+		case CampaignPermissions.editor:
+			characters.enable()
+			uploadCharacter.enable()
+			toggleMessaging.enable()
+			break
+		case CampaignPermissions.admin:
+			characters.enable()
+			uploadCharacter.enable()
+			toggleMessaging.enable()
+			break
+	}
+}

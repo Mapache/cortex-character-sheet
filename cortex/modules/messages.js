@@ -1,13 +1,10 @@
-import { asyncMap, asyncFilter } from "./async.js"
-import { CampaignPermissions, Message, Cloud, cloud } from "./cloud.js"
-import { noDiePlaceholder, dText_to_html, html_to_text } from "./conversion.js"
-import { setEditingEnabled, selectAllTextOf, addClickToEditHandlersToTextNode } from "./eventHandlers.js"
-import { auth } from "./firebase.js"
-import { Flags } from "./flags.js"
-import { titleCase, formatAbsoluteTime } from "./formatting.js"
-import { menu, menuEntry, menuDivider, menuLabel, menuTextInput } from "./menu.js"
+import { asyncFilter, asyncMap } from "./async.js"
+import { Cloud, cloud, Message } from "./cloud.js"
+import { dText_to_html, html_to_text, noDiePlaceholder } from "./conversion.js"
+import { addClickToEditHandlersToTextNode, selectAllTextOf, setEditingEnabled } from "./eventHandlers.js"
+import { formatAbsoluteTime, titleCase } from "./formatting.js"
 import { ToggleableStyle } from "./toggleableStyle.js"
-import { layoutControlsHidden, emptyDescriptionsHidden } from "./toggleableStyles.js"
+import { emptyDescriptionsHidden, layoutControlsHidden } from "./toggleableStyles.js"
 import { toggleEmptyDescriptionsHidden, toggleLayoutControlsHidden } from "./toolbar.js"
 
 const messagingVisible = new ToggleableStyle(
@@ -440,7 +437,7 @@ async function htmlForMessage(message) {
       </div>
     </div>` +
     `<div class="message-text">${message.text}</div>`
-  if (auth.currentUser.uid === message.author) {
+  if (cloud.user.uid === message.author) {
     html.querySelector(".message-author").classList.add("self-author")
     addClickToEditHandlersToTextNode(
       html.querySelector(".message-text"),
@@ -449,7 +446,7 @@ async function htmlForMessage(message) {
       (text) => cloud.updateMessageText(message.id, text)
     )
   }
-  if (auth.currentUser.uid === message.author /*|| cloud.accessFor(this.campaignId) === CampaignPermissions.admin*/) {
+  if (cloud.user.uid === message.author /*|| cloud.accessFor(this.campaignId) === CampaignPermissions.admin*/) {
     addClickToEditHandlersToTextNode(
       html.querySelector(".message-character-name"),
       html.querySelector(".message-character"),

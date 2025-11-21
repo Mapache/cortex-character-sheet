@@ -3,7 +3,6 @@ import { cloud } from "./cloud.js"
 import { whenInteractive } from "./defer.js"
 import { installTitleListeners } from "./elements.js"
 import { addEditHandlers } from "./eventHandlers.js"
-import { auth } from "./firebase.js"
 import { load_character, load_character_path } from "./load.js"
 import { downloadCharacter, uploadCharacter } from "./toolbar.js"
 import { HashHandler } from "./urlHashHandler.js"
@@ -18,7 +17,7 @@ function installSaveHandler() {
   document.addEventListener("keydown", async (e) => {
     if ((window.navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey) && e.keyCode === 83) {
       e.preventDefault()
-      if (auth.currentUser) {
+      if (uploadCharacter.enabled) {
         uploadCharacter.action()
       } else {
         downloadCharacter.action()
