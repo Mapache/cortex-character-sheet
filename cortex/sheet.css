@@ -1393,7 +1393,7 @@ ref {
 		border-radius: 4px;
 
 		&:hover {
-			box-shadow: 0 0 4px 2px var(--highlight);
+			box-shadow: 0 0 2px 1px var(--highlight);
 		}
 	}
 
@@ -1418,7 +1418,7 @@ ref {
 		background: var(--aura);
 
 		&:hover {
-			box-shadow: 0 0 4px 2px var(--highlight);
+			box-shadow: 0 0 2px 1px var(--highlight);
 		}
 	}
 
@@ -2099,6 +2099,15 @@ ref {
 	width: 100%;
 	margin-top: 2px;
 	border-top: 0.5pt solid var(--highlight);
+/*
+	&.suggestion tr {
+		overflow: hidden;
+		border-radius: 4px;
+	}
+*/
+	&.suggestion tr:hover {
+		box-shadow: 0 0 2px 1px var(--highlight);
+	}
 
 	.dice-total-contributions {
 		text-align: right;
