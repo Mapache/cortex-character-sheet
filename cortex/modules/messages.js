@@ -23,7 +23,7 @@ export class Messages {
   static messagesByCampaignId = {}
   static messagesForCampaignId(campaignId) {
     if (!campaignId) {
-      console.log("Attempting to get messages controller for nonexistent campaign!")
+      console.error("Attempting to get messages controller for nonexistent campaign!")
       return null
     }
     let messages = Messages.messagesByCampaignId[campaignId]
@@ -50,6 +50,7 @@ export class Messages {
     this.postButton = document.getElementById("message-post")
     this.trashButton = document.getElementById("message-clear")
     this.handlersAreInstalled = false
+    this.olderMessagesAvailable = true
   }
 
   // MARK: Visibility
@@ -72,9 +73,9 @@ export class Messages {
       this.messages = {}
       this.showAllMessages() // Reset any messages shown from another Campaign
       const recentTimestamp = new Date(new Date().getTime() - 15 * 60 * 1000)
-      const messages = await cloud.fetchOlderMessages(recentTimestamp)
-      this.showMessages(messages, true)
-      await cloud.subscribeToNewerMessages(this, messages.at(-1)?.saved)
+      this.oldestMessageTimestamp = recentTimestamp
+      await cloud.subscribeToNewerMessages(this, recentTimestamp)
+      await cloud.subscribeToOlderMessagesBatch(this, this.oldestMessageTimestamp)
       this.scrollToBottom()
     }
 
@@ -127,10 +128,13 @@ export class Messages {
   }
 
   scrollToBottom() {
-    this.messagesContainerDiv.scrollTo({
-      top: this.messagesContainerDiv.scrollHeight,
-      behavior: "smooth"
-    })
+    // Use setTimeout() to give the DOM time to update first.
+    setTimeout(() => {
+      this.messagesContainerDiv.scrollTo({
+        top: this.messagesContainerDiv.scrollHeight,
+        behavior: "smooth"
+      })
+    }, 10)
   }
 
   // Replaces all displayed messages with the currently loaded messages
@@ -143,8 +147,8 @@ export class Messages {
   }
 
   async showOlderMessages() {
-    if (this.oldestMessageTimestamp) {
-      this.showMessages(await cloud.fetchOlderMessages(this.oldestMessageTimestamp), true)
+    if (this.olderMessagesAvailable) {
+      await cloud.subscribeToOlderMessagesBatch(this, this.oldestMessageTimestamp)
     } else {
       // UI should already be updated by showMessages() to convey we have run out of older messages,
       // but fix it if got overwritten.
@@ -153,8 +157,8 @@ export class Messages {
   }
 
   updateFetchOlderMessagesButton() {
-    // When we ran out of old messages to fetch, the oldestMessageTimestamp is null.
-    this.fetchOlder.style.display = (this.oldestMessageTimestamp) ? "" : "none"
+    // When we ran out of old messages to fetch, hide the button.
+    this.fetchOlder.style.display = (this.olderMessagesAvailable) ? "" : "none"
   }
 
   async inactivate() {
@@ -377,16 +381,21 @@ export class Messages {
 
   // MARK: Listeners
 
-  showMessage(message) {
-    this.showMessages([message])
+  async showMessage(message, isOld = false) {
+    this.showMessages([message], isOld)
   }
 
   async showMessages(messages, areOld = false) {
-    const newMessages = await asyncFilter(messages, async (message) => {
-      let messageIsNew = true
+    if (messages.length === 0 && areOld) {
+      this.olderMessagesAvailable = false
+      this.updateFetchOlderMessagesButton()
+      return
+    }
+    let newMessages = await asyncFilter(messages, async (message) => {
+      let messageNeedsDisplaying = true
       if (this.messages[message.id]) {
         // This is an update to a previously-displayed message
-        messageIsNew = false
+        messageNeedsDisplaying = false
         if (this.active) {
           const oldHtml = document.getElementById(htmlIdForMessage(message))
           oldHtml.replaceWith(await htmlForMessage(message))
@@ -394,20 +403,47 @@ export class Messages {
       }
       // Always store the new message
       this.messages[message.id] = message
-      return messageIsNew
+      return messageNeedsDisplaying
     })
 
-    if (this.active) {
-      const html = await asyncMap(newMessages, htmlForMessage)
+    if (this.active && newMessages.length > 0) {
+      // Ensure the messsages are in ascending order.
+      newMessages.sort((a, b) => a.saved - b.saved)
+      const htmlForMessages = await asyncMap(newMessages, htmlForMessage)
       if (areOld) {
-        this.messagesDiv.prepend(...html)
-        this.oldestMessageTimestamp = messages[0]?.saved
-        if (messages.length < Cloud.messageBatchSize) {
-          this.oldestMessageTimestamp = null
+        const lastNewMessageSaved = newMessages.at(-1).saved
+        const saved = (div) => this.messages[messageIdForHtmlId(div.id)].saved
+        let didInsert = false
+        for (const oldMessageDiv of this.messagesDiv.children) {
+          if (saved(oldMessageDiv) > lastNewMessageSaved) {
+            oldMessageDiv.before(...htmlForMessages)
+            didInsert = true
+            break
+          }
+        }
+        if (!didInsert) {
+          this.messagesDiv.append(...htmlForMessages)
+          this.scrollToBottom()
+        }
+
+        if (0) {
+          // Verify all messages are in order.
+          const messageTimestamps = Array.from(this.messagesDiv.children).map(saved)
+          const sortedMessageTimestamps = messageTimestamps.toSorted((a, b) => a.saved - b.saved)
+          for (let i = 0; i < messageTimestamps.length; ++i) {
+            if (messageTimestamps[i] !== sortedMessageTimestamps[i]) {
+              console.error("Out-of-order message at", messageTimestamps[i])
+            }
+          }
+        }
+
+        const messageTimeStamp = newMessages[0]?.saved
+        if (messageTimeStamp < this.oldestMessageTimestamp) {
+          this.oldestMessageTimestamp = messageTimeStamp
         }
         this.updateFetchOlderMessagesButton()
       } else {
-        this.messagesDiv.append(...html)
+        this.messagesDiv.append(...htmlForMessages)
         this.scrollToBottom()
       }
     }
@@ -419,6 +455,10 @@ export class Messages {
 
 function htmlIdForMessage(message) {
   return `message-${message.id}`
+}
+
+function messageIdForHtmlId(id) {
+  return id.split("-")[1]
 }
 
 async function htmlForMessage(message) {

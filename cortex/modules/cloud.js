@@ -959,9 +959,11 @@ export class Cloud {
 	}
 
 	static messageBatchSize = 10
-	async fetchOlderMessages(endingTimestamp) {
+	async subscribeToOlderMessagesBatch(messagesHandler, endingTimestamp) {
 		await this.requireSignIn()
 		await this.requireCurrentCampaign()
+
+		const initialLoad = new Deferred()
 
 		const messagesRef = collection(db,
 			collections.campaigns, this.currentCampaign.id,
@@ -969,12 +971,37 @@ export class Cloud {
 		const queryRef = endingTimestamp
 			? query(messagesRef, orderBy("saved", "desc"), startAfter(endingTimestamp), limit(Cloud.messageBatchSize))
 			: query(messagesRef, orderBy("saved", "desc"), limit(Cloud.messageBatchSize))
-		const querySnapshot = await getDocs(queryRef)
+		onSnapshot(queryRef, (snapshot) => {
+			if (snapshot.empty) {
+				console.log("No more messages.")
+				// Required to let the messagesHandler update the UI.
+				messagesHandler.showMessages([], true)
+			}
+			let addedMessages = []
+			snapshot.docChanges().forEach((change) => {
+				const message = change.doc.data()
+				const source = change.doc.metadata.hasPendingWrites ? "Local" : "Server"
+				switch (change.type) {
+					case "added":
+						addedMessages.push(message)
+						break
+					case "modified":
+						// This will replace an already-shown message.
+						messagesHandler.showMessage(message)
+						break
+					case "removed":
+						console.debug(`Removed message ${source}: `, message)
+						// TODO: Handle message deletion; low-priority as only admins can delete messages entirely.
+						break
+				}
+			})
 
-		let messages = querySnapshot.docs.map((doc) => doc.data())
-		// The query needs to be descending to fetch newest messages, but order the returned messsages in ascending order.
-		messages.sort((a, b) => a.saved - b.saved)
-		return messages
+			// The messages will go at the beginning of the messages shown.
+			messagesHandler.showMessages(addedMessages, true)
+
+			initialLoad.resolve()
+		})
+		await initialLoad.promise
 	}
 
 	async subscribeToNewerMessages(messagesHandler, startingTimestamp) {
@@ -993,13 +1020,19 @@ export class Cloud {
 			: query(messagesRef, orderBy("saved"))
 		this.messagesHandlerForCampaignId[this.currentCampaign.id] = messagesHandler
 		this.unsubscribeMessagesForCampaignId[this.currentCampaign.id] = onSnapshot(queryRef, (snapshot) => {
+			let addedMessages = []
 			snapshot.docChanges().forEach((change) => {
 				const message = change.doc.data()
 				const source = change.doc.metadata.hasPendingWrites ? "Local" : "Server"
 				switch (change.type) {
 					case "added":
+						addedMessages.push(message)
+						break
 					case "modified":
-						// TODO: Avoid double update from local and server changes.
+						// This will replace an already-shown message.
+						// This does result in a double update from local and server changes,
+						// but that's actually desirable, as we want to show the local one right away
+						// with a pending timestamp, then update that once we have a timestamp.
 						messagesHandler.showMessage(message)
 						break
 					case "removed":
@@ -1008,6 +1041,10 @@ export class Cloud {
 						break
 				}
 			})
+
+			// The messages will go at the end of the messages shown.
+			messagesHandler.showMessages(addedMessages)
+
 			initialLoad.resolve()
 		})
 		await initialLoad.promise
