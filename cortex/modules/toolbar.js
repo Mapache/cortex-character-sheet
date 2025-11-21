@@ -22,10 +22,11 @@ class Tool {
 	 * @param {boolean} [enabled=true]
 	 * @param {Node} [customNode=null]
 	 */
-	constructor(icon, tip, action, enabled = true, customNode = null) {
+	constructor(icon, tip, action, disabledAction, enabled = true, customNode = null) {
 		this.icon = icon
 		this.tip = tip
 		this.action = action
+		this.disabledAction = disabledAction
 
 		this.enabled = enabled
 		this.node = customNode ?? (() => {
@@ -35,6 +36,8 @@ class Tool {
 			node.onclick = (e) => {
 				if (this.enabled) {
 					this.action(e)
+				} else {
+					this.disabledAction?.(e)
 				}
 			}
 			return node
@@ -120,6 +123,8 @@ export const campaigns = new Tool("campaigns", "Campaigns", async (e) => {
 
 	campaignsMenu.modal = menu(entries)
 	campaignsMenu.showAtEvent(e)
+}, async (e) => {
+	cloud.requireCurrentCampaign()
 })
 
 export const characters = new Tool("characters", "Characters", async (e) => {
@@ -165,11 +170,15 @@ export const characters = new Tool("characters", "Characters", async (e) => {
 
 	charactersMenu.modal = menu(entries)
 	charactersMenu.showAtEvent(e)
+}, async (e) => {
+	cloud.requireCurrentCampaign()
 })
 
 export const uploadCharacter = new Tool("upload", "Save Sheet to Cloud", async (e) => {
 	let json = save_character()
 	await cloud.uploadCharacter(json)
+}, async (e) => {
+	cloud.requireCurrentCampaign()
 })
 
 export const downloadCharacter = new Tool("download", "Download Sheet to File", async (e) => {
