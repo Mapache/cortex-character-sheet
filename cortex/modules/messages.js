@@ -8,6 +8,7 @@ import { titleCase, formatAbsoluteTime } from "./formatting.js"
 import { menu, menuEntry, menuDivider, menuLabel, menuTextInput } from "./menu.js"
 import { ToggleableStyle } from "./toggleableStyle.js"
 import { layoutControlsHidden, emptyDescriptionsHidden } from "./toggleableStyles.js"
+import { toggleEmptyDescriptionsHidden, toggleLayoutControlsHidden } from "./toolbar.js"
 
 const messagingVisible = new ToggleableStyle(
   "#messaging",
@@ -64,7 +65,9 @@ export class Messages {
     messagingVisible.enable()
     this.werelayoutControlsHidden = layoutControlsHidden.enabled
     layoutControlsHidden.enable()
+    toggleLayoutControlsHidden.disable()
     emptyDescriptionsHidden.enable()
+    toggleEmptyDescriptionsHidden.disable()
     setEditingEnabled(false)
 
     if (!this.messages) {
@@ -109,6 +112,8 @@ export class Messages {
     this.visible = false
     messagingVisible.disable()
     layoutControlsHidden.setEnabled(this.werelayoutControlsHidden)
+    toggleLayoutControlsHidden.enable()
+    toggleEmptyDescriptionsHidden.enable()
     setEditingEnabled(true)
   }
 

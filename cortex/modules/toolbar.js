@@ -32,7 +32,11 @@ class Tool {
 			const node = document.createElement("i")
 			node.classList.add("icon", this.icon)
 			node.title = this.tip
-			node.onclick = this.action
+			node.onclick = (e) => {
+				if (this.enabled) {
+					this.action()
+				}
+			}
 			return node
 		})()
 	}
