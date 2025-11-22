@@ -220,6 +220,7 @@ export const toggleMessaging = new Tool("toggle-messaging", "Messages & Dice Rol
 // MARK: Help Section
 
 export const helpModal = await Modal.build("help-modal")
+helpModal.modal.querySelector("#close button").onclick = (e) => helpModal.hide()
 export const toggleHelp = new Tool("help", "Help", async (e) => {
 	helpModal.show()
 })
