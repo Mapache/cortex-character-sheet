@@ -15,19 +15,8 @@ window.close_modal = close_modal
 
 import "./toolbar.js"
 
-import { show_context_menu, set_trait_collection_highlight_color, remove_trait_collection_highlight_color, set_style, context_menu_remove_item, move_to_top, move_to_bottom, move_up, move_down, move_to_other_column, move_to_next_page, move_to_previous_page } from "./traitGroupContextMenu.js"
-window.show_context_menu = show_context_menu
-window.set_trait_collection_highlight_color = set_trait_collection_highlight_color
-window.remove_trait_collection_highlight_color = remove_trait_collection_highlight_color
-window.set_style = set_style
-window.context_menu_remove_item = context_menu_remove_item
-window.move_to_top = move_to_top
-window.move_to_bottom = move_to_bottom
-window.move_up = move_up
-window.move_down = move_down
-window.move_to_other_column = move_to_other_column
-window.move_to_next_page = move_to_next_page
-window.move_to_previous_page = move_to_previous_page
+import * as traitGroupContextMenu from "./traitGroupContextMenu.js"
+window.traitGroupContextMenu = traitGroupContextMenu
 
 import { inferTraitGroupStyle } from "./traitGroupStyle.js"
 window.inferTraitGroupStyle = inferTraitGroupStyle

@@ -3,52 +3,50 @@
     <li>
       <div id="color-selection">
         <input id="trait-collection-highlight-picker" type="color" value="#C50852"
-          onchange="set_trait_collection_highlight_color(event)"
-          oninput="set_trait_collection_highlight_color(event)" />
-        <span id="color-removal" onclick="remove_trait_collection_highlight_color(event)"></span>
+          onchange="traitGroupContextMenu.setTraitGroupHighlightColor(event)"
+          oninput="traitGroupContextMenu.setTraitGroupHighlightColor(event)" />
+        <span id="color-removal" onclick="traitGroupContextMenu.removeTraitGroupHighlightColor(event)"></span>
       </div>
     </li>
     <li>Style<i class="fa-angle-right"></i>
       <div class="context-menu" id="styles">
-        <input type="radio" name="style" data-style="detailed" id="style-detailed" onchange="set_style(event)" /><label
-          for="style-detailed">Detailed</label>
-        <input type="radio" name="style" data-style="compact" id="style-compact" onchange="set_style(event)" /><label
-          for="style-compact">Compact</label>
-        <input type="radio" name="style" data-style="inline" id="style-inline" onchange="set_style(event)" /><label
-          for="style-inline">Inline</label>
+        <input type="radio" name="style" data-style="detailed" id="style-detailed"
+          onchange="traitGroupContextMenu.setStyle(event)" /><label for="style-detailed">Detailed</label>
+        <input type="radio" name="style" data-style="compact" id="style-compact"
+          onchange="traitGroupContextMenu.setStyle(event)" /><label for="style-compact">Compact</label>
+        <input type="radio" name="style" data-style="inline" id="style-inline"
+          onchange="traitGroupContextMenu.setStyle(event)" /><label for="style-inline">Inline</label>
         <input type="radio" name="style" data-style="detailed two-column" id="style-detailed-two-columns"
-          onchange="set_style(event)" /><label for="style-detailed-two-columns">Detailed
-          Two-Columns</label>
+          onchange="traitGroupContextMenu.setStyle(event)" /><label for="style-detailed-two-columns">Detailed Two-Columns</label>
         <input type="radio" name="style" data-style="compact two-column" id="style-compact-two-columns"
-          onchange="set_style(event);" /><label for="style-compact-two-columns">Compact
-          Two-Columns</label>
+          onchange="traitGroupContextMenu.setStyle(event)" /><label for="style-compact-two-columns">Compact Two-Columns</label>
         <input type="radio" name="style" data-style="stress" id="style-stress-detailed"
-          onchange="set_style(event)" /><label for="style-stress-detailed">Detailed Stress</label>
+          onchange="traitGroupContextMenu.setStyle(event)" /><label for="style-stress-detailed">Detailed Stress</label>
         <input type="radio" name="style" data-style="stress compact" id="style-stress-compact"
-          onchange="set_style(event);" /><label for="style-stress-compact">Compact Stress</label>
+          onchange="traitGroupContextMenu.setStyle(event)" /><label for="style-stress-compact">Compact Stress</label>
         <input type="radio" name="style" data-style="signature-asset" id="style-asset"
-          onchange="set_style(event)" /><label for="style-asset">Asset</label>
-        <input type="radio" name="style" data-style="resources" id="style-resource" onchange="set_style(event)" /><label
-          for="style-resource">Resource</label>
-        <input type="radio" name="style" data-style="roles" id="style-roles" onchange="set_style(event)" /><label
-          for="style-roles">Roles</label>
-        <input type="radio" name="style" data-style="values" id="style-values" onchange="set_style(event)" /><label
-          for="style-values">Values</label>
+          onchange="traitGroupContextMenu.setStyle(event)" /><label for="style-asset">Asset</label>
+        <input type="radio" name="style" data-style="resources" id="style-resource"
+          onchange="traitGroupContextMenu.setStyle(event)" /><label for="style-resource">Resource</label>
+        <input type="radio" name="style" data-style="roles" id="style-roles"
+          onchange="traitGroupContextMenu.setStyle(event)" /><label for="style-roles">Roles</label>
+        <input type="radio" name="style" data-style="values" id="style-values"
+          onchange="traitGroupContextMenu.setStyle(event)" /><label for="style-values">Values</label>
       </div>
     </li>
     <li>Move<i class="fa-angle-right"></i>
       <div class="context-menu" id="movement">
         <ul>
-          <li onclick="move_to_top(event)">To Top</li>
-          <li onclick="move_up(event)">Up</li>
-          <li onclick="move_down(event)">Down</li>
-          <li onclick="move_to_bottom(event)">To Bottom</li>
-          <li onclick="move_to_other_column(event)">To Other Column</li>
-          <li onclick="move_to_previous_page(event)">To Previous Page</li>
-          <li onclick="move_to_next_page(event)">To Next Page</li>
+          <li onclick="traitGroupContextMenu.moveToTop(event)">To Top</li>
+          <li onclick="traitGroupContextMenu.moveUp(event)">Up</li>
+          <li onclick="traitGroupContextMenu.moveDown(event)">Down</li>
+          <li onclick="traitGroupContextMenu.moveToBottom(event)">To Bottom</li>
+          <li onclick="traitGroupContextMenu.moveToOtherColumn(event)">To Other Column</li>
+          <li onclick="traitGroupContextMenu.moveToPreviousPage(event)">To Previous Page</li>
+          <li onclick="traitGroupContextMenu.moveToNextPage(event)">To Next Page</li>
         </ul>
       </div>
     </li>
-    <li onclick="context_menu_remove_item(event)">Delete</li>
+    <li onclick="traitGroupContextMenu.removeTraitGroup(event)">Delete</li>
   </ul>
 </div>

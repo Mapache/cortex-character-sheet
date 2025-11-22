@@ -6,10 +6,10 @@ const contextMenuModal = await Modal.build("context-menu")
 const contextMenu = contextMenuModal.modal
 const colorPicker = contextMenu.querySelector("#trait-collection-highlight-picker")
 
-let g_context_target = null
-export async function show_context_menu(e) {
-  g_context_target = e.target
-  let traitGroup = g_context_target.parentElement
+let traitGroup = null
+export async function showContextMenu(e) {
+  // Explicitly a global value, not a local one, for the menu handlers to use.
+  traitGroup = e.target.parentElement
 
   let traitGroupColor = traitGroup.getAttribute("highlight-color")
   let rootColor = document.querySelector(":root").getAttribute("highlight-color")
@@ -35,42 +35,38 @@ export async function show_context_menu(e) {
   contextMenuModal.showAt(x, y)
 }
 
-async function close_context_menu() {
-  g_context_target = null
+async function closeContextMenu() {
+  traitGroup = null
   contextMenuModal.hide()
 }
 
 // MARK: Highlight Color
 
-export async function set_trait_collection_highlight_color(e) {
-  let traitGroup = g_context_target.parentElement
+export async function setTraitGroupHighlightColor(e) {
   apply_highlight_color(traitGroup, colorPicker.value)
 
-  // Do NOT close_context_menu()
+  // Do NOT closeContextMenu()
 }
 
-export async function remove_trait_collection_highlight_color(e) {
-  let traitGroup = g_context_target.parentElement
+export async function removeTraitGroupHighlightColor(e) {
   apply_highlight_color(traitGroup, null)
 
-  close_context_menu()
+  closeContextMenu()
 }
 
 // MARK: Data Styles
 
-export async function set_style(e) {
-  let traitGroup = g_context_target.parentElement
+export async function setStyle(e) {
   let style = e.target.getAttribute("data-style")
   apply_data_style(traitGroup, style)
 
-  close_context_menu()
+  closeContextMenu()
 }
 
-export async function context_menu_remove_item(e) {
-  let item = g_context_target.parentElement
-  item.remove()
+export async function removeTraitGroup(e) {
+  traitGroup.remove()
 
-  close_context_menu()
+  closeContextMenu()
 
   // This could have been the last trait group on the last page.
   updatePagePlaceholderControl()
@@ -78,88 +74,81 @@ export async function context_menu_remove_item(e) {
 
 // MARK: Moving Trait Groups
 
-export async function move_to_top(e) {
-  let traitGroup = g_context_target.parentElement
+export async function moveToTop(e) {
   let column = traitGroup.parentElement
   column.prepend(traitGroup)
 
-  close_context_menu()
+  closeContextMenu()
 }
 
-export async function move_to_bottom(e) {
-  let traitGroup = g_context_target.parentElement
+export async function moveToBottom(e) {
   let column = traitGroup.parentElement
-  add_trait_group_to_column_bottom(traitGroup, column)
+  addTraitGroupToColumnBottom(traitGroup, column)
 
-  close_context_menu()
+  closeContextMenu()
 }
 
-export async function move_up(e) {
-  let traitGroup = g_context_target.parentElement
+export async function moveUp(e) {
   let previousTraitGroup = traitGroup.previousElementSibling
   if (previousTraitGroup) {
     previousTraitGroup.before(traitGroup)
   }
 
-  close_context_menu()
+  closeContextMenu()
 }
 
-export async function move_down(e) {
-  let traitGroup = g_context_target.parentElement
+export async function moveDown(e) {
   let nextTraitGroup = traitGroup.nextElementSibling
   if (!nextTraitGroup.classList.contains("add-item")) {
     nextTraitGroup.after(traitGroup)
   }
 
-  close_context_menu()
+  closeContextMenu()
 }
 
-export async function move_to_other_column(e) {
-  let traitGroup = g_context_target.parentElement
+export async function moveToOtherColumn(e) {
   let column = traitGroup.parentElement
   if (column.classList.contains("left")) {
     column = column.nextElementSibling
   } else {
     column = column.previousElementSibling
   }
-  add_trait_group_to_column_bottom(traitGroup, column)
+  addTraitGroupToColumnBottom(traitGroup, column)
 
-  close_context_menu()
+  closeContextMenu()
 }
 
-export async function move_to_next_page(e) {
-  let traitGroup = g_context_target.parentElement
+export async function moveToNextPage(e) {
   let column = traitGroup.parentElement
   let page = column.parentElement
   let newPage = page.nextElementSibling
   if (newPage && newPage.classList.contains("page")) { // Avoid the placeholder
     let newColumn = newPage.querySelector(".page-column.left")
-    add_trait_group_to_column_bottom(traitGroup, newColumn)
+    addTraitGroupToColumnBottom(traitGroup, newColumn)
   }
 
-  close_context_menu()
+  closeContextMenu()
 
   // This could now be the first trait group on the last page.
   updatePagePlaceholderControl()
 }
 
-export async function move_to_previous_page(e) {
-  let traitGroup = g_context_target.parentElement
+export async function moveToPreviousPage(e) {
   let column = traitGroup.parentElement
   let page = column.parentElement
   let newPage = page.previousElementSibling
   if (newPage && newPage.classList.contains("page")) { // Previous sibling should always be a page, but still check
     let newColumn = newPage.querySelector(".page-column.right")
-    add_trait_group_to_column_bottom(traitGroup, newColumn)
+    addTraitGroupToColumnBottom(traitGroup, newColumn)
   }
 
-  close_context_menu()
+  closeContextMenu()
 
   // This could have been the last trait group on the last page.
   updatePagePlaceholderControl()
 }
 
-function add_trait_group_to_column_bottom(traitGroup, column) {
+function addTraitGroupToColumnBottom(traitGroup, column) {
   let traitGroups = column.children
   let traitGroupPlaceholder = traitGroups[traitGroups.length - 1]
   traitGroupPlaceholder.before(traitGroup)
