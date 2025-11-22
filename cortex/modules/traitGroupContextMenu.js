@@ -10,6 +10,11 @@ let traitGroup = null
 export async function showContextMenu(e) {
   // Explicitly a global value, not a local one, for the menu handlers to use.
   traitGroup = e.target.parentElement
+  if (!traitGroup.classList.contains("trait-group")) {
+    console.error("Invalid context menu placement", traitGroup)
+    traitGroup = null
+    return
+  }
 
   let traitGroupColor = traitGroup.getAttribute("highlight-color")
   let rootColor = document.querySelector(":root").getAttribute("highlight-color")
