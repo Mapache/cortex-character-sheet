@@ -1386,6 +1386,15 @@ ref {
 		content: "\f017";
 	}
 
+	&.clear:before {
+		font-weight: 400;
+		content: "\f057";
+	}
+
+	&.reset:before {
+		content: "\f0e2";
+	}
+
 	&.trash:before {
 		content: "\f1f8";
 	}
@@ -2170,7 +2179,7 @@ ref {
 	}
 
 	.dice-effect {
-		width: 71px;
+		width: 69px;
 		text-align: left;
 
 		d {
@@ -2184,6 +2193,18 @@ ref {
 			margin-top: -7px;
 			color: #000;
 		}
+	}
+
+	.clear {
+		display: none;
+		float: left;
+		font-size: 12pt;
+		width: 0px;
+		line-height: 26px;
+	}
+
+	tr:hover .clear {
+		display: block;
 	}
 }
 

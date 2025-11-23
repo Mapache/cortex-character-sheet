@@ -599,6 +599,13 @@ function htmlForOutcomes(message, updateStatusClasses) {
       `<td class="dice-total-sum"><h2>${total}</h2></td>` +
       `<td class="dice-effect">${effectDice.map((die) => `<d>${die.size % 10}</d>`).join("")}</td>`
     table.appendChild(row)
+    function replaceHtmlForOutcomes() {
+      animateFlash(row, () => {
+        table.replaceWith(htmlForOutcomes(message, updateStatusClasses))
+        // Wait until after animation to avoid local change detection overwriting us mid-flash.
+        cloud.updateMessageDiceStatus(message.id, message.diceStatus)
+      })
+    }
     if (areSuggestions) {
       row.onclick = (e) => {
         message.diceStatus = diceStatus
@@ -607,12 +614,16 @@ function htmlForOutcomes(message, updateStatusClasses) {
         }
         row.classList.remove("shimmer")
         row.style.animationDelay = `0s`
-        animateFlash(row, () => {
-          table.replaceWith(htmlForOutcomes(message, updateStatusClasses))
-          // Wait until after animation to avoid local change detection overwriting us mid-flash.
-          cloud.updateMessageDiceStatus(message.id, diceStatus)
-        })
+        replaceHtmlForOutcomes()
       }
+    } else {
+      let clearDiceSelection = document.createElement("i")
+      clearDiceSelection.classList.add("icon", "clear")
+      clearDiceSelection.onclick = (e) => {
+        message.clearDiceStatus()
+        replaceHtmlForOutcomes()
+      }
+      row.prepend(clearDiceSelection)
     }
   }
   return table
@@ -621,7 +632,7 @@ function htmlForOutcomes(message, updateStatusClasses) {
 // MARK: Click-to-Roll
 
 document.getElementById("pages").addEventListener("click", (e) => {
-  Messages.messagesForCurrentCampaign().pageClicked(e)
+  Messages.messagesForCurrentCampaign()?.pageClicked(e)
 })
 
 function animateFlash(node, then) {

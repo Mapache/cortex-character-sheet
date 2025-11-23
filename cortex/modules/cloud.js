@@ -167,6 +167,10 @@ export class Message {
 		this.diceStatus.push(Message.DieRoll.unchosen)
 	}
 
+	clearDiceStatus() {
+		this.diceStatus = new Array(this.dice.length).fill(Message.DieRoll.unchosen)
+	}
+
 	diceStatusSuggestions(totalDiceCount = 2, effectDiceCount = 1) {
 		const dice = Array.from(this.dice.entries()) // [[index, roll]]
 		// Drop hitches (1)
