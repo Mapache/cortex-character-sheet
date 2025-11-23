@@ -786,9 +786,9 @@ export class Cloud {
 						// The change is to the currently displayed character, so attempt to merge it.
 						console.debug(`Change is to displayed character, checking for merge…`)
 						const mergeSheets = () => {
-							const currentJson = save_character()
-							const currentSheet = new CharacterSheet(currentJson)
-							if (currentSheet.jsonString === sheet.jsonString) {
+							const displayedJson = save_character()
+							const displayedSheet = new CharacterSheet(displayedJson)
+							if (displayedSheet.jsonString === sheet.jsonString) {
 								// New sheet matches what is displayed. This is likely the server version of recent local save.
 								console.debug("No changes to character sheet, skipping merge.")
 								this.addCurrentCharacterSheet(sheet)
@@ -796,10 +796,10 @@ export class Cloud {
 							}
 							const mergedJson = merge(
 								this.currentCharacterSheets[sheet.id]?.json,
-								currentJson,
+								displayedJson,
 								sheet.json)
 							const mergedSheet = new CharacterSheet(mergedJson)
-							if (mergedSheet.jsonString !== currentSheet.jsonString) {
+							if (mergedSheet.jsonString !== displayedSheet.jsonString) {
 								console.debug("Merge complete with result", mergedJson)
 								load_character(mergedJson)
 							}
