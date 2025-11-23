@@ -1631,7 +1631,7 @@ ref {
 		transform: unset;
 	}
 
-	li:hover .context-menu {
+	li:hover>.context-menu {
 		display: block;
 	}
 

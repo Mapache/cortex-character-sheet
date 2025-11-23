@@ -150,37 +150,50 @@ export const characters = new Tool("characters", "Characters", async (e) => {
 
 	const charactersMenu = new Modal()
 
-	let entries = []
-	for (const characterSheet of await cloud.sortedCurrentCharacterSheets()) {
-		function characterSelected(character) {
-			return (e) => {
-				load_character(character.json)
-				cloud.updateURLForCharacter(character)
-				charactersMenu.hide()
+	async function characterEntries(archived) {
+		let entries = []
+		for (const characterSheet of await cloud.sortedCurrentCharacterSheets(archived)) {
+			function characterSelected(character) {
+				return (e) => {
+					load_character(character.json)
+					cloud.updateURLForCharacter(character)
+					charactersMenu.hide()
+				}
 			}
+			let savedBefore = characterSheet.saved
+			let rollbackMenuEntry = menuEntry("Load older versions…", async (e) => {
+				// Dynamically expand this submenu
+				let versions = await cloud.versionsForCharacter(characterSheet, savedBefore)
+				if (versions.length) {
+					savedBefore = versions.at(-1)?.saved
+					let rollbackEntries = versions.map(
+						(version) => menuEntry(formatRelativeTime(version.saved), characterSelected(version))
+					)
+					rollbackMenuEntry.before(...rollbackEntries)
+				}
+				if (versions.length < Cloud.characterSheetVersionsBatchSize) {
+					rollbackMenuEntry.onclick = null
+					rollbackMenuEntry.classList.add("disabled")
+					rollbackMenuEntry.innerText = "No older versions"
+				}
+			})
+			let subMenuEntries = [
+				menuEntry(formatRelativeTime(characterSheet.saved), characterSelected(characterSheet)),
+				rollbackMenuEntry,
+			]
+			if (!archived) {
+				subMenuEntries.push(menuDivider())
+				subMenuEntries.push(menuEntry("Archive Character", (e) => {
+					cloud.archiveCharacter(characterSheet)
+					charactersMenu.hide()
+				}))
+			}
+			entries.push(menuEntry(titleCase(characterSheet.name), characterSelected(characterSheet), subMenuEntries))
 		}
-		let savedBefore = characterSheet.saved
-		let rollbackMenuEntry = menuEntry("Load older versions…", async (e) => {
-			// Dynamically expand this submenu
-			let versions = await cloud.versionsForCharacter(characterSheet, savedBefore)
-			if (versions.length) {
-				savedBefore = versions.at(-1)?.saved
-				let rollbackEntries = versions.map(
-					(version) => menuEntry(formatRelativeTime(version.saved), characterSelected(version))
-				)
-				rollbackMenuEntry.before(...rollbackEntries)
-			}
-			if (versions.length < Cloud.characterSheetVersionsBatchSize) {
-				rollbackMenuEntry.onclick = null
-				rollbackMenuEntry.classList.add("disabled")
-				rollbackMenuEntry.innerText = "No older versions"
-			}
-		})
-		entries.push(menuEntry(titleCase(characterSheet.name), characterSelected(characterSheet), [
-			menuEntry(formatRelativeTime(characterSheet.saved), characterSelected(characterSheet)),
-			rollbackMenuEntry
-		]))
+		return entries
 	}
+
+	let entries = await characterEntries(false)
 	if (entries.length > 0) {
 		entries.push(menuDivider())
 	}
@@ -189,6 +202,11 @@ export const characters = new Tool("characters", "Characters", async (e) => {
 		cloud.updateURLForCharacter(null)
 		charactersMenu.hide()
 	}))
+	let archivedCharacterEntries = await characterEntries(true)
+	if (archivedCharacterEntries.length) {
+		entries.push(menuDivider())
+		entries.push(menuEntry("Archived Characters", null, archivedCharacterEntries))
+	}
 
 	charactersMenu.modal = menu(entries)
 	charactersMenu.showAtEvent(e)

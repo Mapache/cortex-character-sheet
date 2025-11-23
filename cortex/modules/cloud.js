@@ -78,12 +78,13 @@ export class Campaign {
 
 export class CharacterSheet {
 	// Either of json and jsonString can be null and inferred from the other.
-	constructor(json, jsonString, saved) {
+	constructor(json, jsonString, saved = null, archived = false) {
 		this.json = json || JSON.parse(jsonString)
 		this.jsonString = jsonString || JSON.stringify(json)
 		this.name = this.json.characterName
 		this.id = generateHash(this.name)
 		this.saved = saved // Expected to be null for client-created objects
+		this.archived = archived ?? false
 		Object.freeze(this) // Make it immutable
 	}
 
@@ -94,11 +95,12 @@ export class CharacterSheet {
 				json: characterSheet.jsonString,
 				name: characterSheet.name,
 				saved: serverTimestamp(),
+				// CharacterSheets sent to the server are never marked as archived.
 			}
 		},
 		fromFirestore: (snapshot, options) => {
 			const data = snapshot.data(options)
-			return new CharacterSheet(null, data.json, data.saved?.toDate())
+			return new CharacterSheet(null, data.json, data.saved?.toDate(), data.archived)
 		}
 	}
 }
@@ -826,10 +828,10 @@ export class Cloud {
 		await initialLoad.promise
 	}
 
-	async sortedCurrentCharacterSheets() {
+	async sortedCurrentCharacterSheets(archived = false) {
 		await this.requireCurrentCharacterSheets()
 
-		let sheets = Object.values(this.currentCharacterSheets)
+		let sheets = Object.values(this.currentCharacterSheets).filter((sheet) => (sheet.archived == archived))
 		sheets.sort((a, b) => a.name.localeCompare(b.name))
 		return sheets
 	}
@@ -858,7 +860,8 @@ export class Cloud {
 		const sheet = new CharacterSheet(json)
 
 		// Check if the sheet is unchanged
-		if (this.currentCharacterSheets[sheet.id]?.jsonString === sheet.jsonString) {
+		const currentSheet = this.currentCharacterSheets[sheet.id]
+		if (!currentSheet?.archived && currentSheet?.jsonString === sheet.jsonString) {
 			// No changes, no need to do anything.
 			console.debug("Skipping upload for unchanged character sheet", sheet.name)
 			return
@@ -912,6 +915,22 @@ export class Cloud {
 		let versions = querySnapshot.docs.map((doc) => doc.data())
 		versions.sort((a, b) => b.saved - a.saved)
 		return versions
+	}
+
+	async archiveCharacter(sheet) {
+		await this.requireSignIn()
+		await this.requireCurrentCampaign()
+		await this.requireCurrentCharacterSheets()
+
+		try {
+			await updateDoc(doc(db,
+				collections.campaigns, this.currentCampaign.id,
+				collections.characters, sheet.id),
+				{ archived: true })
+			console.debug("Character Sheet archived with ID: ", sheet.id)
+		} catch (error) {
+			console.error("Error archiving Character Sheet: ", error)
+		}
 	}
 
 	// MARK: Messages & Dice Rolls
