@@ -66,6 +66,7 @@
 
 /* Colors */
 :root {
+	background: white;
 	--highlight: #C50852;
 	--aura: #C5085220;
 }

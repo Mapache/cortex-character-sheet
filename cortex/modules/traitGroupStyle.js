@@ -1,3 +1,4 @@
+import { HSV, RGB } from "./color.js"
 import { noDiePlaceholder } from "./conversion.js"
 
 function resetTraitGroup(traitGroup) {
@@ -110,10 +111,17 @@ export function apply_highlight_color(elem, color) {
 		elem.setAttribute("highlight-color", color)
 		elem.style.setProperty("--highlight", color)
 		elem.style.setProperty("--aura", color + "20") // RGB + A
+		let hsv = RGB.fromHex(color).toHSV()
+		hsv.v = 1 - hsv.v
+		let darkColor = hsv.toRGB().toHex()
+		elem.style.setProperty("--darklight", darkColor)
+		elem.style.setProperty("--umbra", darkColor + "20") // RGB + A
 	} else {
 		elem.removeAttribute("highlight-color")
 		elem.style.removeProperty("--highlight")
 		elem.style.removeProperty("--aura")
+		elem.style.removeProperty("--darklight")
+		elem.style.removeProperty("--umbra")
 	}
 }
 

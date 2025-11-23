@@ -1,0 +1,64 @@
+@media (prefers-color-scheme: dark) {
+
+  :root,
+  html,
+  body
+  .dark {
+    background: black;
+    color: white;
+    --highlight: #5a0021;
+    --aura: #5a002120;
+    --darklight: #a5003c;
+    --umbra: #a5003c20;
+  }
+}
+
+:root,
+html,
+body {
+  text-align: center;
+  font-size: 24pt;
+  line-height: 48pt;
+
+  color-scheme: light dark;
+
+  background: white;
+  color: black;
+  --highlight: #a5003c;
+  --aura: #a5003c20;
+  --darklight: #5a0021;
+  --umbra: #5a002120;
+}
+
+.tinted-inheritance {
+  color: var(--highlight);
+  background: var(--aura);
+}
+
+@media (prefers-color-scheme: dark) {
+  .tinted-inheritance {
+    color: var(--highlight);
+    background: var(--aura);
+  }
+}
+
+.tinted-flip {
+  color: var(--highlight);
+  background: var(--aura);
+}
+
+@media (prefers-color-scheme: dark) {
+  .tinted-flip {
+    color: var(--darklight);
+    background: var(--umbra);
+  }
+}
+
+.base {}
+
+.custom {
+  --highlight: #09771b;
+  --aura: #09771b20;
+  --darklight: #0a881f;
+  --umbra: #0a881f20;
+}
