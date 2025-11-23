@@ -10,8 +10,8 @@ window.add_trait_group = add_trait_group
 window.add_trait = add_trait
 window.remove_item = remove_item
 
-import { close_modal } from "./modal.js"
-window.close_modal = close_modal
+import { hideCurrentModal } from "./modal.js"
+window.hideCurrentModal = hideCurrentModal
 
 import "./toolbar.js"
 

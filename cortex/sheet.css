@@ -1040,13 +1040,61 @@ ref {
 }
 
 .dialog {
-	width: 256px;
-	transform: translate(-50%, -50%);
+	width: 500pt;
+	left: 50%;
+	top: 25%;
+	transform: translate(-50%, -25%);
+	padding: 8pt 8pt 0 8pt;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 12pt;
 	box-shadow: 0 0 16px rgba(0, 0, 0, 0.3);
+
+	#close {
+		position: relative;
+		bottom: 0;
+		left: 50%;
+		margin-bottom: 12pt;
+
+		button {
+			border: 0;
+			border-radius: 5px;
+			background: none;
+			font-size: 12pt;
+			cursor: pointer;
+			padding: 4pt 16pt 4pt 16pt;
+			margin: 0;
+			box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+			transform: translate(-50%, 0);
+			transition: color 100ms;
+		}
+
+		button:hover {
+			color: var(--highlight);
+			background: #ddd;
+			box-shadow: 0 0 12px var(--aura);
+			transition: color 100ms;
+		}
+	}
 }
 
 .modal input {
 	width: 100%;
+}
+
+#info-modal {
+	#title {
+		color: var(--highlight);
+		font-weight: 700;
+		font-size: 16pt;
+		text-align: center;
+	}
+
+	#info {
+		&>a {
+			display: block;
+			text-align: center;
+		}
+	}
 }
 
 #url-modal {
@@ -1064,12 +1112,11 @@ ref {
 }
 
 #help-modal {
-	position: absolute;
 	left: 50%;
 	top: 50%;
+	transform: translate(-50%, -50%);
 	width: 500pt;
-	padding: 16pt 24pt 0 24pt;
-	font-family: 'Open Sans', sans-serif;
+	padding: 0 24pt 0 24pt;
 	font-size: 10pt;
 
 	#bottom {
@@ -1091,40 +1138,13 @@ ref {
 		#legal {
 			font-size: 8pt;
 			text-align: justify;
-			padding: 12pt;
+			padding: 8pt;
 
 			a {
 				color: var(--highlight);
 				font-weight: 800;
 				text-decoration: none;
 			}
-		}
-	}
-
-	#close {
-		position: relative;
-		bottom: 0;
-		left: 50%;
-		margin-bottom: 8pt;
-
-		button {
-			border: 0;
-			border-radius: 5px;
-			background: none;
-			font-size: 12pt;
-			cursor: pointer;
-			padding: 6pt 16pt 6pt 16pt;
-			margin: 0;
-			box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
-			transform: translate(-50%, 0);
-			transition: color 100ms;
-		}
-
-		button:hover {
-			color: var(--highlight);
-			background: #ddd;
-			box-shadow: 0 0 12px var(--aura);
-			transition: color 100ms;
 		}
 	}
 
@@ -1154,7 +1174,7 @@ ref {
 		width: 50%;
 	}
 
-	#top table td:nth-child(1) {
+	#top table td:nth-child(1):has(+ td) {
 		text-align: right;
 		padding-right: 8pt;
 	}

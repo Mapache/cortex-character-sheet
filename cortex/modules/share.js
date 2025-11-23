@@ -16,6 +16,7 @@ export async function copyShareUrl(campaign, access) {
     const shareUrl = createShareUrl(campaign.id, key)
     await navigator.clipboard.writeText(shareUrl)
     console.log("Copied share URL:", shareUrl)
+    return shareUrl
   } catch (err) {
     console.error("Failed to copy share URL:", err)
   }

@@ -1,11 +1,9 @@
 import { fetchHtml } from "./fetchHtml.js"
 
 let currentModal = null
-export function close_modal(e) {
-  if (currentModal != null) {
-    currentModal.hide()
-    currentModal = null
-  }
+export function hideCurrentModal(e) {
+  currentModal?.hide()
+  currentModal = null
 }
 
 const modalBackground = document.getElementById("modal-bg")
@@ -58,3 +56,8 @@ export class Modal {
     this.callback?.()
   }
 }
+
+// A generic information-presentation modal dialog
+export const infoModal = await Modal.build("info-modal")
+infoModal.title = infoModal.modal.querySelector("#title")
+infoModal.info = infoModal.modal.querySelector("#info")

@@ -5,7 +5,7 @@ import { formatRelativeTime, titleCase } from "./formatting.js"
 import { load_character, nuke_character } from "./load.js"
 import { menu, menuDivider, menuEntry, menuLabel, menuTextInput } from "./menu.js"
 import { Messages } from "./messages.js"
-import { Modal } from "./modal.js"
+import { Modal, infoModal } from "./modal.js"
 import { save_character } from "./save.js"
 import { copyShareUrl } from "./share.js"
 import { ToggleableStyle } from "./toggleableStyle.js"
@@ -96,12 +96,30 @@ export const campaigns = new Tool("campaigns", "Campaigns", async (e) => {
 				}),
 				menuDivider(),
 				menuEntry("Share as editable…", async (e) => {
-					await copyShareUrl(campaign, CampaignPermissions.editor)
+					const shareUrl = await copyShareUrl(campaign, CampaignPermissions.editor)
 					campaignsMenu.hide()
+					infoModal.title.innerHTML = `
+						Sharing link copied to clipboard:
+					`
+					infoModal.info.innerHTML = `
+						<a href="${shareUrl}">${shareUrl}</a>
+						<p>Anyone who visits this link will be granted permission to edit and save characters
+						in the ${campaign.name} campaign and use the dice rolling and chat system.</p>
+					`
+					infoModal.show()
 				}),
 				menuEntry("Share as read-only…", async (e) => {
-					await copyShareUrl(campaign, CampaignPermissions.reader)
+					const shareUrl = await copyShareUrl(campaign, CampaignPermissions.reader)
 					campaignsMenu.hide()
+					infoModal.title.innerHTML = `
+						Sharing link copied to clipboard:
+					`
+					infoModal.info.innerHTML = `
+						<a href="${shareUrl}">${shareUrl}</a>
+						<p>Anyone who visits this link will be granted read-only permission to view characters
+						in the ${campaign.name} campaign.</p>
+					`
+					infoModal.show()
 				})
 			]
 		}
