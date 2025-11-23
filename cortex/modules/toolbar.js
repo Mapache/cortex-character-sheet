@@ -1,4 +1,4 @@
-import { CampaignPermissions, cloud } from "./cloud.js"
+import { CampaignPermissions, Cloud, cloud } from "./cloud.js"
 import { whenInteractive } from "./defer.js"
 import { Flags } from "./flags.js"
 import { formatRelativeTime, titleCase } from "./formatting.js"
@@ -152,30 +152,34 @@ export const characters = new Tool("characters", "Characters", async (e) => {
 
 	let entries = []
 	for (const characterSheet of await cloud.sortedCurrentCharacterSheets()) {
+		function characterSelected(character) {
+			return (e) => {
+				load_character(character.json)
+				cloud.updateURLForCharacter(character)
+				charactersMenu.hide()
+			}
+		}
+		let savedBefore = characterSheet.saved
 		let rollbackMenuEntry = menuEntry("Load older versions…", async (e) => {
 			// Dynamically expand this submenu
-			rollbackMenuEntry.onclick = null
-			let versions = await cloud.versionsForCharacter(characterSheet)
-			if (versions.length === 0) {
-				rollbackMenuEntry.innerText = "No older versions"
-				return
+			let versions = await cloud.versionsForCharacter(characterSheet, savedBefore)
+			if (versions.length) {
+				savedBefore = versions.at(-1)?.saved
+				let rollbackEntries = versions.map(
+					(version) => menuEntry(formatRelativeTime(version.saved), characterSelected(version))
+				)
+				rollbackMenuEntry.before(...rollbackEntries)
 			}
-			rollbackMenuEntry.innerText = "Older versions:"
-			let rollbackEntries = versions.map(
-				(version) =>
-					menuEntry(formatRelativeTime(version.saved), (e) => {
-						load_character(version.json)
-						cloud.updateURLForCharacter(version)
-						charactersMenu.hide()
-					})
-			)
-			rollbackMenuEntry.after(...rollbackEntries)
+			if (versions.length < Cloud.characterSheetVersionsBatchSize) {
+				rollbackMenuEntry.onclick = null
+				rollbackMenuEntry.classList.add("disabled")
+				rollbackMenuEntry.innerText = "No older versions"
+			}
 		})
-		entries.push(menuEntry(titleCase(characterSheet.name), (e) => {
-			load_character(characterSheet.json)
-			cloud.updateURLForCharacter(characterSheet)
-			charactersMenu.hide()
-		}, [rollbackMenuEntry]))
+		entries.push(menuEntry(titleCase(characterSheet.name), characterSelected(characterSheet), [
+			menuEntry(formatRelativeTime(characterSheet.saved), characterSelected(characterSheet)),
+			rollbackMenuEntry
+		]))
 	}
 	if (entries.length > 0) {
 		entries.push(menuDivider())

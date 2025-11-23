@@ -889,14 +889,26 @@ export class Cloud {
 		}
 	}
 
-	async versionsForCharacter(characterSheet) {
+	static characterSheetVersionsBatchSize = 5
+	async versionsForCharacter(characterSheet, olderThanTimestamp) {
 		// TODO: Caching of some sort, and pruning old versions, or maybe use TTL for that?
 		const versionsRef = collection(db,
 			collections.campaigns, this.currentCampaign.id,
 			collections.characters, characterSheet.id,
 			collections.characterVersions).withConverter(CharacterSheet.converter)
-		const querySnapshot = await getDocs(query(versionsRef, orderBy("saved", "desc"), limit(6)))
-
+		const queryRef = olderThanTimestamp
+			? query(
+				versionsRef,
+				orderBy("saved", "desc"),
+				startAfter(olderThanTimestamp),
+				limit(Cloud.characterSheetVersionsBatchSize)
+			)
+			: query(
+				versionsRef,
+				orderBy("saved", "desc"),
+				limit(Cloud.characterSheetVersionsBatchSize)
+			)
+		const querySnapshot = await getDocs(queryRef)
 		let versions = querySnapshot.docs.map((doc) => doc.data())
 		versions.sort((a, b) => b.saved - a.saved)
 		return versions

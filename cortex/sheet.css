@@ -70,6 +70,10 @@
 	--aura: #C5085220;
 }
 
+.disabled {
+	color: #999 !important;
+}
+
 /* Pages */
 
 .pages {
@@ -1614,7 +1618,7 @@ ref {
 		all: unset;
 	}
 
-	li:hover {
+	li:not(.disabled):hover {
 		background: var(--highlight);
 		color: white;
 	}
