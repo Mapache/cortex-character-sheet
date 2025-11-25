@@ -78,11 +78,18 @@ export class Campaign {
 
 export class CharacterSheet {
 	// Either of json and jsonString can be null and inferred from the other.
-	constructor(json, jsonString, saved = null, archived = false) {
+	constructor(json, author, jsonString = null, saved = null, archived = false) {
+		if (json && jsonString) {
+			console.error(`Creating character sheet with both json and jsonString!`)
+		}
+		if (!json && !jsonString) {
+			console.error(`Creating character sheet with neither json nor jsonString!`)
+		}
 		this.json = json || JSON.parse(jsonString)
 		this.jsonString = jsonString || JSON.stringify(json)
 		this.name = this.json.characterName
 		this.id = generateHash(this.name)
+		this.author = author
 		this.saved = saved // Expected to be null for client-created objects
 		this.archived = archived ?? false
 		Object.freeze(this) // Make it immutable
@@ -94,13 +101,14 @@ export class CharacterSheet {
 			return {
 				json: characterSheet.jsonString,
 				name: characterSheet.name,
+				author: characterSheet.author,
 				saved: serverTimestamp(),
 				// CharacterSheets sent to the server are never marked as archived.
 			}
 		},
 		fromFirestore: (snapshot, options) => {
 			const data = snapshot.data(options)
-			return new CharacterSheet(null, data.json, data.saved?.toDate(), data.archived)
+			return new CharacterSheet(null, data.author, data.json, data.saved?.toDate(), data.archived)
 		}
 	}
 }
@@ -491,6 +499,9 @@ export class Cloud {
 	}
 
 	async userProfileForUserId(uid) {
+		if (!uid) {
+			return null
+		}
 		let userProfile = this.userProfileCache[uid]
 		if (!userProfile) {
 			const docSnapshot = await getDoc(doc(db, collections.userProfiles, uid).withConverter(UserProfile.converter))
@@ -503,10 +514,16 @@ export class Cloud {
 	}
 
 	async displayNameForUserId(uid) {
+		if (!uid) {
+			return "Unknown"
+		}
 		return (await this.userProfileForUserId(uid))?.displayName ?? uid
 	}
 
 	async displayEmojiForUserId(uid) {
+		if (!uid) {
+			return ""
+		}
 		return (await this.userProfileForUserId(uid))?.displayEmoji ?? ""
 	}
 
@@ -764,7 +781,7 @@ export class Cloud {
 	}
 
 	async getCharactersForCurrentCampaign() {
-		await this.requireSignIn()
+		const user = await this.requireSignIn()
 		await this.requireCurrentCampaign()
 
 		this.unsubscribeCharactersForCurrentCampaign?.()
@@ -793,7 +810,7 @@ export class Cloud {
 						console.debug(`Change is to displayed character, checking for merge…`)
 						const mergeSheets = () => {
 							const displayedJson = save_character()
-							const displayedSheet = new CharacterSheet(displayedJson)
+							const displayedSheet = new CharacterSheet(displayedJson, user.uid)
 							if (displayedSheet.jsonString === sheet.jsonString) {
 								// New sheet matches what is displayed. This is likely the server version of recent local save.
 								console.debug("No changes to character sheet, skipping merge.")
@@ -804,7 +821,7 @@ export class Cloud {
 								this.currentCharacterSheets[sheet.id]?.json,
 								displayedJson,
 								sheet.json)
-							const mergedSheet = new CharacterSheet(mergedJson)
+							const mergedSheet = new CharacterSheet(mergedJson, user.uid)
 							if (mergedSheet.jsonString !== displayedSheet.jsonString) {
 								console.debug("Merge complete with result", mergedJson)
 								load_character(mergedJson)
@@ -857,11 +874,11 @@ export class Cloud {
 	}
 
 	async uploadCharacter(json) {
-		await this.requireSignIn()
+		const user = await this.requireSignIn()
 		await this.requireCurrentCampaign()
 		await this.requireCurrentCharacterSheets()
 
-		const sheet = new CharacterSheet(json)
+		const sheet = new CharacterSheet(json, user.uid)
 
 		// Check if the sheet is unchanged
 		const currentSheet = this.currentCharacterSheets[sheet.id]

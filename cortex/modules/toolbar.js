@@ -1,3 +1,4 @@
+import { asyncMap } from "./async.js"
 import { CampaignPermissions, Cloud, cloud } from "./cloud.js"
 import { whenInteractive } from "./defer.js"
 import { Flags } from "./flags.js"
@@ -160,15 +161,18 @@ export const characters = new Tool("characters", "Characters", async (e) => {
 					charactersMenu.hide()
 				}
 			}
+			async function menuEntryForVersion(version) {
+				return menuEntry(
+					`${formatRelativeTime(version.saved)} by ${await cloud.displayNameForUserId(version.author)}`,
+					characterSelected(version))
+			}
 			let savedBefore = characterSheet.saved
 			let rollbackMenuEntry = menuEntry("Load older versions…", async (e) => {
 				// Dynamically expand this submenu
 				let versions = await cloud.versionsForCharacter(characterSheet, savedBefore)
 				if (versions.length) {
 					savedBefore = versions.at(-1)?.saved
-					let rollbackEntries = versions.map(
-						(version) => menuEntry(formatRelativeTime(version.saved), characterSelected(version))
-					)
+					let rollbackEntries = await asyncMap(versions, menuEntryForVersion)
 					rollbackMenuEntry.before(...rollbackEntries)
 				}
 				if (versions.length < Cloud.characterSheetVersionsBatchSize) {
@@ -178,7 +182,7 @@ export const characters = new Tool("characters", "Characters", async (e) => {
 				}
 			})
 			let subMenuEntries = [
-				menuEntry(formatRelativeTime(characterSheet.saved), characterSelected(characterSheet)),
+				await menuEntryForVersion(characterSheet),
 				rollbackMenuEntry,
 			]
 			if (!archived) {
