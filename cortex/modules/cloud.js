@@ -517,14 +517,16 @@ export class Cloud {
 		if (!uid) {
 			return "Unknown"
 		}
-		return (await this.userProfileForUserId(uid))?.displayName ?? uid
+		const profile = await this.userProfileForUserId(uid)
+		return profile.campaignDisplayNames[this.currentCampaign.id] ?? profile?.displayName ?? uid
 	}
 
 	async displayEmojiForUserId(uid) {
 		if (!uid) {
 			return ""
 		}
-		return (await this.userProfileForUserId(uid))?.displayEmoji ?? ""
+		const profile = await this.userProfileForUserId(uid)
+		return profile?.displayEmoji ?? ""
 	}
 
 	// MARK: Permissions
