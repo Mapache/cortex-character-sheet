@@ -1322,8 +1322,16 @@ ref {
 		font-weight: 400;
 	}
 
-	&.reset:before {
-		content: "\f01e";
+	&.plus-minus:before {
+		content: "\e43c";
+	}
+
+	&.caret-up:before {
+		content: "\f0d8";
+	}
+
+	&.caret-down:before {
+		content: "\f0d7";
 	}
 
 	&.campaigns:before {
