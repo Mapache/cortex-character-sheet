@@ -47,7 +47,7 @@ class Tool {
 	}
 
 	static custom(node, enabled = true) {
-		return new Tool(null, null, null, enabled, node)
+		return new Tool(null, null, null, null, enabled, node)
 	}
 
 	enable() {

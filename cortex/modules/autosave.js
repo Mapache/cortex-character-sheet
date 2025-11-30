@@ -16,7 +16,7 @@ async function autosave(overrideCampaign = null) {
   }
 }
 
-export function didModifyDisplayedCharacterSheet() {
+function didModifyDisplayedCharacterSheet() {
   if (isCurrentCharacterNameValid()) {
     // Don't autosave until the character sheet has a name other than the default.
     autosaveTimeout.restart()

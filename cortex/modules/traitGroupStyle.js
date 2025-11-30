@@ -138,6 +138,7 @@ export const globalHighlightColorPicker = (() => {
 	function setGlobalHighlightColor(e) {
 		const root = document.querySelector(":root")
 		applyHighlightColor(root, picker.value)
+		didModifyDisplayedCharacterSheet()
 	}
 	picker.onchange = setGlobalHighlightColor
 	picker.oninput = setGlobalHighlightColor
