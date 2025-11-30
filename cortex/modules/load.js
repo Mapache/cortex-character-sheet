@@ -1,5 +1,5 @@
-
 import { diceToHtml, textToHtml } from "./conversion.js"
+import * as elements from "./elements.js"
 import { updateTitles } from "./elements.js"
 import { applyDataStyle, applyHighlightColor, defaultHighlightColor, globalHighlightColorPicker, updateTraitGroupDisplay } from "./traitGroupStyle.js"
 
@@ -52,7 +52,7 @@ async function elementForPathParts(parts) {
     const dataOnload = current.getAttribute("data-onload")
     if (dataOnload) {
       // console.debug("Creating new element")
-      await window[dataOnload]({ target: current })
+      await elements[dataOnload]({ target: current })
       p = p - 1
       current = current.parentElement
     }

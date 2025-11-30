@@ -2,6 +2,8 @@
 
 import "./account.js"
 
+import "./autosave.js"
+
 import "./dragAndDrop.js"
 
 import { addPage, addTraitGroup, addTrait, removeItem } from "./elements.js"

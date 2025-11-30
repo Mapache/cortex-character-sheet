@@ -152,8 +152,14 @@ export function updateTitles(characterName, excludingTitle) {
   updateDocumentTitle(characterName)
 }
 
+export const defaultCharacterName = "NAME"
+
+export function isCharacterNameValid(characterName) {
+  return characterName.length > 0 && characterName !== defaultCharacterName
+}
+
 export function updateDocumentTitle(characterName) {
-  if (characterName === "NAME" || characterName.length === 0) {
+  if (!isCharacterNameValid(characterName)) {
     characterName = "Cortex Prime"
   }
   document.title = characterName + " Character Sheet"
@@ -161,4 +167,8 @@ export function updateDocumentTitle(characterName) {
 
 export function currentCharacterName() {
   return document.querySelector(".title").innerText // Get name from first page
+}
+
+export function isCurrentCharacterNameValid() {
+  return isCharacterNameValid(currentCharacterName())
 }

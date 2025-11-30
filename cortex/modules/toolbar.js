@@ -19,11 +19,12 @@ class Tool {
 	/**
 	 * @param {string} icon - Icon class 
 	 * @param {string} tip - Help string
-	 * @param {(event) => void} action 
+	 * @param {async (event) => void} action
+	 * @param {async (event) => void} [disabledAction=null]
 	 * @param {boolean} [enabled=true]
 	 * @param {Node} [customNode=null]
 	 */
-	constructor(icon, tip, action, disabledAction, enabled = true, customNode = null) {
+	constructor(icon, tip, action, disabledAction = null, enabled = true, customNode = null) {
 		this.icon = icon
 		this.tip = tip
 		this.action = action
@@ -34,11 +35,11 @@ class Tool {
 			const node = document.createElement("i")
 			node.classList.add("icon", this.icon)
 			node.title = this.tip
-			node.onclick = (e) => {
+			node.onclick = async (e) => {
 				if (this.enabled) {
-					this.action(e)
+					await this.action(e)
 				} else {
-					this.disabledAction?.(e)
+					await this.disabledAction?.(e)
 				}
 			}
 			return node
@@ -339,7 +340,7 @@ whenInteractive(() => {
 	emptyDescriptionsHidden.applyControlClass()
 
 	didSwitchCampaign(cloud.currentCampaign)
-	cloud.events.addEventListener("campaignSwitched", (e) => {
+	cloud.events.addEventListener("didSwitchCampaign", (e) => {
 		if (e.detail.nameOnly) {
 			displayCampaignName(e.detail.campaign)
 		} else {

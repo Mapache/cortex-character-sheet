@@ -734,6 +734,7 @@ export class Cloud {
 			this.messagesHandlerForCampaignId[this.currentCampaign.id]?.inactivate()
 		}
 
+		this.willSwitchCampaign()
 		this.currentCampaign = campaign
 		this.didSwitchCampaign()
 		this.updateURLForCurrentCampaign()
@@ -742,8 +743,18 @@ export class Cloud {
 		this.messagesHandlerForCampaignId[this.currentCampaign.id]?.activate()
 	}
 
+	willSwitchCampaign(nameOnly = false) {
+		this.events.dispatchEvent(new CustomEvent("willSwitchCampaign", {
+			detail: {
+				user: this.user,
+				campaign: this.currentCampaign,
+				nameOnly: nameOnly,
+			},
+		}))
+	}
+
 	didSwitchCampaign(nameOnly = false) {
-		this.events.dispatchEvent(new CustomEvent("campaignSwitched", {
+		this.events.dispatchEvent(new CustomEvent("didSwitchCampaign", {
 			detail: {
 				user: this.user,
 				campaign: this.currentCampaign,
@@ -875,33 +886,37 @@ export class Cloud {
 		return this.currentCharacterSheets[characterId]
 	}
 
-	async uploadCharacter(json) {
+	async uploadCharacter(json, campaign = null) {
 		const user = await this.requireSignIn()
 		await this.requireCurrentCampaign()
 		await this.requireCurrentCharacterSheets()
 
 		const sheet = new CharacterSheet(json, user.uid)
 
-		// Check if the sheet is unchanged
-		const currentSheet = this.currentCharacterSheets[sheet.id]
-		if (!currentSheet?.archived && currentSheet?.jsonString === sheet.jsonString) {
-			// No changes, no need to do anything.
-			console.debug("Skipping upload for unchanged character sheet", sheet.name)
-			return
+		if (!campaign) {
+			campaign = this.currentCampaign
+
+			// Check if the sheet is unchanged
+			const currentSheet = this.currentCharacterSheets[sheet.id]
+			if (!currentSheet?.archived && currentSheet?.jsonString === sheet.jsonString) {
+				// No changes, no need to do anything.
+				console.debug("Skipping upload for unchanged character sheet", sheet.name)
+				return
+			}
 		}
 
 		try {
 			await setDoc(doc(db,
-				collections.campaigns, this.currentCampaign.id,
+				collections.campaigns, campaign.id,
 				collections.characters, sheet.id).withConverter(CharacterSheet.converter),
 				sheet)
 			await addDoc(collection(db,
-				collections.campaigns, this.currentCampaign.id,
+				collections.campaigns, campaign.id,
 				collections.characters, sheet.id,
 				collections.characterVersions).withConverter(expiring(CharacterSheet.converter)),
 				sheet)
 			this.updateURLForCharacter(sheet)
-			console.debug("Character Sheet written with ID: ", sheet.id)
+			console.debug(`Character Sheet written to ${campaign.name} with ID ${sheet.id}`)
 		} catch (error) {
 			console.error("Error adding Character Sheet: ", error)
 		}
