@@ -2,9 +2,9 @@ import { HSV, RGB } from "./color.js"
 import { noDiePlaceholder } from "./conversion.js"
 
 function resetTraitGroup(traitGroup) {
-	if (data_style_requires_trait_modification(traitGroup)) {
+	if (dataStyleRequiresTraitModification(traitGroup)) {
 		for (let trait of traitGroup.querySelectorAll(".trait")) {
-			remove_trait_group_style_from_trait(traitGroup, trait)
+			removeTraitGroupStyleFromTrait(traitGroup, trait)
 		}
 	}
 
@@ -26,25 +26,24 @@ function resetTraitGroup(traitGroup) {
 
 export function applyDataStyle(traitGroup, style) {
 	resetTraitGroup(traitGroup)
-	if (style != null) {
+	if (style) {
 		traitGroup.setAttribute("data-style", style)
-		for (let sub_style of style.split(" ")) {
-			traitGroup.classList.add(sub_style)
-		}
+		const styles = style.split(" ")
+		traitGroup.classList.add(...styles)
 
-		if (data_style_requires_trait_modification(traitGroup)) {
-			for (let trait of traitGroup.querySelectorAll(".trait")) {
-				apply_trait_group_style_to_trait(traitGroup, trait)
+		if (dataStyleRequiresTraitModification(traitGroup)) {
+			for (const trait of traitGroup.querySelectorAll(".trait")) {
+				applyTraitGroupStyleToTrait(traitGroup, trait)
 			}
 		}
 	}
 }
 
-function data_style_requires_trait_modification(traitGroup) {
+function dataStyleRequiresTraitModification(traitGroup) {
 	return traitGroup.classList.contains("stress")
 }
 
-export function apply_trait_group_style_to_trait(traitGroup, trait, applyDefaultValue) {
+export function applyTraitGroupStyleToTrait(traitGroup, trait, applyDefaultValue) {
 	if (traitGroup.classList.contains("stress")) {
 		let track = document.createElement("div")
 		track.classList.add("track")
@@ -52,30 +51,30 @@ export function apply_trait_group_style_to_trait(traitGroup, trait, applyDefault
 		trait.querySelector(".trait-value").after(track)
 		const clearValue = noDiePlaceholder
 		if (applyDefaultValue) {
-			set_track_value(trait, clearValue) // Default to stress tracks being clear instead of d6 like other traits
+			setTrackValue(trait, clearValue) // Default to stress tracks being clear instead of d6 like other traits
 		} else {
-			update_track_displayed_value(trait)
+			updateTrackDisplayedValue(trait)
 		}
 		track.addEventListener("click", (e) => {
 			if (e.target.nodeName === "D") {
 				// Clicking the current value clears the stress track
 				let d = e.target
 				let value = d.classList.contains("current") ? clearValue : d.innerText
-				set_track_value(trait, value)
+				setTrackValue(trait, value)
 			}
 		})
 	}
 }
 
-function set_track_value(trait, value) {
+function setTrackValue(trait, value) {
 	if (value !== noDiePlaceholder) {
 		value = `<d>${value}</d>`
 	}
 	trait.querySelector(".trait-value").innerHTML = value
-	update_track_displayed_value(trait)
+	updateTrackDisplayedValue(trait)
 }
 
-function update_track_displayed_value(trait) {
+function updateTrackDisplayedValue(trait) {
 	const value = trait.querySelector(".trait-value d")?.innerText ?? noDiePlaceholder
 	let nonmatchingState = (value === noDiePlaceholder) ? "empty" : "full"
 	for (let die of trait.querySelector(".track").querySelectorAll("d")) {
@@ -95,12 +94,12 @@ function update_track_displayed_value(trait) {
 export function updateTraitGroupDisplay(traitGroup) {
 	if (traitGroup.classList.contains("stress")) {
 		for (let trait of traitGroup.querySelectorAll(".trait")) {
-			update_track_displayed_value(trait)
+			updateTrackDisplayedValue(trait)
 		}
 	}
 }
 
-export function remove_trait_group_style_from_trait(traitGroup, trait) {
+export function removeTraitGroupStyleFromTrait(traitGroup, trait) {
 	if (traitGroup.classList.contains("stress")) {
 		trait.querySelector(".track").remove()
 	}

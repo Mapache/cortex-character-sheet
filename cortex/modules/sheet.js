@@ -4,11 +4,11 @@ import "./account.js"
 
 import "./dragAndDrop.js"
 
-import { add_page, add_trait_group, add_trait, remove_item } from "./elements.js"
-window.add_page = add_page
-window.add_trait_group = add_trait_group
-window.add_trait = add_trait
-window.remove_item = remove_item
+import { addPage, addTraitGroup, addTrait, removeItem } from "./elements.js"
+window.addPage = addPage
+window.addTraitGroup = addTraitGroup
+window.addTrait = addTrait
+window.removeItem = removeItem
 
 import { hideCurrentModal } from "./modal.js"
 window.hideCurrentModal = hideCurrentModal

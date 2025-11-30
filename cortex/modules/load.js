@@ -1,5 +1,5 @@
 
-import { dice_to_html, text_to_html } from "./conversion.js"
+import { diceToHtml, textToHtml } from "./conversion.js"
 import { updateTitles } from "./elements.js"
 import { applyDataStyle, applyHighlightColor, defaultHighlightColor, globalHighlightColorPicker, updateTraitGroupDisplay } from "./traitGroupStyle.js"
 
@@ -110,7 +110,7 @@ async function displayCharacterJsonV3(json) {
       element.src = value
     }
     else if (element.tagName === "DIV" || element.tagName === "H1" || element.tagName === "H2" || element.tagName === "D" || element.tagName === "SPAN") {
-      element.innerHTML = text_to_html(value)
+      element.innerHTML = textToHtml(value)
     }
     else {
       element.value = value
@@ -152,7 +152,7 @@ async function displayCharacterJsonV3(json) {
 }
 
 function setText(parent, selector, text) {
-  parent.querySelector(selector).innerHTML = text_to_html(text)
+  parent.querySelector(selector).innerHTML = textToHtml(text)
 }
 
 // See notes about file formats in save.js.
@@ -177,7 +177,7 @@ async function displayCharacterJsonV4(json) {
             let trait = await elementForPathParts(["pages", pageIndex, columnIndex + 1, traitGroupIndex, traitGroupColumnIndex + 2, traitIndex])
             let [name, value] = traitData
             setText(trait, ".trait-name", name)
-            trait.querySelector(".trait-value").innerHTML = dice_to_html(value)
+            trait.querySelector(".trait-value").innerHTML = diceToHtml(value)
             if (traitData.length > 2) {
               let description = traitData.slice(2).join("\n")
               setText(trait, ".trait-description", description)

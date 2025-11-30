@@ -1,6 +1,6 @@
 export const noDiePlaceholder = "∅"
 
-export function dText_to_html(html) {
+export function dTextToHtml(html) {
   if (html === "-") {
     return "–"
   }
@@ -20,7 +20,7 @@ export function dText_to_html(html) {
   return html.trim()
 }
 
-export function dice_to_html(html) {
+export function diceToHtml(html) {
   if (html === "-") {
     return "–"
   }
@@ -65,7 +65,7 @@ export function dice_to_html(html) {
   return html.trim()
 }
 
-export function text_to_html(html) {
+export function textToHtml(html) {
   if (html.search(/^-/m) != -1) {
     html = html.replace(/^- *(.*)$/m, "<ul><li>$1</li>")
     html = html.replace(/^- *(.*)$/gm, "<li>$1</li>")
@@ -95,7 +95,7 @@ export function text_to_html(html) {
   return html.trim()
 }
 
-export function html_to_text(text) {
+export function htmlToText(text) {
   text = text.replace(/<d>4<\/d>/g, "d4")
   text = text.replace(/<d>6<\/d>/g, "d6")
   text = text.replace(/<d>8<\/d>/g, "d8")
@@ -115,7 +115,7 @@ export function html_to_text(text) {
   return text.trim()
 }
 
-export function html_to_editable(text) {
+export function htmlToEditable(text) {
   // text = text.replace(/<br>/g, "\n")
   text = text.replace(/<ul>/g, "")
   text = text.replace(/<\/ul>/g, "")
@@ -127,7 +127,7 @@ export function html_to_editable(text) {
   return text.trim()
 }
 
-export function editable_to_html(html) {
+export function editableToHtml(html) {
   // Spurious tags from pasting
   html = html.replace(/<div([^>]*)>/g, "\n")
   html = html.replace(/<\/div>/g, "")

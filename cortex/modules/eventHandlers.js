@@ -1,4 +1,4 @@
-import { dice_to_html, text_to_html, html_to_text, html_to_editable, editable_to_html } from "./conversion.js"
+import { diceToHtml, textToHtml, htmlToText, htmlToEditable, editableToHtml } from "./conversion.js"
 import { Flags } from "./flags.js"
 
 export let isEditingEnabled = true
@@ -23,9 +23,9 @@ function addEditHandlersToNode(editable) {
   editable.addEventListener("focus", (e) => {
     if (isEditingEnabled) {
       if (Flags.useEditableHTML) {
-        e.target.innerHTML = html_to_editable(e.target.innerHTML)
+        e.target.innerHTML = htmlToEditable(e.target.innerHTML)
       } else {
-        e.target.innerText = html_to_text(e.target.innerHTML)
+        e.target.innerText = htmlToText(e.target.innerHTML)
       }
       moveCaretToEndOf(e.target)
     } else {
@@ -35,9 +35,9 @@ function addEditHandlersToNode(editable) {
   editable.addEventListener("blur", (e) => {
     if (isEditingEnabled) {
       if (Flags.useEditableHTML) {
-        e.target.innerHTML = editable_to_html(e.target.innerHTML)
+        e.target.innerHTML = editableToHtml(e.target.innerHTML)
       } else {
-        e.target.innerHTML = text_to_html(e.target.innerText)
+        e.target.innerHTML = textToHtml(e.target.innerText)
       }
     }
   })
@@ -82,7 +82,7 @@ function addEditHandlersToDiceField(diceField) {
   })
   diceField.addEventListener("blur", (e) => {
     if (isEditingEnabled) {
-      e.target.innerHTML = dice_to_html(e.target.innerHTML)
+      e.target.innerHTML = diceToHtml(e.target.innerHTML)
     }
   })
 
@@ -95,7 +95,7 @@ function addEditHandlersToDiceField(diceField) {
       case "0":
         // Instantly convert dice
         const diceField = e.target
-        diceField.innerHTML = dice_to_html(diceField.innerHTML)
+        diceField.innerHTML = diceToHtml(diceField.innerHTML)
         moveCaretToEndOf(diceField)
     }
   })

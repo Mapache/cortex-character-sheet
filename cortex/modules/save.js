@@ -1,4 +1,4 @@
-import { html_to_text } from "./conversion.js"
+import { htmlToText } from "./conversion.js"
 import { defaultHighlightColor } from "./traitGroupStyle.js"
 
 function pathForElement(elem) {
@@ -28,17 +28,17 @@ function jsonForDisplayedCharacterV3() {
     if (input.classList.contains("non-serialized") || input.classList.contains("no-print") || input.classList.contains("template")) {
       continue
     }
-    const non_serialized_parent = input.parentElement.closest("non-serialized") || input.parentElement.closest("no-print") || input.parentElement.closest("template")
-    if (non_serialized_parent) {
+    const nonSerializedParent = input.parentElement.closest("non-serialized") || input.parentElement.closest("no-print") || input.parentElement.closest("template")
+    if (nonSerializedParent) {
       continue
     }
 
     const id = input.id
-    const spell_parent = input.parentElement.closest("spell")
-    if (spell_parent && spell_parent.classList.contains("template")) {
+    const spellParent = input.parentElement.closest("spell")
+    if (spellParent && spellParent.classList.contains("template")) {
       continue
     }
-    if (spell_parent) {
+    if (spellParent) {
       id = path_to(input.parentElement, "spells") + "/" + input.id
     }
     else if (input.parentElement.id === "talent" || input.parentElement.id === "weapon" || input.parentElement.id === "ability" || input.parentElement.id === "critical-injury") {
@@ -57,7 +57,7 @@ function jsonForDisplayedCharacterV3() {
     else if (input.tagName === "DIV" || input.tagName === "H1" || input.tagName === "H2" || input.tagName === "D" || input.tagName === "SPAN") {
       const contents = input.innerHTML
       if (contents !== "Trait description.") { // Don't save default trait descriptions.
-        data[id] = html_to_text(contents)
+        data[id] = htmlToText(contents)
       }
     }
     else {
@@ -108,7 +108,7 @@ function jsonForDisplayedCharacterV3() {
 }
 
 function extract(parent, selector) {
-  return html_to_text(parent.querySelector(selector).innerHTML)
+  return htmlToText(parent.querySelector(selector).innerHTML)
 }
 
 export function characterName() {

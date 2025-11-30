@@ -46,7 +46,7 @@ function add_attribute(e) {
 }
 
 function remove_attribute(e) {
-	remove_item(e)
+	removeItem(e)
 	update_attribute_positions()
 }
 

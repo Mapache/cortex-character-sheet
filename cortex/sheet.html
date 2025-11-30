@@ -33,7 +33,7 @@
 		<input id="message-text" type="text" placeholder="Enter message"></input>
 		<table id="dice" class="dice-input">
 			<tr id="die-0" class="die-input">
-				<td class="die-input-label"><input type="text" placeholder="Trait name"></input></td>
+				<td class="die-input-label"><input id="die-label-0" type="text" placeholder="Trait name"></input></td>
 				<td class="die-input-size"><h2 class="trait-value"><d contenteditable>∅</d></h2></td>
 			</tr>
 		</table>
@@ -55,17 +55,17 @@
 				<div contenteditable id="description">Description</div>
 			</div>
 			<div class="page-column left">
-				<div id="trait-group-placeholder" class="add-item no-print" onclick="add_trait_group(event)"
-					data-onload="add_trait_group">
+				<div id="trait-group-placeholder" class="add-item no-print" onclick="addTraitGroup(event)"
+					data-onload="addTraitGroup">
 				</div>
 			</div>
 			<div class="page-column right">
-				<div id="trait-group-placeholder" class="add-item no-print" onclick="add_trait_group(event)"
-					data-onload="add_trait_group">
+				<div id="trait-group-placeholder" class="add-item no-print" onclick="addTraitGroup(event)"
+					data-onload="addTraitGroup">
 				</div>
 			</div>
 		</div>
-		<div id="page-placeholder" class="add-item no-print" onclick="add_page(event)" data-onload="add_page">
+		<div id="page-placeholder" class="add-item no-print" onclick="addPage(event)" data-onload="addPage">
 		</div>
 	</div>
 

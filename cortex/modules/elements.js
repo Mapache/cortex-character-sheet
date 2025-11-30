@@ -1,6 +1,6 @@
 import { addEditHandlers } from "./eventHandlers.js"
 import { fetchHtml } from "./fetchHtml.js"
-import { applyDataStyle, apply_trait_group_style_to_trait } from "./traitGroupStyle.js"
+import { applyDataStyle, applyTraitGroupStyleToTrait } from "./traitGroupStyle.js"
 
 // MARK: Template
 
@@ -34,39 +34,71 @@ function addChild(parent, newElement) {
   return newElement
 }
 
-function addElement(event, newElement) {
-  return addChild(event.target.parentElement, newElement)
+function addElement(parent, template) {
+  return addChild(parent, template.newInstance())
 }
 
-export async function add_page(e) {
-  let page = addElement(e, (await Template.page).newInstance())
+export async function addElementOfType(event, childType) {
+  const parent = event.target.parentElement
+  switch (childType) {
+    case "page":
+      addPageToParent(parent)
+      break
+    case "trait-group":
+      addTraitGroupToParent(parent)
+      break
+    case "trait":
+      addTraitToParent(parent)
+      break
+    default:
+      console.error("Attempting to add unknown child element type", childType)
+  }
+}
+
+export async function addPage(event) {
+  const parent = event.target.parentElement
+  addPageToParent(parent)
+}
+
+export async function addPageToParent(parent) {
+  let page = addElement(parent, await Template.page)
   page.querySelector(".title").innerText = currentCharacterName()
   installTitleListeners(page)
 
   updatePagePlaceholderControl()
 }
 
-export async function add_trait_group(e) {
-  let traitGroup = addElement(e, (await Template.traitGroup).newInstance())
+export async function addTraitGroup(event) {
+  const parent = event.target.parentElement
+  addTraitGroupToParent(parent)
+}
+
+export async function addTraitGroupToParent(parent) {
+  let traitGroup = addElement(parent, await Template.traitGroup)
   applyDataStyle(traitGroup, "detailed")
 
   updatePagePlaceholderControl()
 }
 
-export async function add_trait(e) {
-  let trait = addElement(e, (await Template.trait).newInstance())
-  let traitGroup = e.target.parentElement.parentElement
-  apply_trait_group_style_to_trait(traitGroup, trait, true)
+export async function addTrait(event) {
+  const parent = event.target.parentElement
+  addTraitToParent(parent)
+}
+
+export async function addTraitToParent(parent) {
+  let trait = addElement(parent, await Template.trait)
+  let traitGroup = parent.parentElement
+  applyTraitGroupStyleToTrait(traitGroup, trait, true)
 }
 
 // MARK: Remove Elements
 
-export function remove_item(e) {
+export function removeItem(e) {
   let item = e.target.parentElement
   item.remove()
 }
 
-export function remove_last_page(e) {
+export function removeLastPage(e) {
   const pagePlaceholder = document.getElementById("page-placeholder")
   const pages = document.getElementById("pages")
   const lastPage = pagePlaceholder.previousElementSibling
@@ -86,10 +118,10 @@ export function updatePagePlaceholderControl() {
   // Minimum pages length is 2, the first page and the page-placeholder.
   if (pages.children.length > 2 && lastPage.querySelectorAll(".trait-group").length === 0) {
     pagePlaceholder.classList.add("remove-last-page")
-    pagePlaceholder.onclick = remove_last_page
+    pagePlaceholder.onclick = removeLastPage
   } else {
     pagePlaceholder.classList.remove("remove-last-page")
-    pagePlaceholder.onclick = add_page
+    pagePlaceholder.onclick = addPage
   }
 }
 
@@ -128,5 +160,5 @@ export function updateDocumentTitle(characterName) {
 }
 
 export function currentCharacterName() {
-	return document.querySelector(".title").innerText // Get name from first page
+  return document.querySelector(".title").innerText // Get name from first page
 }

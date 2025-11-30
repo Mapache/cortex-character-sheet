@@ -1,6 +1,6 @@
 import { asyncFilter, asyncMap } from "./async.js"
 import { Cloud, cloud, Message } from "./cloud.js"
-import { dText_to_html, html_to_text, noDiePlaceholder } from "./conversion.js"
+import { dTextToHtml, htmlToText, noDiePlaceholder } from "./conversion.js"
 import { addClickToEditHandlersToTextNode, selectAllTextOf, setEditingEnabled } from "./eventHandlers.js"
 import { formatAbsoluteTime, titleCase } from "./formatting.js"
 import { RestartableTimeout } from "./timer.js"
@@ -312,7 +312,7 @@ export class Messages {
 
   dieSizeFocus(e) {
     const d = e.target
-    let convertedText = html_to_text(d.innerHTML)
+    let convertedText = htmlToText(d.innerHTML)
     if (convertedText === noDiePlaceholder) {
       convertedText = ""
     }
@@ -341,7 +341,7 @@ export class Messages {
   }
 
   sanitizeDieSize(dText) {
-    let die = dText_to_html(dText)[0]
+    let die = dTextToHtml(dText)[0]
     switch (die) {
       case "4":
       case "6":
@@ -356,7 +356,9 @@ export class Messages {
 
   addNewDieInputRow() {
     const newRow = this.diceRowTemplate.cloneNode(true)
-    newRow.id = `die-${this.diceTable.childElementCount}`
+    const rowNumber = this.diceTable.childElementCount
+    newRow.id = `die-${rowNumber}`
+    newRow.querySelector(".die-input-label input").id = `die-label-${rowNumber}`
     this.diceTable.appendChild(newRow)
     this.installDieSizeEditHandlers(newRow)
     return newRow
