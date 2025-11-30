@@ -1,7 +1,6 @@
 import { diceToHtml, textToHtml } from "./conversion.js"
-import { willSwitchDisplayedCharacterSheet, didSwitchDisplayedCharacterSheet } from "./displayedCharacter.js"
-import * as elements from "./elements.js"
-import { updateTitles } from "./elements.js"
+import { didSwitchDisplayedCharacterSheet, willSwitchDisplayedCharacterSheet } from "./displayedCharacter.js"
+import { addElementOfType, updateTitles } from "./elements.js"
 import { applyDataStyle, applyHighlightColor, defaultHighlightColor, globalHighlightColorPicker, updateTraitGroupDisplay } from "./traitGroupStyle.js"
 
 export async function displayCharacterJson(json) {
@@ -37,27 +36,26 @@ export function nukeDisplayedCharacter() {
 
 async function elementForPath(path) {
   let parts = path.split("/")
+  if (parts[0] !== ":root" && parts[0][0] !== "#") {
+    parts[0] = `#${parts[0]}`
+  }
   return await elementForPathParts(parts)
 }
 
 async function elementForPathParts(parts) {
-  let current = (parts[0] === ":root") ? document.querySelector(":root") : document.querySelector("div#" + parts[0])
-  for (let p = 1; p < parts.length; p++) {
+  let current = document.querySelector(parts[0])
+  for (const part of parts.slice(1)) {
     try {
-      current = current.querySelector("#" + parts[p])
+      current = current.querySelector("#" + part)
     } catch {
-      current = current.children[parts[p]]
+      current = current.children[part]
     }
     if (!current) {
       console.error("Failed to find: " + path)
       return null
     }
-    const dataOnload = current.getAttribute("data-onload")
-    if (dataOnload) {
-      // console.debug("Creating new element")
-      await elements[dataOnload]({ target: current })
-      p = p - 1
-      current = current.parentElement
+    if (current.classList.contains("add-item")) {
+      current = await addElementOfType(current.parentElement, current.getAttribute("data-child-type"))
     }
   }
   // console.debug(current)
@@ -174,14 +172,16 @@ async function displayCharacterJsonV4(json) {
   for (let [pageIndex, pageData] of json.traits.entries()) {
     for (let [columnIndex, columnData] of pageData.entries()) {
       for (let [traitGroupIndex, traitGroupData] of columnData.entries()) {
-        let traitGroup = await elementForPathParts(["pages", pageIndex, columnIndex + 1, traitGroupIndex])
+        // columnIndex + 1 is to skip the header div.
+        let traitGroup = await elementForPathParts(["#pages", pageIndex, columnIndex + 1, traitGroupIndex])
         let [title, style, color] = traitGroupData[0]
         setText(traitGroup, ".header", title)
         applyDataStyle(traitGroup, style)
         applyHighlightColor(traitGroup, color)
         for (let [traitGroupColumnIndex, traitGroupColumnData] of traitGroupData.slice(1).entries()) {
           for (let [traitIndex, traitData] of traitGroupColumnData.entries()) {
-            let trait = await elementForPathParts(["pages", pageIndex, columnIndex + 1, traitGroupIndex, traitGroupColumnIndex + 2, traitIndex])
+            // traitGroupColumnIndex + 2 is to skip the context menu button and the header.
+            let trait = await elementForPathParts(["#pages", pageIndex, columnIndex + 1, traitGroupIndex, traitGroupColumnIndex + 2, traitIndex])
             let [name, value] = traitData
             setText(trait, ".trait-name", name)
             trait.querySelector(".trait-value").innerHTML = diceToHtml(value)

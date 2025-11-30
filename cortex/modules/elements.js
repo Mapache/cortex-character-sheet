@@ -39,18 +39,14 @@ function addElement(parent, template) {
   return addChild(parent, template.newInstance())
 }
 
-export async function addElementOfType(event, childType) {
-  const parent = event.target.parentElement
+export async function addElementOfType(parent, childType) {
   switch (childType) {
     case "page":
-      addPageToParent(parent)
-      break
+      return addPageToParent(parent)
     case "trait-group":
-      addTraitGroupToParent(parent)
-      break
+      return addTraitGroupToParent(parent)
     case "trait":
-      addTraitToParent(parent)
-      break
+      return addTraitToParent(parent)
     default:
       console.error("Attempting to add unknown child element type", childType)
   }
@@ -58,7 +54,7 @@ export async function addElementOfType(event, childType) {
 
 export async function addPage(event) {
   const parent = event.target.parentElement
-  addPageToParent(parent)
+  return addPageToParent(parent)
 }
 
 export async function addPageToParent(parent) {
@@ -67,11 +63,13 @@ export async function addPageToParent(parent) {
   installTitleListeners(page)
 
   updatePagePlaceholderControl()
+
+  return page
 }
 
 export async function addTraitGroup(event) {
   const parent = event.target.parentElement
-  addTraitGroupToParent(parent)
+  return addTraitGroupToParent(parent)
 }
 
 export async function addTraitGroupToParent(parent) {
@@ -79,17 +77,21 @@ export async function addTraitGroupToParent(parent) {
   applyDataStyle(traitGroup, "detailed")
 
   updatePagePlaceholderControl()
+
+  return traitGroup
 }
 
 export async function addTrait(event) {
   const parent = event.target.parentElement
-  addTraitToParent(parent)
+  return addTraitToParent(parent)
 }
 
 export async function addTraitToParent(parent) {
   let trait = addElement(parent, await Template.trait)
   let traitGroup = parent.parentElement
   applyTraitGroupStyleToTrait(traitGroup, trait, true)
+
+  return trait
 }
 
 // MARK: Remove Elements
