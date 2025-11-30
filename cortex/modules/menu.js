@@ -15,8 +15,8 @@ export function menu(entries) {
 }
 
 /**
- * @param {string} name
- * @param {((event: Event) => void)} action
+ * @param {String} name
+ * @param {(event: Event) => void} action
  * @param {[Node]} subMenuEntries
  * @returns {Node}
  */
@@ -45,16 +45,29 @@ export function menuEntry(name, action, subMenuEntries) {
   return li
 }
 
+/**
+ * @returns {Node}
+ */
 export function menuDivider() {
   return document.createElement("hr")
 }
 
+/**
+ * @param {String} text
+ * @returns {Node}
+ */
 export function menuLabel(text) {
   const p = document.createElement("p")
   p.appendChild(document.createTextNode(text))
   return p
 }
 
+/**
+ * @param {String} placeholder - Placeholder text when empty
+ * @param {String} value - Initial text value
+ * @param {(e: Event, value: String) => void} action 
+ * @returns {Node}
+ */
 export function menuTextInput(placeholder, value, action) {
   const input = document.createElement("input")
   input.setAttribute("type", "text")
@@ -65,7 +78,7 @@ export function menuTextInput(placeholder, value, action) {
   // }
   input.onkeyup = (event) => {
     if (event.key === "Enter") {
-      action(input.value)
+      action(event, input.value)
     }
   }
   return input

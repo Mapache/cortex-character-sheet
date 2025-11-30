@@ -17,11 +17,11 @@ import { globalHighlightColorPicker } from "./traitGroupStyle.js"
 
 class Tool {
 	/**
-	 * @param {string} icon - Icon class 
-	 * @param {string} tip - Help string
-	 * @param {async (event) => void} action
-	 * @param {async (event) => void} [disabledAction=null]
-	 * @param {boolean} [enabled=true]
+	 * @param {String} icon - Icon class 
+	 * @param {String} tip - Help string
+	 * @param {async (event: Event) => void} action
+	 * @param {async (event: Event) => void} [disabledAction=null]
+	 * @param {Boolean} [enabled=true]
 	 * @param {Node} [customNode=null]
 	 */
 	constructor(icon, tip, action, disabledAction = null, enabled = true, customNode = null) {
@@ -81,9 +81,10 @@ export const campaigns = new Tool("campaigns", "Campaigns", async (e) => {
 	const campaignsMenu = new Modal()
 
 	let entries = [
-		menuEntry(cloud.defaultCampaign.name, (e) => {
-			cloud.switchCampaign(cloud.defaultCampaign)
+		menuEntry(cloud.defaultCampaign.name, async (e) => {
+			await cloud.switchCampaign(cloud.defaultCampaign)
 			campaignsMenu.hide()
+			characters.action(e)
 		}),
 		menuDivider()
 	]
@@ -92,7 +93,7 @@ export const campaigns = new Tool("campaigns", "Campaigns", async (e) => {
 		if (cloud.accessFor(campaign.id) === CampaignPermissions.admin) {
 			subMenuEntries = [
 				menuLabel("Rename campaign:"),
-				menuTextInput("New campaign name", campaign.name, (name) => {
+				menuTextInput("New campaign name", campaign.name, (e, name) => {
 					cloud.renameCampaign(campaign, name)
 					campaignsMenu.hide()
 				}),
@@ -125,9 +126,10 @@ export const campaigns = new Tool("campaigns", "Campaigns", async (e) => {
 				})
 			]
 		}
-		entries.push(menuEntry(campaign.name, (e) => {
-			cloud.switchCampaign(campaign)
+		entries.push(menuEntry(campaign.name, async (e) => {
+			await cloud.switchCampaign(campaign)
 			campaignsMenu.hide()
+			characters.action(e)
 		}, subMenuEntries))
 	}
 	if (cloud.campaigns.length > 0) {
@@ -135,9 +137,10 @@ export const campaigns = new Tool("campaigns", "Campaigns", async (e) => {
 	}
 	entries.push(menuEntry("Create New Campaign…", null, [
 		menuLabel("Enter name for new campaign:"),
-		menuTextInput("New campaign name", "", (name) => {
-			cloud.createNewCampaign(name)
+		menuTextInput("New campaign name", "", async (e, name) => {
+			await cloud.createNewCampaign(name)
 			campaignsMenu.hide()
+			characters.action(e)
 		})
 	]))
 
