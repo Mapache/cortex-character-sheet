@@ -3,11 +3,11 @@ import { CampaignPermissions, Cloud, cloud } from "./cloud.js"
 import { whenInteractive } from "./defer.js"
 import { Flags } from "./flags.js"
 import { formatRelativeTime, titleCase } from "./formatting.js"
-import { load_character, nuke_character } from "./load.js"
+import { displayCharacterJson, nukeDisplayedCharacter } from "./load.js"
 import { menu, menuDivider, menuEntry, menuLabel, menuTextInput } from "./menu.js"
 import { Messages } from "./messages.js"
 import { Modal, infoModal } from "./modal.js"
-import { save_character } from "./save.js"
+import { jsonForDisplayedCharacter } from "./save.js"
 import { copyShareUrl } from "./share.js"
 import { ToggleableStyle } from "./toggleableStyle.js"
 import { emptyDescriptionsHidden, layoutControlsHidden } from "./toggleableStyles.js"
@@ -156,7 +156,7 @@ export const characters = new Tool("characters", "Characters", async (e) => {
 		for (const characterSheet of await cloud.sortedCurrentCharacterSheets(archived)) {
 			function characterSelected(character) {
 				return (e) => {
-					load_character(character.json)
+					displayCharacterJson(character.json)
 					cloud.updateURLForCharacter(character)
 					charactersMenu.hide()
 				}
@@ -202,7 +202,7 @@ export const characters = new Tool("characters", "Characters", async (e) => {
 		entries.push(menuDivider())
 	}
 	entries.push(menuEntry("New Blank Character Sheet", (e) => {
-		nuke_character()
+		nukeDisplayedCharacter()
 		cloud.updateURLForCharacter(null)
 		charactersMenu.hide()
 	}))
@@ -219,14 +219,14 @@ export const characters = new Tool("characters", "Characters", async (e) => {
 })
 
 export const uploadCharacter = new Tool("upload", "Save Sheet to Cloud", async (e) => {
-	let json = save_character()
+	let json = jsonForDisplayedCharacter()
 	await cloud.uploadCharacter(json)
 }, async (e) => {
 	cloud.requireCurrentCampaign()
 })
 
 export const downloadCharacter = new Tool("download", "Download Sheet to File", async (e) => {
-	let json = save_character()
+	let json = jsonForDisplayedCharacter()
 	download(json)
 })
 

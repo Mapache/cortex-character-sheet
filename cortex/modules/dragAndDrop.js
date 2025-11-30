@@ -1,4 +1,4 @@
-import { load_character } from "./load.js"
+import { displayCharacterJson } from "./load.js"
 
 function ignore(e) {
 	e.preventDefault()
@@ -17,7 +17,7 @@ document.body.ondrop = function(e) {
 	reader.addEventListener("loadend", function () {
 		let text = reader.result
 		let data = JSON.parse(text)
-		load_character(data)
+		displayCharacterJson(data)
 	})
 	reader.readAsText(blob)
 }

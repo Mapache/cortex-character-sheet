@@ -24,7 +24,7 @@ function resetTraitGroup(traitGroup) {
 	traitGroup.removeAttribute("data-style")
 }
 
-export function apply_data_style(traitGroup, style) {
+export function applyDataStyle(traitGroup, style) {
 	resetTraitGroup(traitGroup)
 	if (style != null) {
 		traitGroup.setAttribute("data-style", style)
@@ -92,7 +92,7 @@ function update_track_displayed_value(trait) {
 }
 
 // Called after programmatically setting the value of traits in a group, such as during loading.
-export function update_trait_group_display(traitGroup) {
+export function updateTraitGroupDisplay(traitGroup) {
 	if (traitGroup.classList.contains("stress")) {
 		for (let trait of traitGroup.querySelectorAll(".trait")) {
 			update_track_displayed_value(trait)
@@ -106,7 +106,7 @@ export function remove_trait_group_style_from_trait(traitGroup, trait) {
 	}
 }
 
-export function apply_highlight_color(elem, color) {
+export function applyHighlightColor(elem, color) {
 	if (color) {
 		elem.setAttribute("highlight-color", color)
 		elem.style.setProperty("--highlight", color)
@@ -136,7 +136,7 @@ export const globalHighlightColorPicker = (() => {
 
 	function setGlobalHighlightColor(e) {
 		const root = document.querySelector(":root")
-		apply_highlight_color(root, picker.value)
+		applyHighlightColor(root, picker.value)
 	}
 	picker.onchange = setGlobalHighlightColor
 	picker.oninput = setGlobalHighlightColor
@@ -159,25 +159,25 @@ export function inferTraitGroupStyle(e) {
 		case "roles":
 		case "skills":
 		case "specialties":
-			apply_data_style(traitGroup, "values")
+			applyDataStyle(traitGroup, "values")
 			break
 		case "asset":
 		case "assets":
 		case "signature asset":
 		case "signature assets":
-			apply_data_style(traitGroup, "signature-asset")
+			applyDataStyle(traitGroup, "signature-asset")
 			break
 		case "milestones":
-			apply_data_style(traitGroup, "milestones")
+			applyDataStyle(traitGroup, "milestones")
 			break
 		case "resource":
 		case "resources":
-			apply_data_style(traitGroup, "resources")
+			applyDataStyle(traitGroup, "resources")
 			break
 		case "stress":
 		case "complication":
 		case "complications":
-			apply_data_style(traitGroup, "stress")
+			applyDataStyle(traitGroup, "stress")
 			break
 	}
 }

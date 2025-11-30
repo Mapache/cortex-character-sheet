@@ -1,7 +1,7 @@
 import { html_to_text } from "./conversion.js"
 import { defaultHighlightColor } from "./traitGroupStyle.js"
 
-function get_path_from_element(elem) {
+function pathForElement(elem) {
   let id = elem.id
   let path = ""
   while (id === "" && elem.parentElement != null) {
@@ -9,7 +9,7 @@ function get_path_from_element(elem) {
     path = "/" + Array.prototype.indexOf.call(elem.parentElement.children, elem) + path
     elem = elem.parentElement
   }
-  if (elem.parentElement == null) {
+  if (!elem.parentElement) {
     id = ":root"
   }
   return id + path
@@ -19,33 +19,33 @@ function get_path_from_element(elem) {
 // and saved their contents keyed by paths that listed the numerical index of each child relative to its parents.
 // It was intimately tied to the HTML structure of the page, difficult to edit by hand, and a substantial portion of
 // each file was taken up by keypaths. Saving in V3 is no longer supported, but V3 files should be readable.
-function save_characterV3() {
+function jsonForDisplayedCharacterV3() {
   let json = {}
   let data = {}
-  json.version = 3;
-  inputs = document.querySelectorAll("input, textarea, img, div[contenteditable], h1[contenteditable], h2[contenteditable], d[contenteditable], span[contenteditable]")
-  for (let input of inputs) {
+  json.version = 3
+  const inputs = document.querySelectorAll("input, textarea, img, div[contenteditable], h1[contenteditable], h2[contenteditable], d[contenteditable], span[contenteditable]")
+  for (const input of inputs) {
     if (input.classList.contains("non-serialized") || input.classList.contains("no-print") || input.classList.contains("template")) {
       continue
     }
-    let non_serialized_parent = input.parentElement.closest("non-serialized") || input.parentElement.closest("no-print") || input.parentElement.closest("template")
+    const non_serialized_parent = input.parentElement.closest("non-serialized") || input.parentElement.closest("no-print") || input.parentElement.closest("template")
     if (non_serialized_parent) {
       continue
     }
 
-    let id = input.id
-    let spell_parent = input.parentElement.closest("spell")
+    const id = input.id
+    const spell_parent = input.parentElement.closest("spell")
     if (spell_parent && spell_parent.classList.contains("template")) {
       continue
     }
-    if (spell_parent !== null) {
+    if (spell_parent) {
       id = path_to(input.parentElement, "spells") + "/" + input.id
     }
     else if (input.parentElement.id === "talent" || input.parentElement.id === "weapon" || input.parentElement.id === "ability" || input.parentElement.id === "critical-injury") {
       id = input.parentElement.parentElement.id + "/" + Array.prototype.indexOf.call(input.parentElement.parentElement.children, input.parentElement) + "/" + input.id
     }
     if (input.id === "") {
-      id = get_path_from_element(input)
+      id = pathForElement(input)
     }
 
     if (input.getAttribute("type") === "checkbox") {
@@ -55,8 +55,8 @@ function save_characterV3() {
       data[id] = input.src
     }
     else if (input.tagName === "DIV" || input.tagName === "H1" || input.tagName === "H2" || input.tagName === "D" || input.tagName === "SPAN") {
-      let contents = input.innerHTML
-      if (contents != "Trait description.") { // Don't save default trait descriptions.
+      const contents = input.innerHTML
+      if (contents !== "Trait description.") { // Don't save default trait descriptions.
         data[id] = html_to_text(contents)
       }
     }
@@ -77,18 +77,18 @@ function save_characterV3() {
   json.data = data
 
   let styles = {}
-  let styledDivs = document.querySelectorAll("div[data-style]")
-  for (let elem of styledDivs) {
-    styles[get_path_from_element(elem)] = elem.getAttribute("data-style")
+  const styledDivs = document.querySelectorAll("div[data-style]")
+  for (const elem of styledDivs) {
+    styles[pathForElement(elem)] = elem.getAttribute("data-style")
   }
   if (Object.keys(styles).length) {
     json.styles = styles
   }
 
   let classList = {}
-  let customizedDivs = document.querySelectorAll("div[custom-classes]")
-  for (let elem of customizedDivs) {
-    classList[get_path_from_element(elem)] = elem.getAttribute("custom-classes")
+  const customizedDivs = document.querySelectorAll("div[custom-classes]")
+  for (const elem of customizedDivs) {
+    classList[pathForElement(elem)] = elem.getAttribute("custom-classes")
   }
   if (Object.keys(classList).length) {
     json.classList = classList
@@ -96,9 +96,9 @@ function save_characterV3() {
 
   let highlightColors = {}
   highlightColors[":root"] = document.querySelector(":root").getAttribute("highlight-color") ?? defaultHighlightColor
-  let highlightedDivs = document.querySelectorAll("div[highlight-color]")
-  for (let elem of highlightedDivs) {
-    highlightColors[get_path_from_element(elem)] = elem.getAttribute("highlight-color")
+  const highlightedDivs = document.querySelectorAll("div[highlight-color]")
+  for (const elem of highlightedDivs) {
+    highlightColors[pathForElement(elem)] = elem.getAttribute("highlight-color")
   }
   if (Object.keys(highlightColors).length) {
     json.highlightColors = highlightColors
@@ -107,8 +107,12 @@ function save_characterV3() {
   return json
 }
 
+function extract(parent, selector) {
+  return html_to_text(parent.querySelector(selector).innerHTML)
+}
+
 export function characterName() {
-  return html_to_text(document.querySelector("#character-name").innerHTML)
+  return extract(document, "#character-name")
 }
 
 // The V4 format extracts the semantic structure of a character and saves it as a few top-level standalone properties
@@ -116,34 +120,34 @@ export function characterName() {
 // uncoupled from the page's HTML structure allowing for easier changes to either side independently, relatively easy
 // to edit by hand, and more space-efficient than V3 by not requiring keypaths and omitting any elements unchanged
 // from their default values.
-function save_characterV4() {
+function jsonForDisplayedCharacterV4() {
   let json = {}
   json.version = 4
   json.characterName = characterName()
-  json.description = html_to_text(document.querySelector("#description").innerHTML)
+  json.description = extract(document, "#description")
 
   let traitsData = []
-  let pages = document.querySelector("#pages")
-  for (let page of pages.querySelectorAll(".page")) {
+  const pages = document.querySelector("#pages")
+  for (const page of pages.querySelectorAll(".page")) {
     let pageData = []
-    for (let column of page.querySelectorAll(".page-column")) {
+    for (const column of page.querySelectorAll(".page-column")) {
       let columnData = []
-      for (let traitGroup of column.querySelectorAll(".trait-group")) {
+      for (const traitGroup of column.querySelectorAll(".trait-group")) {
         let traitGroupData = []
-        let title = html_to_text(traitGroup.querySelector(".header").innerHTML)
-        let style = traitGroup.getAttribute("data-style")
-        let color = traitGroup.getAttribute("highlight-color")
-        if (color == null) {
-          traitGroupData.push([title, style])
-        } else {
+        const title = extract(traitGroup, ".header")
+        const style = traitGroup.getAttribute("data-style")
+        const color = traitGroup.getAttribute("highlight-color")
+        if (color) {
           traitGroupData.push([title, style, color])
+        } else {
+          traitGroupData.push([title, style])
         }
-        for (let traitGroupColumn of traitGroup.querySelectorAll(".trait-column")) {
+        for (const traitGroupColumn of traitGroup.querySelectorAll(".trait-column")) {
           let traitGroupColumnData = []
-          for (let trait of traitGroupColumn.querySelectorAll(".trait")) {
-            let name = html_to_text(trait.querySelector(".trait-name").innerHTML)
-            let value = html_to_text(trait.querySelector(".trait-value").innerHTML)
-            let description = html_to_text(trait.querySelector(".trait-description").innerHTML)
+          for (const trait of traitGroupColumn.querySelectorAll(".trait")) {
+            const name = extract(trait, ".trait-name")
+            const value = extract(trait, ".trait-value")
+            const description = extract(trait, ".trait-description")
             if (description === "Trait description.") {
               // Don't save default trait descriptions.
               traitGroupColumnData.push([name, value])
@@ -170,6 +174,6 @@ function save_characterV4() {
   return json
 }
 
-export function save_character() {
-  return save_characterV4()
+export function jsonForDisplayedCharacter() {
+  return jsonForDisplayedCharacterV4()
 }

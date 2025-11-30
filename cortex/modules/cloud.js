@@ -4,8 +4,8 @@ import { doc, collection, where, query, orderBy, startAfter, limit, onSnapshot, 
 
 import { Deferred } from "./defer.js"
 import { currentCharacterName } from "./elements.js"
-import { load_character } from "./load.js"
-import { characterName, save_character } from "./save.js"
+import { displayCharacterJson } from "./load.js"
+import { characterName, jsonForDisplayedCharacter } from "./save.js"
 import { merge } from "./merge.js"
 import { ARC4 } from "./random.js"
 import { setUrlHashWithoutHandling } from "./urlHashHandler.js"
@@ -811,7 +811,7 @@ export class Cloud {
 						// The change is to the currently displayed character, so attempt to merge it.
 						console.debug(`Change is to displayed character, checking for merge…`)
 						const mergeSheets = () => {
-							const displayedJson = save_character()
+							const displayedJson = jsonForDisplayedCharacter()
 							const displayedSheet = new CharacterSheet(displayedJson, user.uid)
 							if (displayedSheet.jsonString === sheet.jsonString) {
 								// New sheet matches what is displayed. This is likely the server version of recent local save.
@@ -826,7 +826,7 @@ export class Cloud {
 							const mergedSheet = new CharacterSheet(mergedJson, user.uid)
 							if (mergedSheet.jsonString !== displayedSheet.jsonString) {
 								console.debug("Merge complete with result", mergedJson)
-								load_character(mergedJson)
+								displayCharacterJson(mergedJson)
 							}
 							// Update the local copy to the last saved version.
 							this.addCurrentCharacterSheet(sheet)

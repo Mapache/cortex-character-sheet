@@ -1,6 +1,6 @@
 import { updatePagePlaceholderControl } from "./elements.js"
 import { Modal } from "./modal.js"
-import { apply_data_style, apply_highlight_color, defaultHighlightColor } from "./traitGroupStyle.js"
+import { applyDataStyle, applyHighlightColor, defaultHighlightColor } from "./traitGroupStyle.js"
 
 const contextMenuModal = await Modal.build("context-menu")
 const contextMenu = contextMenuModal.modal
@@ -48,13 +48,13 @@ async function closeContextMenu() {
 // MARK: Highlight Color
 
 export async function setTraitGroupHighlightColor(e) {
-  apply_highlight_color(traitGroup, colorPicker.value)
+  applyHighlightColor(traitGroup, colorPicker.value)
 
   // Do NOT closeContextMenu()
 }
 
 export async function removeTraitGroupHighlightColor(e) {
-  apply_highlight_color(traitGroup, null)
+  applyHighlightColor(traitGroup, null)
 
   closeContextMenu()
 }
@@ -63,7 +63,7 @@ export async function removeTraitGroupHighlightColor(e) {
 
 export async function setStyle(e) {
   let style = e.target.getAttribute("data-style")
-  apply_data_style(traitGroup, style)
+  applyDataStyle(traitGroup, style)
 
   closeContextMenu()
 }

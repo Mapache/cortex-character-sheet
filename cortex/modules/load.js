@@ -1,24 +1,24 @@
 
-import { updateTitles } from "./elements.js"
 import { dice_to_html, text_to_html } from "./conversion.js"
-import { apply_data_style, update_trait_group_display, apply_highlight_color, defaultHighlightColor, globalHighlightColorPicker } from "./traitGroupStyle.js"
+import { updateTitles } from "./elements.js"
+import { applyDataStyle, applyHighlightColor, defaultHighlightColor, globalHighlightColorPicker, updateTraitGroupDisplay } from "./traitGroupStyle.js"
 
-export async function load_character(json) {
-  nuke_character()
+export async function displayCharacterJson(json) {
+  nukeDisplayedCharacter()
   let version = json.version
   switch (version) {
     case 3:
-      await load_characterV3(json)
+      await displayCharacterJsonV3(json)
       break
     case 4:
-      await load_characterV4(json)
+      await displayCharacterJsonV4(json)
       break
     default:
       console.error("Unknown data format version " + version)
   }
 }
 
-export function nuke_character() {
+export function nukeDisplayedCharacter() {
   // Nuke all but the first page.
   for (let page of Array.from(document.querySelectorAll(".page:not(.template)")).slice(1)) {
     page.remove()
@@ -32,12 +32,12 @@ export function nuke_character() {
   document.querySelector("#description").innerHTML = "Description"
 }
 
-async function get_element_from_path(path) {
+async function elementForPath(path) {
   let parts = path.split("/")
-  return await get_element_from_parts(parts)
+  return await elementForPathParts(parts)
 }
 
-async function get_element_from_parts(parts) {
+async function elementForPathParts(parts) {
   let current = (parts[0] === ":root") ? document.querySelector(":root") : document.querySelector("div#" + parts[0])
   for (let p = 1; p < parts.length; p++) {
     try {
@@ -45,12 +45,14 @@ async function get_element_from_parts(parts) {
     } catch {
       current = current.children[parts[p]]
     }
-    if (current == null) {
+    if (!current) {
       console.error("Failed to find: " + path)
+      return null
     }
-    if (current.getAttribute("data-onload") !== null) {
+    const dataOnload = current.getAttribute("data-onload")
+    if (dataOnload) {
       // console.debug("Creating new element")
-      await window[current.getAttribute("data-onload")]({ target: current })
+      await window[dataOnload]({ target: current })
       p = p - 1
       current = current.parentElement
     }
@@ -59,13 +61,13 @@ async function get_element_from_parts(parts) {
   return current
 }
 
-async function load_highlight_colors(highlightColors) {
+async function loadHighlightColors(highlightColors) {
   let globalHighlightColor = defaultHighlightColor
-  if (highlightColors != null) {
-    for (let path in highlightColors) {
-      let elem = await get_element_from_path(path)
-      let highlightColor = highlightColors[path]
-      apply_highlight_color(elem, highlightColor)
+  if (highlightColors) {
+    for (const path in highlightColors) {
+      const elem = await elementForPath(path)
+      const highlightColor = highlightColors[path]
+      applyHighlightColor(elem, highlightColor)
 
       if (path === ":root") {
         globalHighlightColor = highlightColor
@@ -76,7 +78,11 @@ async function load_highlight_colors(highlightColors) {
 }
 
 // See notes about file formats in save.js. Loading V3 characters is theoretically supported but not actively tested.
-async function load_characterV3(json) {
+async function displayCharacterJsonV3(json) {
+  if (json.version != 3) {
+    console.error("Incorrect format version: Expected 3, got", json.version)
+    return
+  }
   let data = json.data
   for (let path in data) {
     let object = null
@@ -92,7 +98,7 @@ async function load_characterV3(json) {
       element = document.getElementById(path)
     }
     else {
-      element = await get_element_from_path(path)
+      element = await elementForPath(path)
     }
 
     if (element == null) continue
@@ -111,7 +117,7 @@ async function load_characterV3(json) {
     }
     if (object != null) {
       if (object.style != null) {
-        apply_data_style(element, object.style)
+        applyDataStyle(element, object.style)
       }
       if (object.x != null) {
         element.setAttribute("data-x", object.x)
@@ -120,75 +126,77 @@ async function load_characterV3(json) {
         element.style.transform = "translate(" + object.x + "cm, " + object.y + "cm) scale(" + object.zoom + ", " + object.zoom + ")"
       }
     }
-    if (element.onblur != null) {
-      element.onblur({ target: element })
-    }
+    element.onblur?.({ target: element })
   }
 
-  if (json.styles != null) {
+  if (json.styles) {
     for (let path in json.styles) {
-      let elem = await get_element_from_path(path)
+      let elem = await elementForPath(path)
       let style = json.styles[path]
-      apply_data_style(elem, style)
+      applyDataStyle(elem, style)
     }
   }
 
-  if (json.classList != null) {
+  if (json.classList) {
     for (let path in json.classList) {
-      let elem = await get_element_from_path(path)
+      let elem = await elementForPath(path)
       let classList = json.classList[path]
       elem.setAttribute("custom-classes", classList)
       elem.classList.add(classList)
     }
   }
 
-  await load_highlight_colors(json.highlightColors)
+  await loadHighlightColors(json.highlightColors)
 
   updateTitles(data["character-name"])
 }
 
+function setText(parent, selector, text) {
+  parent.querySelector(selector).innerHTML = text_to_html(text)
+}
+
 // See notes about file formats in save.js.
-async function load_characterV4(json) {
+async function displayCharacterJsonV4(json) {
   if (json.version != 4) {
+    console.error("Incorrect format version: Expected 4, got", json.version)
     return
   }
-  let characterName = text_to_html(json.characterName)
-  document.querySelector("#character-name").innerHTML = text_to_html(characterName)
-  document.querySelector("#description").innerHTML = text_to_html(json.description)
+  setText(document, "#character-name", json.characterName)
+  setText(document, "#description", json.description)
 
   for (let [pageIndex, pageData] of json.traits.entries()) {
     for (let [columnIndex, columnData] of pageData.entries()) {
       for (let [traitGroupIndex, traitGroupData] of columnData.entries()) {
-        let traitGroup = await get_element_from_parts(["pages", pageIndex, columnIndex + 1, traitGroupIndex])
+        let traitGroup = await elementForPathParts(["pages", pageIndex, columnIndex + 1, traitGroupIndex])
         let [title, style, color] = traitGroupData[0]
-        traitGroup.querySelector(".header").innerHTML = text_to_html(title)
-        apply_data_style(traitGroup, style)
-        apply_highlight_color(traitGroup, color)
+        setText(traitGroup, ".header", title)
+        applyDataStyle(traitGroup, style)
+        applyHighlightColor(traitGroup, color)
         for (let [traitGroupColumnIndex, traitGroupColumnData] of traitGroupData.slice(1).entries()) {
           for (let [traitIndex, traitData] of traitGroupColumnData.entries()) {
-            let trait = await get_element_from_parts(["pages", pageIndex, columnIndex + 1, traitGroupIndex, traitGroupColumnIndex + 2, traitIndex])
+            let trait = await elementForPathParts(["pages", pageIndex, columnIndex + 1, traitGroupIndex, traitGroupColumnIndex + 2, traitIndex])
             let [name, value] = traitData
-            trait.querySelector(".trait-name").innerHTML = text_to_html(name)
+            setText(trait, ".trait-name", name)
             trait.querySelector(".trait-value").innerHTML = dice_to_html(value)
             if (traitData.length > 2) {
               let description = traitData.slice(2).join("\n")
-              trait.querySelector(".trait-description").innerHTML = text_to_html(description)
+              setText(trait, ".trait-description", description)
             }
           }
         }
-        update_trait_group_display(traitGroup)
+        updateTraitGroupDisplay(traitGroup)
       }
     }
   }
 
-  await load_highlight_colors(json.highlightColors)
+  await loadHighlightColors(json.highlightColors)
 
-  updateTitles(characterName)
+  updateTitles(json.characterName)
 }
 
 // Load the character specified by a URL path
-export async function load_character_path(path) {
+export async function displayCharacterJsonFromPath(path) {
   fetch(path)
     .then((response) => response.json())
-    .then((json) => load_character(json))
+    .then((json) => displayCharacterJson(json))
 }

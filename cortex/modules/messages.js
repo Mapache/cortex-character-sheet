@@ -83,6 +83,9 @@ export class Messages {
     if (!this.handlersAreInstalled) {
       this.handlersAreInstalled = true
 
+      // Specifically use onclick / onblur instead of addEventListener to make them
+      // easy to replace by another Messages when switching the current campaign.
+
       this.fetchOlder.onclick = async (e) => {
         this.showOlderMessages()
       }

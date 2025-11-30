@@ -1,6 +1,6 @@
 import { addEditHandlers } from "./eventHandlers.js"
 import { fetchHtml } from "./fetchHtml.js"
-import { apply_data_style, apply_trait_group_style_to_trait } from "./traitGroupStyle.js"
+import { applyDataStyle, apply_trait_group_style_to_trait } from "./traitGroupStyle.js"
 
 // MARK: Template
 
@@ -48,7 +48,7 @@ export async function add_page(e) {
 
 export async function add_trait_group(e) {
   let traitGroup = addElement(e, (await Template.traitGroup).newInstance())
-  apply_data_style(traitGroup, "detailed")
+  applyDataStyle(traitGroup, "detailed")
 
   updatePagePlaceholderControl()
 }

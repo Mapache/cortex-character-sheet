@@ -3,7 +3,7 @@ import { cloud } from "./cloud.js"
 import { whenInteractive } from "./defer.js"
 import { installTitleListeners } from "./elements.js"
 import { addEditHandlers } from "./eventHandlers.js"
-import { load_character, load_character_path } from "./load.js"
+import { displayCharacterJson, displayCharacterJsonFromPath } from "./load.js"
 import { downloadCharacter, uploadCharacter } from "./toolbar.js"
 import { HashHandler } from "./urlHashHandler.js"
 
@@ -28,7 +28,7 @@ function installSaveHandler() {
 
 // Load the static sheet at the relative path specified by "template"
 new HashHandler("template", (template) => {
-  load_character_path("characters/" + template)
+  displayCharacterJsonFromPath("characters/" + template)
 }).addListener()
 
 // Load the campaign or campaign.sheet specified by "view"
@@ -38,7 +38,7 @@ async function parseView(view) {
   if (characterSheetId) {
     const characterSheet = await cloud.currentCharacterSheetWithId(characterSheetId)
     if (characterSheet) {
-      load_character(characterSheet.json)
+      displayCharacterJson(characterSheet.json)
       // Restore the character hash wiped out by switching to the campaign
       cloud.updateURLForCharacter(characterSheet)
     }
