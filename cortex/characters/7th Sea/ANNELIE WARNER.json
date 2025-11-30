@@ -13,27 +13,27 @@
           [
             [
               "REPUTATION: JUSTICE",
-              "8 / 4+hero point",
+              "d8 / d4+hero point",
               "Killer of the undead, wandering from place to place penniless and always willing to punch people in the face."
             ],
             [
               "VIRTUE: ALTRUISTIC",
-              "8",
+              "d8",
               "Activate your Virtue to suffer a Consequence in place of another Hero."
             ],
             [
               "HUBRIS: TRUSTING",
-              "4+hero point",
+              "d4+hero point",
               "You receive a hero point when you accept someone’s lies or lopsided deal."
             ],
             [
               "BACKGROUND: PUGILIST",
-              "6",
+              "d6",
               "[Quirk]: Earn a hero point when you drop what you’re holding to fight with fists regardless of your opponent's weapon."
             ],
             [
               "BACKGROUND: HEXE",
-              "6",
+              "d6",
               "[Quirk]: Earn a hero point when you go out of your way to ensure that the dead stay dead."
             ],
             [
@@ -51,23 +51,23 @@
           [
             [
               "BRAWN",
-              "0"
+              "d10"
             ],
             [
               "Finesse",
-              "4"
+              "d4"
             ],
             [
               "PANACHE",
-              "6"
+              "d6"
             ],
             [
               "Resolve",
-              "2"
+              "d12"
             ],
             [
               "Wits",
-              "8"
+              "d8"
             ]
           ]
         ],
@@ -79,67 +79,67 @@
           [
             [
               "Aim",
-              "4"
+              "d4"
             ],
             [
               "Athletics",
-              "8"
+              "d8"
             ],
             [
               "Brawl",
-              "0"
+              "d10"
             ],
             [
               "Convince",
-              "2"
+              "d12"
             ],
             [
               "Empathy",
-              "6"
+              "d6"
             ],
             [
               "Hide",
-              "4"
+              "d4"
             ],
             [
               "Intimidate",
-              "0"
+              "d10"
             ],
             [
               "Notice",
-              "6"
+              "d6"
             ],
             [
               "PERFORM",
-              "6"
+              "d6"
             ],
             [
               "Ride",
-              "4"
+              "d4"
             ],
             [
               "Sailing",
-              "4"
+              "d4"
             ],
             [
               "Scholarship",
-              "4"
+              "d4"
             ],
             [
               "Tempt",
-              "8"
+              "d8"
             ],
             [
               "Theft",
-              "4"
+              "d4"
             ],
             [
               "Warfare",
-              "8"
+              "d8"
             ],
             [
               "Weaponry",
-              "6"
+              "d6"
             ]
           ]
         ]
@@ -153,8 +153,8 @@
           [
             [
               "BOXER",
-              "",
-              "You gain d8 when you use Brawl to punch, kick, headbutt, or otherwise injure another character using nothing but your own body."
+              "d8",
+              "Add your Boxer die when you use Brawl to punch, kick, headbutt, or otherwise injure another character using nothing but your own body."
             ],
             [
               "STAREDOWN",
@@ -173,8 +173,8 @@
             ],
             [
               "LARGE",
-              "",
-              "Gain d8 on any Test that is easier due to your size—using Athletics to run at full speed even while carrying another Hero, or looming over someone in order to Intimidate them."
+              "d8",
+              "Add to any Test that is easier due to your size—using Athletics to run at full speed even while carrying another Hero, or looming over someone in order to Intimidate them."
             ],
             [
               "POISON IMMUNITY",
@@ -214,7 +214,7 @@
           [
             [
               "SECRET SOCIETY: DIE KREUZRITTER",
-              "6",
+              "d6",
               "Clandestine warriors who battle Monsters and protect others from horrors unleashed by Villains."
             ]
           ]

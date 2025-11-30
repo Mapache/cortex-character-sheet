@@ -13,27 +13,27 @@
           [
             [
               "REPUTATION: HISTORIAN",
-              "0 / 4+hero point",
+              "d10 / d4+hero point",
               "Accidental anti-revolutionary who published an inconvenient paper for the French regime"
             ],
             [
               "VIRTUE: ASTUTE",
-              "8",
+              "d8",
               "- Once per session, activate your Virtue after a Villain rolls for an Action. That Action fails."
             ],
             [
               "HUBRIS: INDECISIVE",
-              "4+hero point",
+              "d4+hero point",
               "- Once per session, you receive a hero point when your Hero takes an Action to pause in hesitation, doubt, or uncertainty before she makes a move."
             ],
             [
               "BACKGROUND: SORCIER PORTÉ",
-              "6",
+              "d6",
               "[Quirk]: Earn a hero point when you close a <i>Blessure</i> that a Villain ripped open."
             ],
             [
               "BACKGROUND: SCHOLAR",
-              "6",
+              "d6",
               "[Quirk]: Earn a hero point when you put yourself in harm’s way in pursuit of knowledge."
             ],
             [
@@ -51,23 +51,23 @@
           [
             [
               "BRAWN",
-              "4"
+              "d4"
             ],
             [
               "Finesse",
-              "8"
+              "d8"
             ],
             [
               "Panache",
-              "6"
+              "d6"
             ],
             [
               "Resolve",
-              "0"
+              "d10"
             ],
             [
               "Wits",
-              "2"
+              "d12"
             ]
           ]
         ],
@@ -79,67 +79,67 @@
           [
             [
               "Aim",
-              "6"
+              "d6"
             ],
             [
               "Athletics",
-              "6"
+              "d6"
             ],
             [
               "Brawl",
-              "4"
+              "d4"
             ],
             [
               "Convince",
-              "8"
+              "d8"
             ],
             [
               "Empathy",
-              "0"
+              "d10"
             ],
             [
               "Hide",
-              "8"
+              "d8"
             ],
             [
               "INTIMIDATE",
-              "4"
+              "d4"
             ],
             [
               "Notice",
-              "0"
+              "d10"
             ],
             [
               "Perform",
-              "6"
+              "d6"
             ],
             [
               "Ride",
-              "6"
+              "d6"
             ],
             [
               "Sailing",
-              "4"
+              "d4"
             ],
             [
               "Scholarship",
-              "2"
+              "d12"
             ],
             [
               "Tempt",
-              "8"
+              "d8"
             ],
             [
               "Theft",
-              "4"
+              "d4"
             ],
             [
               "Warfare",
-              "4"
+              "d4"
             ],
             [
               "Weaponry",
-              "4"
+              "d4"
             ]
           ]
         ]
@@ -173,8 +173,8 @@
             ],
             [
               "TENURE",
-              "",
-              "You can expect refuge, a place to stay, and hot meals in any university. You also have access to many—but not all—of a university’s libraries simply by requesting it. Finally, you gain d10 on any social Test against characters who are members of an institution of higher learning or who respect such an education."
+              "d10",
+              "You can expect refuge, a place to stay, and hot meals in any university. You also have access to many—but not all—of a university’s libraries simply by requesting it. Finally, add your Tenure die to any social Test against characters who are members of an institution of higher learning or who respect such an education."
             ],
             [
               "LINGUIST",
@@ -229,7 +229,7 @@
           [
             [
               "SECRET SOCIETY:\nTHE EXPLORER'S SOCIETY",
-              "6",
+              "d6",
               "Scholars and adventurers seeking out the ancient truths in the world by investigating ruins from a race long gone from the face of the world."
             ]
           ]

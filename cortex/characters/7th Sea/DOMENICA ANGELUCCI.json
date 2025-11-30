@@ -13,27 +13,27 @@
           [
             [
               "REPUTATION: MYSTERIOUS SEXY GAMBLER",
-              "8 / 4+hero point",
+              "d8 / d4+hero point",
               "Domenica is a walking mystery. People obsess over her, but also no one can know her."
             ],
             [
               "VIRTUE: ILLUMINATING",
-              "8",
+              "d8",
               "Activate your Virtue to know whenever any other character lies to you until the end of the Scene."
             ],
             [
               "HUBRIS: STAR CROSSED",
-              "4+hero point",
+              "d4+hero point",
               "You receive a hero point when your Hero becomes enamored with someone she really shouldn’t."
             ],
             [
               "SORTE STREGA",
-              "6",
+              "d6",
               "[Quirk]: Earn a hero point when you commit to a dangerous course of action that you believe is destiny."
             ],
             [
               "CRIMINAL",
-              "6",
+              "d6",
               "[Quirk]: Earn a hero point when you break the law in the pursuit of a noble endeavor."
             ],
             [
@@ -51,23 +51,23 @@
           [
             [
               "BRAWN",
-              "4"
+              "d4"
             ],
             [
               "Finesse",
-              "0"
+              "d10"
             ],
             [
               "Panache",
-              "2"
+              "d12"
             ],
             [
               "RESOLVE",
-              "6"
+              "d6"
             ],
             [
               "Wits",
-              "8"
+              "d8"
             ]
           ]
         ],
@@ -79,67 +79,67 @@
           [
             [
               "Aim",
-              "4"
+              "d4"
             ],
             [
               "Athletics",
-              "6"
+              "d6"
             ],
             [
               "Brawl",
-              "4"
+              "d4"
             ],
             [
               "Convince",
-              "2"
+              "d12"
             ],
             [
               "Empathy",
-              "6"
+              "d6"
             ],
             [
               "Hide",
-              "0"
+              "d10"
             ],
             [
               "Intimidate",
-              "6"
+              "d6"
             ],
             [
               "Notice",
-              "4"
+              "d4"
             ],
             [
               "Perform",
-              "8"
+              "d8"
             ],
             [
               "Ride",
-              "6"
+              "d6"
             ],
             [
               "Sailing",
-              "4"
+              "d4"
             ],
             [
               "Scholarship",
-              "4"
+              "d4"
             ],
             [
               "Tempt",
-              "0"
+              "d10"
             ],
             [
               "Theft",
-              "8"
+              "d8"
             ],
             [
               "Warfare",
-              "4"
+              "d4"
             ],
             [
               "Weaponry",
-              "8"
+              "d8"
             ]
           ]
         ]
@@ -215,7 +215,7 @@
           [
             [
               "SECRET SOCIETY:\nSOPHIA’S DAUGHTERS",
-              "6",
+              "d6",
               "A sect of the Rilasciare, these women seek to liberate Fate Witches and undermine the Merchant Princes of Vodacce."
             ]
           ]
@@ -292,7 +292,7 @@
           [
             [
               "Lashes",
-              "∅",
+              "d8",
               "When you use any Tessere other than Read, you must take at least one Lash. Track Lashes like any other Consequence, stepping up your Lashes die. Your Lashes magnify the effect of your Tessere, but are a steep cost to pay, and they act as a Complication. Fate is displeased by your meddling, and it always makes sure to take its toll.",
               "",
               "Having Fate Lashes is beneficial in that the more Lashes you have, the stronger your magic is, but harmful because getting rid of them becomes more painful.",

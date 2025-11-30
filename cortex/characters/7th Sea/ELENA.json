@@ -12,28 +12,28 @@
           ],
           [
             [
-              "Reputation: {Phrase}",
-              "8 / 4+hero point",
-              "{Elaborate on reputation}"
+              "Reputation: The singing sword",
+              "d8 / d4+hero point",
+              "The rhythms of the song and the sword both call to Elena and she will face down anyone who stands her way of perfecting either."
             ],
             [
               "VIRTUE: ADAPTABLE",
-              "8",
+              "d8",
               "[Coins (for the Ferryman)]: Once per session, activate your Virtue to take your first Action before anyone else in a round."
             ],
             [
               "HUBRIS: Relentless",
-              "4+hero point",
+              "d4+hero point",
               "[Coins (for the Ferryman)]: Once per session, you receive a hero point when you refuse to leave well enough alone or quit while you’re ahead, and it gets you into trouble."
             ],
             [
               "BACKGROUND: PERFORMER",
-              "6",
+              "d6",
               "[Quirk]: Earn a hero point when you use your crowd-pleasing skills for something more than making a few coins."
             ],
             [
               "BACKGROUND: DUELIST",
-              "6",
+              "d6",
               "[Quirk]: Earn a hero point when you resort to the edge of your blade to defend a noble ideal."
             ],
             [
@@ -51,23 +51,23 @@
           [
             [
               "BRAWN",
-              "8"
+              "d8"
             ],
             [
               "FINESSE",
-              "0"
+              "d10"
             ],
             [
               "Panache",
-              "2"
+              "d12"
             ],
             [
               "Resolve",
-              "4"
+              "d4"
             ],
             [
               "Wits",
-              "6"
+              "d6"
             ]
           ]
         ],
@@ -79,67 +79,67 @@
           [
             [
               "Aim",
-              "4"
+              "d4"
             ],
             [
               "Athletics",
-              "0"
+              "d10"
             ],
             [
               "Brawl",
-              "4"
+              "d4"
             ],
             [
               "Convince",
-              "6"
+              "d6"
             ],
             [
               "Empathy",
-              "8"
+              "d8"
             ],
             [
               "Hide",
-              "8"
+              "d8"
             ],
             [
               "Intimidate",
-              "6"
+              "d6"
             ],
             [
               "Notice",
-              "6"
+              "d6"
             ],
             [
               "Perform",
-              "0"
+              "d10"
             ],
             [
               "Ride",
-              "4"
+              "d4"
             ],
             [
               "Sailing",
-              "4"
+              "d4"
             ],
             [
               "Scholarship",
-              "4"
+              "d4"
             ],
             [
               "Tempt",
-              "6"
+              "d6"
             ],
             [
               "Theft",
-              "8"
+              "d8"
             ],
             [
               "Warfare",
-              "4"
+              "d4"
             ],
             [
               "Weaponry",
-              "2"
+              "d12"
             ]
           ]
         ]
@@ -153,8 +153,8 @@
           [
             [
               "VIRTUOSO: SINGING",
-              "",
-              "Choose a specific Performance type, such as singing, playing a specific musical instrument, or dancing. You gain d8 when you Perform using that art."
+              "d8",
+              "Choose a specific Performance type, such as singing, playing a specific musical instrument, or dancing. You gain your Virtuoso die when you Perform using that art."
             ],
             [
               "INSPIRE GENEROSITY",
@@ -178,8 +178,8 @@
             ],
             [
               "SEA LEGS",
-              "",
-              "While aboard a ship, treacherous footing never affects you. You gain d8 on any physical Test while aboard a ship at sea—engaging in a sword fight on a pitching ship deck, or climbing through the rigging during a storm."
+              "d8",
+              "While aboard a ship, treacherous footing never affects you. You may add your Sea Legs to any physical Test while aboard a ship at sea—engaging in a sword fight on a pitching ship deck, or climbing through the rigging during a storm."
             ]
           ]
         ],
@@ -229,6 +229,26 @@
           [
             "DUELING",
             "detailed"
+          ],
+          [
+            [
+              "Duelist",
+              "d8",
+              "When armed with the signature weapons of any of your styles, you may add your Duelist die to any combat-related test.",
+              "",
+              "(Each additional style learned will increase your Duelist die by one step, to a maximum of d12.)"
+            ],
+            [
+              "Torres",
+              "",
+              "Originally developed for bullfighting, the Torres style makes use of a rapier in one hand and a cloak in the other. The student uses subtle movements to draw her opponent’s attention to the cloak, and then blindside them with the rapier.",
+              "",
+              "The Torres school is an extremely effective defensive style, as the cloak and sword combine to form a wall of cloth and steel between the student and her opponent’s blade. Masters of the school are some of the most quick-witted and agile men and women in the world.",
+              "",
+              "[Signature Weapons] Wielding a fencing sword (such as a rapier or cutlass) in one hand and nothing in the other, and wearing a long cloak.",
+              "",
+              "[Matador’s Flourish] Spend a hero point to prevent any combat-related wound or injury up to your Athletics (d10)."
+            ]
           ]
         ]
       ],
@@ -241,7 +261,7 @@
           [
             [
               "SECRET SOCIETY: {NAME}",
-              "6"
+              "d6"
             ]
           ]
         ]
