@@ -1,5 +1,6 @@
-import { HSV, RGB } from "./color.js"
+import { RGB } from "./color.js"
 import { noDiePlaceholder } from "./conversion.js"
+import { didModifyDisplayedCharacterSheet } from "./displayedCharacter.js"
 
 function resetTraitGroup(traitGroup) {
 	if (dataStyleRequiresTraitModification(traitGroup)) {
@@ -61,6 +62,7 @@ export function applyTraitGroupStyleToTrait(traitGroup, trait, applyDefaultValue
 				let d = e.target
 				let value = d.classList.contains("current") ? clearValue : d.innerText
 				setTrackValue(trait, value)
+				didModifyDisplayedCharacterSheet()
 			}
 		})
 	}

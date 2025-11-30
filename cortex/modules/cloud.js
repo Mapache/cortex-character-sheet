@@ -3,7 +3,7 @@ import { onAuthStateChanged, signInWithPopup, signOut, GoogleAuthProvider } from
 import { doc, collection, where, query, orderBy, startAfter, limit, onSnapshot, addDoc, setDoc, updateDoc, getDoc, getDocs, documentId, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js"
 
 import { Deferred } from "./defer.js"
-import { currentCharacterName } from "./elements.js"
+import { currentCharacterName } from "./displayedCharacter.js"
 import { displayCharacterJson } from "./load.js"
 import { characterName, jsonForDisplayedCharacter } from "./save.js"
 import { merge } from "./merge.js"
@@ -440,6 +440,8 @@ export class Cloud {
 				unsubscribe()
 			}
 			this.unsubscribeMessagesForCampaignId = {}
+
+			this.willSwitchCampaign()
 
 			this.user = null
 			this.userPermissions = null

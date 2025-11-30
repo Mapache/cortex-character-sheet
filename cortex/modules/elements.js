@@ -1,3 +1,4 @@
+import { currentCharacterName, updateDocumentTitle } from "./displayedCharacter.js"
 import { addEditHandlers } from "./eventHandlers.js"
 import { fetchHtml } from "./fetchHtml.js"
 import { applyDataStyle, applyTraitGroupStyleToTrait } from "./traitGroupStyle.js"
@@ -150,25 +151,4 @@ export function updateTitles(characterName, excludingTitle) {
     }
   }
   updateDocumentTitle(characterName)
-}
-
-export const defaultCharacterName = "NAME"
-
-export function isCharacterNameValid(characterName) {
-  return characterName.length > 0 && characterName !== defaultCharacterName
-}
-
-export function updateDocumentTitle(characterName) {
-  if (!isCharacterNameValid(characterName)) {
-    characterName = "Cortex Prime"
-  }
-  document.title = characterName + " Character Sheet"
-}
-
-export function currentCharacterName() {
-  return document.querySelector(".title").innerText // Get name from first page
-}
-
-export function isCurrentCharacterNameValid() {
-  return isCharacterNameValid(currentCharacterName())
 }

@@ -1,5 +1,5 @@
 import { whenInteractive } from "./defer.js"
-import { updateDocumentTitle } from "./elements.js"
+import { updateDocumentTitle } from "./displayedCharacter.js"
 
 function currentUrlHashParams() {
   // Slice off the "#", as URLSearchParams is designed for query strings with an "?"

@@ -14,7 +14,7 @@ document.body.ondrop = function(e) {
 
 	let blob = e.dataTransfer.files[0]
 	let reader = new FileReader()
-	reader.addEventListener("loadend", function () {
+	reader.addEventListener("loadend", () => {
 		let text = reader.result
 		let data = JSON.parse(text)
 		displayCharacterJson(data)

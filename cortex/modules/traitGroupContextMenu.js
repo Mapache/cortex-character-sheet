@@ -1,3 +1,4 @@
+import { didModifyDisplayedCharacterSheet } from "./displayedCharacter.js"
 import { updatePagePlaceholderControl } from "./elements.js"
 import { Modal } from "./modal.js"
 import { applyDataStyle, applyHighlightColor, defaultHighlightColor } from "./traitGroupStyle.js"
@@ -51,12 +52,14 @@ export async function setTraitGroupHighlightColor(e) {
   applyHighlightColor(traitGroup, colorPicker.value)
 
   // Do NOT closeContextMenu()
+  didModifyDisplayedCharacterSheet()
 }
 
 export async function removeTraitGroupHighlightColor(e) {
   applyHighlightColor(traitGroup, null)
 
   closeContextMenu()
+  didModifyDisplayedCharacterSheet()
 }
 
 // MARK: Data Styles
@@ -66,6 +69,7 @@ export async function setStyle(e) {
   applyDataStyle(traitGroup, style)
 
   closeContextMenu()
+  didModifyDisplayedCharacterSheet()
 }
 
 export async function removeTraitGroup(e) {

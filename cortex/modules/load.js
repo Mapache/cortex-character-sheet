@@ -1,9 +1,11 @@
 import { diceToHtml, textToHtml } from "./conversion.js"
+import { willSwitchDisplayedCharacterSheet, didSwitchDisplayedCharacterSheet } from "./displayedCharacter.js"
 import * as elements from "./elements.js"
 import { updateTitles } from "./elements.js"
 import { applyDataStyle, applyHighlightColor, defaultHighlightColor, globalHighlightColorPicker, updateTraitGroupDisplay } from "./traitGroupStyle.js"
 
 export async function displayCharacterJson(json) {
+  willSwitchDisplayedCharacterSheet()
   nukeDisplayedCharacter()
   let version = json.version
   switch (version) {
@@ -16,6 +18,7 @@ export async function displayCharacterJson(json) {
     default:
       console.error("Unknown data format version " + version)
   }
+  didSwitchDisplayedCharacterSheet()
 }
 
 export function nukeDisplayedCharacter() {
@@ -76,6 +79,8 @@ async function loadHighlightColors(highlightColors) {
   }
   globalHighlightColorPicker.value = globalHighlightColor
 }
+
+// MARK: V3
 
 // See notes about file formats in save.js. Loading V3 characters is theoretically supported but not actively tested.
 async function displayCharacterJsonV3(json) {
@@ -154,6 +159,8 @@ async function displayCharacterJsonV3(json) {
 function setText(parent, selector, text) {
   parent.querySelector(selector).innerHTML = textToHtml(text)
 }
+
+// MARK: V4
 
 // See notes about file formats in save.js.
 async function displayCharacterJsonV4(json) {
