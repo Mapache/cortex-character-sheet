@@ -3,6 +3,7 @@ import { Cloud, cloud, Message } from "./cloud.js"
 import { dText_to_html, html_to_text, noDiePlaceholder } from "./conversion.js"
 import { addClickToEditHandlersToTextNode, selectAllTextOf, setEditingEnabled } from "./eventHandlers.js"
 import { formatAbsoluteTime, titleCase } from "./formatting.js"
+import { RestartableTimeout } from "./timer.js"
 import { ToggleableStyle } from "./toggleableStyle.js"
 import { emptyDescriptionsHidden, layoutControlsHidden } from "./toggleableStyles.js"
 import { toggleEmptyDescriptionsHidden, toggleLayoutControlsHidden } from "./toolbar.js"
@@ -530,6 +531,11 @@ async function htmlForMessage(message) {
       table.appendChild(row)
       updateStatusClass()
 
+      // For batching up a series of dice clicks to reduce writes at the server end.
+      const statusPushTimeout = new RestartableTimeout(() => {
+        cloud.updateMessageDiceStatus(message.id, message.diceStatus)
+      }, 5000)
+
       function toggleStatus(status) {
         if (die.result === 1) {
           return
@@ -541,7 +547,7 @@ async function htmlForMessage(message) {
         }
         updateStatusClass()
         html.querySelector(".dice-outcome").replaceWith(htmlForOutcomes(message, updateStatusClasses))
-        startStatusPushTimer()
+        statusPushTimeout.restart()
       }
 
       row.querySelector(".die-size").onclick = (e) => {
@@ -551,17 +557,6 @@ async function htmlForMessage(message) {
         toggleStatus(Message.DieRoll.total)
       }
 
-      // For batching up a series of dice clicks to reduce writes at the server end.
-      let pushTimerId = null
-      function startStatusPushTimer() {
-        if (pushTimerId) {
-          clearTimeout(pushTimerId)
-        }
-        pushTimerId = setTimeout(() => {
-          cloud.updateMessageDiceStatus(message.id, message.diceStatus)
-          pushTimerId = null
-        }, 5000)
-      }
     }
     html.appendChild(table)
     html.appendChild(htmlForOutcomes(message, updateStatusClasses))
